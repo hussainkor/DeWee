@@ -12,11 +12,11 @@ namespace DeWee.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_EnterpriseMachineM
+    public partial class Tbl_TypeYesNoM
     {
-        public int EnterpriseMachine_Id { get; set; }
-        public string EnterpriseMachineInEng { get; set; }
-        public string EnterpriseMachineInHindi { get; set; }
+        public int SolarEpanel_Id { get; set; }
+        public string SolarEpanelInEng { get; set; }
+        public string SolarEpanelInHindi { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

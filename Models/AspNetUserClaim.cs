@@ -12,14 +12,13 @@ namespace DeWee.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_EnterpriseMachineM
+    public partial class AspNetUserClaim
     {
-        public int EnterpriseMachine_Id { get; set; }
-        public string EnterpriseMachineInEng { get; set; }
-        public string EnterpriseMachineInHindi { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<int> OrderBy { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

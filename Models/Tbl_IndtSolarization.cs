@@ -22,7 +22,10 @@ namespace DeWee.Models
         public Nullable<int> Village_Id { get; set; }
         public Nullable<int> CLF_Id { get; set; }
         public Nullable<int> VO_Id { get; set; }
-        public Nullable<int> SHG_Id { get; set; }
+        public string TempRegNo { get; set; }
+        public string RegNo { get; set; }
+        public string AadharNo { get; set; }
+        public string PhoneNumber { get; set; }
         public Nullable<int> YearOfSHG { get; set; }
         public string NameofSHGmember { get; set; }
         public string NameofEnterpriseOwner { get; set; }
@@ -30,10 +33,9 @@ namespace DeWee.Models
         public string DOB { get; set; }
         public Nullable<int> EducationQlf_Id { get; set; }
         public Nullable<int> Caste_Id { get; set; }
-        public Nullable<int> PhoneNumber { get; set; }
-        public Nullable<int> TypeofEnterprise_Id { get; set; }
+        public Nullable<int> TypeofEnterpriseBusin_Id { get; set; }
         public Nullable<int> BusinessOwnedType_Id { get; set; }
-        public Nullable<int> EstablishedType_Id { get; set; }
+        public Nullable<int> EstablishedEnterpriseType_Id { get; set; }
         public Nullable<int> ArrangedcapitalBusiness_Id { get; set; }
         public Nullable<int> SourceOfLoan_Id { get; set; }
         public Nullable<int> LoanAmtSHG_Id { get; set; }
@@ -79,5 +81,6 @@ namespace DeWee.Models
         public Nullable<System.DateTime> UpdatedOn { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<System.DateTime> IsDeletedOn { get; set; }
+        public Nullable<int> OrderBy { get; set; }
     }
 }

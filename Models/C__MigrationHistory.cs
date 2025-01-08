@@ -12,14 +12,11 @@ namespace DeWee.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_SolarEpanelM
+    public partial class C__MigrationHistory
     {
-        public int SolarEpanel_Id { get; set; }
-        public string SolarEpanelInEng { get; set; }
-        public string SolarEpanelInHindi { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<int> OrderBy { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

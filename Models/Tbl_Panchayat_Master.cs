@@ -16,11 +16,10 @@ namespace DeWee.Models
     {
         public int PanchayatId_pk { get; set; }
         public Nullable<int> DistrictId_fk { get; set; }
-        public Nullable<int> Blockid_fk { get; set; }
-        public string Block { get; set; }
-        public Nullable<int> CLF_Id_fk { get; set; }
-        public string Panchayat { get; set; }
-        public string FPCP_Panchayat { get; set; }
+        public Nullable<int> BlockId_fk { get; set; }
+        public Nullable<int> CLFId_fk { get; set; }
+        public string PanchayatName { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public Nullable<int> OrderBy { get; set; }
     }
 }

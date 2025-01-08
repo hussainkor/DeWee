@@ -14,19 +14,17 @@ namespace DeWee.Models
     
     public partial class Tbl_VO_Master
     {
-        public int Void_pk { get; set; }
+        public int VOrgId_pk { get; set; }
         public Nullable<int> DistrictId_fk { get; set; }
         public Nullable<int> BlockId_fk { get; set; }
-        public Nullable<int> CLF_Id_fk { get; set; }
-        public Nullable<int> Panchayatid_fk { get; set; }
-        public string Panchayat { get; set; }
-        public string Village_Organization { get; set; }
-        public string F5 { get; set; }
-        public string CRUD { get; set; }
+        public Nullable<int> CLFId_fk { get; set; }
+        public Nullable<int> PanchayatId_fk { get; set; }
+        public string Village_OrganizationName { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public Nullable<int> OrderBy { get; set; }
     }
 }

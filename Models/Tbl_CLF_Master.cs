@@ -14,7 +14,7 @@ namespace DeWee.Models
     
     public partial class Tbl_CLF_Master
     {
-        public int CLF_ID_pk { get; set; }
+        public int CLFId_pk { get; set; }
         public Nullable<int> DistrictId_fk { get; set; }
         public Nullable<int> BlockId_fk { get; set; }
         public string CLFName { get; set; }
@@ -23,5 +23,6 @@ namespace DeWee.Models
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public Nullable<int> OrderBy { get; set; }
     }
 }

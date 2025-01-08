@@ -25,6 +25,11 @@ namespace DeWee.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Tbl_Block_Master> Tbl_Block_Master { get; set; }
         public virtual DbSet<Tbl_BusinessInvestmentM> Tbl_BusinessInvestmentM { get; set; }
         public virtual DbSet<Tbl_BusinessOwnedM> Tbl_BusinessOwnedM { get; set; }
@@ -39,11 +44,12 @@ namespace DeWee.Models
         public virtual DbSet<Tbl_MonthlyExpenseEBM> Tbl_MonthlyExpenseEBM { get; set; }
         public virtual DbSet<Tbl_Panchayat_Master> Tbl_Panchayat_Master { get; set; }
         public virtual DbSet<Tbl_PowerConnectionM> Tbl_PowerConnectionM { get; set; }
-        public virtual DbSet<Tbl_SolarEpanelM> Tbl_SolarEpanelM { get; set; }
         public virtual DbSet<Tbl_SolarkilowattM> Tbl_SolarkilowattM { get; set; }
         public virtual DbSet<Tbl_SourceEnergyM> Tbl_SourceEnergyM { get; set; }
         public virtual DbSet<Tbl_State_Master> Tbl_State_Master { get; set; }
         public virtual DbSet<Tbl_SubisdyM> Tbl_SubisdyM { get; set; }
+        public virtual DbSet<Tbl_TypeYesNoM> Tbl_TypeYesNoM { get; set; }
+        public virtual DbSet<Tbl_Village_Master> Tbl_Village_Master { get; set; }
         public virtual DbSet<Tbl_VO_Master> Tbl_VO_Master { get; set; }
         public virtual DbSet<Tbl_Educational_QualificationM> Tbl_Educational_QualificationM { get; set; }
         public virtual DbSet<Tbl_Enterprise_EstablishedM> Tbl_Enterprise_EstablishedM { get; set; }
