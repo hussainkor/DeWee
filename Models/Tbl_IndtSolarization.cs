@@ -36,26 +36,25 @@ namespace DeWee.Models
         public Nullable<int> TypeofEnterpriseBusin_Id { get; set; }
         public Nullable<int> BusinessOwnedType_Id { get; set; }
         public Nullable<int> EstablishedEnterpriseType_Id { get; set; }
-        public Nullable<int> ArrangedcapitalBusiness_Id { get; set; }
-        public Nullable<int> SourceOfLoan_Id { get; set; }
-        public Nullable<int> LoanAmtSHG_Id { get; set; }
-        public Nullable<int> LoanAmtBank_Id { get; set; }
-        public Nullable<int> LoanAmtRelatives_Id { get; set; }
-        public Nullable<int> LoanAmtOtherSource_Id { get; set; }
-        public Nullable<int> AmtToStartBusiness_Id { get; set; }
-        public Nullable<int> LoanForBusiness_Id { get; set; }
-        public Nullable<int> ProfitFromBusiness_Id { get; set; }
-        public Nullable<int> PeopleWorkInEnterprises_Id { get; set; }
-        public Nullable<int> MachineType_Id { get; set; }
-        public Nullable<int> MachinesInUsed_Id { get; set; }
-        public Nullable<int> MachineryPower_Id { get; set; }
+        public Nullable<int> TypeOfInvestBusin_Id { get; set; }
+        public Nullable<int> TookSourceOfLoan_Id { get; set; }
+        public Nullable<decimal> TookLoanAmt { get; set; }
+        public Nullable<decimal> StartBusinessInvestAmt { get; set; }
+        public Nullable<decimal> StartYourBusinessTakeAmt { get; set; }
+        public Nullable<decimal> MonthlyProfitBusiness { get; set; }
+        public Nullable<int> WorkInEnterprises_FamilyMembers { get; set; }
+        public Nullable<int> WorkInEnterprises_SHGMembers { get; set; }
+        public Nullable<int> WorkInEnterprises_AssitantStaffs { get; set; }
+        public Nullable<int> TypeOfMachineEnterprise_Id { get; set; }
+        public Nullable<int> MotorBasedOnMachinesInActualUsed { get; set; }
+        public Nullable<int> MachineryPowerkilowatt_Id { get; set; }
         public Nullable<int> ElectricityConnection_Id { get; set; }
-        public Nullable<int> ElectcityPhase_Id { get; set; }
+        public Nullable<int> ConnectionPhaseofPower_Id { get; set; }
         public Nullable<int> MonthlyElectricityConsumption_Id { get; set; }
-        public Nullable<int> MachineSource_Id { get; set; }
-        public Nullable<int> SolarInKilowatt_Id { get; set; }
-        public Nullable<int> EnergyPanel_Id { get; set; }
-        public Nullable<int> ExpenditureIncurredSolar_Id { get; set; }
+        public Nullable<int> MachineSourceofEnergy_Id { get; set; }
+        public Nullable<int> Solar_InKilowatt_Id { get; set; }
+        public Nullable<int> Solar_EnergyPanelYesNo_Id { get; set; }
+        public Nullable<decimal> Solar_ExpenditureIncurredAmt { get; set; }
         public Nullable<int> Subsidy_Id { get; set; }
         public Nullable<int> LoanForSolarPanels_Id { get; set; }
         public Nullable<int> AvgAmtSavedFromSolarE_Id { get; set; }

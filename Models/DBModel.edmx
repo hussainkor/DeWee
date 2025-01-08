@@ -264,26 +264,25 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
           <Property Name="TypeofEnterpriseBusin_Id" Type="int" />
           <Property Name="BusinessOwnedType_Id" Type="int" />
           <Property Name="EstablishedEnterpriseType_Id" Type="int" />
-          <Property Name="ArrangedcapitalBusiness_Id" Type="int" />
-          <Property Name="SourceOfLoan_Id" Type="int" />
-          <Property Name="LoanAmtSHG_Id" Type="int" />
-          <Property Name="LoanAmtBank_Id" Type="int" />
-          <Property Name="LoanAmtRelatives_Id" Type="int" />
-          <Property Name="LoanAmtOtherSource_Id" Type="int" />
-          <Property Name="AmtToStartBusiness_Id" Type="int" />
-          <Property Name="LoanForBusiness_Id" Type="int" />
-          <Property Name="ProfitFromBusiness_Id" Type="int" />
-          <Property Name="PeopleWorkInEnterprises_Id" Type="int" />
-          <Property Name="MachineType_Id" Type="int" />
-          <Property Name="MachinesInUsed_Id" Type="int" />
-          <Property Name="MachineryPower_Id" Type="int" />
+          <Property Name="TypeOfInvestBusin_Id" Type="int" />
+          <Property Name="TookSourceOfLoan_Id" Type="int" />
+          <Property Name="TookLoanAmt" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="StartBusinessInvestAmt" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="StartYourBusinessTakeAmt" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="MonthlyProfitBusiness" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="WorkInEnterprises_FamilyMembers" Type="int" />
+          <Property Name="WorkInEnterprises_SHGMembers" Type="int" />
+          <Property Name="WorkInEnterprises_AssitantStaffs" Type="int" />
+          <Property Name="TypeOfMachineEnterprise_Id" Type="int" />
+          <Property Name="MotorBasedOnMachinesInActualUsed" Type="int" />
+          <Property Name="MachineryPowerkilowatt_Id" Type="int" />
           <Property Name="ElectricityConnection_Id" Type="int" />
-          <Property Name="ElectcityPhase_Id" Type="int" />
+          <Property Name="ConnectionPhaseofPower_Id" Type="int" />
           <Property Name="MonthlyElectricityConsumption_Id" Type="int" />
-          <Property Name="MachineSource_Id" Type="int" />
-          <Property Name="SolarInKilowatt_Id" Type="int" />
-          <Property Name="EnergyPanel_Id" Type="int" />
-          <Property Name="ExpenditureIncurredSolar_Id" Type="int" />
+          <Property Name="MachineSourceofEnergy_Id" Type="int" />
+          <Property Name="Solar_InKilowatt_Id" Type="int" />
+          <Property Name="Solar_EnergyPanelYesNo_Id" Type="int" />
+          <Property Name="Solar_ExpenditureIncurredAmt" Type="decimal" Precision="15" Scale="5" />
           <Property Name="Subsidy_Id" Type="int" />
           <Property Name="LoanForSolarPanels_Id" Type="int" />
           <Property Name="AvgAmtSavedFromSolarE_Id" Type="int" />
@@ -629,26 +628,25 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[TypeofEnterpriseBusin_Id] AS [TypeofEnterpriseBusin_Id], 
     [Tbl_IndtSolarization].[BusinessOwnedType_Id] AS [BusinessOwnedType_Id], 
     [Tbl_IndtSolarization].[EstablishedEnterpriseType_Id] AS [EstablishedEnterpriseType_Id], 
-    [Tbl_IndtSolarization].[ArrangedcapitalBusiness_Id] AS [ArrangedcapitalBusiness_Id], 
-    [Tbl_IndtSolarization].[SourceOfLoan_Id] AS [SourceOfLoan_Id], 
-    [Tbl_IndtSolarization].[LoanAmtSHG_Id] AS [LoanAmtSHG_Id], 
-    [Tbl_IndtSolarization].[LoanAmtBank_Id] AS [LoanAmtBank_Id], 
-    [Tbl_IndtSolarization].[LoanAmtRelatives_Id] AS [LoanAmtRelatives_Id], 
-    [Tbl_IndtSolarization].[LoanAmtOtherSource_Id] AS [LoanAmtOtherSource_Id], 
-    [Tbl_IndtSolarization].[AmtToStartBusiness_Id] AS [AmtToStartBusiness_Id], 
-    [Tbl_IndtSolarization].[LoanForBusiness_Id] AS [LoanForBusiness_Id], 
-    [Tbl_IndtSolarization].[ProfitFromBusiness_Id] AS [ProfitFromBusiness_Id], 
-    [Tbl_IndtSolarization].[PeopleWorkInEnterprises_Id] AS [PeopleWorkInEnterprises_Id], 
-    [Tbl_IndtSolarization].[MachineType_Id] AS [MachineType_Id], 
-    [Tbl_IndtSolarization].[MachinesInUsed_Id] AS [MachinesInUsed_Id], 
-    [Tbl_IndtSolarization].[MachineryPower_Id] AS [MachineryPower_Id], 
+    [Tbl_IndtSolarization].[TypeOfInvestBusin_Id] AS [TypeOfInvestBusin_Id], 
+    [Tbl_IndtSolarization].[TookSourceOfLoan_Id] AS [TookSourceOfLoan_Id], 
+    [Tbl_IndtSolarization].[TookLoanAmt] AS [TookLoanAmt], 
+    [Tbl_IndtSolarization].[StartBusinessInvestAmt] AS [StartBusinessInvestAmt], 
+    [Tbl_IndtSolarization].[StartYourBusinessTakeAmt] AS [StartYourBusinessTakeAmt], 
+    [Tbl_IndtSolarization].[MonthlyProfitBusiness] AS [MonthlyProfitBusiness], 
+    [Tbl_IndtSolarization].[WorkInEnterprises_FamilyMembers] AS [WorkInEnterprises_FamilyMembers], 
+    [Tbl_IndtSolarization].[WorkInEnterprises_SHGMembers] AS [WorkInEnterprises_SHGMembers], 
+    [Tbl_IndtSolarization].[WorkInEnterprises_AssitantStaffs] AS [WorkInEnterprises_AssitantStaffs], 
+    [Tbl_IndtSolarization].[TypeOfMachineEnterprise_Id] AS [TypeOfMachineEnterprise_Id], 
+    [Tbl_IndtSolarization].[MotorBasedOnMachinesInActualUsed] AS [MotorBasedOnMachinesInActualUsed], 
+    [Tbl_IndtSolarization].[MachineryPowerkilowatt_Id] AS [MachineryPowerkilowatt_Id], 
     [Tbl_IndtSolarization].[ElectricityConnection_Id] AS [ElectricityConnection_Id], 
-    [Tbl_IndtSolarization].[ElectcityPhase_Id] AS [ElectcityPhase_Id], 
+    [Tbl_IndtSolarization].[ConnectionPhaseofPower_Id] AS [ConnectionPhaseofPower_Id], 
     [Tbl_IndtSolarization].[MonthlyElectricityConsumption_Id] AS [MonthlyElectricityConsumption_Id], 
-    [Tbl_IndtSolarization].[MachineSource_Id] AS [MachineSource_Id], 
-    [Tbl_IndtSolarization].[SolarInKilowatt_Id] AS [SolarInKilowatt_Id], 
-    [Tbl_IndtSolarization].[EnergyPanel_Id] AS [EnergyPanel_Id], 
-    [Tbl_IndtSolarization].[ExpenditureIncurredSolar_Id] AS [ExpenditureIncurredSolar_Id], 
+    [Tbl_IndtSolarization].[MachineSourceofEnergy_Id] AS [MachineSourceofEnergy_Id], 
+    [Tbl_IndtSolarization].[Solar_InKilowatt_Id] AS [Solar_InKilowatt_Id], 
+    [Tbl_IndtSolarization].[Solar_EnergyPanelYesNo_Id] AS [Solar_EnergyPanelYesNo_Id], 
+    [Tbl_IndtSolarization].[Solar_ExpenditureIncurredAmt] AS [Solar_ExpenditureIncurredAmt], 
     [Tbl_IndtSolarization].[Subsidy_Id] AS [Subsidy_Id], 
     [Tbl_IndtSolarization].[LoanForSolarPanels_Id] AS [LoanForSolarPanels_Id], 
     [Tbl_IndtSolarization].[AvgAmtSavedFromSolarE_Id] AS [AvgAmtSavedFromSolarE_Id], 
@@ -711,7 +709,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
       <Schema Namespace="DeWee_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DeWee_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="DeWee_DBModel.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="DeWee_DBModel.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="DeWee_DBModel.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="DeWee_DBModel.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="DeWee_DBModel.AspNetUser" />
@@ -740,7 +737,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="DeWee_DBModel.Tbl_Enterprise_EstablishedM" />
           <EntitySet Name="Tbl_EnterpriseM" EntityType="DeWee_DBModel.Tbl_EnterpriseM" />
           <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="DeWee_DBModel.Tbl_EnterpriseMachineM" />
-          <EntitySet Name="Tbl_IndtSolarization" EntityType="DeWee_DBModel.Tbl_IndtSolarization" />
           <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="DeWee_DBModel.Tbl_LoanDescribeSourceM" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -750,10 +746,12 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+          <EntitySet Name="AspNetRoles" EntityType="DeWee_DBModel.AspNetRole" />
           <AssociationSet Name="AspNetUserRoles" Association="DeWee_DBModel.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Tbl_IndtSolarization" EntityType="DeWee_DBModel.Tbl_IndtSolarization" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -764,14 +762,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
           <Key>
@@ -1128,79 +1118,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="OrderBy" Type="Int32" />
         </EntityType>
-        <EntityType Name="Tbl_IndtSolarization">
-          <Key>
-            <PropertyRef Name="Indt_Id" />
-          </Key>
-          <Property Name="Indt_Id" Type="Guid" Nullable="false" />
-          <Property Name="State_Id" Type="Int32" />
-          <Property Name="District_Id" Type="Int32" />
-          <Property Name="Block_Id" Type="Int32" />
-          <Property Name="Panchayat_Id" Type="Int32" />
-          <Property Name="Village_Id" Type="Int32" />
-          <Property Name="CLF_Id" Type="Int32" />
-          <Property Name="VO_Id" Type="Int32" />
-          <Property Name="TempRegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="RegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="AadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="YearOfSHG" Type="Int32" />
-          <Property Name="NameofSHGmember" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="NameofEnterpriseOwner" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Age" Type="Int32" />
-          <Property Name="DOB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="EducationQlf_Id" Type="Int32" />
-          <Property Name="Caste_Id" Type="Int32" />
-          <Property Name="TypeofEnterpriseBusin_Id" Type="Int32" />
-          <Property Name="BusinessOwnedType_Id" Type="Int32" />
-          <Property Name="EstablishedEnterpriseType_Id" Type="Int32" />
-          <Property Name="ArrangedcapitalBusiness_Id" Type="Int32" />
-          <Property Name="SourceOfLoan_Id" Type="Int32" />
-          <Property Name="LoanAmtSHG_Id" Type="Int32" />
-          <Property Name="LoanAmtBank_Id" Type="Int32" />
-          <Property Name="LoanAmtRelatives_Id" Type="Int32" />
-          <Property Name="LoanAmtOtherSource_Id" Type="Int32" />
-          <Property Name="AmtToStartBusiness_Id" Type="Int32" />
-          <Property Name="LoanForBusiness_Id" Type="Int32" />
-          <Property Name="ProfitFromBusiness_Id" Type="Int32" />
-          <Property Name="PeopleWorkInEnterprises_Id" Type="Int32" />
-          <Property Name="MachineType_Id" Type="Int32" />
-          <Property Name="MachinesInUsed_Id" Type="Int32" />
-          <Property Name="MachineryPower_Id" Type="Int32" />
-          <Property Name="ElectricityConnection_Id" Type="Int32" />
-          <Property Name="ElectcityPhase_Id" Type="Int32" />
-          <Property Name="MonthlyElectricityConsumption_Id" Type="Int32" />
-          <Property Name="MachineSource_Id" Type="Int32" />
-          <Property Name="SolarInKilowatt_Id" Type="Int32" />
-          <Property Name="EnergyPanel_Id" Type="Int32" />
-          <Property Name="ExpenditureIncurredSolar_Id" Type="Int32" />
-          <Property Name="Subsidy_Id" Type="Int32" />
-          <Property Name="LoanForSolarPanels_Id" Type="Int32" />
-          <Property Name="AvgAmtSavedFromSolarE_Id" Type="Int32" />
-          <Property Name="ElectricityUsed_Id" Type="Int32" />
-          <Property Name="MonthlyExpenseInElectricity_Id" Type="Int32" />
-          <Property Name="GeneratorElectricityUsed_Id" Type="Int32" />
-          <Property Name="ExpenseFuelSource_Id" Type="Int32" />
-          <Property Name="RepairCost_Id" Type="Int32" />
-          <Property Name="HeardAboutSE_Id" Type="Int32" />
-          <Property Name="IfYeswhere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="InformationknowledgeAboutgovtsubsidyOfSE_Id" Type="Int32" />
-          <Property Name="IfYesAmtGovPaid" Type="Int32" />
-          <Property Name="LoanProcedureInSE_Id" Type="Int32" />
-          <Property Name="AdoptSolarization_Id" Type="Int32" />
-          <Property Name="CapitalArrangedForSE_Id" Type="Int32" />
-          <Property Name="IfYesCapitalArrangedForSE_Id" Type="Int32" />
-          <Property Name="OtherIndustriesEnterprises_Id" Type="Int32" />
-          <Property Name="IfYesFillTheForm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="IsDeletedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
         <EntityType Name="Tbl_LoanDescribeSourceM">
           <Key>
             <PropertyRef Name="LoanDescribeSource_Id" />
@@ -1241,10 +1158,90 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
         <Association Name="AspNetUserRoles">
           <End Type="DeWee_DBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
+        <EntityType Name="Tbl_IndtSolarization">
+          <Key>
+            <PropertyRef Name="Indt_Id" />
+          </Key>
+          <Property Name="Indt_Id" Type="Guid" Nullable="false" />
+          <Property Name="State_Id" Type="Int32" />
+          <Property Name="District_Id" Type="Int32" />
+          <Property Name="Block_Id" Type="Int32" />
+          <Property Name="Panchayat_Id" Type="Int32" />
+          <Property Name="Village_Id" Type="Int32" />
+          <Property Name="CLF_Id" Type="Int32" />
+          <Property Name="VO_Id" Type="Int32" />
+          <Property Name="TempRegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="YearOfSHG" Type="Int32" />
+          <Property Name="NameofSHGmember" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NameofEnterpriseOwner" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="DOB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EducationQlf_Id" Type="Int32" />
+          <Property Name="Caste_Id" Type="Int32" />
+          <Property Name="TypeofEnterpriseBusin_Id" Type="Int32" />
+          <Property Name="BusinessOwnedType_Id" Type="Int32" />
+          <Property Name="EstablishedEnterpriseType_Id" Type="Int32" />
+          <Property Name="TypeOfInvestBusin_Id" Type="Int32" />
+          <Property Name="TookSourceOfLoan_Id" Type="Int32" />
+          <Property Name="TookLoanAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="StartBusinessInvestAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="StartYourBusinessTakeAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="MonthlyProfitBusiness" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="WorkInEnterprises_FamilyMembers" Type="Int32" />
+          <Property Name="WorkInEnterprises_SHGMembers" Type="Int32" />
+          <Property Name="WorkInEnterprises_AssitantStaffs" Type="Int32" />
+          <Property Name="TypeOfMachineEnterprise_Id" Type="Int32" />
+          <Property Name="MotorBasedOnMachinesInActualUsed" Type="Int32" />
+          <Property Name="MachineryPowerkilowatt_Id" Type="Int32" />
+          <Property Name="ElectricityConnection_Id" Type="Int32" />
+          <Property Name="ConnectionPhaseofPower_Id" Type="Int32" />
+          <Property Name="MonthlyElectricityConsumption_Id" Type="Int32" />
+          <Property Name="MachineSourceofEnergy_Id" Type="Int32" />
+          <Property Name="Solar_InKilowatt_Id" Type="Int32" />
+          <Property Name="Solar_EnergyPanelYesNo_Id" Type="Int32" />
+          <Property Name="Solar_ExpenditureIncurredAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="Subsidy_Id" Type="Int32" />
+          <Property Name="LoanForSolarPanels_Id" Type="Int32" />
+          <Property Name="AvgAmtSavedFromSolarE_Id" Type="Int32" />
+          <Property Name="ElectricityUsed_Id" Type="Int32" />
+          <Property Name="MonthlyExpenseInElectricity_Id" Type="Int32" />
+          <Property Name="GeneratorElectricityUsed_Id" Type="Int32" />
+          <Property Name="ExpenseFuelSource_Id" Type="Int32" />
+          <Property Name="RepairCost_Id" Type="Int32" />
+          <Property Name="HeardAboutSE_Id" Type="Int32" />
+          <Property Name="IfYeswhere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InformationknowledgeAboutgovtsubsidyOfSE_Id" Type="Int32" />
+          <Property Name="IfYesAmtGovPaid" Type="Int32" />
+          <Property Name="LoanProcedureInSE_Id" Type="Int32" />
+          <Property Name="AdoptSolarization_Id" Type="Int32" />
+          <Property Name="CapitalArrangedForSE_Id" Type="Int32" />
+          <Property Name="IfYesCapitalArrangedForSE_Id" Type="Int32" />
+          <Property Name="OtherIndustriesEnterprises_Id" Type="Int32" />
+          <Property Name="IfYesFillTheForm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1258,14 +1255,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="DeWee_DBModel.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1645,6 +1634,35 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_LoanDescribeSourceM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_LoanDescribeSourceM">
+              <MappingFragment StoreEntitySet="Tbl_LoanDescribeSourceM">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LoanDescribeSourceInHindi" ColumnName="LoanDescribeSourceInHindi" />
+                <ScalarProperty Name="LoanDescribeSourceInEng" ColumnName="LoanDescribeSourceInEng" />
+                <ScalarProperty Name="LoanDescribeSource_Id" ColumnName="LoanDescribeSource_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="DeWee_DBModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DeWee_DBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
           <EntitySetMapping Name="Tbl_IndtSolarization">
             <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_IndtSolarization">
               <MappingFragment StoreEntitySet="Tbl_IndtSolarization">
@@ -1674,26 +1692,25 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
                 <ScalarProperty Name="AvgAmtSavedFromSolarE_Id" ColumnName="AvgAmtSavedFromSolarE_Id" />
                 <ScalarProperty Name="LoanForSolarPanels_Id" ColumnName="LoanForSolarPanels_Id" />
                 <ScalarProperty Name="Subsidy_Id" ColumnName="Subsidy_Id" />
-                <ScalarProperty Name="ExpenditureIncurredSolar_Id" ColumnName="ExpenditureIncurredSolar_Id" />
-                <ScalarProperty Name="EnergyPanel_Id" ColumnName="EnergyPanel_Id" />
-                <ScalarProperty Name="SolarInKilowatt_Id" ColumnName="SolarInKilowatt_Id" />
-                <ScalarProperty Name="MachineSource_Id" ColumnName="MachineSource_Id" />
+                <ScalarProperty Name="Solar_ExpenditureIncurredAmt" ColumnName="Solar_ExpenditureIncurredAmt" />
+                <ScalarProperty Name="Solar_EnergyPanelYesNo_Id" ColumnName="Solar_EnergyPanelYesNo_Id" />
+                <ScalarProperty Name="Solar_InKilowatt_Id" ColumnName="Solar_InKilowatt_Id" />
+                <ScalarProperty Name="MachineSourceofEnergy_Id" ColumnName="MachineSourceofEnergy_Id" />
                 <ScalarProperty Name="MonthlyElectricityConsumption_Id" ColumnName="MonthlyElectricityConsumption_Id" />
-                <ScalarProperty Name="ElectcityPhase_Id" ColumnName="ElectcityPhase_Id" />
+                <ScalarProperty Name="ConnectionPhaseofPower_Id" ColumnName="ConnectionPhaseofPower_Id" />
                 <ScalarProperty Name="ElectricityConnection_Id" ColumnName="ElectricityConnection_Id" />
-                <ScalarProperty Name="MachineryPower_Id" ColumnName="MachineryPower_Id" />
-                <ScalarProperty Name="MachinesInUsed_Id" ColumnName="MachinesInUsed_Id" />
-                <ScalarProperty Name="MachineType_Id" ColumnName="MachineType_Id" />
-                <ScalarProperty Name="PeopleWorkInEnterprises_Id" ColumnName="PeopleWorkInEnterprises_Id" />
-                <ScalarProperty Name="ProfitFromBusiness_Id" ColumnName="ProfitFromBusiness_Id" />
-                <ScalarProperty Name="LoanForBusiness_Id" ColumnName="LoanForBusiness_Id" />
-                <ScalarProperty Name="AmtToStartBusiness_Id" ColumnName="AmtToStartBusiness_Id" />
-                <ScalarProperty Name="LoanAmtOtherSource_Id" ColumnName="LoanAmtOtherSource_Id" />
-                <ScalarProperty Name="LoanAmtRelatives_Id" ColumnName="LoanAmtRelatives_Id" />
-                <ScalarProperty Name="LoanAmtBank_Id" ColumnName="LoanAmtBank_Id" />
-                <ScalarProperty Name="LoanAmtSHG_Id" ColumnName="LoanAmtSHG_Id" />
-                <ScalarProperty Name="SourceOfLoan_Id" ColumnName="SourceOfLoan_Id" />
-                <ScalarProperty Name="ArrangedcapitalBusiness_Id" ColumnName="ArrangedcapitalBusiness_Id" />
+                <ScalarProperty Name="MachineryPowerkilowatt_Id" ColumnName="MachineryPowerkilowatt_Id" />
+                <ScalarProperty Name="MotorBasedOnMachinesInActualUsed" ColumnName="MotorBasedOnMachinesInActualUsed" />
+                <ScalarProperty Name="TypeOfMachineEnterprise_Id" ColumnName="TypeOfMachineEnterprise_Id" />
+                <ScalarProperty Name="WorkInEnterprises_AssitantStaffs" ColumnName="WorkInEnterprises_AssitantStaffs" />
+                <ScalarProperty Name="WorkInEnterprises_SHGMembers" ColumnName="WorkInEnterprises_SHGMembers" />
+                <ScalarProperty Name="WorkInEnterprises_FamilyMembers" ColumnName="WorkInEnterprises_FamilyMembers" />
+                <ScalarProperty Name="MonthlyProfitBusiness" ColumnName="MonthlyProfitBusiness" />
+                <ScalarProperty Name="StartYourBusinessTakeAmt" ColumnName="StartYourBusinessTakeAmt" />
+                <ScalarProperty Name="StartBusinessInvestAmt" ColumnName="StartBusinessInvestAmt" />
+                <ScalarProperty Name="TookLoanAmt" ColumnName="TookLoanAmt" />
+                <ScalarProperty Name="TookSourceOfLoan_Id" ColumnName="TookSourceOfLoan_Id" />
+                <ScalarProperty Name="TypeOfInvestBusin_Id" ColumnName="TypeOfInvestBusin_Id" />
                 <ScalarProperty Name="EstablishedEnterpriseType_Id" ColumnName="EstablishedEnterpriseType_Id" />
                 <ScalarProperty Name="BusinessOwnedType_Id" ColumnName="BusinessOwnedType_Id" />
                 <ScalarProperty Name="TypeofEnterpriseBusin_Id" ColumnName="TypeofEnterpriseBusin_Id" />
@@ -1719,27 +1736,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_LoanDescribeSourceM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_LoanDescribeSourceM">
-              <MappingFragment StoreEntitySet="Tbl_LoanDescribeSourceM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="LoanDescribeSourceInHindi" ColumnName="LoanDescribeSourceInHindi" />
-                <ScalarProperty Name="LoanDescribeSourceInEng" ColumnName="LoanDescribeSourceInEng" />
-                <ScalarProperty Name="LoanDescribeSource_Id" ColumnName="LoanDescribeSource_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DeWee_DBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
