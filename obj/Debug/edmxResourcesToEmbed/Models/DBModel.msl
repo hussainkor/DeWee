@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DeWee_DBModelStoreContainer" CdmEntityContainer="DeWee_DBEntities">
+    <EntitySetMapping Name="Tbl_Block_Master">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Block_Master">
+        <MappingFragment StoreEntitySet="Tbl_Block_Master">
+          <ScalarProperty Name="BlockId_pk" ColumnName="BlockId_pk" />
+          <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
+          <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+          <ScalarProperty Name="BlockCode" ColumnName="BlockCode" />
+          <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_BusinessInvestmentM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessInvestmentM">
+        <MappingFragment StoreEntitySet="Tbl_BusinessInvestmentM">
+          <ScalarProperty Name="BusinessInvestment_Id" ColumnName="BusinessInvestment_Id" />
+          <ScalarProperty Name="BusinessInvestmentInEng" ColumnName="BusinessInvestmentInEng" />
+          <ScalarProperty Name="BusinessInvestmentInHindi" ColumnName="BusinessInvestmentInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_BusinessOwnedM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessOwnedM">
+        <MappingFragment StoreEntitySet="Tbl_BusinessOwnedM">
+          <ScalarProperty Name="BusinessOwned_Id" ColumnName="BusinessOwned_Id" />
+          <ScalarProperty Name="BusinessOwnedInEng" ColumnName="BusinessOwnedInEng" />
+          <ScalarProperty Name="BusinessOwnedInHindi" ColumnName="BusinessOwnedInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_BusinessTypeM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessTypeM">
+        <MappingFragment StoreEntitySet="Tbl_BusinessTypeM">
+          <ScalarProperty Name="BusinessType_Id" ColumnName="BusinessType_Id" />
+          <ScalarProperty Name="BusinessTypeInEng" ColumnName="BusinessTypeInEng" />
+          <ScalarProperty Name="BusinessTypeInHindi" ColumnName="BusinessTypeInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_CasteM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_CasteM">
+        <MappingFragment StoreEntitySet="Tbl_CasteM">
+          <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
+          <ScalarProperty Name="CasteInEng" ColumnName="CasteInEng" />
+          <ScalarProperty Name="CasteInHindi" ColumnName="CasteInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_CLF_Master">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_CLF_Master">
+        <MappingFragment StoreEntitySet="Tbl_CLF_Master">
+          <ScalarProperty Name="CLF_ID_pk" ColumnName="CLF_ID_pk" />
+          <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+          <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+          <ScalarProperty Name="CLFName" ColumnName="CLFName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_District_Master">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_District_Master">
+        <MappingFragment StoreEntitySet="Tbl_District_Master">
+          <ScalarProperty Name="DistrictId_pk" ColumnName="DistrictId_pk" />
+          <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ElectricityConsumptionM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_ElectricityConsumptionM">
+        <MappingFragment StoreEntitySet="Tbl_ElectricityConsumptionM">
+          <ScalarProperty Name="ElectricityConsumption_Id" ColumnName="ElectricityConsumption_Id" />
+          <ScalarProperty Name="ElectricityConsumptionInEng" ColumnName="ElectricityConsumptionInEng" />
+          <ScalarProperty Name="ElectricityConsumptionInHindi" ColumnName="ElectricityConsumptionInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ElectricityUsedM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_ElectricityUsedM">
+        <MappingFragment StoreEntitySet="Tbl_ElectricityUsedM">
+          <ScalarProperty Name="ElectricityUsed_Id" ColumnName="ElectricityUsed_Id" />
+          <ScalarProperty Name="ElectricityUsedInEng" ColumnName="ElectricityUsedInEng" />
+          <ScalarProperty Name="ElectricityUsedInHindi" ColumnName="ElectricityUsedInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_MachineryPowerM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MachineryPowerM">
+        <MappingFragment StoreEntitySet="Tbl_MachineryPowerM">
+          <ScalarProperty Name="MachineryPower_Id" ColumnName="MachineryPower_Id" />
+          <ScalarProperty Name="MachineryPowerInEng" ColumnName="MachineryPowerInEng" />
+          <ScalarProperty Name="MachineryPowerInHindi" ColumnName="MachineryPowerInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_MoneySavedSEM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MoneySavedSEM">
+        <MappingFragment StoreEntitySet="Tbl_MoneySavedSEM">
+          <ScalarProperty Name="MoneySavedSE_Id" ColumnName="MoneySavedSE_Id" />
+          <ScalarProperty Name="MoneySavedSEInEng" ColumnName="MoneySavedSEInEng" />
+          <ScalarProperty Name="MoneySavedSEInHindi" ColumnName="MoneySavedSEInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_MonthlyExpenseEBM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MonthlyExpenseEBM">
+        <MappingFragment StoreEntitySet="Tbl_MonthlyExpenseEBM">
+          <ScalarProperty Name="MonthlyExpenseEB_Id" ColumnName="MonthlyExpenseEB_Id" />
+          <ScalarProperty Name="MonthlyExpenseEBInEng" ColumnName="MonthlyExpenseEBInEng" />
+          <ScalarProperty Name="MonthlyExpenseEBInHindi" ColumnName="MonthlyExpenseEBInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Panchayat_Master">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Panchayat_Master">
+        <MappingFragment StoreEntitySet="Tbl_Panchayat_Master">
+          <ScalarProperty Name="PanchayatId_pk" ColumnName="PanchayatId_pk" />
+          <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+          <ScalarProperty Name="Blockid_fk" ColumnName="Blockid_fk" />
+          <ScalarProperty Name="Block" ColumnName="Block" />
+          <ScalarProperty Name="CLF_Id_fk" ColumnName="CLF_Id_fk" />
+          <ScalarProperty Name="Panchayat" ColumnName="Panchayat" />
+          <ScalarProperty Name="FPCP_Panchayat" ColumnName="FPCP_Panchayat" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_PowerConnectionM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_PowerConnectionM">
+        <MappingFragment StoreEntitySet="Tbl_PowerConnectionM">
+          <ScalarProperty Name="PowerConnection_Id" ColumnName="PowerConnection_Id" />
+          <ScalarProperty Name="PowerConnectionInEng" ColumnName="PowerConnectionInEng" />
+          <ScalarProperty Name="PowerConnectionInHindi" ColumnName="PowerConnectionInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SolarEpanelM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SolarEpanelM">
+        <MappingFragment StoreEntitySet="Tbl_SolarEpanelM">
+          <ScalarProperty Name="SolarEpanel_Id" ColumnName="SolarEpanel_Id" />
+          <ScalarProperty Name="SolarEpanelInEng" ColumnName="SolarEpanelInEng" />
+          <ScalarProperty Name="SolarEpanelInHindi" ColumnName="SolarEpanelInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SolarkilowattM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SolarkilowattM">
+        <MappingFragment StoreEntitySet="Tbl_SolarkilowattM">
+          <ScalarProperty Name="Solarkilowatt_Id" ColumnName="Solarkilowatt_Id" />
+          <ScalarProperty Name="SolarkilowattInEng" ColumnName="SolarkilowattInEng" />
+          <ScalarProperty Name="SolarkilowattInHindi" ColumnName="SolarkilowattInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SourceEnergyM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SourceEnergyM">
+        <MappingFragment StoreEntitySet="Tbl_SourceEnergyM">
+          <ScalarProperty Name="SourceEnergy_Id" ColumnName="SourceEnergy_Id" />
+          <ScalarProperty Name="SourceEnergyInEng" ColumnName="SourceEnergyInEng" />
+          <ScalarProperty Name="SourceEnergyInHindi" ColumnName="SourceEnergyInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_State_Master">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_State_Master">
+        <MappingFragment StoreEntitySet="Tbl_State_Master">
+          <ScalarProperty Name="StateId_pk" ColumnName="StateId_pk" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SubisdyM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SubisdyM">
+        <MappingFragment StoreEntitySet="Tbl_SubisdyM">
+          <ScalarProperty Name="Subisdy_Id" ColumnName="Subisdy_Id" />
+          <ScalarProperty Name="SubisdyInEng" ColumnName="SubisdyInEng" />
+          <ScalarProperty Name="SubisdyInHindi" ColumnName="SubisdyInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_VO_Master">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_VO_Master">
+        <MappingFragment StoreEntitySet="Tbl_VO_Master">
+          <ScalarProperty Name="Void_pk" ColumnName="Void_pk" />
+          <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+          <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+          <ScalarProperty Name="CLF_Id_fk" ColumnName="CLF_Id_fk" />
+          <ScalarProperty Name="Panchayatid_fk" ColumnName="Panchayatid_fk" />
+          <ScalarProperty Name="Panchayat" ColumnName="Panchayat" />
+          <ScalarProperty Name="Village_Organization" ColumnName="Village_Organization" />
+          <ScalarProperty Name="F5" ColumnName="F5" />
+          <ScalarProperty Name="CRUD" ColumnName="CRUD" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Educational_QualificationM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Educational_QualificationM">
+        <MappingFragment StoreEntitySet="Tbl_Educational_QualificationM">
+          <ScalarProperty Name="Qualification_Id" ColumnName="Qualification_Id" />
+          <ScalarProperty Name="QualificationInEng" ColumnName="QualificationInEng" />
+          <ScalarProperty Name="QualificationInHindi" ColumnName="QualificationInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Enterprise_EstablishedM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Enterprise_EstablishedM">
+        <MappingFragment StoreEntitySet="Tbl_Enterprise_EstablishedM">
+          <ScalarProperty Name="Enterprise_Established_Id" ColumnName="Enterprise_Established_Id" />
+          <ScalarProperty Name="Enterprise_EstablishedInEng" ColumnName="Enterprise_EstablishedInEng" />
+          <ScalarProperty Name="Enterprise_EstablishedInHindi" ColumnName="Enterprise_EstablishedInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_EnterpriseM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_EnterpriseM">
+        <MappingFragment StoreEntitySet="Tbl_EnterpriseM">
+          <ScalarProperty Name="Enterprise_Id" ColumnName="Enterprise_Id" />
+          <ScalarProperty Name="EnterpriseInEng" ColumnName="EnterpriseInEng" />
+          <ScalarProperty Name="EnterpriseInHindi" ColumnName="EnterpriseInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_EnterpriseMachineM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_EnterpriseMachineM">
+        <MappingFragment StoreEntitySet="Tbl_EnterpriseMachineM">
+          <ScalarProperty Name="EnterpriseMachine_Id" ColumnName="EnterpriseMachine_Id" />
+          <ScalarProperty Name="EnterpriseMachineInEng" ColumnName="EnterpriseMachineInEng" />
+          <ScalarProperty Name="EnterpriseMachineInHindi" ColumnName="EnterpriseMachineInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_IndtSolarization">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_IndtSolarization">
+        <MappingFragment StoreEntitySet="Tbl_IndtSolarization">
+          <ScalarProperty Name="Indt_Id" ColumnName="Indt_Id" />
+          <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+          <ScalarProperty Name="District_Id" ColumnName="District_Id" />
+          <ScalarProperty Name="Block_Id" ColumnName="Block_Id" />
+          <ScalarProperty Name="Panchayat_Id" ColumnName="Panchayat_Id" />
+          <ScalarProperty Name="Village_Id" ColumnName="Village_Id" />
+          <ScalarProperty Name="CLF_Id" ColumnName="CLF_Id" />
+          <ScalarProperty Name="VO_Id" ColumnName="VO_Id" />
+          <ScalarProperty Name="SHG_Id" ColumnName="SHG_Id" />
+          <ScalarProperty Name="YearOfSHG" ColumnName="YearOfSHG" />
+          <ScalarProperty Name="NameofSHGmember" ColumnName="NameofSHGmember" />
+          <ScalarProperty Name="NameofEnterpriseOwner" ColumnName="NameofEnterpriseOwner" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="EducationQlf_Id" ColumnName="EducationQlf_Id" />
+          <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="TypeofEnterprise_Id" ColumnName="TypeofEnterprise_Id" />
+          <ScalarProperty Name="BusinessOwnedType_Id" ColumnName="BusinessOwnedType_Id" />
+          <ScalarProperty Name="EstablishedType_Id" ColumnName="EstablishedType_Id" />
+          <ScalarProperty Name="ArrangedcapitalBusiness_Id" ColumnName="ArrangedcapitalBusiness_Id" />
+          <ScalarProperty Name="SourceOfLoan_Id" ColumnName="SourceOfLoan_Id" />
+          <ScalarProperty Name="LoanAmtSHG_Id" ColumnName="LoanAmtSHG_Id" />
+          <ScalarProperty Name="LoanAmtBank_Id" ColumnName="LoanAmtBank_Id" />
+          <ScalarProperty Name="LoanAmtRelatives_Id" ColumnName="LoanAmtRelatives_Id" />
+          <ScalarProperty Name="LoanAmtOtherSource_Id" ColumnName="LoanAmtOtherSource_Id" />
+          <ScalarProperty Name="AmtToStartBusiness_Id" ColumnName="AmtToStartBusiness_Id" />
+          <ScalarProperty Name="LoanForBusiness_Id" ColumnName="LoanForBusiness_Id" />
+          <ScalarProperty Name="ProfitFromBusiness_Id" ColumnName="ProfitFromBusiness_Id" />
+          <ScalarProperty Name="PeopleWorkInEnterprises_Id" ColumnName="PeopleWorkInEnterprises_Id" />
+          <ScalarProperty Name="MachineType_Id" ColumnName="MachineType_Id" />
+          <ScalarProperty Name="MachinesInUsed_Id" ColumnName="MachinesInUsed_Id" />
+          <ScalarProperty Name="MachineryPower_Id" ColumnName="MachineryPower_Id" />
+          <ScalarProperty Name="ElectricityConnection_Id" ColumnName="ElectricityConnection_Id" />
+          <ScalarProperty Name="ElectcityPhase_Id" ColumnName="ElectcityPhase_Id" />
+          <ScalarProperty Name="MonthlyElectricityConsumption_Id" ColumnName="MonthlyElectricityConsumption_Id" />
+          <ScalarProperty Name="MachineSource_Id" ColumnName="MachineSource_Id" />
+          <ScalarProperty Name="SolarInKilowatt_Id" ColumnName="SolarInKilowatt_Id" />
+          <ScalarProperty Name="EnergyPanel_Id" ColumnName="EnergyPanel_Id" />
+          <ScalarProperty Name="ExpenditureIncurredSolar_Id" ColumnName="ExpenditureIncurredSolar_Id" />
+          <ScalarProperty Name="Subsidy_Id" ColumnName="Subsidy_Id" />
+          <ScalarProperty Name="LoanForSolarPanels_Id" ColumnName="LoanForSolarPanels_Id" />
+          <ScalarProperty Name="AvgAmtSavedFromSolarE_Id" ColumnName="AvgAmtSavedFromSolarE_Id" />
+          <ScalarProperty Name="ElectricityUsed_Id" ColumnName="ElectricityUsed_Id" />
+          <ScalarProperty Name="MonthlyExpenseInElectricity_Id" ColumnName="MonthlyExpenseInElectricity_Id" />
+          <ScalarProperty Name="GeneratorElectricityUsed_Id" ColumnName="GeneratorElectricityUsed_Id" />
+          <ScalarProperty Name="ExpenseFuelSource_Id" ColumnName="ExpenseFuelSource_Id" />
+          <ScalarProperty Name="RepairCost_Id" ColumnName="RepairCost_Id" />
+          <ScalarProperty Name="HeardAboutSE_Id" ColumnName="HeardAboutSE_Id" />
+          <ScalarProperty Name="IfYeswhere" ColumnName="IfYeswhere" />
+          <ScalarProperty Name="InformationknowledgeAboutgovtsubsidyOfSE_Id" ColumnName="InformationknowledgeAboutgovtsubsidyOfSE_Id" />
+          <ScalarProperty Name="IfYesAmtGovPaid" ColumnName="IfYesAmtGovPaid" />
+          <ScalarProperty Name="LoanProcedureInSE_Id" ColumnName="LoanProcedureInSE_Id" />
+          <ScalarProperty Name="AdoptSolarization_Id" ColumnName="AdoptSolarization_Id" />
+          <ScalarProperty Name="CapitalArrangedForSE_Id" ColumnName="CapitalArrangedForSE_Id" />
+          <ScalarProperty Name="IfYesCapitalArrangedForSE_Id" ColumnName="IfYesCapitalArrangedForSE_Id" />
+          <ScalarProperty Name="OtherIndustriesEnterprises_Id" ColumnName="OtherIndustriesEnterprises_Id" />
+          <ScalarProperty Name="IfYesFillTheForm" ColumnName="IfYesFillTheForm" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsDeletedOn" ColumnName="IsDeletedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_LoanDescribeSourceM">
+      <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_LoanDescribeSourceM">
+        <MappingFragment StoreEntitySet="Tbl_LoanDescribeSourceM">
+          <ScalarProperty Name="LoanDescribeSource_Id" ColumnName="LoanDescribeSource_Id" />
+          <ScalarProperty Name="LoanDescribeSourceInEng" ColumnName="LoanDescribeSourceInEng" />
+          <ScalarProperty Name="LoanDescribeSourceInHindi" ColumnName="LoanDescribeSourceInHindi" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
