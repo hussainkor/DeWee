@@ -14700,3 +14700,17 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+
+.bread-flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center
+}
+.page-bread {
+    margin: -25px -30px -10px !important
+}
+    .page-bread h1 {
+        font-size: 22px;
+        color: #7571F9
+    }

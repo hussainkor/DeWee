@@ -1,19 +1,142 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
-
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
-</main>
+<div class="page-bread page-titles">
+    <div class="bread-flex">
+        <h1>Table List</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active">Table List</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="table-responsive">
+                        <table class="table table-xs mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Customers</th>
+                                    <th>Product</th>
+                                    <th>Country</th>
+                                    <th>Status</th>
+                                    <th>Payment Method</th>
+                                    <th>Activity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img src="~/Content/dashboard/images/avatar/1.jpg" class=" rounded-circle mr-3" alt="">Sarah Smith</td>
+                                    <td>iPhone X</td>
+                                    <td>
+                                        <span>United States</span>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div class="progress" style="height: 6px">
+                                                <div class="progress-bar bg-success" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
+                                    <td>
+                                        <span>Last Login</span>
+                                        <span class="m-0 pl-3">10 sec ago</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/Content/dashboard/images/avatar/2.jpg" class=" rounded-circle mr-3" alt="">Walter R.</td>
+                                    <td>Pixel 2</td>
+                                    <td><span>Canada</span></td>
+                                    <td>
+                                        <div>
+                                            <div class="progress" style="height: 6px">
+                                                <div class="progress-bar bg-success" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
+                                    <td>
+                                        <span>Last Login</span>
+                                        <span class="m-0 pl-3">50 sec ago</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/Content/dashboard/images/avatar/3.jpg" class=" rounded-circle mr-3" alt="">Andrew D.</td>
+                                    <td>OnePlus</td>
+                                    <td><span>Germany</span></td>
+                                    <td>
+                                        <div>
+                                            <div class="progress" style="height: 6px">
+                                                <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
+                                    <td>
+                                        <span>Last Login</span>
+                                        <span class="m-0 pl-3">10 sec ago</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/Content/dashboard/images/avatar/6.jpg" class=" rounded-circle mr-3" alt=""> Megan S.</td>
+                                    <td>Galaxy</td>
+                                    <td><span>Japan</span></td>
+                                    <td>
+                                        <div>
+                                            <div class="progress" style="height: 6px">
+                                                <div class="progress-bar bg-success" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
+                                    <td>
+                                        <span>Last Login</span>
+                                        <span class="m-0 pl-3">10 sec ago</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/Content/dashboard/images/avatar/4.jpg" class=" rounded-circle mr-3" alt=""> Doris R.</td>
+                                    <td>Moto Z2</td>
+                                    <td><span>England</span></td>
+                                    <td>
+                                        <div>
+                                            <div class="progress" style="height: 6px">
+                                                <div class="progress-bar bg-success" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
+                                    <td>
+                                        <span>Last Login</span>
+                                        <span class="m-0 pl-3">10 sec ago</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/Content/dashboard/images/avatar/5.jpg" class=" rounded-circle mr-3" alt="">Elizabeth W.</td>
+                                    <td>Notebook Asus</td>
+                                    <td><span>China</span></td>
+                                    <td>
+                                        <div>
+                                            <div class="progress" style="height: 6px">
+                                                <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
+                                    <td>
+                                        <span>Last Login</span>
+                                        <span class="m-0 pl-3">10 sec ago</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
