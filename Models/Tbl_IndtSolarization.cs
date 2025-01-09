@@ -22,12 +22,13 @@ namespace DeWee.Models
         public Nullable<int> Village_Id { get; set; }
         public Nullable<int> CLF_Id { get; set; }
         public Nullable<int> VO_Id { get; set; }
+        public string NameofSHG { get; set; }
+        public Nullable<int> YearOfSHG { get; set; }
         public string TempRegNo { get; set; }
         public string RegNo { get; set; }
         public string AadharNo { get; set; }
         public string PhoneNumber { get; set; }
-        public Nullable<int> YearOfSHG { get; set; }
-        public string NameofSHGmember { get; set; }
+        public string NameofSHGMember { get; set; }
         public string NameofEnterpriseOwner { get; set; }
         public Nullable<int> Age { get; set; }
         public string DOB { get; set; }
@@ -55,24 +56,24 @@ namespace DeWee.Models
         public Nullable<int> Solar_InKilowatt_Id { get; set; }
         public Nullable<int> Solar_EnergyPanelYesNo_Id { get; set; }
         public Nullable<decimal> Solar_ExpenditureIncurredAmt { get; set; }
-        public Nullable<int> Subsidy_Id { get; set; }
-        public Nullable<int> LoanForSolarPanels_Id { get; set; }
-        public Nullable<int> AvgAmtSavedFromSolarE_Id { get; set; }
-        public Nullable<int> ElectricityUsed_Id { get; set; }
-        public Nullable<int> MonthlyExpenseInElectricity_Id { get; set; }
-        public Nullable<int> GeneratorElectricityUsed_Id { get; set; }
-        public Nullable<int> ExpenseFuelSource_Id { get; set; }
-        public Nullable<int> RepairCost_Id { get; set; }
-        public Nullable<int> HeardAboutSE_Id { get; set; }
-        public string IfYeswhere { get; set; }
-        public Nullable<int> InformationknowledgeAboutgovtsubsidyOfSE_Id { get; set; }
-        public Nullable<int> IfYesAmtGovPaid { get; set; }
-        public Nullable<int> LoanProcedureInSE_Id { get; set; }
-        public Nullable<int> AdoptSolarization_Id { get; set; }
-        public Nullable<int> CapitalArrangedForSE_Id { get; set; }
-        public Nullable<int> IfYesCapitalArrangedForSE_Id { get; set; }
-        public Nullable<int> OtherIndustriesEnterprises_Id { get; set; }
-        public string IfYesFillTheForm { get; set; }
+        public Nullable<int> SubsidySolarReceive_Id { get; set; }
+        public Nullable<int> LoanSolarPanelsYesNo_Id { get; set; }
+        public Nullable<int> MonthAvgAmtSavedDescription_Id { get; set; }
+        public Nullable<int> ElectricityUsedHours_Id { get; set; }
+        public Nullable<int> MonthlyExpenseInElectricityBill_Id { get; set; }
+        public Nullable<int> GeneratorElectricityUsedHours_Id { get; set; }
+        public Nullable<int> MonthlyExpenseFuelSource_Id { get; set; }
+        public Nullable<int> MonthlyRepairCost_Id { get; set; }
+        public Nullable<int> HeardAboutSolarEYesNo_Id { get; set; }
+        public string HeardAboutSolarEYes_IfYeswhere { get; set; }
+        public Nullable<int> InformationknowledgeGovtSubsidyOfSEYesNo_Id { get; set; }
+        public Nullable<decimal> InformationknowledgeIfYesAmtGovPaid { get; set; }
+        public Nullable<int> LoanProcedureInSEYesNo_Id { get; set; }
+        public Nullable<int> AdoptSolarizationYesNo_Id { get; set; }
+        public Nullable<int> CapitalArrangedForSEYesNo_Id { get; set; }
+        public Nullable<decimal> IfYesCapitalArrangedForSEAmt { get; set; }
+        public Nullable<int> OtherIndustriesEnterprisesYesNo_Id { get; set; }
+        public string IfYesFillForm_OtherIndustriesEnterprises { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

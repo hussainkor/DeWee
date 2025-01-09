@@ -15,239 +15,239 @@ namespace DeWee.Models
         [Required]
         public int State_Id { get; set; }
 
-        [Display(Name = "District")]
+        [Display(Name = PartDisplayName.District_Id)]
         [Required]
         public int District_Id { get; set; }
 
-        [Display(Name = "Block")]
+        [Display(Name = PartDisplayName.Block_Id)]
         [Required]
         public int Block_Id { get; set; }
 
-        [Display(Name = "GP Name")]
+        [Display(Name = PartDisplayName.Panchayat_Id)]
         [Required]
         public int Panchayat_Id { get; set; }
 
 
-        [Display(Name = "Village Name")]
+        [Display(Name = PartDisplayName.Village_Id)]
         [Required]
         public int Village_Id { get; set; }
 
 
-        [Display(Name = "CLF Name")]
+        [Display(Name = PartDisplayName.CLF_Id)]
         [Required]
         public int CLF_Id { get; set; }
 
-        [Display(Name = "VO Name")]
+        [Display(Name = PartDisplayName.VO_Id)]
         [Required]
         public int VO_Id { get; set; }
 
 
-        [Display(Name = "SHG Name")]
+        [Display(Name = PartDisplayName.NameofSHG)]
         [Required]
-        public int SHG_Id { get; set; }
+        public string NameofSHG { get; set; }
 
 
-        [Display(Name = "Establishment Year of SHG")]
+        [Display(Name = PartDisplayName.YearOfSHG)]
         [Required]
         public int YearOfSHG { get; set; }
 
-        [Display(Name = "Name of SHG Member")]
+        [Display(Name = PartDisplayName.NameofSHGmember)]
         [Required]
         public string NameofSHGmember { get; set; }
 
-        [Display(Name = "Name of Owner Enterprises")]
+        [Display(Name = PartDisplayName.NameofEnterpriseOwner)]
         [Required]
         public string NameofEnterpriseOwner { get; set; }
 
-        [Display(Name = "Age")]
+        [Display(Name = PartDisplayName.Age)]
         [Required]
         public int Age { get; set; }
 
-        [Display(Name = "Education Qlf")]
+        [Display(Name = PartDisplayName.EducationQlf_Id)]
         [Required]
         public int EducationQlf_Id { get; set; }
 
-        [Display(Name = "Caste")]
+        [Display(Name = PartDisplayName.Caste_Id)]
         [Required]
         public int Caste_Id { get; set; }
 
-        [Display(Name = "Phone Number")]
+        [Display(Name = PartDisplayName.PhoneNumber)]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Type of Business or Enterprise")]
+        [Display(Name = PartDisplayName.TypeofEnterpriseBusin_Id)]
         [Required]
         public int TypeofEnterpriseBusin_Id { get; set; }
 
-        [Display(Name = "Business Owned Type")]
+        [Display(Name = PartDisplayName.BusinessOwnedType_Id)]
         [Required]
         public int BusinessOwnedType_Id { get; set; }
 
-        [Display(Name = "Where is your enterprise established?")]
+        [Display(Name = PartDisplayName.EstablishedEnterpriseType_Id)]
         [Required]
         public int EstablishedEnterpriseType_Id { get; set; }
 
 
-        [Display(Name = "How did you arrange capital for investment in your business?")]
+        [Display(Name = PartDisplayName.TypeOfInvestBusin_Id)]
         [Required]
         public int TypeOfInvestBusin_Id { get; set; }
 
-        [Display(Name = "If you took a loan, describe source?")]
+        [Display(Name = PartDisplayName.TookSourceOfLoan_Id)]
         [Required]
         public int TookSourceOfLoan_Id { get; set; }
 
 
-        [Display(Name = "How much loan did you take from SHG?")]
+        [Display(Name = PartDisplayName.TookLoanAmt)]
         [Required]
         public decimal TookLoanAmt { get; set; }
 
-        [Display(Name = "How much Loan did you take from bank?")]
+        [Display(Name = PartDisplayName.TookLoanAmtBank)]
         [Required]
         public decimal TookLoanAmtBank { get; set; }
 
-        [Display(Name = "How much Loan did you take from relatives?")]
+        [Display(Name = PartDisplayName.TookLoanAmtR)]
         [Required]
         public decimal TookLoanAmtR { get; set; }
 
-        [Display(Name = "How much Loan did you take from other sources?")]
+        [Display(Name = PartDisplayName.TookLoanAmtO)]
         [Required]
         public decimal TookLoanAmtO { get; set; }
 
-        [Display(Name = "How much money did you invest from your side to start your business?")]
+        [Display(Name = PartDisplayName.StartBusinessInvestAmt)]
         [Required]
         public decimal StartBusinessInvestAmt { get; set; }
 
 
-        [Display(Name = "How much loan did you take to start your business?")]
+        [Display(Name = PartDisplayName.StartYourBusinessTakeAmt)]
         [Required]
         public decimal StartYourBusinessTakeAmt { get; set; }
 
-        [Display(Name = "What is your monthly profit from the business?")]
+        [Display(Name = PartDisplayName.MonthlyProfitBusiness)]
         [Required]
         public decimal MonthlyProfitBusiness { get; set; }
 
-        [Display(Name = "How many people work in your enterprise?(Family-Member's)")]
+        [Display(Name = PartDisplayName.WorkInEnterprises_FamilyMembers)]
         [Required]
         public int WorkInEnterprises_FamilyMembers { get; set; }
 
-        [Display(Name = "How many people work in your enterprise?(SHG-Member's)")]
+        [Display(Name = PartDisplayName.WorkInEnterprises_SHGMembers)]
         [Required]
         public int WorkInEnterprises_SHGMembers { get; set; }
 
 
-        [Display(Name = "How many people work in your enterprise?(Assitant / Staff's)")]
+        [Display(Name = PartDisplayName.WorkInEnterprises_AssitantStaffs)]
         [Required]
         public int WorkInEnterprises_AssitantStaff { get; set; }
 
-        [Display(Name = "What is the type of machine in your enterprise?")]
+        [Display(Name = PartDisplayName.TypeofEnterpriseBusin_Id)]
         [Required]
         public int TypeOfMachineEnterprise_Id { get; set; }
 
-        [Display(Name = "If Mechanised (Motor based) , then how many machines are in actual use?")]
+        [Display(Name = PartDisplayName.MotorBasedOnMachinesInActualUsed)]
         [Required]
         public int MotorBasedOnMachinesInActualUsed { get; set; }
 
-        [Display(Name = "What is the estimated power of all your machinery? (In kilowatt)")]
+        [Display(Name = PartDisplayName.MachineryPowerkilowatt_Id)]
         [Required]
         public int MachineryPowerkilowatt_Id { get; set; }
 
-        [Display(Name = "Your Electricity Connection is of how many kilowatt?")]
+        [Display(Name = PartDisplayName.ElectricityConnection_Id)]
         [Required]
         public int ElectricityConnection_Id { get; set; }
 
-        [Display(Name = "Your Electricity Connection is of how many kilowatt?")]
+        [Display(Name = PartDisplayName.ConnectionPhaseofPower_Id)]
         [Required]
         public int ConnectionPhaseofPower_Id { get; set; }
 
-        [Display(Name = "How much is your monthly electricity consumption?")]
+        [Display(Name = PartDisplayName.MonthlyElectricityConsumption_Id)]
         [Required]
         public int MonthlyElectricityConsumption_Id { get; set; }
 
-        [Display(Name = "What is the source of energy for your machines?")]
+        [Display(Name = PartDisplayName.MachineSourceofEnergy_Id)]
         [Required]
         public int MachineSourceofEnergy_Id { get; set; }
 
-        [Display(Name = "If its solar, how many kilowatt is it?")]
+        [Display(Name = PartDisplayName.Solar_InKilowatt_Id)]
         [Required]
         public int Solar_InKilowatt_Id { get; set; }
 
-        [Display(Name = "Did you set up solar energy panel ?")]
+        [Display(Name = PartDisplayName.Solar_EnergyPanelYesNo_Id)]
         [Required]
         public int Solar_EnergyPanelYesNo_Id { get; set; }
 
-        [Display(Name = "How much expenditure was incurred on solar energy panel set-up / establishment?")]
+        [Display(Name = PartDisplayName.Solar_ExpenditureIncurredAmt)]
         [Required]
         public decimal Solar_ExpenditureIncurredAmt { get; set; }
 
-        [Display(Name = "Did you receive any subisdy for setting up of solar energy panels ?")]
+        [Display(Name = PartDisplayName.Subsidy_Id)]
         [Required]
         public int Subsidy_Id { get; set; }
 
-        [Display(Name = "Did you receive any loan for setting up of solar energy panels?")]
+        [Display(Name = PartDisplayName.LoanForSolarPanels_Id)]
         [Required]
         public int LoanForSolarPanels_Id { get; set; }
 
-        [Display(Name = "Give the average amount of money saved by you every month due to solar energy?")]
+        [Display(Name = PartDisplayName.AvgAmtSavedFromSolarE_Id)]
         [Required]
         public int AvgAmtSavedFromSolarE_Id { get; set; }
 
-        [Display(Name = "How many hours is the electricity used? (1-24 hours)")]
+        [Display(Name = PartDisplayName.ElectricityUsed_Id)]
         [Required]
         public int ElectricityUsed_Id { get; set; }
 
-        [Display(Name = "What is your monthly expense on the electricity bill?")]
+        [Display(Name = PartDisplayName.MonthlyExpenseInElectricity_Id)]
         [Required]
         public int MonthlyExpenseInElectricity_Id { get; set; }
 
-        [Display(Name = "If generator is in use, then mention the number of hours (1-24 hours)?")]
+        [Display(Name = PartDisplayName.GeneratorElectricityUsed_Id)]
         [Required]
         public int GeneratorElectricityUsed_Id { get; set; }
 
-        [Display(Name = "What is your expense on other fuel sources? (Diesel, Coal, Kerosene, etc.) (Monthly)")]
+        [Display(Name = PartDisplayName.ExpenseFuelSource_Id)]
         [Required]
         public int ExpenseFuelSource_Id { get; set; }
 
-        [Display(Name = "How much is the cost towards repair for arranging electricity or ? (Monthly)")]
+        [Display(Name = PartDisplayName.RepairCost_Id)]
         [Required]
         public int RepairCost_Id { get; set; }
 
-        [Display(Name = "Have you heard about solar energy ?")]
+        [Display(Name = PartDisplayName.HeardAboutSE_Id)]
         [Required]
         public int HeardAboutSE_Id { get; set; }
 
-        [Display(Name = "If Yes, where did you hear about it ?")]
+        [Display(Name = PartDisplayName.IfYeswhere)]
         [Required]
         public string IfYeswhere { get; set; }
 
-        [Display(Name = "Do you have information / knowledge about govt. subsidy/aid for uptake of solar energy?")]
+        [Display(Name = PartDisplayName.InformationknowledgeAboutgovtsubsidyOfSE_Id)]
         [Required]
         public int InformationknowledgeAboutgovtsubsidyOfSE_Id { get; set; }
 
-        [Display(Name = "If yes, then what is the amount of govt. aid provided?")]
+        [Display(Name = PartDisplayName.IfYesAmtGovPaid)]
         [Required]
         public int IfYesAmtGovPaid { get; set; }
 
-        [Display(Name = "Are you aware of the loan procedure involved for uptake of solar energy?")]
+        [Display(Name = PartDisplayName.LoanProcedureInSE_Id)]
         [Required]
         public int LoanProcedureInSE_Id { get; set; }
 
-        [Display(Name = "Are you willing to adopt solarization / solar energy?")]
+        [Display(Name = PartDisplayName.AdoptSolarization_Id)]
         [Required]
         public int AdoptSolarization_Id { get; set; }
 
-        [Display(Name = "Have you arranged any capital for adoption of solar energy?")]
+        [Display(Name = PartDisplayName.CapitalArrangedForSE_Id)]
         [Required]
         public int CapitalArrangedForSE_Id { get; set; }
 
-        [Display(Name = "If yes, then what amount of capital is arranged for investment in solar energy?")]
+        [Display(Name = PartDisplayName.IfYesCapitalArrangedForSE_Id)]
         [Required]
         public int IfYesCapitalArrangedForSE_Id { get; set; }
 
-        [Display(Name = "Is there any other industry/enterprise in your village which has motor-operated machines installed? (includes SHG members)")]
+        [Display(Name = PartDisplayName.OtherIndustriesEnterprises_Id)]
         [Required]
         public int OtherIndustriesEnterprises_Id { get; set; }
 
-        [Display(Name = "Is there any other industry/enterprise in your village which has motor-operated machines installed? (includes SHG members)")]
+        [Display(Name = PartDisplayName.IfYesFillTheForm)]
         [Required]
         public string IfYesFillTheForm { get; set; }
 
@@ -278,8 +278,69 @@ namespace DeWee.Models
     }
     public class PartDisplayName
     {
-        public const string State_Id = "State";
-        public const string District_Id = "District";
+        public const string State_Id = "State/राज्य";
+        public const string District_Id = "District/जिला";
+        public const string Block_Id = "Block/ब्लॉक";
+        public const string Panchayat_Id = "Panchayat/ग्राम पंचायत";
+        public const string Village_Id = "Village/ग्राम";
+        public const string CLF_Id = "CLF/सामान्य जीविका महासंघ";
+        public const string VO_Id = "Village Organization/ग्राम संगठन";
+        public const string NameofSHG = "Name Of SHG/एसएचजी का नाम";
+        public const string TempRegNo = "";
+        public const string RegNo = "";
+        public const string AadharNo = "Aadhar Number/आधार नंबर";
+        public const string PhoneNumber = "Phone Number/मोबाइल नंबर";
+        public const string YearOfSHG = "Year Of SHG/समूह का वर्ष";
+        public const string NameofSHGmember = "Name of SHG member/समूह से जुड़ी महिला का नाम";
+        public const string NameofEnterpriseOwner = "Name of Enterprise owner/उद्यम के मालिक का नाम";
+        public const string Age = "Age/उम्र";
+        public const string DOB = "DOB/जन्म तिथि";
+        public const string EducationQlf_Id = "What is your educational qualification?/आप कहां तक पढ़े हैं?";
+        public const string Caste_Id = "What is your caste?/आपकी जाति क्या है?";
+        public const string TypeofEnterpriseBusin_Id = "Type of Business or Enterprise/व्यापार/उद्यम का प्रकार";
+        public const string BusinessOwnedType_Id = "Type of Business Owned?/उद्यम का प्रकार";
+        public const string EstablishedEnterpriseType_Id = "Where is your enterprise established?/आपका उद्यम कहां स्थापित है?";
+        public const string TypeOfInvestBusin_Id = "How did you arrange capital for investment in your business?/आपके व्यापार में निवेश करने के लिए पूंजी का इंतजाम कैसे किया";
+        public const string TookSourceOfLoan_Id = "If you took a loan, describe source?/यदि ऋण लिया, तो कहां से ऋण लिया";
+        public const string TookLoanAmt = "How much loan did you take from SHG?/समूह से कितना ऋण लिया?";
+        public const string TookLoanAmtBank = "How much Loan did you take from bank?/बैंक से कितना ऋण लिया?";
+        public const string TookLoanAmtR = "How much Loan did you take from relatives?/रिश्तेदारों से कितना ऋण लिया?";
+        public const string TookLoanAmtO = "How much Loan did you take from other sources?/अन्य स्रोतों से कितना ऋण लिया?";
+        public const string StartBusinessInvestAmt = "How much money did you invest from your side to start your business?/आपने व्यापार शुरू करने के लिए कितना पैसा स्वयं का निवेश किया?";
+        public const string StartYourBusinessTakeAmt = "How much loan did you take to start your business?/आपने व्यापार शुरू करने के लिए कितना पैसा ऋण लिया?";
+        public const string MonthlyProfitBusiness = "What is your monthly profit from the business?/आपको व्यापार में मासिक लाभ कितना होता है?";
+        public const string WorkInEnterprises_FamilyMembers = "How many people work in your enterprise(Number's only)/कितने लोग आपके उद्यम में काम करते हैं? (संख्या लिखें)";
+        public const string WorkInEnterprises_SHGMembers = "How many SHG people work in your enterprise(Number's only)/कितने लोग आपके एसएचजी में काम करते हैं? (संख्या लिखें)";
+        public const string WorkInEnterprises_AssitantStaffs = "How many Assitant Staffs work in your enterprise(Number's only)/आपके उद्यम में कितने सहायक कर्मचारी काम करते हैं? (सिर्फ़ संख्या)";
+        public const string TypeOfMachineEnterprise_Id = "What is the type of machine in your enterprise?/उद्यम में मशीन का प्रकार क्या है?";
+        public const string MotorBasedOnMachinesInActualUsed = "If Mechanised (Motor based) , then how many machines are in actual use?/यदि मैकेनाइज्ड (मोटर आधारित) है, तो उपयोग की जाने वाली मशीनों की कितनी संख्या है?";
+        public const string MachineryPowerkilowatt_Id = "What is the estimated power of all your machinery? (In kilowatt)/आपकी सभी मशीनरी की अनुमानित शक्ति (Power) कितनी है? (किलोवाट में)";
+        public const string ElectricityConnection_Id = "Your Electricity Connection is of how many kilowatt?/आपका बिजली कनेक्शन कितने किलोवाट का है?";
+        public const string ConnectionPhaseofPower_Id = "How many phases of power connection do you have?/आपका कितना फेज कनेक्शन है?";
+        public const string MonthlyElectricityConsumption_Id = "How much is your monthly electricity consumption? ( refer electricity Bill, if available)/आपका मासिक प्रति माह बिजली खपत कितना है? (बिजली बिल से यह उपलब्ध है)";
+        public const string MachineSourceofEnergy_Id = "What is the source of energy for your machines?/मशीनों के लिए ऊर्जा स्रोत क्या है?";
+        public const string Solar_InKilowatt_Id = "If its solar, how many kilowatt is it?/यदि सौर है, तो कितने किलोवाट का है?";
+        public const string Solar_EnergyPanelYesNo_Id = "Did you set up solar energy panel ?/क्या आपने सौर ऊर्जा पैनल / सेटअप लगाया था?";
+        public const string Solar_ExpenditureIncurredAmt = "How much expenditure was incurred on solar energy panel set-up / establishment?/सौर ऊर्जा पैनल / सेटअप / स्थापना का कितना खर्चा आया था?";
+        public const string Subsidy_Id = "Did you receive any subisdy for setting up of solar energy panels ?/क्या सौर ऊर्जा पैनल / सेटअप के लिए कोई सब्सिडी प्राप्त हुई थी?";
+        public const string LoanForSolarPanels_Id = "Did you receive any loan for setting up of solar energy panels?/क्या सौर ऊर्जा पैनल / सेटअप के लिए कोई ऋण/लोन प्राप्त हुआ था?";
+        public const string AvgAmtSavedFromSolarE_Id = "What is the average amount saved every month due to solar energy?/अपने द्वारा हर महीने सौर-ऊर्जा के कारण बचाई गई धनराशि का औसत विवरण में?";
+        public const string ElectricityUsed_Id = "How many hours is the electricity used? (1-24 hours)/यदि बिजली का उपयोग होता है तो, कितने घंटे उपयोग होता है? (1-24 घंटे)";
+        public const string MonthlyExpenseInElectricity_Id = "What is your monthly expense on the electricity bill?/आपका बिजली बिल पर कितना व्यय हो जाता है? (मासिक)";
+        public const string GeneratorElectricityUsed_Id = "If generator is in use, then mention the number of hours (1-24 hours)?/यदि जनरेटर का उपयोग होता है तो कितने घंटे के लिए? (1-24 घंटे)";
+        public const string ExpenseFuelSource_Id = "What is your expense on other fuel sources? (Diesel, Coal, Kerosene, etc.) (Monthly)/आपका अन्य ईंधन स्रोतों पर व्यय कितना है? (डीजल, कोयला, kerosene, आदि) (मासिक)";
+        public const string RepairCost_Id = "How much is the cost towards repair for arranging electricity or ? (Monthly)/आपको बिजली व्यवस्था और अन्य ऊर्जा स्रोतों की मरम्मत/रिपेयरिंग में कितनी लागत आती है? (मासिक)";
+        public const string HeardAboutSE_Id = "Have you heard about solar energy ?/क्या आपने सौर ऊर्जा के बारे में सुना है?";
+        public const string IfYeswhere = "If Yes, where did you hear about it ?/यदि हां, तो आपने इसके बारे में कहां सुना?";
+        public const string InformationknowledgeAboutgovtsubsidyOfSE_Id = "Do you have information / knowledge about govt. subsidy/aid for uptake of solar energy?/क्या आपको सौर ऊर्जा अपनाने में सरकार द्वारा दी जाने वाली सब्सिडी/मदद राशि की जानकारी है?";
+        public const string IfYesAmtGovPaid = "If yes, then what is the amount of govt. aid provided?/यदि हां, तो सरकार द्वारा कितनी मदद राशि दी जाती है?";
+        public const string LoanProcedureInSE_Id = "Are you aware of the loan procedure involved for uptake of solar energy?/क्या आपको सौर ऊर्जा अपनाने के लिए ऋण के प्रक्रिया के बारे में पता है?";
+        public const string AdoptSolarization_Id = "Are you willing to adopt solarization / solar energy?/क्या आपको सौर ऊर्जा अपनाने की इच्छा है?";
+        public const string CapitalArrangedForSE_Id = "Have you arranged any capital for adoption of solar energy?/क्या आपने सौर ऊर्जा अपनाने के लिए कोई धन राशि इकट्ठा की है?";
+        public const string IfYesCapitalArrangedForSE_Id = "If yes, then what amount of capital is arranged for investment in solar energy?/यदि हां, तो आपके पास सौर ऊर्जा में निवेश के लिए कितनी धनराशि उपलब्ध है?";
+        public const string OtherIndustriesEnterprises_Id = "Is there any other industry/enterprise in your village which has motor-operated machines installed? (includes SHG members)/क्या आपके गांव में और भी कोई उद्योग है जिसमें मोटर आधारित मशीनें लगी हुई हैं? (सभी SHG शामिल करें)";
+        public const string IfYesFillTheForm = "If yes, then kindly fill in the details of the family and visit them to fill a fresh form./यदि हां, तो उस परिवार की जानकारी यहां लिखें और वह जाकर इस फॉर्म को भरें";
+
 
     }
 

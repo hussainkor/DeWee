@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DeWee_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DeWee_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -250,12 +250,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
           <Property Name="Village_Id" Type="int" />
           <Property Name="CLF_Id" Type="int" />
           <Property Name="VO_Id" Type="int" />
+          <Property Name="NameofSHG" Type="nvarchar" MaxLength="500" />
+          <Property Name="YearOfSHG" Type="int" />
           <Property Name="TempRegNo" Type="nvarchar" MaxLength="30" />
           <Property Name="RegNo" Type="nvarchar" MaxLength="30" />
           <Property Name="AadharNo" Type="varchar" MaxLength="15" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
-          <Property Name="YearOfSHG" Type="int" />
-          <Property Name="NameofSHGmember" Type="nvarchar" MaxLength="300" />
+          <Property Name="NameofSHGMember" Type="nvarchar" MaxLength="500" />
           <Property Name="NameofEnterpriseOwner" Type="nvarchar" MaxLength="300" />
           <Property Name="Age" Type="int" />
           <Property Name="DOB" Type="varchar" MaxLength="20" />
@@ -283,24 +284,24 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
           <Property Name="Solar_InKilowatt_Id" Type="int" />
           <Property Name="Solar_EnergyPanelYesNo_Id" Type="int" />
           <Property Name="Solar_ExpenditureIncurredAmt" Type="decimal" Precision="15" Scale="5" />
-          <Property Name="Subsidy_Id" Type="int" />
-          <Property Name="LoanForSolarPanels_Id" Type="int" />
-          <Property Name="AvgAmtSavedFromSolarE_Id" Type="int" />
-          <Property Name="ElectricityUsed_Id" Type="int" />
-          <Property Name="MonthlyExpenseInElectricity_Id" Type="int" />
-          <Property Name="GeneratorElectricityUsed_Id" Type="int" />
-          <Property Name="ExpenseFuelSource_Id" Type="int" />
-          <Property Name="RepairCost_Id" Type="int" />
-          <Property Name="HeardAboutSE_Id" Type="int" />
-          <Property Name="IfYeswhere" Type="nvarchar(max)" />
-          <Property Name="InformationknowledgeAboutgovtsubsidyOfSE_Id" Type="int" />
-          <Property Name="IfYesAmtGovPaid" Type="int" />
-          <Property Name="LoanProcedureInSE_Id" Type="int" />
-          <Property Name="AdoptSolarization_Id" Type="int" />
-          <Property Name="CapitalArrangedForSE_Id" Type="int" />
-          <Property Name="IfYesCapitalArrangedForSE_Id" Type="int" />
-          <Property Name="OtherIndustriesEnterprises_Id" Type="int" />
-          <Property Name="IfYesFillTheForm" Type="nvarchar(max)" />
+          <Property Name="SubsidySolarReceive_Id" Type="int" />
+          <Property Name="LoanSolarPanelsYesNo_Id" Type="int" />
+          <Property Name="MonthAvgAmtSavedDescription_Id" Type="int" />
+          <Property Name="ElectricityUsedHours_Id" Type="int" />
+          <Property Name="MonthlyExpenseInElectricityBill_Id" Type="int" />
+          <Property Name="GeneratorElectricityUsedHours_Id" Type="int" />
+          <Property Name="MonthlyExpenseFuelSource_Id" Type="int" />
+          <Property Name="MonthlyRepairCost_Id" Type="int" />
+          <Property Name="HeardAboutSolarEYesNo_Id" Type="int" />
+          <Property Name="HeardAboutSolarEYes_IfYeswhere" Type="nvarchar(max)" />
+          <Property Name="InformationknowledgeGovtSubsidyOfSEYesNo_Id" Type="int" />
+          <Property Name="InformationknowledgeIfYesAmtGovPaid" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="LoanProcedureInSEYesNo_Id" Type="int" />
+          <Property Name="AdoptSolarizationYesNo_Id" Type="int" />
+          <Property Name="CapitalArrangedForSEYesNo_Id" Type="int" />
+          <Property Name="IfYesCapitalArrangedForSEAmt" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="OtherIndustriesEnterprisesYesNo_Id" Type="int" />
+          <Property Name="IfYesFillForm_OtherIndustriesEnterprises" Type="nvarchar(max)" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="CreatedOn" Type="datetime" />
@@ -614,12 +615,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[Village_Id] AS [Village_Id], 
     [Tbl_IndtSolarization].[CLF_Id] AS [CLF_Id], 
     [Tbl_IndtSolarization].[VO_Id] AS [VO_Id], 
+    [Tbl_IndtSolarization].[NameofSHG] AS [NameofSHG], 
+    [Tbl_IndtSolarization].[YearOfSHG] AS [YearOfSHG], 
     [Tbl_IndtSolarization].[TempRegNo] AS [TempRegNo], 
     [Tbl_IndtSolarization].[RegNo] AS [RegNo], 
     [Tbl_IndtSolarization].[AadharNo] AS [AadharNo], 
     [Tbl_IndtSolarization].[PhoneNumber] AS [PhoneNumber], 
-    [Tbl_IndtSolarization].[YearOfSHG] AS [YearOfSHG], 
-    [Tbl_IndtSolarization].[NameofSHGmember] AS [NameofSHGmember], 
+    [Tbl_IndtSolarization].[NameofSHGMember] AS [NameofSHGMember], 
     [Tbl_IndtSolarization].[NameofEnterpriseOwner] AS [NameofEnterpriseOwner], 
     [Tbl_IndtSolarization].[Age] AS [Age], 
     [Tbl_IndtSolarization].[DOB] AS [DOB], 
@@ -647,24 +649,24 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[Solar_InKilowatt_Id] AS [Solar_InKilowatt_Id], 
     [Tbl_IndtSolarization].[Solar_EnergyPanelYesNo_Id] AS [Solar_EnergyPanelYesNo_Id], 
     [Tbl_IndtSolarization].[Solar_ExpenditureIncurredAmt] AS [Solar_ExpenditureIncurredAmt], 
-    [Tbl_IndtSolarization].[Subsidy_Id] AS [Subsidy_Id], 
-    [Tbl_IndtSolarization].[LoanForSolarPanels_Id] AS [LoanForSolarPanels_Id], 
-    [Tbl_IndtSolarization].[AvgAmtSavedFromSolarE_Id] AS [AvgAmtSavedFromSolarE_Id], 
-    [Tbl_IndtSolarization].[ElectricityUsed_Id] AS [ElectricityUsed_Id], 
-    [Tbl_IndtSolarization].[MonthlyExpenseInElectricity_Id] AS [MonthlyExpenseInElectricity_Id], 
-    [Tbl_IndtSolarization].[GeneratorElectricityUsed_Id] AS [GeneratorElectricityUsed_Id], 
-    [Tbl_IndtSolarization].[ExpenseFuelSource_Id] AS [ExpenseFuelSource_Id], 
-    [Tbl_IndtSolarization].[RepairCost_Id] AS [RepairCost_Id], 
-    [Tbl_IndtSolarization].[HeardAboutSE_Id] AS [HeardAboutSE_Id], 
-    [Tbl_IndtSolarization].[IfYeswhere] AS [IfYeswhere], 
-    [Tbl_IndtSolarization].[InformationknowledgeAboutgovtsubsidyOfSE_Id] AS [InformationknowledgeAboutgovtsubsidyOfSE_Id], 
-    [Tbl_IndtSolarization].[IfYesAmtGovPaid] AS [IfYesAmtGovPaid], 
-    [Tbl_IndtSolarization].[LoanProcedureInSE_Id] AS [LoanProcedureInSE_Id], 
-    [Tbl_IndtSolarization].[AdoptSolarization_Id] AS [AdoptSolarization_Id], 
-    [Tbl_IndtSolarization].[CapitalArrangedForSE_Id] AS [CapitalArrangedForSE_Id], 
-    [Tbl_IndtSolarization].[IfYesCapitalArrangedForSE_Id] AS [IfYesCapitalArrangedForSE_Id], 
-    [Tbl_IndtSolarization].[OtherIndustriesEnterprises_Id] AS [OtherIndustriesEnterprises_Id], 
-    [Tbl_IndtSolarization].[IfYesFillTheForm] AS [IfYesFillTheForm], 
+    [Tbl_IndtSolarization].[SubsidySolarReceive_Id] AS [SubsidySolarReceive_Id], 
+    [Tbl_IndtSolarization].[LoanSolarPanelsYesNo_Id] AS [LoanSolarPanelsYesNo_Id], 
+    [Tbl_IndtSolarization].[MonthAvgAmtSavedDescription_Id] AS [MonthAvgAmtSavedDescription_Id], 
+    [Tbl_IndtSolarization].[ElectricityUsedHours_Id] AS [ElectricityUsedHours_Id], 
+    [Tbl_IndtSolarization].[MonthlyExpenseInElectricityBill_Id] AS [MonthlyExpenseInElectricityBill_Id], 
+    [Tbl_IndtSolarization].[GeneratorElectricityUsedHours_Id] AS [GeneratorElectricityUsedHours_Id], 
+    [Tbl_IndtSolarization].[MonthlyExpenseFuelSource_Id] AS [MonthlyExpenseFuelSource_Id], 
+    [Tbl_IndtSolarization].[MonthlyRepairCost_Id] AS [MonthlyRepairCost_Id], 
+    [Tbl_IndtSolarization].[HeardAboutSolarEYesNo_Id] AS [HeardAboutSolarEYesNo_Id], 
+    [Tbl_IndtSolarization].[HeardAboutSolarEYes_IfYeswhere] AS [HeardAboutSolarEYes_IfYeswhere], 
+    [Tbl_IndtSolarization].[InformationknowledgeGovtSubsidyOfSEYesNo_Id] AS [InformationknowledgeGovtSubsidyOfSEYesNo_Id], 
+    [Tbl_IndtSolarization].[InformationknowledgeIfYesAmtGovPaid] AS [InformationknowledgeIfYesAmtGovPaid], 
+    [Tbl_IndtSolarization].[LoanProcedureInSEYesNo_Id] AS [LoanProcedureInSEYesNo_Id], 
+    [Tbl_IndtSolarization].[AdoptSolarizationYesNo_Id] AS [AdoptSolarizationYesNo_Id], 
+    [Tbl_IndtSolarization].[CapitalArrangedForSEYesNo_Id] AS [CapitalArrangedForSEYesNo_Id], 
+    [Tbl_IndtSolarization].[IfYesCapitalArrangedForSEAmt] AS [IfYesCapitalArrangedForSEAmt], 
+    [Tbl_IndtSolarization].[OtherIndustriesEnterprisesYesNo_Id] AS [OtherIndustriesEnterprisesYesNo_Id], 
+    [Tbl_IndtSolarization].[IfYesFillForm_OtherIndustriesEnterprises] AS [IfYesFillForm_OtherIndustriesEnterprises], 
     [Tbl_IndtSolarization].[IsActive] AS [IsActive], 
     [Tbl_IndtSolarization].[CreatedBy] AS [CreatedBy], 
     [Tbl_IndtSolarization].[CreatedOn] AS [CreatedOn], 
@@ -703,75 +705,38 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DeWee_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DeWee_DBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="DeWee_DBModel.C__MigrationHistory" />
-          <EntitySet Name="AspNetUserClaims" EntityType="DeWee_DBModel.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="DeWee_DBModel.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="DeWee_DBModel.AspNetUser" />
-          <EntitySet Name="Tbl_Block_Master" EntityType="DeWee_DBModel.Tbl_Block_Master" />
-          <EntitySet Name="Tbl_BusinessInvestmentM" EntityType="DeWee_DBModel.Tbl_BusinessInvestmentM" />
-          <EntitySet Name="Tbl_BusinessOwnedM" EntityType="DeWee_DBModel.Tbl_BusinessOwnedM" />
-          <EntitySet Name="Tbl_BusinessTypeM" EntityType="DeWee_DBModel.Tbl_BusinessTypeM" />
-          <EntitySet Name="Tbl_CasteM" EntityType="DeWee_DBModel.Tbl_CasteM" />
-          <EntitySet Name="Tbl_CLF_Master" EntityType="DeWee_DBModel.Tbl_CLF_Master" />
-          <EntitySet Name="Tbl_District_Master" EntityType="DeWee_DBModel.Tbl_District_Master" />
-          <EntitySet Name="Tbl_ElectricityConsumptionM" EntityType="DeWee_DBModel.Tbl_ElectricityConsumptionM" />
-          <EntitySet Name="Tbl_ElectricityUsedM" EntityType="DeWee_DBModel.Tbl_ElectricityUsedM" />
-          <EntitySet Name="Tbl_MachineryPowerM" EntityType="DeWee_DBModel.Tbl_MachineryPowerM" />
-          <EntitySet Name="Tbl_MoneySavedSEM" EntityType="DeWee_DBModel.Tbl_MoneySavedSEM" />
-          <EntitySet Name="Tbl_MonthlyExpenseEBM" EntityType="DeWee_DBModel.Tbl_MonthlyExpenseEBM" />
-          <EntitySet Name="Tbl_Panchayat_Master" EntityType="DeWee_DBModel.Tbl_Panchayat_Master" />
-          <EntitySet Name="Tbl_PowerConnectionM" EntityType="DeWee_DBModel.Tbl_PowerConnectionM" />
-          <EntitySet Name="Tbl_SolarkilowattM" EntityType="DeWee_DBModel.Tbl_SolarkilowattM" />
-          <EntitySet Name="Tbl_SourceEnergyM" EntityType="DeWee_DBModel.Tbl_SourceEnergyM" />
-          <EntitySet Name="Tbl_State_Master" EntityType="DeWee_DBModel.Tbl_State_Master" />
-          <EntitySet Name="Tbl_SubisdyM" EntityType="DeWee_DBModel.Tbl_SubisdyM" />
-          <EntitySet Name="Tbl_TypeYesNoM" EntityType="DeWee_DBModel.Tbl_TypeYesNoM" />
-          <EntitySet Name="Tbl_Village_Master" EntityType="DeWee_DBModel.Tbl_Village_Master" />
-          <EntitySet Name="Tbl_VO_Master" EntityType="DeWee_DBModel.Tbl_VO_Master" />
-          <EntitySet Name="Tbl_Educational_QualificationM" EntityType="DeWee_DBModel.Tbl_Educational_QualificationM" />
-          <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="DeWee_DBModel.Tbl_Enterprise_EstablishedM" />
-          <EntitySet Name="Tbl_EnterpriseM" EntityType="DeWee_DBModel.Tbl_EnterpriseM" />
-          <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="DeWee_DBModel.Tbl_EnterpriseMachineM" />
-          <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="DeWee_DBModel.Tbl_LoanDescribeSourceM" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <EntitySet Name="AspNetRoles" EntityType="DeWee_DBModel.AspNetRole" />
-          <AssociationSet Name="AspNetUserRoles" Association="DeWee_DBModel.AspNetUserRoles">
-            <End Role="AspNetRole" EntitySet="AspNetRoles" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="Tbl_IndtSolarization" EntityType="DeWee_DBModel.Tbl_IndtSolarization" />
-        </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserLogin">
           <Key>
@@ -779,16 +744,16 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -799,10 +764,10 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-          <NavigationProperty Name="AspNetRoles" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="Tbl_Block_Master">
           <Key>
@@ -1118,58 +1083,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="OrderBy" Type="Int32" />
         </EntityType>
-        <EntityType Name="Tbl_LoanDescribeSourceM">
-          <Key>
-            <PropertyRef Name="LoanDescribeSource_Id" />
-          </Key>
-          <Property Name="LoanDescribeSource_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoanDescribeSourceInEng" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="LoanDescribeSourceInHindi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DeWee_DBModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DeWee_DBModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogin">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="AspNetRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
-        </EntityType>
-        <Association Name="AspNetUserRoles">
-          <End Type="DeWee_DBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-        </Association>
         <EntityType Name="Tbl_IndtSolarization">
           <Key>
             <PropertyRef Name="Indt_Id" />
@@ -1182,12 +1095,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="Village_Id" Type="Int32" />
           <Property Name="CLF_Id" Type="Int32" />
           <Property Name="VO_Id" Type="Int32" />
+          <Property Name="NameofSHG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfSHG" Type="Int32" />
           <Property Name="TempRegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="RegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="AadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="YearOfSHG" Type="Int32" />
-          <Property Name="NameofSHGmember" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NameofSHGMember" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="NameofEnterpriseOwner" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="Int32" />
           <Property Name="DOB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -1215,24 +1129,24 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="Solar_InKilowatt_Id" Type="Int32" />
           <Property Name="Solar_EnergyPanelYesNo_Id" Type="Int32" />
           <Property Name="Solar_ExpenditureIncurredAmt" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="Subsidy_Id" Type="Int32" />
-          <Property Name="LoanForSolarPanels_Id" Type="Int32" />
-          <Property Name="AvgAmtSavedFromSolarE_Id" Type="Int32" />
-          <Property Name="ElectricityUsed_Id" Type="Int32" />
-          <Property Name="MonthlyExpenseInElectricity_Id" Type="Int32" />
-          <Property Name="GeneratorElectricityUsed_Id" Type="Int32" />
-          <Property Name="ExpenseFuelSource_Id" Type="Int32" />
-          <Property Name="RepairCost_Id" Type="Int32" />
-          <Property Name="HeardAboutSE_Id" Type="Int32" />
-          <Property Name="IfYeswhere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="InformationknowledgeAboutgovtsubsidyOfSE_Id" Type="Int32" />
-          <Property Name="IfYesAmtGovPaid" Type="Int32" />
-          <Property Name="LoanProcedureInSE_Id" Type="Int32" />
-          <Property Name="AdoptSolarization_Id" Type="Int32" />
-          <Property Name="CapitalArrangedForSE_Id" Type="Int32" />
-          <Property Name="IfYesCapitalArrangedForSE_Id" Type="Int32" />
-          <Property Name="OtherIndustriesEnterprises_Id" Type="Int32" />
-          <Property Name="IfYesFillTheForm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubsidySolarReceive_Id" Type="Int32" />
+          <Property Name="LoanSolarPanelsYesNo_Id" Type="Int32" />
+          <Property Name="MonthAvgAmtSavedDescription_Id" Type="Int32" />
+          <Property Name="ElectricityUsedHours_Id" Type="Int32" />
+          <Property Name="MonthlyExpenseInElectricityBill_Id" Type="Int32" />
+          <Property Name="GeneratorElectricityUsedHours_Id" Type="Int32" />
+          <Property Name="MonthlyExpenseFuelSource_Id" Type="Int32" />
+          <Property Name="MonthlyRepairCost_Id" Type="Int32" />
+          <Property Name="HeardAboutSolarEYesNo_Id" Type="Int32" />
+          <Property Name="HeardAboutSolarEYes_IfYeswhere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InformationknowledgeGovtSubsidyOfSEYesNo_Id" Type="Int32" />
+          <Property Name="InformationknowledgeIfYesAmtGovPaid" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="LoanProcedureInSEYesNo_Id" Type="Int32" />
+          <Property Name="AdoptSolarizationYesNo_Id" Type="Int32" />
+          <Property Name="CapitalArrangedForSEYesNo_Id" Type="Int32" />
+          <Property Name="IfYesCapitalArrangedForSEAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="OtherIndustriesEnterprisesYesNo_Id" Type="Int32" />
+          <Property Name="IfYesFillForm_OtherIndustriesEnterprises" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
@@ -1242,6 +1156,96 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="IsDeletedOn" Type="DateTime" Precision="3" />
           <Property Name="OrderBy" Type="Int32" />
         </EntityType>
+        <EntityType Name="Tbl_LoanDescribeSourceM">
+          <Key>
+            <PropertyRef Name="LoanDescribeSource_Id" />
+          </Key>
+          <Property Name="LoanDescribeSource_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanDescribeSourceInEng" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LoanDescribeSourceInHindi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DeWee_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Tbl_Block_Master" EntityType="Self.Tbl_Block_Master" />
+          <EntitySet Name="Tbl_BusinessInvestmentM" EntityType="Self.Tbl_BusinessInvestmentM" />
+          <EntitySet Name="Tbl_BusinessOwnedM" EntityType="Self.Tbl_BusinessOwnedM" />
+          <EntitySet Name="Tbl_BusinessTypeM" EntityType="Self.Tbl_BusinessTypeM" />
+          <EntitySet Name="Tbl_CasteM" EntityType="Self.Tbl_CasteM" />
+          <EntitySet Name="Tbl_CLF_Master" EntityType="Self.Tbl_CLF_Master" />
+          <EntitySet Name="Tbl_District_Master" EntityType="Self.Tbl_District_Master" />
+          <EntitySet Name="Tbl_ElectricityConsumptionM" EntityType="Self.Tbl_ElectricityConsumptionM" />
+          <EntitySet Name="Tbl_ElectricityUsedM" EntityType="Self.Tbl_ElectricityUsedM" />
+          <EntitySet Name="Tbl_MachineryPowerM" EntityType="Self.Tbl_MachineryPowerM" />
+          <EntitySet Name="Tbl_MoneySavedSEM" EntityType="Self.Tbl_MoneySavedSEM" />
+          <EntitySet Name="Tbl_MonthlyExpenseEBM" EntityType="Self.Tbl_MonthlyExpenseEBM" />
+          <EntitySet Name="Tbl_Panchayat_Master" EntityType="Self.Tbl_Panchayat_Master" />
+          <EntitySet Name="Tbl_PowerConnectionM" EntityType="Self.Tbl_PowerConnectionM" />
+          <EntitySet Name="Tbl_SolarkilowattM" EntityType="Self.Tbl_SolarkilowattM" />
+          <EntitySet Name="Tbl_SourceEnergyM" EntityType="Self.Tbl_SourceEnergyM" />
+          <EntitySet Name="Tbl_State_Master" EntityType="Self.Tbl_State_Master" />
+          <EntitySet Name="Tbl_SubisdyM" EntityType="Self.Tbl_SubisdyM" />
+          <EntitySet Name="Tbl_TypeYesNoM" EntityType="Self.Tbl_TypeYesNoM" />
+          <EntitySet Name="Tbl_Village_Master" EntityType="Self.Tbl_Village_Master" />
+          <EntitySet Name="Tbl_VO_Master" EntityType="Self.Tbl_VO_Master" />
+          <EntitySet Name="Tbl_Educational_QualificationM" EntityType="Self.Tbl_Educational_QualificationM" />
+          <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="Self.Tbl_Enterprise_EstablishedM" />
+          <EntitySet Name="Tbl_EnterpriseM" EntityType="Self.Tbl_EnterpriseM" />
+          <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="Self.Tbl_EnterpriseMachineM" />
+          <EntitySet Name="Tbl_IndtSolarization" EntityType="Self.Tbl_IndtSolarization" />
+          <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="Self.Tbl_LoanDescribeSourceM" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1251,491 +1255,492 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="DeWee_DBModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="DeWee_DBModel.AspNetUserClaim">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="DeWee_DBModel.AspNetUserLogin">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="DeWee_DBModel.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Block_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Block_Master">
-              <MappingFragment StoreEntitySet="Tbl_Block_Master">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="BlockName" ColumnName="BlockName" />
-                <ScalarProperty Name="BlockCode" ColumnName="BlockCode" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
-                <ScalarProperty Name="BlockId_pk" ColumnName="BlockId_pk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_BusinessInvestmentM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessInvestmentM">
-              <MappingFragment StoreEntitySet="Tbl_BusinessInvestmentM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="BusinessInvestmentInHindi" ColumnName="BusinessInvestmentInHindi" />
-                <ScalarProperty Name="BusinessInvestmentInEng" ColumnName="BusinessInvestmentInEng" />
-                <ScalarProperty Name="BusinessInvestment_Id" ColumnName="BusinessInvestment_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_BusinessOwnedM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessOwnedM">
-              <MappingFragment StoreEntitySet="Tbl_BusinessOwnedM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="BusinessOwnedInHindi" ColumnName="BusinessOwnedInHindi" />
-                <ScalarProperty Name="BusinessOwnedInEng" ColumnName="BusinessOwnedInEng" />
-                <ScalarProperty Name="BusinessOwned_Id" ColumnName="BusinessOwned_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_BusinessTypeM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessTypeM">
-              <MappingFragment StoreEntitySet="Tbl_BusinessTypeM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="BusinessTypeInHindi" ColumnName="BusinessTypeInHindi" />
-                <ScalarProperty Name="BusinessTypeInEng" ColumnName="BusinessTypeInEng" />
-                <ScalarProperty Name="BusinessType_Id" ColumnName="BusinessType_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_CasteM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_CasteM">
-              <MappingFragment StoreEntitySet="Tbl_CasteM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CasteInHindi" ColumnName="CasteInHindi" />
-                <ScalarProperty Name="CasteInEng" ColumnName="CasteInEng" />
-                <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_CLF_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_CLF_Master">
-              <MappingFragment StoreEntitySet="Tbl_CLF_Master">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CLFName" ColumnName="CLFName" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="CLFId_pk" ColumnName="CLFId_pk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_District_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_District_Master">
-              <MappingFragment StoreEntitySet="Tbl_District_Master">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
-                <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
-                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
-                <ScalarProperty Name="DistrictId_pk" ColumnName="DistrictId_pk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_ElectricityConsumptionM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_ElectricityConsumptionM">
-              <MappingFragment StoreEntitySet="Tbl_ElectricityConsumptionM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ElectricityConsumptionInHindi" ColumnName="ElectricityConsumptionInHindi" />
-                <ScalarProperty Name="ElectricityConsumptionInEng" ColumnName="ElectricityConsumptionInEng" />
-                <ScalarProperty Name="ElectricityConsumption_Id" ColumnName="ElectricityConsumption_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_ElectricityUsedM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_ElectricityUsedM">
-              <MappingFragment StoreEntitySet="Tbl_ElectricityUsedM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ElectricityUsedInHindi" ColumnName="ElectricityUsedInHindi" />
-                <ScalarProperty Name="ElectricityUsedInEng" ColumnName="ElectricityUsedInEng" />
-                <ScalarProperty Name="ElectricityUsed_Id" ColumnName="ElectricityUsed_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_MachineryPowerM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MachineryPowerM">
-              <MappingFragment StoreEntitySet="Tbl_MachineryPowerM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="MachineryPowerInHindi" ColumnName="MachineryPowerInHindi" />
-                <ScalarProperty Name="MachineryPowerInEng" ColumnName="MachineryPowerInEng" />
-                <ScalarProperty Name="MachineryPower_Id" ColumnName="MachineryPower_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_MoneySavedSEM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MoneySavedSEM">
-              <MappingFragment StoreEntitySet="Tbl_MoneySavedSEM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="MoneySavedSEInHindi" ColumnName="MoneySavedSEInHindi" />
-                <ScalarProperty Name="MoneySavedSEInEng" ColumnName="MoneySavedSEInEng" />
-                <ScalarProperty Name="MoneySavedSE_Id" ColumnName="MoneySavedSE_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_MonthlyExpenseEBM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MonthlyExpenseEBM">
-              <MappingFragment StoreEntitySet="Tbl_MonthlyExpenseEBM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="MonthlyExpenseEBInHindi" ColumnName="MonthlyExpenseEBInHindi" />
-                <ScalarProperty Name="MonthlyExpenseEBInEng" ColumnName="MonthlyExpenseEBInEng" />
-                <ScalarProperty Name="MonthlyExpenseEB_Id" ColumnName="MonthlyExpenseEB_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Panchayat_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Panchayat_Master">
-              <MappingFragment StoreEntitySet="Tbl_Panchayat_Master">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="PanchayatName" ColumnName="PanchayatName" />
-                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="PanchayatId_pk" ColumnName="PanchayatId_pk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_PowerConnectionM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_PowerConnectionM">
-              <MappingFragment StoreEntitySet="Tbl_PowerConnectionM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="PowerConnectionInHindi" ColumnName="PowerConnectionInHindi" />
-                <ScalarProperty Name="PowerConnectionInEng" ColumnName="PowerConnectionInEng" />
-                <ScalarProperty Name="PowerConnection_Id" ColumnName="PowerConnection_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_SolarkilowattM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SolarkilowattM">
-              <MappingFragment StoreEntitySet="Tbl_SolarkilowattM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="SolarkilowattInHindi" ColumnName="SolarkilowattInHindi" />
-                <ScalarProperty Name="SolarkilowattInEng" ColumnName="SolarkilowattInEng" />
-                <ScalarProperty Name="Solarkilowatt_Id" ColumnName="Solarkilowatt_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_SourceEnergyM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SourceEnergyM">
-              <MappingFragment StoreEntitySet="Tbl_SourceEnergyM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="SourceEnergyInHindi" ColumnName="SourceEnergyInHindi" />
-                <ScalarProperty Name="SourceEnergyInEng" ColumnName="SourceEnergyInEng" />
-                <ScalarProperty Name="SourceEnergy_Id" ColumnName="SourceEnergy_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_State_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_State_Master">
-              <MappingFragment StoreEntitySet="Tbl_State_Master">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
-                <ScalarProperty Name="StateId_pk" ColumnName="StateId_pk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_SubisdyM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SubisdyM">
-              <MappingFragment StoreEntitySet="Tbl_SubisdyM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="SubisdyInHindi" ColumnName="SubisdyInHindi" />
-                <ScalarProperty Name="SubisdyInEng" ColumnName="SubisdyInEng" />
-                <ScalarProperty Name="Subisdy_Id" ColumnName="Subisdy_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_TypeYesNoM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_TypeYesNoM">
-              <MappingFragment StoreEntitySet="Tbl_TypeYesNoM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="SolarEpanelInHindi" ColumnName="SolarEpanelInHindi" />
-                <ScalarProperty Name="SolarEpanelInEng" ColumnName="SolarEpanelInEng" />
-                <ScalarProperty Name="SolarEpanel_Id" ColumnName="SolarEpanel_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Village_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Village_Master">
-              <MappingFragment StoreEntitySet="Tbl_Village_Master">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="VillageName" ColumnName="VillageName" />
-                <ScalarProperty Name="VOrgId_fk" ColumnName="VOrgId_fk" />
-                <ScalarProperty Name="PanchayatId_fk" ColumnName="PanchayatId_fk" />
-                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="VillageId_pk" ColumnName="VillageId_pk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_VO_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_VO_Master">
-              <MappingFragment StoreEntitySet="Tbl_VO_Master">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Village_OrganizationName" ColumnName="Village_OrganizationName" />
-                <ScalarProperty Name="PanchayatId_fk" ColumnName="PanchayatId_fk" />
-                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="VOrgId_pk" ColumnName="VOrgId_pk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Educational_QualificationM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Educational_QualificationM">
-              <MappingFragment StoreEntitySet="Tbl_Educational_QualificationM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="QualificationInHindi" ColumnName="QualificationInHindi" />
-                <ScalarProperty Name="QualificationInEng" ColumnName="QualificationInEng" />
-                <ScalarProperty Name="Qualification_Id" ColumnName="Qualification_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Enterprise_EstablishedM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Enterprise_EstablishedM">
-              <MappingFragment StoreEntitySet="Tbl_Enterprise_EstablishedM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Enterprise_EstablishedInHindi" ColumnName="Enterprise_EstablishedInHindi" />
-                <ScalarProperty Name="Enterprise_EstablishedInEng" ColumnName="Enterprise_EstablishedInEng" />
-                <ScalarProperty Name="Enterprise_Established_Id" ColumnName="Enterprise_Established_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_EnterpriseM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_EnterpriseM">
-              <MappingFragment StoreEntitySet="Tbl_EnterpriseM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="EnterpriseInHindi" ColumnName="EnterpriseInHindi" />
-                <ScalarProperty Name="EnterpriseInEng" ColumnName="EnterpriseInEng" />
-                <ScalarProperty Name="Enterprise_Id" ColumnName="Enterprise_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_EnterpriseMachineM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_EnterpriseMachineM">
-              <MappingFragment StoreEntitySet="Tbl_EnterpriseMachineM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="EnterpriseMachineInHindi" ColumnName="EnterpriseMachineInHindi" />
-                <ScalarProperty Name="EnterpriseMachineInEng" ColumnName="EnterpriseMachineInEng" />
-                <ScalarProperty Name="EnterpriseMachine_Id" ColumnName="EnterpriseMachine_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_LoanDescribeSourceM">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_LoanDescribeSourceM">
-              <MappingFragment StoreEntitySet="Tbl_LoanDescribeSourceM">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="LoanDescribeSourceInHindi" ColumnName="LoanDescribeSourceInHindi" />
-                <ScalarProperty Name="LoanDescribeSourceInEng" ColumnName="LoanDescribeSourceInEng" />
-                <ScalarProperty Name="LoanDescribeSource_Id" ColumnName="LoanDescribeSource_Id" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="DeWee_DBModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="DeWee_DBModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="DeWee_DBModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DeWee_DBModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Block_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Block_Master">
+              <MappingFragment StoreEntitySet="Tbl_Block_Master">
+                <ScalarProperty Name="BlockId_pk" ColumnName="BlockId_pk" />
+                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="BlockCode" ColumnName="BlockCode" />
+                <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_BusinessInvestmentM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessInvestmentM">
+              <MappingFragment StoreEntitySet="Tbl_BusinessInvestmentM">
+                <ScalarProperty Name="BusinessInvestment_Id" ColumnName="BusinessInvestment_Id" />
+                <ScalarProperty Name="BusinessInvestmentInEng" ColumnName="BusinessInvestmentInEng" />
+                <ScalarProperty Name="BusinessInvestmentInHindi" ColumnName="BusinessInvestmentInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_BusinessOwnedM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessOwnedM">
+              <MappingFragment StoreEntitySet="Tbl_BusinessOwnedM">
+                <ScalarProperty Name="BusinessOwned_Id" ColumnName="BusinessOwned_Id" />
+                <ScalarProperty Name="BusinessOwnedInEng" ColumnName="BusinessOwnedInEng" />
+                <ScalarProperty Name="BusinessOwnedInHindi" ColumnName="BusinessOwnedInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_BusinessTypeM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_BusinessTypeM">
+              <MappingFragment StoreEntitySet="Tbl_BusinessTypeM">
+                <ScalarProperty Name="BusinessType_Id" ColumnName="BusinessType_Id" />
+                <ScalarProperty Name="BusinessTypeInEng" ColumnName="BusinessTypeInEng" />
+                <ScalarProperty Name="BusinessTypeInHindi" ColumnName="BusinessTypeInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_CasteM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_CasteM">
+              <MappingFragment StoreEntitySet="Tbl_CasteM">
+                <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
+                <ScalarProperty Name="CasteInEng" ColumnName="CasteInEng" />
+                <ScalarProperty Name="CasteInHindi" ColumnName="CasteInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_CLF_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_CLF_Master">
+              <MappingFragment StoreEntitySet="Tbl_CLF_Master">
+                <ScalarProperty Name="CLFId_pk" ColumnName="CLFId_pk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="CLFName" ColumnName="CLFName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_District_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_District_Master">
+              <MappingFragment StoreEntitySet="Tbl_District_Master">
+                <ScalarProperty Name="DistrictId_pk" ColumnName="DistrictId_pk" />
+                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
+                <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ElectricityConsumptionM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_ElectricityConsumptionM">
+              <MappingFragment StoreEntitySet="Tbl_ElectricityConsumptionM">
+                <ScalarProperty Name="ElectricityConsumption_Id" ColumnName="ElectricityConsumption_Id" />
+                <ScalarProperty Name="ElectricityConsumptionInEng" ColumnName="ElectricityConsumptionInEng" />
+                <ScalarProperty Name="ElectricityConsumptionInHindi" ColumnName="ElectricityConsumptionInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ElectricityUsedM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_ElectricityUsedM">
+              <MappingFragment StoreEntitySet="Tbl_ElectricityUsedM">
+                <ScalarProperty Name="ElectricityUsed_Id" ColumnName="ElectricityUsed_Id" />
+                <ScalarProperty Name="ElectricityUsedInEng" ColumnName="ElectricityUsedInEng" />
+                <ScalarProperty Name="ElectricityUsedInHindi" ColumnName="ElectricityUsedInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_MachineryPowerM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MachineryPowerM">
+              <MappingFragment StoreEntitySet="Tbl_MachineryPowerM">
+                <ScalarProperty Name="MachineryPower_Id" ColumnName="MachineryPower_Id" />
+                <ScalarProperty Name="MachineryPowerInEng" ColumnName="MachineryPowerInEng" />
+                <ScalarProperty Name="MachineryPowerInHindi" ColumnName="MachineryPowerInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_MoneySavedSEM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MoneySavedSEM">
+              <MappingFragment StoreEntitySet="Tbl_MoneySavedSEM">
+                <ScalarProperty Name="MoneySavedSE_Id" ColumnName="MoneySavedSE_Id" />
+                <ScalarProperty Name="MoneySavedSEInEng" ColumnName="MoneySavedSEInEng" />
+                <ScalarProperty Name="MoneySavedSEInHindi" ColumnName="MoneySavedSEInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_MonthlyExpenseEBM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_MonthlyExpenseEBM">
+              <MappingFragment StoreEntitySet="Tbl_MonthlyExpenseEBM">
+                <ScalarProperty Name="MonthlyExpenseEB_Id" ColumnName="MonthlyExpenseEB_Id" />
+                <ScalarProperty Name="MonthlyExpenseEBInEng" ColumnName="MonthlyExpenseEBInEng" />
+                <ScalarProperty Name="MonthlyExpenseEBInHindi" ColumnName="MonthlyExpenseEBInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Panchayat_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Panchayat_Master">
+              <MappingFragment StoreEntitySet="Tbl_Panchayat_Master">
+                <ScalarProperty Name="PanchayatId_pk" ColumnName="PanchayatId_pk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
+                <ScalarProperty Name="PanchayatName" ColumnName="PanchayatName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_PowerConnectionM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_PowerConnectionM">
+              <MappingFragment StoreEntitySet="Tbl_PowerConnectionM">
+                <ScalarProperty Name="PowerConnection_Id" ColumnName="PowerConnection_Id" />
+                <ScalarProperty Name="PowerConnectionInEng" ColumnName="PowerConnectionInEng" />
+                <ScalarProperty Name="PowerConnectionInHindi" ColumnName="PowerConnectionInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SolarkilowattM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SolarkilowattM">
+              <MappingFragment StoreEntitySet="Tbl_SolarkilowattM">
+                <ScalarProperty Name="Solarkilowatt_Id" ColumnName="Solarkilowatt_Id" />
+                <ScalarProperty Name="SolarkilowattInEng" ColumnName="SolarkilowattInEng" />
+                <ScalarProperty Name="SolarkilowattInHindi" ColumnName="SolarkilowattInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SourceEnergyM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SourceEnergyM">
+              <MappingFragment StoreEntitySet="Tbl_SourceEnergyM">
+                <ScalarProperty Name="SourceEnergy_Id" ColumnName="SourceEnergy_Id" />
+                <ScalarProperty Name="SourceEnergyInEng" ColumnName="SourceEnergyInEng" />
+                <ScalarProperty Name="SourceEnergyInHindi" ColumnName="SourceEnergyInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_State_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_State_Master">
+              <MappingFragment StoreEntitySet="Tbl_State_Master">
+                <ScalarProperty Name="StateId_pk" ColumnName="StateId_pk" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SubisdyM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_SubisdyM">
+              <MappingFragment StoreEntitySet="Tbl_SubisdyM">
+                <ScalarProperty Name="Subisdy_Id" ColumnName="Subisdy_Id" />
+                <ScalarProperty Name="SubisdyInEng" ColumnName="SubisdyInEng" />
+                <ScalarProperty Name="SubisdyInHindi" ColumnName="SubisdyInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_TypeYesNoM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_TypeYesNoM">
+              <MappingFragment StoreEntitySet="Tbl_TypeYesNoM">
+                <ScalarProperty Name="SolarEpanel_Id" ColumnName="SolarEpanel_Id" />
+                <ScalarProperty Name="SolarEpanelInEng" ColumnName="SolarEpanelInEng" />
+                <ScalarProperty Name="SolarEpanelInHindi" ColumnName="SolarEpanelInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Village_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Village_Master">
+              <MappingFragment StoreEntitySet="Tbl_Village_Master">
+                <ScalarProperty Name="VillageId_pk" ColumnName="VillageId_pk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
+                <ScalarProperty Name="PanchayatId_fk" ColumnName="PanchayatId_fk" />
+                <ScalarProperty Name="VOrgId_fk" ColumnName="VOrgId_fk" />
+                <ScalarProperty Name="VillageName" ColumnName="VillageName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_VO_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_VO_Master">
+              <MappingFragment StoreEntitySet="Tbl_VO_Master">
+                <ScalarProperty Name="VOrgId_pk" ColumnName="VOrgId_pk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
+                <ScalarProperty Name="PanchayatId_fk" ColumnName="PanchayatId_fk" />
+                <ScalarProperty Name="Village_OrganizationName" ColumnName="Village_OrganizationName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Educational_QualificationM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Educational_QualificationM">
+              <MappingFragment StoreEntitySet="Tbl_Educational_QualificationM">
+                <ScalarProperty Name="Qualification_Id" ColumnName="Qualification_Id" />
+                <ScalarProperty Name="QualificationInEng" ColumnName="QualificationInEng" />
+                <ScalarProperty Name="QualificationInHindi" ColumnName="QualificationInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Enterprise_EstablishedM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Enterprise_EstablishedM">
+              <MappingFragment StoreEntitySet="Tbl_Enterprise_EstablishedM">
+                <ScalarProperty Name="Enterprise_Established_Id" ColumnName="Enterprise_Established_Id" />
+                <ScalarProperty Name="Enterprise_EstablishedInEng" ColumnName="Enterprise_EstablishedInEng" />
+                <ScalarProperty Name="Enterprise_EstablishedInHindi" ColumnName="Enterprise_EstablishedInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_EnterpriseM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_EnterpriseM">
+              <MappingFragment StoreEntitySet="Tbl_EnterpriseM">
+                <ScalarProperty Name="Enterprise_Id" ColumnName="Enterprise_Id" />
+                <ScalarProperty Name="EnterpriseInEng" ColumnName="EnterpriseInEng" />
+                <ScalarProperty Name="EnterpriseInHindi" ColumnName="EnterpriseInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_EnterpriseMachineM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_EnterpriseMachineM">
+              <MappingFragment StoreEntitySet="Tbl_EnterpriseMachineM">
+                <ScalarProperty Name="EnterpriseMachine_Id" ColumnName="EnterpriseMachine_Id" />
+                <ScalarProperty Name="EnterpriseMachineInEng" ColumnName="EnterpriseMachineInEng" />
+                <ScalarProperty Name="EnterpriseMachineInHindi" ColumnName="EnterpriseMachineInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_IndtSolarization">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_IndtSolarization">
+              <MappingFragment StoreEntitySet="Tbl_IndtSolarization">
+                <ScalarProperty Name="Indt_Id" ColumnName="Indt_Id" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="District_Id" ColumnName="District_Id" />
+                <ScalarProperty Name="Block_Id" ColumnName="Block_Id" />
+                <ScalarProperty Name="Panchayat_Id" ColumnName="Panchayat_Id" />
+                <ScalarProperty Name="Village_Id" ColumnName="Village_Id" />
+                <ScalarProperty Name="CLF_Id" ColumnName="CLF_Id" />
+                <ScalarProperty Name="VO_Id" ColumnName="VO_Id" />
+                <ScalarProperty Name="NameofSHG" ColumnName="NameofSHG" />
+                <ScalarProperty Name="YearOfSHG" ColumnName="YearOfSHG" />
+                <ScalarProperty Name="TempRegNo" ColumnName="TempRegNo" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="NameofSHGMember" ColumnName="NameofSHGMember" />
+                <ScalarProperty Name="NameofEnterpriseOwner" ColumnName="NameofEnterpriseOwner" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="EducationQlf_Id" ColumnName="EducationQlf_Id" />
+                <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
+                <ScalarProperty Name="TypeofEnterpriseBusin_Id" ColumnName="TypeofEnterpriseBusin_Id" />
+                <ScalarProperty Name="BusinessOwnedType_Id" ColumnName="BusinessOwnedType_Id" />
+                <ScalarProperty Name="EstablishedEnterpriseType_Id" ColumnName="EstablishedEnterpriseType_Id" />
+                <ScalarProperty Name="TypeOfInvestBusin_Id" ColumnName="TypeOfInvestBusin_Id" />
+                <ScalarProperty Name="TookSourceOfLoan_Id" ColumnName="TookSourceOfLoan_Id" />
+                <ScalarProperty Name="TookLoanAmt" ColumnName="TookLoanAmt" />
+                <ScalarProperty Name="StartBusinessInvestAmt" ColumnName="StartBusinessInvestAmt" />
+                <ScalarProperty Name="StartYourBusinessTakeAmt" ColumnName="StartYourBusinessTakeAmt" />
+                <ScalarProperty Name="MonthlyProfitBusiness" ColumnName="MonthlyProfitBusiness" />
+                <ScalarProperty Name="WorkInEnterprises_FamilyMembers" ColumnName="WorkInEnterprises_FamilyMembers" />
+                <ScalarProperty Name="WorkInEnterprises_SHGMembers" ColumnName="WorkInEnterprises_SHGMembers" />
+                <ScalarProperty Name="WorkInEnterprises_AssitantStaffs" ColumnName="WorkInEnterprises_AssitantStaffs" />
+                <ScalarProperty Name="TypeOfMachineEnterprise_Id" ColumnName="TypeOfMachineEnterprise_Id" />
+                <ScalarProperty Name="MotorBasedOnMachinesInActualUsed" ColumnName="MotorBasedOnMachinesInActualUsed" />
+                <ScalarProperty Name="MachineryPowerkilowatt_Id" ColumnName="MachineryPowerkilowatt_Id" />
+                <ScalarProperty Name="ElectricityConnection_Id" ColumnName="ElectricityConnection_Id" />
+                <ScalarProperty Name="ConnectionPhaseofPower_Id" ColumnName="ConnectionPhaseofPower_Id" />
+                <ScalarProperty Name="MonthlyElectricityConsumption_Id" ColumnName="MonthlyElectricityConsumption_Id" />
+                <ScalarProperty Name="MachineSourceofEnergy_Id" ColumnName="MachineSourceofEnergy_Id" />
+                <ScalarProperty Name="Solar_InKilowatt_Id" ColumnName="Solar_InKilowatt_Id" />
+                <ScalarProperty Name="Solar_EnergyPanelYesNo_Id" ColumnName="Solar_EnergyPanelYesNo_Id" />
+                <ScalarProperty Name="Solar_ExpenditureIncurredAmt" ColumnName="Solar_ExpenditureIncurredAmt" />
+                <ScalarProperty Name="SubsidySolarReceive_Id" ColumnName="SubsidySolarReceive_Id" />
+                <ScalarProperty Name="LoanSolarPanelsYesNo_Id" ColumnName="LoanSolarPanelsYesNo_Id" />
+                <ScalarProperty Name="MonthAvgAmtSavedDescription_Id" ColumnName="MonthAvgAmtSavedDescription_Id" />
+                <ScalarProperty Name="ElectricityUsedHours_Id" ColumnName="ElectricityUsedHours_Id" />
+                <ScalarProperty Name="MonthlyExpenseInElectricityBill_Id" ColumnName="MonthlyExpenseInElectricityBill_Id" />
+                <ScalarProperty Name="GeneratorElectricityUsedHours_Id" ColumnName="GeneratorElectricityUsedHours_Id" />
+                <ScalarProperty Name="MonthlyExpenseFuelSource_Id" ColumnName="MonthlyExpenseFuelSource_Id" />
+                <ScalarProperty Name="MonthlyRepairCost_Id" ColumnName="MonthlyRepairCost_Id" />
+                <ScalarProperty Name="HeardAboutSolarEYesNo_Id" ColumnName="HeardAboutSolarEYesNo_Id" />
+                <ScalarProperty Name="HeardAboutSolarEYes_IfYeswhere" ColumnName="HeardAboutSolarEYes_IfYeswhere" />
+                <ScalarProperty Name="InformationknowledgeGovtSubsidyOfSEYesNo_Id" ColumnName="InformationknowledgeGovtSubsidyOfSEYesNo_Id" />
+                <ScalarProperty Name="InformationknowledgeIfYesAmtGovPaid" ColumnName="InformationknowledgeIfYesAmtGovPaid" />
+                <ScalarProperty Name="LoanProcedureInSEYesNo_Id" ColumnName="LoanProcedureInSEYesNo_Id" />
+                <ScalarProperty Name="AdoptSolarizationYesNo_Id" ColumnName="AdoptSolarizationYesNo_Id" />
+                <ScalarProperty Name="CapitalArrangedForSEYesNo_Id" ColumnName="CapitalArrangedForSEYesNo_Id" />
+                <ScalarProperty Name="IfYesCapitalArrangedForSEAmt" ColumnName="IfYesCapitalArrangedForSEAmt" />
+                <ScalarProperty Name="OtherIndustriesEnterprisesYesNo_Id" ColumnName="OtherIndustriesEnterprisesYesNo_Id" />
+                <ScalarProperty Name="IfYesFillForm_OtherIndustriesEnterprises" ColumnName="IfYesFillForm_OtherIndustriesEnterprises" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedOn" ColumnName="IsDeletedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_LoanDescribeSourceM">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_LoanDescribeSourceM">
+              <MappingFragment StoreEntitySet="Tbl_LoanDescribeSourceM">
+                <ScalarProperty Name="LoanDescribeSource_Id" ColumnName="LoanDescribeSource_Id" />
+                <ScalarProperty Name="LoanDescribeSourceInEng" ColumnName="LoanDescribeSourceInEng" />
+                <ScalarProperty Name="LoanDescribeSourceInHindi" ColumnName="LoanDescribeSourceInHindi" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="DeWee_DBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
+            <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Tbl_IndtSolarization">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_IndtSolarization">
-              <MappingFragment StoreEntitySet="Tbl_IndtSolarization">
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="IsDeletedOn" ColumnName="IsDeletedOn" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IfYesFillTheForm" ColumnName="IfYesFillTheForm" />
-                <ScalarProperty Name="OtherIndustriesEnterprises_Id" ColumnName="OtherIndustriesEnterprises_Id" />
-                <ScalarProperty Name="IfYesCapitalArrangedForSE_Id" ColumnName="IfYesCapitalArrangedForSE_Id" />
-                <ScalarProperty Name="CapitalArrangedForSE_Id" ColumnName="CapitalArrangedForSE_Id" />
-                <ScalarProperty Name="AdoptSolarization_Id" ColumnName="AdoptSolarization_Id" />
-                <ScalarProperty Name="LoanProcedureInSE_Id" ColumnName="LoanProcedureInSE_Id" />
-                <ScalarProperty Name="IfYesAmtGovPaid" ColumnName="IfYesAmtGovPaid" />
-                <ScalarProperty Name="InformationknowledgeAboutgovtsubsidyOfSE_Id" ColumnName="InformationknowledgeAboutgovtsubsidyOfSE_Id" />
-                <ScalarProperty Name="IfYeswhere" ColumnName="IfYeswhere" />
-                <ScalarProperty Name="HeardAboutSE_Id" ColumnName="HeardAboutSE_Id" />
-                <ScalarProperty Name="RepairCost_Id" ColumnName="RepairCost_Id" />
-                <ScalarProperty Name="ExpenseFuelSource_Id" ColumnName="ExpenseFuelSource_Id" />
-                <ScalarProperty Name="GeneratorElectricityUsed_Id" ColumnName="GeneratorElectricityUsed_Id" />
-                <ScalarProperty Name="MonthlyExpenseInElectricity_Id" ColumnName="MonthlyExpenseInElectricity_Id" />
-                <ScalarProperty Name="ElectricityUsed_Id" ColumnName="ElectricityUsed_Id" />
-                <ScalarProperty Name="AvgAmtSavedFromSolarE_Id" ColumnName="AvgAmtSavedFromSolarE_Id" />
-                <ScalarProperty Name="LoanForSolarPanels_Id" ColumnName="LoanForSolarPanels_Id" />
-                <ScalarProperty Name="Subsidy_Id" ColumnName="Subsidy_Id" />
-                <ScalarProperty Name="Solar_ExpenditureIncurredAmt" ColumnName="Solar_ExpenditureIncurredAmt" />
-                <ScalarProperty Name="Solar_EnergyPanelYesNo_Id" ColumnName="Solar_EnergyPanelYesNo_Id" />
-                <ScalarProperty Name="Solar_InKilowatt_Id" ColumnName="Solar_InKilowatt_Id" />
-                <ScalarProperty Name="MachineSourceofEnergy_Id" ColumnName="MachineSourceofEnergy_Id" />
-                <ScalarProperty Name="MonthlyElectricityConsumption_Id" ColumnName="MonthlyElectricityConsumption_Id" />
-                <ScalarProperty Name="ConnectionPhaseofPower_Id" ColumnName="ConnectionPhaseofPower_Id" />
-                <ScalarProperty Name="ElectricityConnection_Id" ColumnName="ElectricityConnection_Id" />
-                <ScalarProperty Name="MachineryPowerkilowatt_Id" ColumnName="MachineryPowerkilowatt_Id" />
-                <ScalarProperty Name="MotorBasedOnMachinesInActualUsed" ColumnName="MotorBasedOnMachinesInActualUsed" />
-                <ScalarProperty Name="TypeOfMachineEnterprise_Id" ColumnName="TypeOfMachineEnterprise_Id" />
-                <ScalarProperty Name="WorkInEnterprises_AssitantStaffs" ColumnName="WorkInEnterprises_AssitantStaffs" />
-                <ScalarProperty Name="WorkInEnterprises_SHGMembers" ColumnName="WorkInEnterprises_SHGMembers" />
-                <ScalarProperty Name="WorkInEnterprises_FamilyMembers" ColumnName="WorkInEnterprises_FamilyMembers" />
-                <ScalarProperty Name="MonthlyProfitBusiness" ColumnName="MonthlyProfitBusiness" />
-                <ScalarProperty Name="StartYourBusinessTakeAmt" ColumnName="StartYourBusinessTakeAmt" />
-                <ScalarProperty Name="StartBusinessInvestAmt" ColumnName="StartBusinessInvestAmt" />
-                <ScalarProperty Name="TookLoanAmt" ColumnName="TookLoanAmt" />
-                <ScalarProperty Name="TookSourceOfLoan_Id" ColumnName="TookSourceOfLoan_Id" />
-                <ScalarProperty Name="TypeOfInvestBusin_Id" ColumnName="TypeOfInvestBusin_Id" />
-                <ScalarProperty Name="EstablishedEnterpriseType_Id" ColumnName="EstablishedEnterpriseType_Id" />
-                <ScalarProperty Name="BusinessOwnedType_Id" ColumnName="BusinessOwnedType_Id" />
-                <ScalarProperty Name="TypeofEnterpriseBusin_Id" ColumnName="TypeofEnterpriseBusin_Id" />
-                <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
-                <ScalarProperty Name="EducationQlf_Id" ColumnName="EducationQlf_Id" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="NameofEnterpriseOwner" ColumnName="NameofEnterpriseOwner" />
-                <ScalarProperty Name="NameofSHGmember" ColumnName="NameofSHGmember" />
-                <ScalarProperty Name="YearOfSHG" ColumnName="YearOfSHG" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="TempRegNo" ColumnName="TempRegNo" />
-                <ScalarProperty Name="VO_Id" ColumnName="VO_Id" />
-                <ScalarProperty Name="CLF_Id" ColumnName="CLF_Id" />
-                <ScalarProperty Name="Village_Id" ColumnName="Village_Id" />
-                <ScalarProperty Name="Panchayat_Id" ColumnName="Panchayat_Id" />
-                <ScalarProperty Name="Block_Id" ColumnName="Block_Id" />
-                <ScalarProperty Name="District_Id" ColumnName="District_Id" />
-                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
-                <ScalarProperty Name="Indt_Id" ColumnName="Indt_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
