@@ -1,5 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DeWee_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DeWee_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="DeWee_DBModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetUserClaims" EntityType="DeWee_DBModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="DeWee_DBModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="DeWee_DBModel.AspNetUser" />
+    <EntitySet Name="Tbl_Block_Master" EntityType="DeWee_DBModel.Tbl_Block_Master" />
+    <EntitySet Name="Tbl_BusinessInvestmentM" EntityType="DeWee_DBModel.Tbl_BusinessInvestmentM" />
+    <EntitySet Name="Tbl_BusinessOwnedM" EntityType="DeWee_DBModel.Tbl_BusinessOwnedM" />
+    <EntitySet Name="Tbl_BusinessTypeM" EntityType="DeWee_DBModel.Tbl_BusinessTypeM" />
+    <EntitySet Name="Tbl_CasteM" EntityType="DeWee_DBModel.Tbl_CasteM" />
+    <EntitySet Name="Tbl_CLF_Master" EntityType="DeWee_DBModel.Tbl_CLF_Master" />
+    <EntitySet Name="Tbl_District_Master" EntityType="DeWee_DBModel.Tbl_District_Master" />
+    <EntitySet Name="Tbl_ElectricityConsumptionM" EntityType="DeWee_DBModel.Tbl_ElectricityConsumptionM" />
+    <EntitySet Name="Tbl_ElectricityUsedM" EntityType="DeWee_DBModel.Tbl_ElectricityUsedM" />
+    <EntitySet Name="Tbl_MachineryPowerM" EntityType="DeWee_DBModel.Tbl_MachineryPowerM" />
+    <EntitySet Name="Tbl_MoneySavedSEM" EntityType="DeWee_DBModel.Tbl_MoneySavedSEM" />
+    <EntitySet Name="Tbl_MonthlyExpenseEBM" EntityType="DeWee_DBModel.Tbl_MonthlyExpenseEBM" />
+    <EntitySet Name="Tbl_Panchayat_Master" EntityType="DeWee_DBModel.Tbl_Panchayat_Master" />
+    <EntitySet Name="Tbl_PowerConnectionM" EntityType="DeWee_DBModel.Tbl_PowerConnectionM" />
+    <EntitySet Name="Tbl_SolarkilowattM" EntityType="DeWee_DBModel.Tbl_SolarkilowattM" />
+    <EntitySet Name="Tbl_SourceEnergyM" EntityType="DeWee_DBModel.Tbl_SourceEnergyM" />
+    <EntitySet Name="Tbl_State_Master" EntityType="DeWee_DBModel.Tbl_State_Master" />
+    <EntitySet Name="Tbl_SubisdyM" EntityType="DeWee_DBModel.Tbl_SubisdyM" />
+    <EntitySet Name="Tbl_TypeYesNoM" EntityType="DeWee_DBModel.Tbl_TypeYesNoM" />
+    <EntitySet Name="Tbl_Village_Master" EntityType="DeWee_DBModel.Tbl_Village_Master" />
+    <EntitySet Name="Tbl_VO_Master" EntityType="DeWee_DBModel.Tbl_VO_Master" />
+    <EntitySet Name="Tbl_Educational_QualificationM" EntityType="DeWee_DBModel.Tbl_Educational_QualificationM" />
+    <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="DeWee_DBModel.Tbl_Enterprise_EstablishedM" />
+    <EntitySet Name="Tbl_EnterpriseM" EntityType="DeWee_DBModel.Tbl_EnterpriseM" />
+    <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="DeWee_DBModel.Tbl_EnterpriseMachineM" />
+    <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="DeWee_DBModel.Tbl_LoanDescribeSourceM" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <EntitySet Name="AspNetRoles" EntityType="DeWee_DBModel.AspNetRole" />
+    <AssociationSet Name="AspNetUserRoles" Association="DeWee_DBModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="Tbl_IndtSolarization" EntityType="DeWee_DBModel.Tbl_IndtSolarization" />
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
   <EntityType Name="Tbl_Block_Master">
     <Key>
       <PropertyRef Name="BlockId_pk" />
@@ -12,6 +109,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_BusinessInvestmentM">
     <Key>
@@ -23,6 +121,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_BusinessOwnedM">
     <Key>
@@ -34,6 +133,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_BusinessTypeM">
     <Key>
@@ -45,6 +145,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_CasteM">
     <Key>
@@ -56,12 +157,13 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_CLF_Master">
     <Key>
-      <PropertyRef Name="CLF_ID_pk" />
+      <PropertyRef Name="CLFId_pk" />
     </Key>
-    <Property Name="CLF_ID_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CLFId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DistrictId_fk" Type="Int32" />
     <Property Name="BlockId_fk" Type="Int32" />
     <Property Name="CLFName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -70,6 +172,7 @@
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_District_Master">
     <Key>
@@ -82,6 +185,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_ElectricityConsumptionM">
     <Key>
@@ -93,6 +197,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_ElectricityUsedM">
     <Key>
@@ -116,6 +221,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_MoneySavedSEM">
     <Key>
@@ -147,12 +253,11 @@
     </Key>
     <Property Name="PanchayatId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DistrictId_fk" Type="Int32" />
-    <Property Name="Blockid_fk" Type="Int32" />
-    <Property Name="Block" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="CLF_Id_fk" Type="Int32" />
-    <Property Name="Panchayat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="FPCP_Panchayat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BlockId_fk" Type="Int32" />
+    <Property Name="CLFId_fk" Type="Int32" />
+    <Property Name="PanchayatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_PowerConnectionM">
     <Key>
@@ -161,17 +266,6 @@
     <Property Name="PowerConnection_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PowerConnectionInEng" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="PowerConnectionInHindi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="Tbl_SolarEpanelM">
-    <Key>
-      <PropertyRef Name="SolarEpanel_Id" />
-    </Key>
-    <Property Name="SolarEpanel_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SolarEpanelInEng" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="SolarEpanelInHindi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
@@ -199,6 +293,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_State_Master">
     <Key>
@@ -207,6 +302,7 @@
     <Property Name="StateId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StateCode" Type="Int32" Nullable="false" />
     <Property Name="StateName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_SubisdyM">
     <Key>
@@ -220,24 +316,52 @@
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="OrderBy" Type="Int32" />
   </EntityType>
-  <EntityType Name="Tbl_VO_Master">
+  <EntityType Name="Tbl_TypeYesNoM">
     <Key>
-      <PropertyRef Name="Void_pk" />
+      <PropertyRef Name="SolarEpanel_Id" />
     </Key>
-    <Property Name="Void_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SolarEpanel_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SolarEpanelInEng" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SolarEpanelInHindi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Village_Master">
+    <Key>
+      <PropertyRef Name="VillageId_pk" />
+    </Key>
+    <Property Name="VillageId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DistrictId_fk" Type="Int32" />
     <Property Name="BlockId_fk" Type="Int32" />
-    <Property Name="CLF_Id_fk" Type="Int32" />
-    <Property Name="Panchayatid_fk" Type="Int32" />
-    <Property Name="Panchayat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Village_Organization" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="F5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="CRUD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CLFId_fk" Type="Int32" />
+    <Property Name="PanchayatId_fk" Type="Int32" />
+    <Property Name="VOrgId_fk" Type="Int32" />
+    <Property Name="VillageName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_VO_Master">
+    <Key>
+      <PropertyRef Name="VOrgId_pk" />
+    </Key>
+    <Property Name="VOrgId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictId_fk" Type="Int32" />
+    <Property Name="BlockId_fk" Type="Int32" />
+    <Property Name="CLFId_fk" Type="Int32" />
+    <Property Name="PanchayatId_fk" Type="Int32" />
+    <Property Name="Village_OrganizationName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_Educational_QualificationM">
     <Key>
@@ -249,6 +373,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_Enterprise_EstablishedM">
     <Key>
@@ -260,6 +385,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_EnterpriseM">
     <Key>
@@ -271,6 +397,7 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <EntityType Name="Tbl_EnterpriseMachineM">
     <Key>
@@ -282,7 +409,60 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
+  <EntityType Name="Tbl_LoanDescribeSourceM">
+    <Key>
+      <PropertyRef Name="LoanDescribeSource_Id" />
+    </Key>
+    <Property Name="LoanDescribeSource_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanDescribeSourceInEng" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="LoanDescribeSourceInHindi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DeWee_DBModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DeWee_DBModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <Association Name="AspNetUserRoles">
+    <End Type="DeWee_DBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
   <EntityType Name="Tbl_IndtSolarization">
     <Key>
       <PropertyRef Name="Indt_Id" />
@@ -295,7 +475,10 @@
     <Property Name="Village_Id" Type="Int32" />
     <Property Name="CLF_Id" Type="Int32" />
     <Property Name="VO_Id" Type="Int32" />
-    <Property Name="SHG_Id" Type="Int32" />
+    <Property Name="TempRegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="RegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
     <Property Name="YearOfSHG" Type="Int32" />
     <Property Name="NameofSHGmember" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="NameofEnterpriseOwner" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
@@ -303,30 +486,28 @@
     <Property Name="DOB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="EducationQlf_Id" Type="Int32" />
     <Property Name="Caste_Id" Type="Int32" />
-    <Property Name="PhoneNumber" Type="Int32" />
-    <Property Name="TypeofEnterprise_Id" Type="Int32" />
+    <Property Name="TypeofEnterpriseBusin_Id" Type="Int32" />
     <Property Name="BusinessOwnedType_Id" Type="Int32" />
-    <Property Name="EstablishedType_Id" Type="Int32" />
-    <Property Name="ArrangedcapitalBusiness_Id" Type="Int32" />
-    <Property Name="SourceOfLoan_Id" Type="Int32" />
-    <Property Name="LoanAmtSHG_Id" Type="Int32" />
-    <Property Name="LoanAmtBank_Id" Type="Int32" />
-    <Property Name="LoanAmtRelatives_Id" Type="Int32" />
-    <Property Name="LoanAmtOtherSource_Id" Type="Int32" />
-    <Property Name="AmtToStartBusiness_Id" Type="Int32" />
-    <Property Name="LoanForBusiness_Id" Type="Int32" />
-    <Property Name="ProfitFromBusiness_Id" Type="Int32" />
-    <Property Name="PeopleWorkInEnterprises_Id" Type="Int32" />
-    <Property Name="MachineType_Id" Type="Int32" />
-    <Property Name="MachinesInUsed_Id" Type="Int32" />
-    <Property Name="MachineryPower_Id" Type="Int32" />
+    <Property Name="EstablishedEnterpriseType_Id" Type="Int32" />
+    <Property Name="TypeOfInvestBusin_Id" Type="Int32" />
+    <Property Name="TookSourceOfLoan_Id" Type="Int32" />
+    <Property Name="TookLoanAmt" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="StartBusinessInvestAmt" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="StartYourBusinessTakeAmt" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="MonthlyProfitBusiness" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="WorkInEnterprises_FamilyMembers" Type="Int32" />
+    <Property Name="WorkInEnterprises_SHGMembers" Type="Int32" />
+    <Property Name="WorkInEnterprises_AssitantStaffs" Type="Int32" />
+    <Property Name="TypeOfMachineEnterprise_Id" Type="Int32" />
+    <Property Name="MotorBasedOnMachinesInActualUsed" Type="Int32" />
+    <Property Name="MachineryPowerkilowatt_Id" Type="Int32" />
     <Property Name="ElectricityConnection_Id" Type="Int32" />
-    <Property Name="ElectcityPhase_Id" Type="Int32" />
+    <Property Name="ConnectionPhaseofPower_Id" Type="Int32" />
     <Property Name="MonthlyElectricityConsumption_Id" Type="Int32" />
-    <Property Name="MachineSource_Id" Type="Int32" />
-    <Property Name="SolarInKilowatt_Id" Type="Int32" />
-    <Property Name="EnergyPanel_Id" Type="Int32" />
-    <Property Name="ExpenditureIncurredSolar_Id" Type="Int32" />
+    <Property Name="MachineSourceofEnergy_Id" Type="Int32" />
+    <Property Name="Solar_InKilowatt_Id" Type="Int32" />
+    <Property Name="Solar_EnergyPanelYesNo_Id" Type="Int32" />
+    <Property Name="Solar_ExpenditureIncurredAmt" Type="Decimal" Precision="15" Scale="5" />
     <Property Name="Subsidy_Id" Type="Int32" />
     <Property Name="LoanForSolarPanels_Id" Type="Int32" />
     <Property Name="AvgAmtSavedFromSolarE_Id" Type="Int32" />
@@ -352,44 +533,6 @@
     <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
     <Property Name="IsDeleted" Type="Boolean" />
     <Property Name="IsDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="OrderBy" Type="Int32" />
   </EntityType>
-  <EntityType Name="Tbl_LoanDescribeSourceM">
-    <Key>
-      <PropertyRef Name="LoanDescribeSource_Id" />
-    </Key>
-    <Property Name="LoanDescribeSource_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LoanDescribeSourceInEng" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="LoanDescribeSourceInHindi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityContainer Name="DeWee_DBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Tbl_Block_Master" EntityType="Self.Tbl_Block_Master" />
-    <EntitySet Name="Tbl_BusinessInvestmentM" EntityType="Self.Tbl_BusinessInvestmentM" />
-    <EntitySet Name="Tbl_BusinessOwnedM" EntityType="Self.Tbl_BusinessOwnedM" />
-    <EntitySet Name="Tbl_BusinessTypeM" EntityType="Self.Tbl_BusinessTypeM" />
-    <EntitySet Name="Tbl_CasteM" EntityType="Self.Tbl_CasteM" />
-    <EntitySet Name="Tbl_CLF_Master" EntityType="Self.Tbl_CLF_Master" />
-    <EntitySet Name="Tbl_District_Master" EntityType="Self.Tbl_District_Master" />
-    <EntitySet Name="Tbl_ElectricityConsumptionM" EntityType="Self.Tbl_ElectricityConsumptionM" />
-    <EntitySet Name="Tbl_ElectricityUsedM" EntityType="Self.Tbl_ElectricityUsedM" />
-    <EntitySet Name="Tbl_MachineryPowerM" EntityType="Self.Tbl_MachineryPowerM" />
-    <EntitySet Name="Tbl_MoneySavedSEM" EntityType="Self.Tbl_MoneySavedSEM" />
-    <EntitySet Name="Tbl_MonthlyExpenseEBM" EntityType="Self.Tbl_MonthlyExpenseEBM" />
-    <EntitySet Name="Tbl_Panchayat_Master" EntityType="Self.Tbl_Panchayat_Master" />
-    <EntitySet Name="Tbl_PowerConnectionM" EntityType="Self.Tbl_PowerConnectionM" />
-    <EntitySet Name="Tbl_SolarEpanelM" EntityType="Self.Tbl_SolarEpanelM" />
-    <EntitySet Name="Tbl_SolarkilowattM" EntityType="Self.Tbl_SolarkilowattM" />
-    <EntitySet Name="Tbl_SourceEnergyM" EntityType="Self.Tbl_SourceEnergyM" />
-    <EntitySet Name="Tbl_State_Master" EntityType="Self.Tbl_State_Master" />
-    <EntitySet Name="Tbl_SubisdyM" EntityType="Self.Tbl_SubisdyM" />
-    <EntitySet Name="Tbl_VO_Master" EntityType="Self.Tbl_VO_Master" />
-    <EntitySet Name="Tbl_Educational_QualificationM" EntityType="Self.Tbl_Educational_QualificationM" />
-    <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="Self.Tbl_Enterprise_EstablishedM" />
-    <EntitySet Name="Tbl_EnterpriseM" EntityType="Self.Tbl_EnterpriseM" />
-    <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="Self.Tbl_EnterpriseMachineM" />
-    <EntitySet Name="Tbl_IndtSolarization" EntityType="Self.Tbl_IndtSolarization" />
-    <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="Self.Tbl_LoanDescribeSourceM" />
-  </EntityContainer>
 </Schema>

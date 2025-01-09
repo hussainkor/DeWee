@@ -1,5 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DeWee_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
   <EntityType Name="Tbl_Block_Master">
     <Key>
       <PropertyRef Name="BlockId_pk" />
@@ -12,6 +73,7 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_BusinessInvestmentM">
     <Key>
@@ -23,6 +85,7 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_BusinessOwnedM">
     <Key>
@@ -34,6 +97,7 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_BusinessTypeM">
     <Key>
@@ -45,6 +109,7 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_CasteM">
     <Key>
@@ -56,12 +121,13 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_CLF_Master">
     <Key>
-      <PropertyRef Name="CLF_ID_pk" />
+      <PropertyRef Name="CLFId_pk" />
     </Key>
-    <Property Name="CLF_ID_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CLFId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DistrictId_fk" Type="int" />
     <Property Name="BlockId_fk" Type="int" />
     <Property Name="CLFName" Type="nvarchar" MaxLength="255" />
@@ -70,6 +136,7 @@
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="UpdatedBy" Type="nvarchar" MaxLength="200" />
     <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_District_Master">
     <Key>
@@ -82,6 +149,7 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DeWee_DB.dbo.Tbl_Educational_QualificationM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -95,6 +163,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_Educational_QualificationM' does 
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_ElectricityConsumptionM">
     <Key>
@@ -106,6 +175,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_Educational_QualificationM' does 
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_ElectricityUsedM">
     <Key>
@@ -131,6 +201,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_Enterprise_EstablishedM' does not
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DeWee_DB.dbo.Tbl_EnterpriseM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -144,6 +215,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_EnterpriseM' does not have a prim
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DeWee_DB.dbo.Tbl_EnterpriseMachineM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -157,6 +229,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_EnterpriseMachineM' does not have
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -172,7 +245,10 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
     <Property Name="Village_Id" Type="int" />
     <Property Name="CLF_Id" Type="int" />
     <Property Name="VO_Id" Type="int" />
-    <Property Name="SHG_Id" Type="int" />
+    <Property Name="TempRegNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="RegNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="AadharNo" Type="varchar" MaxLength="15" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
     <Property Name="YearOfSHG" Type="int" />
     <Property Name="NameofSHGmember" Type="nvarchar" MaxLength="300" />
     <Property Name="NameofEnterpriseOwner" Type="nvarchar" MaxLength="300" />
@@ -180,30 +256,28 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
     <Property Name="DOB" Type="varchar" MaxLength="20" />
     <Property Name="EducationQlf_Id" Type="int" />
     <Property Name="Caste_Id" Type="int" />
-    <Property Name="PhoneNumber" Type="int" />
-    <Property Name="TypeofEnterprise_Id" Type="int" />
+    <Property Name="TypeofEnterpriseBusin_Id" Type="int" />
     <Property Name="BusinessOwnedType_Id" Type="int" />
-    <Property Name="EstablishedType_Id" Type="int" />
-    <Property Name="ArrangedcapitalBusiness_Id" Type="int" />
-    <Property Name="SourceOfLoan_Id" Type="int" />
-    <Property Name="LoanAmtSHG_Id" Type="int" />
-    <Property Name="LoanAmtBank_Id" Type="int" />
-    <Property Name="LoanAmtRelatives_Id" Type="int" />
-    <Property Name="LoanAmtOtherSource_Id" Type="int" />
-    <Property Name="AmtToStartBusiness_Id" Type="int" />
-    <Property Name="LoanForBusiness_Id" Type="int" />
-    <Property Name="ProfitFromBusiness_Id" Type="int" />
-    <Property Name="PeopleWorkInEnterprises_Id" Type="int" />
-    <Property Name="MachineType_Id" Type="int" />
-    <Property Name="MachinesInUsed_Id" Type="int" />
-    <Property Name="MachineryPower_Id" Type="int" />
+    <Property Name="EstablishedEnterpriseType_Id" Type="int" />
+    <Property Name="TypeOfInvestBusin_Id" Type="int" />
+    <Property Name="TookSourceOfLoan_Id" Type="int" />
+    <Property Name="TookLoanAmt" Type="decimal" Precision="15" Scale="5" />
+    <Property Name="StartBusinessInvestAmt" Type="decimal" Precision="15" Scale="5" />
+    <Property Name="StartYourBusinessTakeAmt" Type="decimal" Precision="15" Scale="5" />
+    <Property Name="MonthlyProfitBusiness" Type="decimal" Precision="15" Scale="5" />
+    <Property Name="WorkInEnterprises_FamilyMembers" Type="int" />
+    <Property Name="WorkInEnterprises_SHGMembers" Type="int" />
+    <Property Name="WorkInEnterprises_AssitantStaffs" Type="int" />
+    <Property Name="TypeOfMachineEnterprise_Id" Type="int" />
+    <Property Name="MotorBasedOnMachinesInActualUsed" Type="int" />
+    <Property Name="MachineryPowerkilowatt_Id" Type="int" />
     <Property Name="ElectricityConnection_Id" Type="int" />
-    <Property Name="ElectcityPhase_Id" Type="int" />
+    <Property Name="ConnectionPhaseofPower_Id" Type="int" />
     <Property Name="MonthlyElectricityConsumption_Id" Type="int" />
-    <Property Name="MachineSource_Id" Type="int" />
-    <Property Name="SolarInKilowatt_Id" Type="int" />
-    <Property Name="EnergyPanel_Id" Type="int" />
-    <Property Name="ExpenditureIncurredSolar_Id" Type="int" />
+    <Property Name="MachineSourceofEnergy_Id" Type="int" />
+    <Property Name="Solar_InKilowatt_Id" Type="int" />
+    <Property Name="Solar_EnergyPanelYesNo_Id" Type="int" />
+    <Property Name="Solar_ExpenditureIncurredAmt" Type="decimal" Precision="15" Scale="5" />
     <Property Name="Subsidy_Id" Type="int" />
     <Property Name="LoanForSolarPanels_Id" Type="int" />
     <Property Name="AvgAmtSavedFromSolarE_Id" Type="int" />
@@ -229,6 +303,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
     <Property Name="UpdatedOn" Type="datetime" />
     <Property Name="IsDeleted" Type="bit" />
     <Property Name="IsDeletedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -242,6 +317,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_MachineryPowerM">
     <Key>
@@ -253,6 +329,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_MoneySavedSEM">
     <Key>
@@ -284,12 +361,11 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     </Key>
     <Property Name="PanchayatId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DistrictId_fk" Type="int" />
-    <Property Name="Blockid_fk" Type="int" />
-    <Property Name="Block" Type="nvarchar" MaxLength="255" />
-    <Property Name="CLF_Id_fk" Type="int" />
-    <Property Name="Panchayat" Type="nvarchar" MaxLength="255" />
-    <Property Name="FPCP_Panchayat" Type="nvarchar" MaxLength="255" />
+    <Property Name="BlockId_fk" Type="int" />
+    <Property Name="CLFId_fk" Type="int" />
+    <Property Name="PanchayatName" Type="nvarchar" MaxLength="255" />
     <Property Name="IsActive" Type="bit" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_PowerConnectionM">
     <Key>
@@ -298,17 +374,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <Property Name="PowerConnection_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PowerConnectionInEng" Type="varchar" MaxLength="500" />
     <Property Name="PowerConnectionInHindi" Type="nvarchar" MaxLength="500" />
-    <Property Name="IsActive" Type="bit" />
-    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
-    <Property Name="CreatedOn" Type="datetime" />
-  </EntityType>
-  <EntityType Name="Tbl_SolarEpanelM">
-    <Key>
-      <PropertyRef Name="SolarEpanel_Id" />
-    </Key>
-    <Property Name="SolarEpanel_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SolarEpanelInEng" Type="varchar" MaxLength="500" />
-    <Property Name="SolarEpanelInHindi" Type="nvarchar" MaxLength="500" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
@@ -336,6 +401,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_State_Master">
     <Key>
@@ -344,6 +410,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <Property Name="StateId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StateCode" Type="int" Nullable="false" />
     <Property Name="StateName" Type="nvarchar" MaxLength="255" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_SubisdyM">
     <Key>
@@ -357,26 +424,116 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="OrderBy" Type="int" />
   </EntityType>
-  <EntityType Name="Tbl_VO_Master">
+  <EntityType Name="Tbl_TypeYesNoM">
     <Key>
-      <PropertyRef Name="Void_pk" />
+      <PropertyRef Name="SolarEpanel_Id" />
     </Key>
-    <Property Name="Void_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SolarEpanel_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SolarEpanelInEng" Type="varchar" MaxLength="500" />
+    <Property Name="SolarEpanelInHindi" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Village_Master">
+    <Key>
+      <PropertyRef Name="VillageId_pk" />
+    </Key>
+    <Property Name="VillageId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DistrictId_fk" Type="int" />
     <Property Name="BlockId_fk" Type="int" />
-    <Property Name="CLF_Id_fk" Type="int" />
-    <Property Name="Panchayatid_fk" Type="int" />
-    <Property Name="Panchayat" Type="nvarchar" MaxLength="255" />
-    <Property Name="Village_Organization" Type="nvarchar" MaxLength="255" />
-    <Property Name="F5" Type="nvarchar" MaxLength="255" />
-    <Property Name="CRUD" Type="nvarchar" MaxLength="255" />
+    <Property Name="CLFId_fk" Type="int" />
+    <Property Name="PanchayatId_fk" Type="int" />
+    <Property Name="VOrgId_fk" Type="int" />
+    <Property Name="VillageName" Type="nvarchar" MaxLength="255" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="UpdatedBy" Type="nvarchar" MaxLength="200" />
     <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
   </EntityType>
+  <EntityType Name="Tbl_VO_Master">
+    <Key>
+      <PropertyRef Name="VOrgId_pk" />
+    </Key>
+    <Property Name="VOrgId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId_fk" Type="int" />
+    <Property Name="BlockId_fk" Type="int" />
+    <Property Name="CLFId_fk" Type="int" />
+    <Property Name="PanchayatId_fk" Type="int" />
+    <Property Name="Village_OrganizationName" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="200" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="OrderBy" Type="int" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DeWee_DBModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Block_Master" EntityType="Self.Tbl_Block_Master" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_BusinessInvestmentM" EntityType="Self.Tbl_BusinessInvestmentM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_BusinessOwnedM" EntityType="Self.Tbl_BusinessOwnedM" Schema="dbo" store:Type="Tables" />
@@ -391,11 +548,12 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <EntitySet Name="Tbl_MonthlyExpenseEBM" EntityType="Self.Tbl_MonthlyExpenseEBM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Panchayat_Master" EntityType="Self.Tbl_Panchayat_Master" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PowerConnectionM" EntityType="Self.Tbl_PowerConnectionM" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Tbl_SolarEpanelM" EntityType="Self.Tbl_SolarEpanelM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_SolarkilowattM" EntityType="Self.Tbl_SolarkilowattM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_SourceEnergyM" EntityType="Self.Tbl_SourceEnergyM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_State_Master" EntityType="Self.Tbl_State_Master" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_SubisdyM" EntityType="Self.Tbl_SubisdyM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_TypeYesNoM" EntityType="Self.Tbl_TypeYesNoM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Village_Master" EntityType="Self.Tbl_Village_Master" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_VO_Master" EntityType="Self.Tbl_VO_Master" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Educational_QualificationM" EntityType="Self.Tbl_Educational_QualificationM" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -404,7 +562,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_Educational_QualificationM].[QualificationInHindi] AS [QualificationInHindi], 
     [Tbl_Educational_QualificationM].[IsActive] AS [IsActive], 
     [Tbl_Educational_QualificationM].[CreatedBy] AS [CreatedBy], 
-    [Tbl_Educational_QualificationM].[CreatedOn] AS [CreatedOn]
+    [Tbl_Educational_QualificationM].[CreatedOn] AS [CreatedOn], 
+    [Tbl_Educational_QualificationM].[OrderBy] AS [OrderBy]
     FROM [dbo].[Tbl_Educational_QualificationM] AS [Tbl_Educational_QualificationM]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="Self.Tbl_Enterprise_EstablishedM" store:Type="Tables" store:Schema="dbo">
@@ -414,7 +573,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_Enterprise_EstablishedM].[Enterprise_EstablishedInHindi] AS [Enterprise_EstablishedInHindi], 
     [Tbl_Enterprise_EstablishedM].[IsActive] AS [IsActive], 
     [Tbl_Enterprise_EstablishedM].[CreatedBy] AS [CreatedBy], 
-    [Tbl_Enterprise_EstablishedM].[CreatedOn] AS [CreatedOn]
+    [Tbl_Enterprise_EstablishedM].[CreatedOn] AS [CreatedOn], 
+    [Tbl_Enterprise_EstablishedM].[OrderBy] AS [OrderBy]
     FROM [dbo].[Tbl_Enterprise_EstablishedM] AS [Tbl_Enterprise_EstablishedM]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Tbl_EnterpriseM" EntityType="Self.Tbl_EnterpriseM" store:Type="Tables" store:Schema="dbo">
@@ -424,7 +584,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_EnterpriseM].[EnterpriseInHindi] AS [EnterpriseInHindi], 
     [Tbl_EnterpriseM].[IsActive] AS [IsActive], 
     [Tbl_EnterpriseM].[CreatedBy] AS [CreatedBy], 
-    [Tbl_EnterpriseM].[CreatedOn] AS [CreatedOn]
+    [Tbl_EnterpriseM].[CreatedOn] AS [CreatedOn], 
+    [Tbl_EnterpriseM].[OrderBy] AS [OrderBy]
     FROM [dbo].[Tbl_EnterpriseM] AS [Tbl_EnterpriseM]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="Self.Tbl_EnterpriseMachineM" store:Type="Tables" store:Schema="dbo">
@@ -434,7 +595,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_EnterpriseMachineM].[EnterpriseMachineInHindi] AS [EnterpriseMachineInHindi], 
     [Tbl_EnterpriseMachineM].[IsActive] AS [IsActive], 
     [Tbl_EnterpriseMachineM].[CreatedBy] AS [CreatedBy], 
-    [Tbl_EnterpriseMachineM].[CreatedOn] AS [CreatedOn]
+    [Tbl_EnterpriseMachineM].[CreatedOn] AS [CreatedOn], 
+    [Tbl_EnterpriseMachineM].[OrderBy] AS [OrderBy]
     FROM [dbo].[Tbl_EnterpriseMachineM] AS [Tbl_EnterpriseMachineM]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Tbl_IndtSolarization" EntityType="Self.Tbl_IndtSolarization" store:Type="Tables" store:Schema="dbo">
@@ -447,7 +609,10 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[Village_Id] AS [Village_Id], 
     [Tbl_IndtSolarization].[CLF_Id] AS [CLF_Id], 
     [Tbl_IndtSolarization].[VO_Id] AS [VO_Id], 
-    [Tbl_IndtSolarization].[SHG_Id] AS [SHG_Id], 
+    [Tbl_IndtSolarization].[TempRegNo] AS [TempRegNo], 
+    [Tbl_IndtSolarization].[RegNo] AS [RegNo], 
+    [Tbl_IndtSolarization].[AadharNo] AS [AadharNo], 
+    [Tbl_IndtSolarization].[PhoneNumber] AS [PhoneNumber], 
     [Tbl_IndtSolarization].[YearOfSHG] AS [YearOfSHG], 
     [Tbl_IndtSolarization].[NameofSHGmember] AS [NameofSHGmember], 
     [Tbl_IndtSolarization].[NameofEnterpriseOwner] AS [NameofEnterpriseOwner], 
@@ -455,30 +620,28 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[DOB] AS [DOB], 
     [Tbl_IndtSolarization].[EducationQlf_Id] AS [EducationQlf_Id], 
     [Tbl_IndtSolarization].[Caste_Id] AS [Caste_Id], 
-    [Tbl_IndtSolarization].[PhoneNumber] AS [PhoneNumber], 
-    [Tbl_IndtSolarization].[TypeofEnterprise_Id] AS [TypeofEnterprise_Id], 
+    [Tbl_IndtSolarization].[TypeofEnterpriseBusin_Id] AS [TypeofEnterpriseBusin_Id], 
     [Tbl_IndtSolarization].[BusinessOwnedType_Id] AS [BusinessOwnedType_Id], 
-    [Tbl_IndtSolarization].[EstablishedType_Id] AS [EstablishedType_Id], 
-    [Tbl_IndtSolarization].[ArrangedcapitalBusiness_Id] AS [ArrangedcapitalBusiness_Id], 
-    [Tbl_IndtSolarization].[SourceOfLoan_Id] AS [SourceOfLoan_Id], 
-    [Tbl_IndtSolarization].[LoanAmtSHG_Id] AS [LoanAmtSHG_Id], 
-    [Tbl_IndtSolarization].[LoanAmtBank_Id] AS [LoanAmtBank_Id], 
-    [Tbl_IndtSolarization].[LoanAmtRelatives_Id] AS [LoanAmtRelatives_Id], 
-    [Tbl_IndtSolarization].[LoanAmtOtherSource_Id] AS [LoanAmtOtherSource_Id], 
-    [Tbl_IndtSolarization].[AmtToStartBusiness_Id] AS [AmtToStartBusiness_Id], 
-    [Tbl_IndtSolarization].[LoanForBusiness_Id] AS [LoanForBusiness_Id], 
-    [Tbl_IndtSolarization].[ProfitFromBusiness_Id] AS [ProfitFromBusiness_Id], 
-    [Tbl_IndtSolarization].[PeopleWorkInEnterprises_Id] AS [PeopleWorkInEnterprises_Id], 
-    [Tbl_IndtSolarization].[MachineType_Id] AS [MachineType_Id], 
-    [Tbl_IndtSolarization].[MachinesInUsed_Id] AS [MachinesInUsed_Id], 
-    [Tbl_IndtSolarization].[MachineryPower_Id] AS [MachineryPower_Id], 
+    [Tbl_IndtSolarization].[EstablishedEnterpriseType_Id] AS [EstablishedEnterpriseType_Id], 
+    [Tbl_IndtSolarization].[TypeOfInvestBusin_Id] AS [TypeOfInvestBusin_Id], 
+    [Tbl_IndtSolarization].[TookSourceOfLoan_Id] AS [TookSourceOfLoan_Id], 
+    [Tbl_IndtSolarization].[TookLoanAmt] AS [TookLoanAmt], 
+    [Tbl_IndtSolarization].[StartBusinessInvestAmt] AS [StartBusinessInvestAmt], 
+    [Tbl_IndtSolarization].[StartYourBusinessTakeAmt] AS [StartYourBusinessTakeAmt], 
+    [Tbl_IndtSolarization].[MonthlyProfitBusiness] AS [MonthlyProfitBusiness], 
+    [Tbl_IndtSolarization].[WorkInEnterprises_FamilyMembers] AS [WorkInEnterprises_FamilyMembers], 
+    [Tbl_IndtSolarization].[WorkInEnterprises_SHGMembers] AS [WorkInEnterprises_SHGMembers], 
+    [Tbl_IndtSolarization].[WorkInEnterprises_AssitantStaffs] AS [WorkInEnterprises_AssitantStaffs], 
+    [Tbl_IndtSolarization].[TypeOfMachineEnterprise_Id] AS [TypeOfMachineEnterprise_Id], 
+    [Tbl_IndtSolarization].[MotorBasedOnMachinesInActualUsed] AS [MotorBasedOnMachinesInActualUsed], 
+    [Tbl_IndtSolarization].[MachineryPowerkilowatt_Id] AS [MachineryPowerkilowatt_Id], 
     [Tbl_IndtSolarization].[ElectricityConnection_Id] AS [ElectricityConnection_Id], 
-    [Tbl_IndtSolarization].[ElectcityPhase_Id] AS [ElectcityPhase_Id], 
+    [Tbl_IndtSolarization].[ConnectionPhaseofPower_Id] AS [ConnectionPhaseofPower_Id], 
     [Tbl_IndtSolarization].[MonthlyElectricityConsumption_Id] AS [MonthlyElectricityConsumption_Id], 
-    [Tbl_IndtSolarization].[MachineSource_Id] AS [MachineSource_Id], 
-    [Tbl_IndtSolarization].[SolarInKilowatt_Id] AS [SolarInKilowatt_Id], 
-    [Tbl_IndtSolarization].[EnergyPanel_Id] AS [EnergyPanel_Id], 
-    [Tbl_IndtSolarization].[ExpenditureIncurredSolar_Id] AS [ExpenditureIncurredSolar_Id], 
+    [Tbl_IndtSolarization].[MachineSourceofEnergy_Id] AS [MachineSourceofEnergy_Id], 
+    [Tbl_IndtSolarization].[Solar_InKilowatt_Id] AS [Solar_InKilowatt_Id], 
+    [Tbl_IndtSolarization].[Solar_EnergyPanelYesNo_Id] AS [Solar_EnergyPanelYesNo_Id], 
+    [Tbl_IndtSolarization].[Solar_ExpenditureIncurredAmt] AS [Solar_ExpenditureIncurredAmt], 
     [Tbl_IndtSolarization].[Subsidy_Id] AS [Subsidy_Id], 
     [Tbl_IndtSolarization].[LoanForSolarPanels_Id] AS [LoanForSolarPanels_Id], 
     [Tbl_IndtSolarization].[AvgAmtSavedFromSolarE_Id] AS [AvgAmtSavedFromSolarE_Id], 
@@ -503,7 +666,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[UpdatedBy] AS [UpdatedBy], 
     [Tbl_IndtSolarization].[UpdatedOn] AS [UpdatedOn], 
     [Tbl_IndtSolarization].[IsDeleted] AS [IsDeleted], 
-    [Tbl_IndtSolarization].[IsDeletedOn] AS [IsDeletedOn]
+    [Tbl_IndtSolarization].[IsDeletedOn] AS [IsDeletedOn], 
+    [Tbl_IndtSolarization].[OrderBy] AS [OrderBy]
     FROM [dbo].[Tbl_IndtSolarization] AS [Tbl_IndtSolarization]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="Self.Tbl_LoanDescribeSourceM" store:Type="Tables" store:Schema="dbo">
@@ -513,8 +677,25 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_LoanDescribeSourceM].[LoanDescribeSourceInHindi] AS [LoanDescribeSourceInHindi], 
     [Tbl_LoanDescribeSourceM].[IsActive] AS [IsActive], 
     [Tbl_LoanDescribeSourceM].[CreatedBy] AS [CreatedBy], 
-    [Tbl_LoanDescribeSourceM].[CreatedOn] AS [CreatedOn]
+    [Tbl_LoanDescribeSourceM].[CreatedOn] AS [CreatedOn], 
+    [Tbl_LoanDescribeSourceM].[OrderBy] AS [OrderBy]
     FROM [dbo].[Tbl_LoanDescribeSourceM] AS [Tbl_LoanDescribeSourceM]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>
