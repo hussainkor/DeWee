@@ -55,7 +55,7 @@ namespace DeWee.Models
         public virtual DbSet<Tbl_Enterprise_EstablishedM> Tbl_Enterprise_EstablishedM { get; set; }
         public virtual DbSet<Tbl_EnterpriseM> Tbl_EnterpriseM { get; set; }
         public virtual DbSet<Tbl_EnterpriseMachineM> Tbl_EnterpriseMachineM { get; set; }
-        public virtual DbSet<Tbl_IndtSolarization> Tbl_IndtSolarization { get; set; }
         public virtual DbSet<Tbl_LoanDescribeSourceM> Tbl_LoanDescribeSourceM { get; set; }
+        public virtual DbSet<Tbl_IndtSolarization> Tbl_IndtSolarization { get; set; }
     }
 }

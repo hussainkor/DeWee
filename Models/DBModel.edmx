@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DeWee_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DeWee_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -294,8 +294,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
           <Property Name="MonthlyRepairCost_Id" Type="int" />
           <Property Name="HeardAboutSolarEYesNo_Id" Type="int" />
           <Property Name="HeardAboutSolarEYes_IfYeswhere" Type="nvarchar(max)" />
-          <Property Name="InformationknowledgeGovtSubsidyOfSEYesNo_Id" Type="int" />
-          <Property Name="InformationknowledgeIfYesAmtGovPaid" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="InforknowledgeGovtSubsidyOfSEYesNo_Id" Type="int" />
+          <Property Name="InforknowledgeIfYesAmtGovPaid" Type="decimal" Precision="15" Scale="5" />
           <Property Name="LoanProcedureInSEYesNo_Id" Type="int" />
           <Property Name="AdoptSolarizationYesNo_Id" Type="int" />
           <Property Name="CapitalArrangedForSEYesNo_Id" Type="int" />
@@ -659,8 +659,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[MonthlyRepairCost_Id] AS [MonthlyRepairCost_Id], 
     [Tbl_IndtSolarization].[HeardAboutSolarEYesNo_Id] AS [HeardAboutSolarEYesNo_Id], 
     [Tbl_IndtSolarization].[HeardAboutSolarEYes_IfYeswhere] AS [HeardAboutSolarEYes_IfYeswhere], 
-    [Tbl_IndtSolarization].[InformationknowledgeGovtSubsidyOfSEYesNo_Id] AS [InformationknowledgeGovtSubsidyOfSEYesNo_Id], 
-    [Tbl_IndtSolarization].[InformationknowledgeIfYesAmtGovPaid] AS [InformationknowledgeIfYesAmtGovPaid], 
+    [Tbl_IndtSolarization].[InforknowledgeGovtSubsidyOfSEYesNo_Id] AS [InforknowledgeGovtSubsidyOfSEYesNo_Id], 
+    [Tbl_IndtSolarization].[InforknowledgeIfYesAmtGovPaid] AS [InforknowledgeIfYesAmtGovPaid], 
     [Tbl_IndtSolarization].[LoanProcedureInSEYesNo_Id] AS [LoanProcedureInSEYesNo_Id], 
     [Tbl_IndtSolarization].[AdoptSolarizationYesNo_Id] AS [AdoptSolarizationYesNo_Id], 
     [Tbl_IndtSolarization].[CapitalArrangedForSEYesNo_Id] AS [CapitalArrangedForSEYesNo_Id], 
@@ -705,8 +705,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DeWee_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1083,79 +1082,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="OrderBy" Type="Int32" />
         </EntityType>
-        <EntityType Name="Tbl_IndtSolarization">
-          <Key>
-            <PropertyRef Name="Indt_Id" />
-          </Key>
-          <Property Name="Indt_Id" Type="Guid" Nullable="false" />
-          <Property Name="State_Id" Type="Int32" />
-          <Property Name="District_Id" Type="Int32" />
-          <Property Name="Block_Id" Type="Int32" />
-          <Property Name="Panchayat_Id" Type="Int32" />
-          <Property Name="Village_Id" Type="Int32" />
-          <Property Name="CLF_Id" Type="Int32" />
-          <Property Name="VO_Id" Type="Int32" />
-          <Property Name="NameofSHG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="YearOfSHG" Type="Int32" />
-          <Property Name="TempRegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="RegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="AadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="NameofSHGMember" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="NameofEnterpriseOwner" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Age" Type="Int32" />
-          <Property Name="DOB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="EducationQlf_Id" Type="Int32" />
-          <Property Name="Caste_Id" Type="Int32" />
-          <Property Name="TypeofEnterpriseBusin_Id" Type="Int32" />
-          <Property Name="BusinessOwnedType_Id" Type="Int32" />
-          <Property Name="EstablishedEnterpriseType_Id" Type="Int32" />
-          <Property Name="TypeOfInvestBusin_Id" Type="Int32" />
-          <Property Name="TookSourceOfLoan_Id" Type="Int32" />
-          <Property Name="TookLoanAmt" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="StartBusinessInvestAmt" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="StartYourBusinessTakeAmt" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="MonthlyProfitBusiness" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="WorkInEnterprises_FamilyMembers" Type="Int32" />
-          <Property Name="WorkInEnterprises_SHGMembers" Type="Int32" />
-          <Property Name="WorkInEnterprises_AssitantStaffs" Type="Int32" />
-          <Property Name="TypeOfMachineEnterprise_Id" Type="Int32" />
-          <Property Name="MotorBasedOnMachinesInActualUsed" Type="Int32" />
-          <Property Name="MachineryPowerkilowatt_Id" Type="Int32" />
-          <Property Name="ElectricityConnection_Id" Type="Int32" />
-          <Property Name="ConnectionPhaseofPower_Id" Type="Int32" />
-          <Property Name="MonthlyElectricityConsumption_Id" Type="Int32" />
-          <Property Name="MachineSourceofEnergy_Id" Type="Int32" />
-          <Property Name="Solar_InKilowatt_Id" Type="Int32" />
-          <Property Name="Solar_EnergyPanelYesNo_Id" Type="Int32" />
-          <Property Name="Solar_ExpenditureIncurredAmt" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="SubsidySolarReceive_Id" Type="Int32" />
-          <Property Name="LoanSolarPanelsYesNo_Id" Type="Int32" />
-          <Property Name="MonthAvgAmtSavedDescription_Id" Type="Int32" />
-          <Property Name="ElectricityUsedHours_Id" Type="Int32" />
-          <Property Name="MonthlyExpenseInElectricityBill_Id" Type="Int32" />
-          <Property Name="GeneratorElectricityUsedHours_Id" Type="Int32" />
-          <Property Name="MonthlyExpenseFuelSource_Id" Type="Int32" />
-          <Property Name="MonthlyRepairCost_Id" Type="Int32" />
-          <Property Name="HeardAboutSolarEYesNo_Id" Type="Int32" />
-          <Property Name="HeardAboutSolarEYes_IfYeswhere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="InformationknowledgeGovtSubsidyOfSEYesNo_Id" Type="Int32" />
-          <Property Name="InformationknowledgeIfYesAmtGovPaid" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="LoanProcedureInSEYesNo_Id" Type="Int32" />
-          <Property Name="AdoptSolarizationYesNo_Id" Type="Int32" />
-          <Property Name="CapitalArrangedForSEYesNo_Id" Type="Int32" />
-          <Property Name="IfYesCapitalArrangedForSEAmt" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="OtherIndustriesEnterprisesYesNo_Id" Type="Int32" />
-          <Property Name="IfYesFillForm_OtherIndustriesEnterprises" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="IsDeletedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
         <EntityType Name="Tbl_LoanDescribeSourceM">
           <Key>
             <PropertyRef Name="LoanDescribeSource_Id" />
@@ -1231,7 +1157,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="Self.Tbl_Enterprise_EstablishedM" />
           <EntitySet Name="Tbl_EnterpriseM" EntityType="Self.Tbl_EnterpriseM" />
           <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="Self.Tbl_EnterpriseMachineM" />
-          <EntitySet Name="Tbl_IndtSolarization" EntityType="Self.Tbl_IndtSolarization" />
           <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="Self.Tbl_LoanDescribeSourceM" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -1245,7 +1170,81 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Tbl_IndtSolarization" EntityType="DeWee_DBModel.Tbl_IndtSolarization" />
         </EntityContainer>
+        <EntityType Name="Tbl_IndtSolarization">
+          <Key>
+            <PropertyRef Name="Indt_Id" />
+          </Key>
+          <Property Name="Indt_Id" Type="Guid" Nullable="false" />
+          <Property Name="State_Id" Type="Int32" />
+          <Property Name="District_Id" Type="Int32" />
+          <Property Name="Block_Id" Type="Int32" />
+          <Property Name="Panchayat_Id" Type="Int32" />
+          <Property Name="Village_Id" Type="Int32" />
+          <Property Name="CLF_Id" Type="Int32" />
+          <Property Name="VO_Id" Type="Int32" />
+          <Property Name="NameofSHG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfSHG" Type="Int32" />
+          <Property Name="TempRegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NameofSHGMember" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NameofEnterpriseOwner" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="DOB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EducationQlf_Id" Type="Int32" />
+          <Property Name="Caste_Id" Type="Int32" />
+          <Property Name="TypeofEnterpriseBusin_Id" Type="Int32" />
+          <Property Name="BusinessOwnedType_Id" Type="Int32" />
+          <Property Name="EstablishedEnterpriseType_Id" Type="Int32" />
+          <Property Name="TypeOfInvestBusin_Id" Type="Int32" />
+          <Property Name="TookSourceOfLoan_Id" Type="Int32" />
+          <Property Name="TookLoanAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="StartBusinessInvestAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="StartYourBusinessTakeAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="MonthlyProfitBusiness" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="WorkInEnterprises_FamilyMembers" Type="Int32" />
+          <Property Name="WorkInEnterprises_SHGMembers" Type="Int32" />
+          <Property Name="WorkInEnterprises_AssitantStaffs" Type="Int32" />
+          <Property Name="TypeOfMachineEnterprise_Id" Type="Int32" />
+          <Property Name="MotorBasedOnMachinesInActualUsed" Type="Int32" />
+          <Property Name="MachineryPowerkilowatt_Id" Type="Int32" />
+          <Property Name="ElectricityConnection_Id" Type="Int32" />
+          <Property Name="ConnectionPhaseofPower_Id" Type="Int32" />
+          <Property Name="MonthlyElectricityConsumption_Id" Type="Int32" />
+          <Property Name="MachineSourceofEnergy_Id" Type="Int32" />
+          <Property Name="Solar_InKilowatt_Id" Type="Int32" />
+          <Property Name="Solar_EnergyPanelYesNo_Id" Type="Int32" />
+          <Property Name="Solar_ExpenditureIncurredAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="SubsidySolarReceive_Id" Type="Int32" />
+          <Property Name="LoanSolarPanelsYesNo_Id" Type="Int32" />
+          <Property Name="MonthAvgAmtSavedDescription_Id" Type="Int32" />
+          <Property Name="ElectricityUsedHours_Id" Type="Int32" />
+          <Property Name="MonthlyExpenseInElectricityBill_Id" Type="Int32" />
+          <Property Name="GeneratorElectricityUsedHours_Id" Type="Int32" />
+          <Property Name="MonthlyExpenseFuelSource_Id" Type="Int32" />
+          <Property Name="MonthlyRepairCost_Id" Type="Int32" />
+          <Property Name="HeardAboutSolarEYesNo_Id" Type="Int32" />
+          <Property Name="HeardAboutSolarEYes_IfYeswhere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InforknowledgeGovtSubsidyOfSEYesNo_Id" Type="Int32" />
+          <Property Name="InforknowledgeIfYesAmtGovPaid" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="LoanProcedureInSEYesNo_Id" Type="Int32" />
+          <Property Name="AdoptSolarizationYesNo_Id" Type="Int32" />
+          <Property Name="CapitalArrangedForSEYesNo_Id" Type="Int32" />
+          <Property Name="IfYesCapitalArrangedForSEAmt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="OtherIndustriesEnterprisesYesNo_Id" Type="Int32" />
+          <Property Name="IfYesFillForm_OtherIndustriesEnterprises" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1646,80 +1645,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_IndtSolarization">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_IndtSolarization">
-              <MappingFragment StoreEntitySet="Tbl_IndtSolarization">
-                <ScalarProperty Name="Indt_Id" ColumnName="Indt_Id" />
-                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
-                <ScalarProperty Name="District_Id" ColumnName="District_Id" />
-                <ScalarProperty Name="Block_Id" ColumnName="Block_Id" />
-                <ScalarProperty Name="Panchayat_Id" ColumnName="Panchayat_Id" />
-                <ScalarProperty Name="Village_Id" ColumnName="Village_Id" />
-                <ScalarProperty Name="CLF_Id" ColumnName="CLF_Id" />
-                <ScalarProperty Name="VO_Id" ColumnName="VO_Id" />
-                <ScalarProperty Name="NameofSHG" ColumnName="NameofSHG" />
-                <ScalarProperty Name="YearOfSHG" ColumnName="YearOfSHG" />
-                <ScalarProperty Name="TempRegNo" ColumnName="TempRegNo" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="NameofSHGMember" ColumnName="NameofSHGMember" />
-                <ScalarProperty Name="NameofEnterpriseOwner" ColumnName="NameofEnterpriseOwner" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="EducationQlf_Id" ColumnName="EducationQlf_Id" />
-                <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
-                <ScalarProperty Name="TypeofEnterpriseBusin_Id" ColumnName="TypeofEnterpriseBusin_Id" />
-                <ScalarProperty Name="BusinessOwnedType_Id" ColumnName="BusinessOwnedType_Id" />
-                <ScalarProperty Name="EstablishedEnterpriseType_Id" ColumnName="EstablishedEnterpriseType_Id" />
-                <ScalarProperty Name="TypeOfInvestBusin_Id" ColumnName="TypeOfInvestBusin_Id" />
-                <ScalarProperty Name="TookSourceOfLoan_Id" ColumnName="TookSourceOfLoan_Id" />
-                <ScalarProperty Name="TookLoanAmt" ColumnName="TookLoanAmt" />
-                <ScalarProperty Name="StartBusinessInvestAmt" ColumnName="StartBusinessInvestAmt" />
-                <ScalarProperty Name="StartYourBusinessTakeAmt" ColumnName="StartYourBusinessTakeAmt" />
-                <ScalarProperty Name="MonthlyProfitBusiness" ColumnName="MonthlyProfitBusiness" />
-                <ScalarProperty Name="WorkInEnterprises_FamilyMembers" ColumnName="WorkInEnterprises_FamilyMembers" />
-                <ScalarProperty Name="WorkInEnterprises_SHGMembers" ColumnName="WorkInEnterprises_SHGMembers" />
-                <ScalarProperty Name="WorkInEnterprises_AssitantStaffs" ColumnName="WorkInEnterprises_AssitantStaffs" />
-                <ScalarProperty Name="TypeOfMachineEnterprise_Id" ColumnName="TypeOfMachineEnterprise_Id" />
-                <ScalarProperty Name="MotorBasedOnMachinesInActualUsed" ColumnName="MotorBasedOnMachinesInActualUsed" />
-                <ScalarProperty Name="MachineryPowerkilowatt_Id" ColumnName="MachineryPowerkilowatt_Id" />
-                <ScalarProperty Name="ElectricityConnection_Id" ColumnName="ElectricityConnection_Id" />
-                <ScalarProperty Name="ConnectionPhaseofPower_Id" ColumnName="ConnectionPhaseofPower_Id" />
-                <ScalarProperty Name="MonthlyElectricityConsumption_Id" ColumnName="MonthlyElectricityConsumption_Id" />
-                <ScalarProperty Name="MachineSourceofEnergy_Id" ColumnName="MachineSourceofEnergy_Id" />
-                <ScalarProperty Name="Solar_InKilowatt_Id" ColumnName="Solar_InKilowatt_Id" />
-                <ScalarProperty Name="Solar_EnergyPanelYesNo_Id" ColumnName="Solar_EnergyPanelYesNo_Id" />
-                <ScalarProperty Name="Solar_ExpenditureIncurredAmt" ColumnName="Solar_ExpenditureIncurredAmt" />
-                <ScalarProperty Name="SubsidySolarReceive_Id" ColumnName="SubsidySolarReceive_Id" />
-                <ScalarProperty Name="LoanSolarPanelsYesNo_Id" ColumnName="LoanSolarPanelsYesNo_Id" />
-                <ScalarProperty Name="MonthAvgAmtSavedDescription_Id" ColumnName="MonthAvgAmtSavedDescription_Id" />
-                <ScalarProperty Name="ElectricityUsedHours_Id" ColumnName="ElectricityUsedHours_Id" />
-                <ScalarProperty Name="MonthlyExpenseInElectricityBill_Id" ColumnName="MonthlyExpenseInElectricityBill_Id" />
-                <ScalarProperty Name="GeneratorElectricityUsedHours_Id" ColumnName="GeneratorElectricityUsedHours_Id" />
-                <ScalarProperty Name="MonthlyExpenseFuelSource_Id" ColumnName="MonthlyExpenseFuelSource_Id" />
-                <ScalarProperty Name="MonthlyRepairCost_Id" ColumnName="MonthlyRepairCost_Id" />
-                <ScalarProperty Name="HeardAboutSolarEYesNo_Id" ColumnName="HeardAboutSolarEYesNo_Id" />
-                <ScalarProperty Name="HeardAboutSolarEYes_IfYeswhere" ColumnName="HeardAboutSolarEYes_IfYeswhere" />
-                <ScalarProperty Name="InformationknowledgeGovtSubsidyOfSEYesNo_Id" ColumnName="InformationknowledgeGovtSubsidyOfSEYesNo_Id" />
-                <ScalarProperty Name="InformationknowledgeIfYesAmtGovPaid" ColumnName="InformationknowledgeIfYesAmtGovPaid" />
-                <ScalarProperty Name="LoanProcedureInSEYesNo_Id" ColumnName="LoanProcedureInSEYesNo_Id" />
-                <ScalarProperty Name="AdoptSolarizationYesNo_Id" ColumnName="AdoptSolarizationYesNo_Id" />
-                <ScalarProperty Name="CapitalArrangedForSEYesNo_Id" ColumnName="CapitalArrangedForSEYesNo_Id" />
-                <ScalarProperty Name="IfYesCapitalArrangedForSEAmt" ColumnName="IfYesCapitalArrangedForSEAmt" />
-                <ScalarProperty Name="OtherIndustriesEnterprisesYesNo_Id" ColumnName="OtherIndustriesEnterprisesYesNo_Id" />
-                <ScalarProperty Name="IfYesFillForm_OtherIndustriesEnterprises" ColumnName="IfYesFillForm_OtherIndustriesEnterprises" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsDeletedOn" ColumnName="IsDeletedOn" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tbl_LoanDescribeSourceM">
             <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_LoanDescribeSourceM">
               <MappingFragment StoreEntitySet="Tbl_LoanDescribeSourceM">
@@ -1741,6 +1666,80 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Tbl_IndtSolarization">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_IndtSolarization">
+              <MappingFragment StoreEntitySet="Tbl_IndtSolarization">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="IsDeletedOn" ColumnName="IsDeletedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IfYesFillForm_OtherIndustriesEnterprises" ColumnName="IfYesFillForm_OtherIndustriesEnterprises" />
+                <ScalarProperty Name="OtherIndustriesEnterprisesYesNo_Id" ColumnName="OtherIndustriesEnterprisesYesNo_Id" />
+                <ScalarProperty Name="IfYesCapitalArrangedForSEAmt" ColumnName="IfYesCapitalArrangedForSEAmt" />
+                <ScalarProperty Name="CapitalArrangedForSEYesNo_Id" ColumnName="CapitalArrangedForSEYesNo_Id" />
+                <ScalarProperty Name="AdoptSolarizationYesNo_Id" ColumnName="AdoptSolarizationYesNo_Id" />
+                <ScalarProperty Name="LoanProcedureInSEYesNo_Id" ColumnName="LoanProcedureInSEYesNo_Id" />
+                <ScalarProperty Name="InforknowledgeIfYesAmtGovPaid" ColumnName="InforknowledgeIfYesAmtGovPaid" />
+                <ScalarProperty Name="InforknowledgeGovtSubsidyOfSEYesNo_Id" ColumnName="InforknowledgeGovtSubsidyOfSEYesNo_Id" />
+                <ScalarProperty Name="HeardAboutSolarEYes_IfYeswhere" ColumnName="HeardAboutSolarEYes_IfYeswhere" />
+                <ScalarProperty Name="HeardAboutSolarEYesNo_Id" ColumnName="HeardAboutSolarEYesNo_Id" />
+                <ScalarProperty Name="MonthlyRepairCost_Id" ColumnName="MonthlyRepairCost_Id" />
+                <ScalarProperty Name="MonthlyExpenseFuelSource_Id" ColumnName="MonthlyExpenseFuelSource_Id" />
+                <ScalarProperty Name="GeneratorElectricityUsedHours_Id" ColumnName="GeneratorElectricityUsedHours_Id" />
+                <ScalarProperty Name="MonthlyExpenseInElectricityBill_Id" ColumnName="MonthlyExpenseInElectricityBill_Id" />
+                <ScalarProperty Name="ElectricityUsedHours_Id" ColumnName="ElectricityUsedHours_Id" />
+                <ScalarProperty Name="MonthAvgAmtSavedDescription_Id" ColumnName="MonthAvgAmtSavedDescription_Id" />
+                <ScalarProperty Name="LoanSolarPanelsYesNo_Id" ColumnName="LoanSolarPanelsYesNo_Id" />
+                <ScalarProperty Name="SubsidySolarReceive_Id" ColumnName="SubsidySolarReceive_Id" />
+                <ScalarProperty Name="Solar_ExpenditureIncurredAmt" ColumnName="Solar_ExpenditureIncurredAmt" />
+                <ScalarProperty Name="Solar_EnergyPanelYesNo_Id" ColumnName="Solar_EnergyPanelYesNo_Id" />
+                <ScalarProperty Name="Solar_InKilowatt_Id" ColumnName="Solar_InKilowatt_Id" />
+                <ScalarProperty Name="MachineSourceofEnergy_Id" ColumnName="MachineSourceofEnergy_Id" />
+                <ScalarProperty Name="MonthlyElectricityConsumption_Id" ColumnName="MonthlyElectricityConsumption_Id" />
+                <ScalarProperty Name="ConnectionPhaseofPower_Id" ColumnName="ConnectionPhaseofPower_Id" />
+                <ScalarProperty Name="ElectricityConnection_Id" ColumnName="ElectricityConnection_Id" />
+                <ScalarProperty Name="MachineryPowerkilowatt_Id" ColumnName="MachineryPowerkilowatt_Id" />
+                <ScalarProperty Name="MotorBasedOnMachinesInActualUsed" ColumnName="MotorBasedOnMachinesInActualUsed" />
+                <ScalarProperty Name="TypeOfMachineEnterprise_Id" ColumnName="TypeOfMachineEnterprise_Id" />
+                <ScalarProperty Name="WorkInEnterprises_AssitantStaffs" ColumnName="WorkInEnterprises_AssitantStaffs" />
+                <ScalarProperty Name="WorkInEnterprises_SHGMembers" ColumnName="WorkInEnterprises_SHGMembers" />
+                <ScalarProperty Name="WorkInEnterprises_FamilyMembers" ColumnName="WorkInEnterprises_FamilyMembers" />
+                <ScalarProperty Name="MonthlyProfitBusiness" ColumnName="MonthlyProfitBusiness" />
+                <ScalarProperty Name="StartYourBusinessTakeAmt" ColumnName="StartYourBusinessTakeAmt" />
+                <ScalarProperty Name="StartBusinessInvestAmt" ColumnName="StartBusinessInvestAmt" />
+                <ScalarProperty Name="TookLoanAmt" ColumnName="TookLoanAmt" />
+                <ScalarProperty Name="TookSourceOfLoan_Id" ColumnName="TookSourceOfLoan_Id" />
+                <ScalarProperty Name="TypeOfInvestBusin_Id" ColumnName="TypeOfInvestBusin_Id" />
+                <ScalarProperty Name="EstablishedEnterpriseType_Id" ColumnName="EstablishedEnterpriseType_Id" />
+                <ScalarProperty Name="BusinessOwnedType_Id" ColumnName="BusinessOwnedType_Id" />
+                <ScalarProperty Name="TypeofEnterpriseBusin_Id" ColumnName="TypeofEnterpriseBusin_Id" />
+                <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
+                <ScalarProperty Name="EducationQlf_Id" ColumnName="EducationQlf_Id" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="NameofEnterpriseOwner" ColumnName="NameofEnterpriseOwner" />
+                <ScalarProperty Name="NameofSHGMember" ColumnName="NameofSHGMember" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="TempRegNo" ColumnName="TempRegNo" />
+                <ScalarProperty Name="YearOfSHG" ColumnName="YearOfSHG" />
+                <ScalarProperty Name="NameofSHG" ColumnName="NameofSHG" />
+                <ScalarProperty Name="VO_Id" ColumnName="VO_Id" />
+                <ScalarProperty Name="CLF_Id" ColumnName="CLF_Id" />
+                <ScalarProperty Name="Village_Id" ColumnName="Village_Id" />
+                <ScalarProperty Name="Panchayat_Id" ColumnName="Panchayat_Id" />
+                <ScalarProperty Name="Block_Id" ColumnName="Block_Id" />
+                <ScalarProperty Name="District_Id" ColumnName="District_Id" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="Indt_Id" ColumnName="Indt_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -39,7 +39,7 @@
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
         <AssociationConnector Association="DeWee_DBModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_IndtSolarization" Width="1.5" PointX="7.375" PointY="16.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_IndtSolarization" Width="1.5" PointX="7.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

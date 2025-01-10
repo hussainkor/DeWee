@@ -24,6 +24,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Web;
+using System.Web.ClientServices;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 //using System.Windows.Interop;
@@ -51,11 +52,90 @@ namespace DeWee.Manager
             return list;
         }
 
-        public static List<SelectListItem> GetALLDistrictM(int IsSelect = 0)
+        public static List<SelectListItem> GetALLDistrictM(int IsSelect = 0, int StateId = 0)
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
             List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_District_Master.Where(state => state.IsActive == true).OrderBy(state => state.OrderBy).Select(District => new SelectListItem { Value = District.DistrictCode.ToString(), Text = District.DistrictName }).ToList();
+            list = _db.Tbl_District_Master.Where(x => x.IsActive == true && x.StateId_fk == StateId || 0 == StateId).OrderBy(x => x.OrderBy).Select(item => new SelectListItem { Value = item.DistrictCode.ToString(), Text = item.DistrictName }).ToList();
+            if (IsSelect == 0)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
+            }
+            else if (IsSelect == 1)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
+            }
+            return list;
+        }
+        public static List<SelectListItem> GetALLBlockM(int IsSelect = 0, int StateId = 0, int DistrictId = 0)
+        {
+            DeWee_DBEntities _db = new DeWee_DBEntities();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list = _db.Tbl_Block_Master.Where(Block => Block.IsActive == true && Block.DistrictId_fk == DistrictId).OrderBy(Block => Block.OrderBy).Select(Block => new SelectListItem { Value = Block.BlockCode.ToString(), Text = Block.BlockName }).ToList();
+            if (IsSelect == 0)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
+            }
+            else if (IsSelect == 1)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
+            }
+
+            return list;
+        }
+        public static List<SelectListItem> GetALLPanchayatM(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0)
+        {
+            DeWee_DBEntities _db = new DeWee_DBEntities();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list = _db.Tbl_Panchayat_Master.Where(p => p.IsActive == true && p.DistrictId_fk == DistrictId && p.BlockId_fk == BlockId).OrderBy(Panchayat => Panchayat.OrderBy).Select(Panchayat => new SelectListItem { Value = Panchayat.PanchayatId_pk.ToString(), Text = Panchayat.PanchayatName }).ToList();
+            if (IsSelect == 0)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
+            }
+            else if (IsSelect == 1)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
+            }
+
+            return list;
+        }
+        public static List<SelectListItem> GetALLVillM(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0, int PanchayatId = 0)
+        {
+            DeWee_DBEntities _db = new DeWee_DBEntities();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list = _db.Tbl_Village_Master.Where(x => x.IsActive == true && x.DistrictId_fk == DistrictId && x.BlockId_fk == BlockId && x.PanchayatId_fk == PanchayatId).OrderBy(Vill => Vill.OrderBy).Select(Vill => new SelectListItem { Value = Vill.VillageId_pk.ToString(), Text = Vill.VillageName }).ToList();
+            if (IsSelect == 0)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
+            }
+            else if (IsSelect == 1)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
+            }
+
+            return list;
+        }
+        public static List<SelectListItem> GetALLCLFM(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0)
+        {
+            DeWee_DBEntities _db = new DeWee_DBEntities();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list = _db.Tbl_CLF_Master.Where(x => x.IsActive == true && x.DistrictId_fk == DistrictId && x.BlockId_fk == BlockId).OrderBy(CLF => CLF.OrderBy).Select(CLF => new SelectListItem { Value = CLF.CLFId_pk.ToString(), Text = CLF.CLFName }).ToList();
+            if (IsSelect == 0)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
+            }
+            else if (IsSelect == 1)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
+            }
+
+            return list;
+        }
+        public static List<SelectListItem> GetALLVO(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0, int PanchayatId = 0, int CLFId = 0,int VId=0)
+        {
+            DeWee_DBEntities _db = new DeWee_DBEntities();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list = _db.Tbl_VO_Master.Where(x => x.IsActive == true && x.DistrictId_fk == DistrictId && x.BlockId_fk == BlockId && x.PanchayatId_fk == PanchayatId && x.CLFId_fk == CLFId).OrderBy(VO => VO.OrderBy).Select(VO => new SelectListItem { Value = VO.VOrgId_pk.ToString(), Text = VO.Village_OrganizationName }).ToList();
             if (IsSelect == 0)
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
@@ -68,86 +148,6 @@ namespace DeWee.Manager
             return list;
         }
 
-        public static List<SelectListItem> GetALLBlockM(int IsSelect = 0)
-        {
-            DeWee_DBEntities _db = new DeWee_DBEntities();
-            List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_Block_Master.Where(Block => Block.IsActive == true).OrderBy(Block => Block.OrderBy).Select(Block => new SelectListItem { Value = Block.BlockCode.ToString(), Text = Block.BlockName }).ToList();
-            if (IsSelect == 0)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
-            }
-            else if (IsSelect == 1)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
-            }
-
-            return list;
-        }
-        public static List<SelectListItem> GetALLGpM(int IsSelect = 0)
-        {
-            DeWee_DBEntities _db = new DeWee_DBEntities();
-            List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_Panchayat_Master.Where(Panchayat => Panchayat.IsActive == true).OrderBy(Panchayat => Panchayat.OrderBy).Select(Panchayat => new SelectListItem { Value = Panchayat.PanchayatId_pk.ToString(), Text = Panchayat.PanchayatName }).ToList();
-            if (IsSelect == 0)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
-            }
-            else if (IsSelect == 1)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
-            }
-
-            return list;
-        }
-        public static List<SelectListItem> GetALLVillM(int IsSelect = 0)
-        {
-            DeWee_DBEntities _db = new DeWee_DBEntities();
-            List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_Village_Master.Where(Vill => Vill.IsActive == true).OrderBy(Vill => Vill.OrderBy).Select(Vill => new SelectListItem { Value = Vill.VillageId_pk.ToString(), Text = Vill.VillageName }).ToList();
-            if (IsSelect == 0)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
-            }
-            else if (IsSelect == 1)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
-            }
-
-            return list;
-        }
-        public static List<SelectListItem> GetALLCLFM(int IsSelect = 0)
-        {
-            DeWee_DBEntities _db = new DeWee_DBEntities();
-            List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_CLF_Master.Where(CLF => CLF.IsActive == true).OrderBy(CLF => CLF.OrderBy).Select(CLF => new SelectListItem { Value = CLF.CLFId_pk.ToString(), Text = CLF.CLFName }).ToList();
-            if (IsSelect == 0)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
-            }
-            else if (IsSelect == 1)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
-            }
-
-            return list;
-        }
-        public static List<SelectListItem> GetALLVO(int IsSelect = 0)
-        {
-            DeWee_DBEntities _db = new DeWee_DBEntities();
-            List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_VO_Master.Where(VO => VO.IsActive == true).OrderBy(VO => VO.OrderBy).Select(VO => new SelectListItem { Value = VO.VOrgId_pk.ToString(), Text = VO.Village_OrganizationName }).ToList();
-            if (IsSelect == 0)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
-            }
-            else if (IsSelect == 1)
-            {
-                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
-            }
-
-            return list;
-        }
         public static List<SelectListItem> GetALLEQ(int IsSelect = 0)
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
@@ -200,7 +200,7 @@ namespace DeWee.Manager
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
             List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_BusinessOwnedM.Where(Bo => Bo.IsActive == true).OrderBy(Bo => Bo.OrderBy).Select(Bo => new SelectListItem { Value = Bo.BusinessOwned_Id.ToString(), Text = Bo.BusinessOwnedInEng}).ToList();
+            list = _db.Tbl_BusinessOwnedM.Where(Bo => Bo.IsActive == true).OrderBy(Bo => Bo.OrderBy).Select(Bo => new SelectListItem { Value = Bo.BusinessOwned_Id.ToString(), Text = Bo.BusinessOwnedInEng }).ToList();
             if (IsSelect == 0)
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
@@ -440,5 +440,5 @@ namespace DeWee.Manager
 
 
 
-       
+
 }
