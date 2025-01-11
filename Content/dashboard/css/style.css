@@ -250,7 +250,7 @@ th {
   text-align: inherit; }
 
 label {
-  display: inline-block;
+  /*display: inline-block;*/
   margin-bottom: 0.5rem; }
 
 button {
@@ -9876,7 +9876,8 @@ Input Style
 .form-control {
   border-radius: 0;
   box-shadow: none;
-  height: 45px; }
+  margin-top: 4px;
+  height: 40px; }
   .form-control:hover {
     box-shadow: none; }
   .form-control.active, .form-control:focus {
