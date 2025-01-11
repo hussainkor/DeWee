@@ -18,5 +18,14 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }
+        public static DataTable Check_ParticipantAlready(string Id,string Pno, string AdhNo)
+        {
+            StoredProcedure sp = new StoredProcedure("Check_ParticipantAlready");
+            sp.Command.AddParameter("@ID", Id, DbType.Int32);
+            sp.Command.AddParameter("@PhoneNo", Pno, DbType.String);
+            sp.Command.AddParameter("@AadharNo", AdhNo, DbType.String);
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
     }
 }

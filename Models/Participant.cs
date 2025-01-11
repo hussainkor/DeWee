@@ -8,6 +8,10 @@ namespace DeWee.Models
 {
     public class Participant
     {
+        public Participant()
+        {
+            Indt_Id = Guid.Empty;
+        }
         [Key]
         public Guid Indt_Id { get; set; }
 

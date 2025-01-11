@@ -1,4 +1,5 @@
-﻿using DeWee.Models;
+﻿using DeWee.Manager;
+using DeWee.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,13 +88,14 @@ namespace DeWee.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var existingParticipant = db.Tbl_IndtSolarization.Where(x => x.IsActive == true && x.PhoneNumber == model.PhoneNumber.Trim()).FirstOrDefault();
+                    var existingPart = SPManager.Check_ParticipantAlready(model.Indt_Id.ToString(), model.PhoneNumber, model.AadharNo); //db.Tbl_IndtSolarization.Where(x => x.IsActive == true && x.PhoneNumber == model.PhoneNumber.Trim())?.FirstOrDefault();
 
-                    if (existingParticipant != null && model.Indt_Id == Guid.Empty)
+                    if (existingPart.Rows.Count > 0)
                     {
                         response = new JsonResponseData
                         {
-                            StatusType = eAlertType.error.ToString(),Message = $"Already Exists Registration.<br /> <span> Reg ID : <strong> {existingParticipant.Indt_Id} </strong>  </span>",
+                            StatusType = eAlertType.error.ToString(),
+                            Message = $"Already Exists Registration.<br /> <span> Reg ID : <strong> {existingPart.Rows[0]["RegNo"].ToString()} </strong>  </span>",
                             Data = null
                         };
                         return Json(response, JsonRequestBehavior.AllowGet);
@@ -106,7 +108,7 @@ namespace DeWee.Controllers
                         participant.PhoneNumber = model.PhoneNumber?.Trim();
                         participant.Age = model.Age;
                         participant.EducationQlf_Id = model.EducationQlf_Id;
-                        participant.YearOfSHG =model.YearOfSHG;
+                        participant.YearOfSHG = model.YearOfSHG;
                         participant.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
                         participant.Caste_Id = model.Caste_Id;
                         participant.TypeofEnterpriseBusin_Id = model.TypeofEnterpriseBusin_Id;
@@ -116,12 +118,12 @@ namespace DeWee.Controllers
                         participant.TookSourceOfLoan_Id = model.TookSourceOfLoan_Id;
                         participant.TookLoanAmt = model.TookLoanAmt;
                         participant.TookLoanAmt = model.TookLoanAmtBank;
-                        participant.TookLoanAmt  = model.TookLoanAmtR;
+                        participant.TookLoanAmt = model.TookLoanAmtR;
                         participant.TookLoanAmt = model.TookLoanAmtO;
                         participant.StartBusinessInvestAmt = model.StartBusinessInvestAmt;
                         participant.StartYourBusinessTakeAmt = model.StartYourBusinessTakeAmt;
                         participant.MonthlyProfitBusiness = model.MonthlyProfitBusiness;
-                        participant.WorkInEnterprises_FamilyMembers =model.WorkInEnterprises_FamilyMembers;
+                        participant.WorkInEnterprises_FamilyMembers = model.WorkInEnterprises_FamilyMembers;
                         participant.WorkInEnterprises_SHGMembers = model.WorkInEnterprises_SHGMembers;
                         participant.WorkInEnterprises_AssitantStaffs = model.WorkInEnterprises_AssitantStaff;
                         participant.TypeOfMachineEnterprise_Id = model.TypeOfMachineEnterprise_Id;
@@ -203,5 +205,5 @@ namespace DeWee.Controllers
             }
             return View(model);
         }
-    }   
+    }
 }
