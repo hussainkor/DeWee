@@ -245,12 +245,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
     <Property Name="Village_Id" Type="int" />
     <Property Name="CLF_Id" Type="int" />
     <Property Name="VO_Id" Type="int" />
+    <Property Name="NameofSHG" Type="nvarchar" MaxLength="500" />
+    <Property Name="YearOfSHG" Type="int" />
     <Property Name="TempRegNo" Type="nvarchar" MaxLength="30" />
     <Property Name="RegNo" Type="nvarchar" MaxLength="30" />
     <Property Name="AadharNo" Type="varchar" MaxLength="15" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
-    <Property Name="YearOfSHG" Type="int" />
-    <Property Name="NameofSHGmember" Type="nvarchar" MaxLength="300" />
+    <Property Name="NameofSHGMember" Type="nvarchar" MaxLength="500" />
     <Property Name="NameofEnterpriseOwner" Type="nvarchar" MaxLength="300" />
     <Property Name="Age" Type="int" />
     <Property Name="DOB" Type="varchar" MaxLength="20" />
@@ -278,24 +279,24 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
     <Property Name="Solar_InKilowatt_Id" Type="int" />
     <Property Name="Solar_EnergyPanelYesNo_Id" Type="int" />
     <Property Name="Solar_ExpenditureIncurredAmt" Type="decimal" Precision="15" Scale="5" />
-    <Property Name="Subsidy_Id" Type="int" />
-    <Property Name="LoanForSolarPanels_Id" Type="int" />
-    <Property Name="AvgAmtSavedFromSolarE_Id" Type="int" />
-    <Property Name="ElectricityUsed_Id" Type="int" />
-    <Property Name="MonthlyExpenseInElectricity_Id" Type="int" />
-    <Property Name="GeneratorElectricityUsed_Id" Type="int" />
-    <Property Name="ExpenseFuelSource_Id" Type="int" />
-    <Property Name="RepairCost_Id" Type="int" />
-    <Property Name="HeardAboutSE_Id" Type="int" />
-    <Property Name="IfYeswhere" Type="nvarchar(max)" />
-    <Property Name="InformationknowledgeAboutgovtsubsidyOfSE_Id" Type="int" />
-    <Property Name="IfYesAmtGovPaid" Type="int" />
-    <Property Name="LoanProcedureInSE_Id" Type="int" />
-    <Property Name="AdoptSolarization_Id" Type="int" />
-    <Property Name="CapitalArrangedForSE_Id" Type="int" />
-    <Property Name="IfYesCapitalArrangedForSE_Id" Type="int" />
-    <Property Name="OtherIndustriesEnterprises_Id" Type="int" />
-    <Property Name="IfYesFillTheForm" Type="nvarchar(max)" />
+    <Property Name="SubsidySolarReceive_Id" Type="int" />
+    <Property Name="LoanSolarPanelsYesNo_Id" Type="int" />
+    <Property Name="MonthAvgAmtSavedDescription_Id" Type="int" />
+    <Property Name="ElectricityUsedHours_Id" Type="int" />
+    <Property Name="MonthlyExpenseInElectricityBill_Id" Type="int" />
+    <Property Name="GeneratorElectricityUsedHours_Id" Type="int" />
+    <Property Name="MonthlyExpenseFuelSource_Id" Type="int" />
+    <Property Name="MonthlyRepairCost_Id" Type="int" />
+    <Property Name="HeardAboutSolarEYesNo_Id" Type="int" />
+    <Property Name="HeardAboutSolarEYes_IfYeswhere" Type="nvarchar(max)" />
+    <Property Name="InforknowledgeGovtSubsidyOfSEYesNo_Id" Type="int" />
+    <Property Name="InforknowledgeIfYesAmtGovPaid" Type="decimal" Precision="15" Scale="5" />
+    <Property Name="LoanProcedureInSEYesNo_Id" Type="int" />
+    <Property Name="AdoptSolarizationYesNo_Id" Type="int" />
+    <Property Name="CapitalArrangedForSEYesNo_Id" Type="int" />
+    <Property Name="IfYesCapitalArrangedForSEAmt" Type="decimal" Precision="15" Scale="5" />
+    <Property Name="OtherIndustriesEnterprisesYesNo_Id" Type="int" />
+    <Property Name="IfYesFillForm_OtherIndustriesEnterprises" Type="nvarchar(max)" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
     <Property Name="CreatedOn" Type="datetime" />
@@ -609,12 +610,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[Village_Id] AS [Village_Id], 
     [Tbl_IndtSolarization].[CLF_Id] AS [CLF_Id], 
     [Tbl_IndtSolarization].[VO_Id] AS [VO_Id], 
+    [Tbl_IndtSolarization].[NameofSHG] AS [NameofSHG], 
+    [Tbl_IndtSolarization].[YearOfSHG] AS [YearOfSHG], 
     [Tbl_IndtSolarization].[TempRegNo] AS [TempRegNo], 
     [Tbl_IndtSolarization].[RegNo] AS [RegNo], 
     [Tbl_IndtSolarization].[AadharNo] AS [AadharNo], 
     [Tbl_IndtSolarization].[PhoneNumber] AS [PhoneNumber], 
-    [Tbl_IndtSolarization].[YearOfSHG] AS [YearOfSHG], 
-    [Tbl_IndtSolarization].[NameofSHGmember] AS [NameofSHGmember], 
+    [Tbl_IndtSolarization].[NameofSHGMember] AS [NameofSHGMember], 
     [Tbl_IndtSolarization].[NameofEnterpriseOwner] AS [NameofEnterpriseOwner], 
     [Tbl_IndtSolarization].[Age] AS [Age], 
     [Tbl_IndtSolarization].[DOB] AS [DOB], 
@@ -642,24 +644,24 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     [Tbl_IndtSolarization].[Solar_InKilowatt_Id] AS [Solar_InKilowatt_Id], 
     [Tbl_IndtSolarization].[Solar_EnergyPanelYesNo_Id] AS [Solar_EnergyPanelYesNo_Id], 
     [Tbl_IndtSolarization].[Solar_ExpenditureIncurredAmt] AS [Solar_ExpenditureIncurredAmt], 
-    [Tbl_IndtSolarization].[Subsidy_Id] AS [Subsidy_Id], 
-    [Tbl_IndtSolarization].[LoanForSolarPanels_Id] AS [LoanForSolarPanels_Id], 
-    [Tbl_IndtSolarization].[AvgAmtSavedFromSolarE_Id] AS [AvgAmtSavedFromSolarE_Id], 
-    [Tbl_IndtSolarization].[ElectricityUsed_Id] AS [ElectricityUsed_Id], 
-    [Tbl_IndtSolarization].[MonthlyExpenseInElectricity_Id] AS [MonthlyExpenseInElectricity_Id], 
-    [Tbl_IndtSolarization].[GeneratorElectricityUsed_Id] AS [GeneratorElectricityUsed_Id], 
-    [Tbl_IndtSolarization].[ExpenseFuelSource_Id] AS [ExpenseFuelSource_Id], 
-    [Tbl_IndtSolarization].[RepairCost_Id] AS [RepairCost_Id], 
-    [Tbl_IndtSolarization].[HeardAboutSE_Id] AS [HeardAboutSE_Id], 
-    [Tbl_IndtSolarization].[IfYeswhere] AS [IfYeswhere], 
-    [Tbl_IndtSolarization].[InformationknowledgeAboutgovtsubsidyOfSE_Id] AS [InformationknowledgeAboutgovtsubsidyOfSE_Id], 
-    [Tbl_IndtSolarization].[IfYesAmtGovPaid] AS [IfYesAmtGovPaid], 
-    [Tbl_IndtSolarization].[LoanProcedureInSE_Id] AS [LoanProcedureInSE_Id], 
-    [Tbl_IndtSolarization].[AdoptSolarization_Id] AS [AdoptSolarization_Id], 
-    [Tbl_IndtSolarization].[CapitalArrangedForSE_Id] AS [CapitalArrangedForSE_Id], 
-    [Tbl_IndtSolarization].[IfYesCapitalArrangedForSE_Id] AS [IfYesCapitalArrangedForSE_Id], 
-    [Tbl_IndtSolarization].[OtherIndustriesEnterprises_Id] AS [OtherIndustriesEnterprises_Id], 
-    [Tbl_IndtSolarization].[IfYesFillTheForm] AS [IfYesFillTheForm], 
+    [Tbl_IndtSolarization].[SubsidySolarReceive_Id] AS [SubsidySolarReceive_Id], 
+    [Tbl_IndtSolarization].[LoanSolarPanelsYesNo_Id] AS [LoanSolarPanelsYesNo_Id], 
+    [Tbl_IndtSolarization].[MonthAvgAmtSavedDescription_Id] AS [MonthAvgAmtSavedDescription_Id], 
+    [Tbl_IndtSolarization].[ElectricityUsedHours_Id] AS [ElectricityUsedHours_Id], 
+    [Tbl_IndtSolarization].[MonthlyExpenseInElectricityBill_Id] AS [MonthlyExpenseInElectricityBill_Id], 
+    [Tbl_IndtSolarization].[GeneratorElectricityUsedHours_Id] AS [GeneratorElectricityUsedHours_Id], 
+    [Tbl_IndtSolarization].[MonthlyExpenseFuelSource_Id] AS [MonthlyExpenseFuelSource_Id], 
+    [Tbl_IndtSolarization].[MonthlyRepairCost_Id] AS [MonthlyRepairCost_Id], 
+    [Tbl_IndtSolarization].[HeardAboutSolarEYesNo_Id] AS [HeardAboutSolarEYesNo_Id], 
+    [Tbl_IndtSolarization].[HeardAboutSolarEYes_IfYeswhere] AS [HeardAboutSolarEYes_IfYeswhere], 
+    [Tbl_IndtSolarization].[InforknowledgeGovtSubsidyOfSEYesNo_Id] AS [InforknowledgeGovtSubsidyOfSEYesNo_Id], 
+    [Tbl_IndtSolarization].[InforknowledgeIfYesAmtGovPaid] AS [InforknowledgeIfYesAmtGovPaid], 
+    [Tbl_IndtSolarization].[LoanProcedureInSEYesNo_Id] AS [LoanProcedureInSEYesNo_Id], 
+    [Tbl_IndtSolarization].[AdoptSolarizationYesNo_Id] AS [AdoptSolarizationYesNo_Id], 
+    [Tbl_IndtSolarization].[CapitalArrangedForSEYesNo_Id] AS [CapitalArrangedForSEYesNo_Id], 
+    [Tbl_IndtSolarization].[IfYesCapitalArrangedForSEAmt] AS [IfYesCapitalArrangedForSEAmt], 
+    [Tbl_IndtSolarization].[OtherIndustriesEnterprisesYesNo_Id] AS [OtherIndustriesEnterprisesYesNo_Id], 
+    [Tbl_IndtSolarization].[IfYesFillForm_OtherIndustriesEnterprises] AS [IfYesFillForm_OtherIndustriesEnterprises], 
     [Tbl_IndtSolarization].[IsActive] AS [IsActive], 
     [Tbl_IndtSolarization].[CreatedBy] AS [CreatedBy], 
     [Tbl_IndtSolarization].[CreatedOn] AS [CreatedOn], 

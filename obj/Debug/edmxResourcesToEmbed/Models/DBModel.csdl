@@ -1,70 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DeWee_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="DeWee_DBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="C__MigrationHistory" EntityType="DeWee_DBModel.C__MigrationHistory" />
-    <EntitySet Name="AspNetUserClaims" EntityType="DeWee_DBModel.AspNetUserClaim" />
-    <EntitySet Name="AspNetUserLogins" EntityType="DeWee_DBModel.AspNetUserLogin" />
-    <EntitySet Name="AspNetUsers" EntityType="DeWee_DBModel.AspNetUser" />
-    <EntitySet Name="Tbl_Block_Master" EntityType="DeWee_DBModel.Tbl_Block_Master" />
-    <EntitySet Name="Tbl_BusinessInvestmentM" EntityType="DeWee_DBModel.Tbl_BusinessInvestmentM" />
-    <EntitySet Name="Tbl_BusinessOwnedM" EntityType="DeWee_DBModel.Tbl_BusinessOwnedM" />
-    <EntitySet Name="Tbl_BusinessTypeM" EntityType="DeWee_DBModel.Tbl_BusinessTypeM" />
-    <EntitySet Name="Tbl_CasteM" EntityType="DeWee_DBModel.Tbl_CasteM" />
-    <EntitySet Name="Tbl_CLF_Master" EntityType="DeWee_DBModel.Tbl_CLF_Master" />
-    <EntitySet Name="Tbl_District_Master" EntityType="DeWee_DBModel.Tbl_District_Master" />
-    <EntitySet Name="Tbl_ElectricityConsumptionM" EntityType="DeWee_DBModel.Tbl_ElectricityConsumptionM" />
-    <EntitySet Name="Tbl_ElectricityUsedM" EntityType="DeWee_DBModel.Tbl_ElectricityUsedM" />
-    <EntitySet Name="Tbl_MachineryPowerM" EntityType="DeWee_DBModel.Tbl_MachineryPowerM" />
-    <EntitySet Name="Tbl_MoneySavedSEM" EntityType="DeWee_DBModel.Tbl_MoneySavedSEM" />
-    <EntitySet Name="Tbl_MonthlyExpenseEBM" EntityType="DeWee_DBModel.Tbl_MonthlyExpenseEBM" />
-    <EntitySet Name="Tbl_Panchayat_Master" EntityType="DeWee_DBModel.Tbl_Panchayat_Master" />
-    <EntitySet Name="Tbl_PowerConnectionM" EntityType="DeWee_DBModel.Tbl_PowerConnectionM" />
-    <EntitySet Name="Tbl_SolarkilowattM" EntityType="DeWee_DBModel.Tbl_SolarkilowattM" />
-    <EntitySet Name="Tbl_SourceEnergyM" EntityType="DeWee_DBModel.Tbl_SourceEnergyM" />
-    <EntitySet Name="Tbl_State_Master" EntityType="DeWee_DBModel.Tbl_State_Master" />
-    <EntitySet Name="Tbl_SubisdyM" EntityType="DeWee_DBModel.Tbl_SubisdyM" />
-    <EntitySet Name="Tbl_TypeYesNoM" EntityType="DeWee_DBModel.Tbl_TypeYesNoM" />
-    <EntitySet Name="Tbl_Village_Master" EntityType="DeWee_DBModel.Tbl_Village_Master" />
-    <EntitySet Name="Tbl_VO_Master" EntityType="DeWee_DBModel.Tbl_VO_Master" />
-    <EntitySet Name="Tbl_Educational_QualificationM" EntityType="DeWee_DBModel.Tbl_Educational_QualificationM" />
-    <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="DeWee_DBModel.Tbl_Enterprise_EstablishedM" />
-    <EntitySet Name="Tbl_EnterpriseM" EntityType="DeWee_DBModel.Tbl_EnterpriseM" />
-    <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="DeWee_DBModel.Tbl_EnterpriseMachineM" />
-    <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="DeWee_DBModel.Tbl_LoanDescribeSourceM" />
-    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-    </AssociationSet>
-    <EntitySet Name="AspNetRoles" EntityType="DeWee_DBModel.AspNetRole" />
-    <AssociationSet Name="AspNetUserRoles" Association="DeWee_DBModel.AspNetUserRoles">
-      <End Role="AspNetRole" EntitySet="AspNetRoles" />
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-    </AssociationSet>
-    <EntitySet Name="Tbl_IndtSolarization" EntityType="DeWee_DBModel.Tbl_IndtSolarization" />
-  </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
       <PropertyRef Name="MigrationId" />
       <PropertyRef Name="ContextKey" />
     </Key>
-    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
   </EntityType>
   <EntityType Name="AspNetUserClaim">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUser" Relationship="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
   </EntityType>
   <EntityType Name="AspNetUserLogin">
     <Key>
@@ -72,16 +34,16 @@
       <PropertyRef Name="ProviderKey" />
       <PropertyRef Name="UserId" />
     </Key>
-    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUser" Relationship="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
   </EntityType>
   <EntityType Name="AspNetUser">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
     <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -92,10 +54,10 @@
     <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
     <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
     <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUserClaims" Relationship="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
-    <NavigationProperty Name="AspNetUserLogins" Relationship="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-    <NavigationProperty Name="AspNetRoles" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
   </EntityType>
   <EntityType Name="Tbl_Block_Master">
     <Key>
@@ -424,45 +386,83 @@
     <Property Name="OrderBy" Type="Int32" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-    <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Type="DeWee_DBModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AspNetUser">
+      <Principal Role="AspNetUsers">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="AspNetUserClaim">
+      <Dependent Role="AspNetUserClaims">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-    <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Type="DeWee_DBModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AspNetUser">
+      <Principal Role="AspNetUsers">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="AspNetUserLogin">
+      <Dependent Role="AspNetUserLogins">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="AspNetRole">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUsers" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
-  </EntityType>
   <Association Name="AspNetUserRoles">
-    <End Type="DeWee_DBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-    <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
   </Association>
+  <EntityContainer Name="DeWee_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="Tbl_Block_Master" EntityType="Self.Tbl_Block_Master" />
+    <EntitySet Name="Tbl_BusinessInvestmentM" EntityType="Self.Tbl_BusinessInvestmentM" />
+    <EntitySet Name="Tbl_BusinessOwnedM" EntityType="Self.Tbl_BusinessOwnedM" />
+    <EntitySet Name="Tbl_BusinessTypeM" EntityType="Self.Tbl_BusinessTypeM" />
+    <EntitySet Name="Tbl_CasteM" EntityType="Self.Tbl_CasteM" />
+    <EntitySet Name="Tbl_CLF_Master" EntityType="Self.Tbl_CLF_Master" />
+    <EntitySet Name="Tbl_District_Master" EntityType="Self.Tbl_District_Master" />
+    <EntitySet Name="Tbl_ElectricityConsumptionM" EntityType="Self.Tbl_ElectricityConsumptionM" />
+    <EntitySet Name="Tbl_ElectricityUsedM" EntityType="Self.Tbl_ElectricityUsedM" />
+    <EntitySet Name="Tbl_MachineryPowerM" EntityType="Self.Tbl_MachineryPowerM" />
+    <EntitySet Name="Tbl_MoneySavedSEM" EntityType="Self.Tbl_MoneySavedSEM" />
+    <EntitySet Name="Tbl_MonthlyExpenseEBM" EntityType="Self.Tbl_MonthlyExpenseEBM" />
+    <EntitySet Name="Tbl_Panchayat_Master" EntityType="Self.Tbl_Panchayat_Master" />
+    <EntitySet Name="Tbl_PowerConnectionM" EntityType="Self.Tbl_PowerConnectionM" />
+    <EntitySet Name="Tbl_SolarkilowattM" EntityType="Self.Tbl_SolarkilowattM" />
+    <EntitySet Name="Tbl_SourceEnergyM" EntityType="Self.Tbl_SourceEnergyM" />
+    <EntitySet Name="Tbl_State_Master" EntityType="Self.Tbl_State_Master" />
+    <EntitySet Name="Tbl_SubisdyM" EntityType="Self.Tbl_SubisdyM" />
+    <EntitySet Name="Tbl_TypeYesNoM" EntityType="Self.Tbl_TypeYesNoM" />
+    <EntitySet Name="Tbl_Village_Master" EntityType="Self.Tbl_Village_Master" />
+    <EntitySet Name="Tbl_VO_Master" EntityType="Self.Tbl_VO_Master" />
+    <EntitySet Name="Tbl_Educational_QualificationM" EntityType="Self.Tbl_Educational_QualificationM" />
+    <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="Self.Tbl_Enterprise_EstablishedM" />
+    <EntitySet Name="Tbl_EnterpriseM" EntityType="Self.Tbl_EnterpriseM" />
+    <EntitySet Name="Tbl_EnterpriseMachineM" EntityType="Self.Tbl_EnterpriseMachineM" />
+    <EntitySet Name="Tbl_LoanDescribeSourceM" EntityType="Self.Tbl_LoanDescribeSourceM" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="Tbl_IndtSolarization" EntityType="DeWee_DBModel.Tbl_IndtSolarization" />
+  </EntityContainer>
   <EntityType Name="Tbl_IndtSolarization">
     <Key>
       <PropertyRef Name="Indt_Id" />
@@ -475,12 +475,13 @@
     <Property Name="Village_Id" Type="Int32" />
     <Property Name="CLF_Id" Type="Int32" />
     <Property Name="VO_Id" Type="Int32" />
+    <Property Name="NameofSHG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="YearOfSHG" Type="Int32" />
     <Property Name="TempRegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="RegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="AadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-    <Property Name="YearOfSHG" Type="Int32" />
-    <Property Name="NameofSHGmember" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="NameofSHGMember" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="NameofEnterpriseOwner" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" />
     <Property Name="DOB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -508,24 +509,24 @@
     <Property Name="Solar_InKilowatt_Id" Type="Int32" />
     <Property Name="Solar_EnergyPanelYesNo_Id" Type="Int32" />
     <Property Name="Solar_ExpenditureIncurredAmt" Type="Decimal" Precision="15" Scale="5" />
-    <Property Name="Subsidy_Id" Type="Int32" />
-    <Property Name="LoanForSolarPanels_Id" Type="Int32" />
-    <Property Name="AvgAmtSavedFromSolarE_Id" Type="Int32" />
-    <Property Name="ElectricityUsed_Id" Type="Int32" />
-    <Property Name="MonthlyExpenseInElectricity_Id" Type="Int32" />
-    <Property Name="GeneratorElectricityUsed_Id" Type="Int32" />
-    <Property Name="ExpenseFuelSource_Id" Type="Int32" />
-    <Property Name="RepairCost_Id" Type="Int32" />
-    <Property Name="HeardAboutSE_Id" Type="Int32" />
-    <Property Name="IfYeswhere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="InformationknowledgeAboutgovtsubsidyOfSE_Id" Type="Int32" />
-    <Property Name="IfYesAmtGovPaid" Type="Int32" />
-    <Property Name="LoanProcedureInSE_Id" Type="Int32" />
-    <Property Name="AdoptSolarization_Id" Type="Int32" />
-    <Property Name="CapitalArrangedForSE_Id" Type="Int32" />
-    <Property Name="IfYesCapitalArrangedForSE_Id" Type="Int32" />
-    <Property Name="OtherIndustriesEnterprises_Id" Type="Int32" />
-    <Property Name="IfYesFillTheForm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SubsidySolarReceive_Id" Type="Int32" />
+    <Property Name="LoanSolarPanelsYesNo_Id" Type="Int32" />
+    <Property Name="MonthAvgAmtSavedDescription_Id" Type="Int32" />
+    <Property Name="ElectricityUsedHours_Id" Type="Int32" />
+    <Property Name="MonthlyExpenseInElectricityBill_Id" Type="Int32" />
+    <Property Name="GeneratorElectricityUsedHours_Id" Type="Int32" />
+    <Property Name="MonthlyExpenseFuelSource_Id" Type="Int32" />
+    <Property Name="MonthlyRepairCost_Id" Type="Int32" />
+    <Property Name="HeardAboutSolarEYesNo_Id" Type="Int32" />
+    <Property Name="HeardAboutSolarEYes_IfYeswhere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InforknowledgeGovtSubsidyOfSEYesNo_Id" Type="Int32" />
+    <Property Name="InforknowledgeIfYesAmtGovPaid" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="LoanProcedureInSEYesNo_Id" Type="Int32" />
+    <Property Name="AdoptSolarizationYesNo_Id" Type="Int32" />
+    <Property Name="CapitalArrangedForSEYesNo_Id" Type="Int32" />
+    <Property Name="IfYesCapitalArrangedForSEAmt" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="OtherIndustriesEnterprisesYesNo_Id" Type="Int32" />
+    <Property Name="IfYesFillForm_OtherIndustriesEnterprises" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />

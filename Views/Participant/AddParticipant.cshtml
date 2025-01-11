@@ -506,11 +506,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.IfYesFillTheForm, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, htmlAttributes: new { @class = "control-label col-md-2" })
                         <span style="color:red;">*</span>
                         <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.IfYesFillTheForm, new { @class = "form-control-input", @required = "required" })
-                            @Html.ValidationMessageFor(model => model.IfYesFillTheForm, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, new { @class = "form-control-input", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -535,18 +535,49 @@
                 BindBlockList("BlockId", "", 0, $('#DistrictId').val());
             });
             $('#BlockId').change(function () {
-                BindPanchayatList("PanchayatId", "", 0, $('#DistrictId').val(), $('#BlockId').val(),0);
+                BindPanchayatList("PanchayatId", "", 0, $('#DistrictId').val(), $('#BlockId').val(), 0);
             });
             $('#PanchayatId').change(function () {
-                BindCLFList("VillageId", "", 0, $('#DistrictId').val(), $('#BlockId').val(),$('#PanchayatId').val());
+                BindCLFList("VillageId", "", 0, $('#DistrictId').val(), $('#BlockId').val(), $('#PanchayatId').val());
             });
             $('#VillageId').change(function () {
                 BindVOList("VOId", "", 0, $('#DistrictId').val(), $('#BlockId').val(), $('#PanchayatId').val(), $('#VillageId').val());
             });
-          
+
             BindCLFList();
             BindVOList();
             BindVillageList();
-        })
+
+
+            $("#formid").on("submit", function (event) {
+                event.preventDefault();
+                var isvalid = $("#formid").valid();
+                var formData = $(this).serialize();
+
+                if (isvalid) {
+                    $.ajax({
+                        type: "POST",
+                        url: document.baseURI + "/Participant/AddParticipant/",
+                        data: formData,
+                        dataType: 'json',
+                        success: function (resp) {
+                            if (resp.StatusType == "success") {
+                                toastr.success("Success", resp.Message);
+
+                                $("#formid")[0].reset();
+                            } else {
+                                toastr.error("Error", resp.Message);
+                            }
+                        },
+                        error: function (req, error) {
+                            var errormsg = 'There was a communication error: ' + (error === 'error' ? req.statusText : error);
+                            toastr.error("Error", errormsg);
+                        }
+                    });
+                } else {
+                    toastr.error("Error", "All Record Validate !!");
+                }
+            });
+        });
     </script>
 }

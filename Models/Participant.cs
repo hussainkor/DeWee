@@ -12,245 +12,252 @@ namespace DeWee.Models
         public Guid Indt_Id { get; set; }
 
         [Display(Name = PartDisplayName.State_Id)]
-        [Required]
+        //[Required]
         public int State_Id { get; set; }
 
         [Display(Name = PartDisplayName.District_Id)]
-        [Required]
+        //[Required]
         public int District_Id { get; set; }
 
         [Display(Name = PartDisplayName.Block_Id)]
-        [Required]
+        //[Required]
         public int Block_Id { get; set; }
 
         [Display(Name = PartDisplayName.Panchayat_Id)]
-        [Required]
+        //[Required]
         public int Panchayat_Id { get; set; }
 
 
         [Display(Name = PartDisplayName.Village_Id)]
-        [Required]
+        //[Required]
         public int Village_Id { get; set; }
 
 
         [Display(Name = PartDisplayName.CLF_Id)]
-        [Required]
+        //[Required]
         public int CLF_Id { get; set; }
 
         [Display(Name = PartDisplayName.VO_Id)]
-        [Required]
+        //[Required]
         public int VO_Id { get; set; }
 
 
         [Display(Name = PartDisplayName.NameofSHG)]
-        [Required]
+        //[Required]
         public string NameofSHG { get; set; }
 
 
         [Display(Name = PartDisplayName.YearOfSHG)]
-        [Required]
+        //[Required]
         public int YearOfSHG { get; set; }
 
         [Display(Name = PartDisplayName.NameofSHGmember)]
-        [Required]
+        //[Required]
         public string NameofSHGmember { get; set; }
 
         [Display(Name = PartDisplayName.NameofEnterpriseOwner)]
-        [Required]
+        //[Required]
         public string NameofEnterpriseOwner { get; set; }
 
         [Display(Name = PartDisplayName.Age)]
-        [Required]
+        //[Required]
         public int Age { get; set; }
 
         [Display(Name = PartDisplayName.EducationQlf_Id)]
-        [Required]
+        //[Required]
         public int EducationQlf_Id { get; set; }
 
         [Display(Name = PartDisplayName.Caste_Id)]
-        [Required]
+        //[Required]
         public int Caste_Id { get; set; }
 
         [Display(Name = PartDisplayName.PhoneNumber)]
+        //[Required]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = PartDisplayName.TypeofEnterpriseBusin_Id)]
-        [Required]
+        //[Required]
         public int TypeofEnterpriseBusin_Id { get; set; }
 
         [Display(Name = PartDisplayName.BusinessOwnedType_Id)]
-        [Required]
+        //[Required]
         public int BusinessOwnedType_Id { get; set; }
 
         [Display(Name = PartDisplayName.EstablishedEnterpriseType_Id)]
-        [Required]
+        //[Required]
         public int EstablishedEnterpriseType_Id { get; set; }
 
 
         [Display(Name = PartDisplayName.TypeOfInvestBusin_Id)]
-        [Required]
+        //[Required]
         public int TypeOfInvestBusin_Id { get; set; }
 
         [Display(Name = PartDisplayName.TookSourceOfLoan_Id)]
-        [Required]
+        //[Required]
         public int TookSourceOfLoan_Id { get; set; }
 
 
         [Display(Name = PartDisplayName.TookLoanAmt)]
-        [Required]
+        //[Required]
         public decimal TookLoanAmt { get; set; }
 
         [Display(Name = PartDisplayName.TookLoanAmtBank)]
-        [Required]
+        //[Required]
         public decimal TookLoanAmtBank { get; set; }
 
         [Display(Name = PartDisplayName.TookLoanAmtR)]
-        [Required]
+        //[Required]
         public decimal TookLoanAmtR { get; set; }
 
         [Display(Name = PartDisplayName.TookLoanAmtO)]
-        [Required]
+        //[Required]
         public decimal TookLoanAmtO { get; set; }
 
         [Display(Name = PartDisplayName.StartBusinessInvestAmt)]
-        [Required]
+        //[Required]
         public decimal StartBusinessInvestAmt { get; set; }
 
 
         [Display(Name = PartDisplayName.StartYourBusinessTakeAmt)]
-        [Required]
+        //[Required]
         public decimal StartYourBusinessTakeAmt { get; set; }
 
         [Display(Name = PartDisplayName.MonthlyProfitBusiness)]
-        [Required]
+        //[Required]
         public decimal MonthlyProfitBusiness { get; set; }
 
         [Display(Name = PartDisplayName.WorkInEnterprises_FamilyMembers)]
-        [Required]
+        //[Required]
         public int WorkInEnterprises_FamilyMembers { get; set; }
 
         [Display(Name = PartDisplayName.WorkInEnterprises_SHGMembers)]
-        [Required]
+        //[Required]
         public int WorkInEnterprises_SHGMembers { get; set; }
 
 
         [Display(Name = PartDisplayName.WorkInEnterprises_AssitantStaffs)]
-        [Required]
+        //[Required]
         public int WorkInEnterprises_AssitantStaff { get; set; }
 
         [Display(Name = PartDisplayName.TypeofEnterpriseBusin_Id)]
-        [Required]
+        //[Required]
         public int TypeOfMachineEnterprise_Id { get; set; }
 
         [Display(Name = PartDisplayName.MotorBasedOnMachinesInActualUsed)]
-        [Required]
+        //[Required]
         public int MotorBasedOnMachinesInActualUsed { get; set; }
 
         [Display(Name = PartDisplayName.MachineryPowerkilowatt_Id)]
-        [Required]
+        //[Required]
         public int MachineryPowerkilowatt_Id { get; set; }
 
         [Display(Name = PartDisplayName.ElectricityConnection_Id)]
-        [Required]
+        //[Required]
         public int ElectricityConnection_Id { get; set; }
 
         [Display(Name = PartDisplayName.ConnectionPhaseofPower_Id)]
-        [Required]
+        //[Required]
         public int ConnectionPhaseofPower_Id { get; set; }
 
         [Display(Name = PartDisplayName.MonthlyElectricityConsumption_Id)]
-        [Required]
+        //[Required]
         public int MonthlyElectricityConsumption_Id { get; set; }
 
         [Display(Name = PartDisplayName.MachineSourceofEnergy_Id)]
-        [Required]
+        //[Required]
         public int MachineSourceofEnergy_Id { get; set; }
 
         [Display(Name = PartDisplayName.Solar_InKilowatt_Id)]
-        [Required]
+        //[Required]
         public int Solar_InKilowatt_Id { get; set; }
 
         [Display(Name = PartDisplayName.Solar_EnergyPanelYesNo_Id)]
-        [Required]
+        //[Required]
         public int Solar_EnergyPanelYesNo_Id { get; set; }
 
         [Display(Name = PartDisplayName.Solar_ExpenditureIncurredAmt)]
-        [Required]
+        //[Required]
         public decimal Solar_ExpenditureIncurredAmt { get; set; }
 
         [Display(Name = PartDisplayName.SubsidySolarReceive_Id)]
-        [Required]
+        //[Required]
         public int SubsidySolarReceive_Id { get; set; }
 
         [Display(Name = PartDisplayName.LoanSolarPanelsYesNo_Id)]
-        [Required]
+        //[Required]
         public int LoanSolarPanelsYesNo_Id { get; set; }
 
         [Display(Name = PartDisplayName.MonthAvgAmtSavedDescription_Id)]
-        [Required]
+        //[Required]
         public int MonthAvgAmtSavedDescription_Id { get; set; }
 
         [Display(Name = PartDisplayName.ElectricityUsedHours_Id)]
-        [Required]
+        //[Required]
         public int ElectricityUsedHours_Id { get; set; }
 
         [Display(Name = PartDisplayName.MonthlyExpenseInElectricityBill_Id)]
-        [Required]
+        //[Required]
         public int MonthlyExpenseInElectricityBill_Id { get; set; }
 
         [Display(Name = PartDisplayName.GeneratorElectricityUsedHours_Id)]
-        [Required]
+        //[Required]
         public int GeneratorElectricityUsedHours_Id { get; set; }
 
         [Display(Name = PartDisplayName.MonthlyExpenseFuelSource_Id)]
-        [Required]
+        //[Required]
         public int MonthlyExpenseFuelSource_Id { get; set; }
 
         [Display(Name = PartDisplayName.MonthlyRepairCost_Id)]
-        [Required]
+        //[Required]
         public int MonthlyRepairCost_Id { get; set; }
 
         [Display(Name = PartDisplayName.HeardAboutSolarEYesNo_Id)]
-        [Required]
+        //[Required]
         public int HeardAboutSolarEYesNo_Id { get; set; }
 
         [Display(Name = PartDisplayName.HeardAboutSolarEYes_IfYeswhere)]
-        [Required]
+        //[Required]
         public string HeardAboutSolarEYes_IfYeswhere { get; set; }
 
         [Display(Name = PartDisplayName.InforknowledgeGovtSubsidyOfSEYesNo_Id)]
-        [Required]
+        //[Required]
         public int InforknowledgeGovtSubsidyOfSEYesNo_Id { get; set; }
 
         [Display(Name = PartDisplayName.InforknowledgeIfYesAmtGovPaid)]
-        [Required]
+        //[Required]
         public decimal InforknowledgeIfYesAmtGovPaid { get; set; }
 
         [Display(Name = PartDisplayName.LoanProcedureInSEYesNo_Id)]
-        [Required]
+        //[Required]
         public int LoanProcedureInSEYesNo_Id { get; set; }
 
         [Display(Name = PartDisplayName.AdoptSolarizationYesNo_Id)]
-        [Required]
+        //[Required]
         public int AdoptSolarizationYesNo_Id { get; set; }
 
         [Display(Name = PartDisplayName.CapitalArrangedForSEYesNo_Id)]
-        [Required]
+        //[Required]
         public int CapitalArrangedForSEYesNo_Id { get; set; }
 
         [Display(Name = PartDisplayName.IfYesCapitalArrangedForSEAmt)]
-        [Required]
+        //[Required]
         public decimal IfYesCapitalArrangedForSEAmt { get; set; }
 
         [Display(Name = PartDisplayName.OtherIndustriesEnterprisesYesNo_Id)]
-        [Required]
+        //[Required]
         public int OtherIndustriesEnterprisesYesNo_Id { get; set; }
 
         [Display(Name = PartDisplayName.IfYesFillForm_OtherIndustriesEnterprises)]
-        [Required]
-        public string IfYesFillTheForm { get; set; }
+        //[Required]
+        public string IfYesFillForm_OtherIndustriesEnterprises { get; set; }
 
+        [Display(Name = PartDisplayName.DOB)]
+        //[Required]
+        public string DOB { get; set; }
+
+        [Display(Name = PartDisplayName.AadharNo)]
+        public string AadharNo { get; set; }
 
         [Display(Name = "Is Active")]
         public bool IsActive { get; set; }
