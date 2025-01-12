@@ -284,7 +284,7 @@ namespace DeWee.Models
         [Display(Name = "Deleted On")]
         public DateTime? DeletedOn { get; set; }
 
-        //public List<Participant> Participants { get; set; }
+        public List<Participant> Participants { get; set; }
 
     }
     public class PartDisplayName

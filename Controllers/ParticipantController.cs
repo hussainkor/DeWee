@@ -2,6 +2,8 @@
 using DeWee.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,7 +20,7 @@ namespace DeWee.Controllers
         //{
         //    return View();
         //}
-        public ActionResult AddParticipant(Guid? Indt_Id)
+        public ActionResult AddParticipant()
         {
             //Participant model = new Participant();
             //if (Indt_Id != Guid.Empty && Indt_Id != null)
@@ -88,22 +90,23 @@ namespace DeWee.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var existingPart = SPManager.Check_ParticipantAlready(model.Indt_Id.ToString(), model.PhoneNumber, model.AadharNo); //db.Tbl_IndtSolarization.Where(x => x.IsActive == true && x.PhoneNumber == model.PhoneNumber.Trim())?.FirstOrDefault();
+                    //var existingPart = SPManager.Check_ParticipantAlready(model.Indt_Id.ToString(), model.PhoneNumber, model.AadharNo); //db.Tbl_IndtSolarization.Where(x => x.IsActive == true && x.PhoneNumber == model.PhoneNumber.Trim())?.FirstOrDefault();
 
-                    if (existingPart.Rows.Count > 0)
-                    {
-                        response = new JsonResponseData
-                        {
-                            StatusType = eAlertType.error.ToString(),
-                            Message = $"Already Exists Registration.<br /> <span> Reg ID : <strong> {existingPart.Rows[0]["RegNo"].ToString()} </strong>  </span>",
-                            Data = null
-                        };
-                        return Json(response, JsonRequestBehavior.AllowGet);
-                    }
+                    //if (existingPart.Rows.Count > 0)
+                    //{
+                    //    response = new JsonResponseData
+                    //    {
+                    //        StatusType = eAlertType.error.ToString(),
+                    //        Message = $"Already Exists Registration.<br /> <span> Reg ID : <strong> {existingPart.Rows[0]["RegNo"].ToString()} </strong>  </span>",
+                    //        Data = null
+                    //    };
+                    //    return Json(response, JsonRequestBehavior.AllowGet);
+                    //}
                     var tbl = model.Indt_Id != Guid.Empty ? db.Tbl_IndtSolarization.Find(model.Indt_Id) : new Tbl_IndtSolarization();
 
                     if (tbl != null)
                     {
+
                         tbl.StateId = model.StateId;
                         tbl.DistrictId = model.DistrictId;
                         tbl.BlockId = model.BlockId;
@@ -111,7 +114,8 @@ namespace DeWee.Controllers
                         tbl.VillageId = model.VillageId;
                         tbl.CLFId = model.CLFId;
                         tbl.VOId = model.VOId;
-
+                        tbl.AadharNo = model.AadharNo;
+                        tbl.DOB = model.DOB;
                         tbl.NameofSHGMember = model.NameofSHGmember?.Trim();
                         tbl.PhoneNumber = model.PhoneNumber?.Trim();
                         tbl.Age = model.Age;
@@ -215,6 +219,45 @@ namespace DeWee.Controllers
                 return Json(response, JsonRequestBehavior.AllowGet);
             }
             return View(model);
+        }
+        public ActionResult ParticipantList()
+        {
+            return View();
+        }
+        public ActionResult GetParticipantList()
+        {
+            DataTable tbllist = new DataTable();
+            try
+            {
+                tbllist = SPManager.Get_USP_ParticipantList();
+                bool IsCheck = tbllist.Rows.Count > 0;
+
+                if (IsCheck)
+                {
+                    var html = ConvertViewToString("_PData", tbllist);
+                    return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { IsSuccess = false, Data = "No records found." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsSuccess = false, Data = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        private string ConvertViewToString(string viewName, object model)
+        {
+            ViewData.Model = model;
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+                return sw.GetStringBuilder().ToString();
+            }
         }
     }
 }

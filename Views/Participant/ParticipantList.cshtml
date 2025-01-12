@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: document.baseURI + "/Participant/GetParticipantList/",
+                dataType: 'json',
+                success: function (resp) {
+                    if (resp.IsSuccess) {
+                        $('#participantTableContainer').html(resp.Data);
+                        toastr.success("Success", "Data loaded successfully.");
+
+                        // Initialize DataTable after loading the HTML
+                        $('#tbl').DataTable(); // Ensure you have included DataTables library
+                    } else {
+                        toastr.error("Error", resp.Data);
+                    }
+                },
+                error: function (req, error) {
+                    var errormsg = 'There was a communication error: ' + (error === 'error' ? req.statusText : error);
+                    toastr.error("Error", errormsg);
+                }
+            });
+        });
+    </script>
+}
+
+<div id="participantTableContainer">
+    <!-- The participant table will be injected here -->
+</div>

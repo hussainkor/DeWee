@@ -27,5 +27,11 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }
+        public static DataTable Get_USP_ParticipantList()
+        {
+            StoredProcedure sp = new StoredProcedure("USP_ParticipantList");
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
     }
 }
