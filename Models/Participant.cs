@@ -106,17 +106,17 @@ namespace DeWee.Models
         //[Required]
         public decimal TookLoanAmt { get; set; }
 
-        [Display(Name = PartDisplayName.TookLoanAmtBank)]
-        //[Required]
-        public decimal TookLoanAmtBank { get; set; }
+        //[Display(Name = PartDisplayName.TookLoanAmtBank)]
+        ////[Required]
+        //public decimal TookLoanAmtBank { get; set; }
 
-        [Display(Name = PartDisplayName.TookLoanAmtR)]
-        //[Required]
-        public decimal TookLoanAmtR { get; set; }
+        //[Display(Name = PartDisplayName.TookLoanAmtR)]
+        ////[Required]
+        //public decimal TookLoanAmtR { get; set; }
 
-        [Display(Name = PartDisplayName.TookLoanAmtO)]
-        //[Required]
-        public decimal TookLoanAmtO { get; set; }
+        //[Display(Name = PartDisplayName.TookLoanAmtO)]
+        ////[Required]
+        //public decimal TookLoanAmtO { get; set; }
 
         [Display(Name = PartDisplayName.StartBusinessInvestAmt)]
         //[Required]

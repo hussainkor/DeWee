@@ -129,9 +129,9 @@ namespace DeWee.Controllers
                         tbl.TypeOfInvestBusin_Id = model.TypeOfInvestBusin_Id;
                         tbl.TookSourceOfLoan_Id = model.TookSourceOfLoan_Id;
                         tbl.TookLoanAmt = model.TookLoanAmt;
-                        tbl.TookLoanAmt = model.TookLoanAmtBank;
-                        tbl.TookLoanAmt = model.TookLoanAmtR;
-                        tbl.TookLoanAmt = model.TookLoanAmtO;
+                        //tbl.TookLoanAmt = model.TookLoanAmtBank;
+                        //tbl.TookLoanAmt = model.TookLoanAmtR;
+                        //tbl.TookLoanAmt = model.TookLoanAmtO;
                         tbl.StartBusinessInvestAmt = model.StartBusinessInvestAmt;
                         tbl.StartYourBusinessTakeAmt = model.StartYourBusinessTakeAmt;
                         tbl.MonthlyProfitBusiness = model.MonthlyProfitBusiness;
