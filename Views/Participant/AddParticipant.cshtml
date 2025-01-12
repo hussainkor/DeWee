@@ -222,15 +222,18 @@
                                         </div>
                                     </div>
                                 </div>
+                              
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.TookLoanAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <div class="form-group col-md-6" >
+                                        @Html.LabelFor(model => model.TookLoanAmt, htmlAttributes: new { @class = "control-label col-md-2s",  id = "tbl" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
                                             @Html.TextBoxFor(model => model.TookLoanAmt, new { @class = "form-control", @required = "required" })
                                             @Html.ValidationMessageFor(model => model.TookLoanAmt, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+                                </div>
+                                @*<div class="form-row" id="TookLoanAmtBank" style="display: none;">
                                     <div class="form-group col-md-6">
                                         @Html.LabelFor(model => model.TookLoanAmtBank, htmlAttributes: new { @class = "control-label col-md-2s" })
                                         <span style="color:red;">*</span>
@@ -240,7 +243,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row" id="TookLoanAmtR" style="display: none;">
                                     <div class="form-group col-md-6">
                                         @Html.LabelFor(model => model.TookLoanAmtR, htmlAttributes: new { @class = "control-label col-md-2s" })
                                         <span style="color:red;">*</span>
@@ -249,6 +252,8 @@
                                             @Html.ValidationMessageFor(model => model.TookLoanAmtR, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-row" id="TookLoanAmtO" style="display: none;">
                                     <div class="form-group col-md-6">
                                         @Html.LabelFor(model => model.TookLoanAmtO, htmlAttributes: new { @class = "control-label col-md-2s" })
                                         <span style="color:red;">*</span>
@@ -257,7 +262,8 @@
                                             @Html.ValidationMessageFor(model => model.TookLoanAmtO, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         @Html.LabelFor(model => model.StartBusinessInvestAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
@@ -570,12 +576,12 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                    
-                </div>
-                    }
 
-            </div>
+
+                            </div>
+                  
+
+                    }
     </div>
  </div>
  
@@ -604,6 +610,27 @@
             //});
 
             BindCLFList();
+            $('#TookSourceOfLoan_Id').change(function () {
+                // Hide all loan amount textboxes initially
+                $('#TookLoanAmt').hide();
+                //$('#TookLoanAmtBank').hide();
+                //$('#TookLoanAmtR').hide();
+                //$('#TookLoanAmtO').hide();
+                var selectedValue = $(this).val();
+                if (selectedValue == "1") {
+                    $('#TookLoanAmt').show();
+                    //$('#tbl').text("How much loan did you take from SHG?/समूह से कितना ऋण लिया?");
+                } else if (selectedValue == "2") {
+                    $('#TookLoanAmt').show(); 
+                    $('#tbl').text("How much Loan did you take from bank?/बैंक से कितना ऋण लिया?");
+                } else if (selectedValue == "3") {
+                    $('#TookLoanAmt').show(); 
+                    $('#tbl').text("How much Loan did you take from relatives?/रिश्तेदारों से कितना ऋण लिया?");
+                } else if (selectedValue == "4") {
+                    $('#TookLoanAmt').show();
+                    $('#tbl').text("How much Loan did you take from other sources?/अन्य स्रोतों से कितना ऋण लिया?");
+                }
+            });
 
 
             $("#formid").on("submit", function (event) {

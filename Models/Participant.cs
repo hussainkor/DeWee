@@ -314,9 +314,9 @@ namespace DeWee.Models
         public const string TypeOfInvestBusin_Id = "How did you arrange capital for investment in your business?/आपके व्यापार में निवेश करने के लिए पूंजी का इंतजाम कैसे किया";
         public const string TookSourceOfLoan_Id = "If you took a loan, describe source?/यदि ऋण लिया, तो कहां से ऋण लिया";
         public const string TookLoanAmt = "How much loan did you take from SHG?/समूह से कितना ऋण लिया?";
-        public const string TookLoanAmtBank = "How much Loan did you take from bank?/बैंक से कितना ऋण लिया?";
-        public const string TookLoanAmtR = "How much Loan did you take from relatives?/रिश्तेदारों से कितना ऋण लिया?";
-        public const string TookLoanAmtO = "How much Loan did you take from other sources?/अन्य स्रोतों से कितना ऋण लिया?";
+        //public const string TookLoanAmtBank = "How much Loan did you take from bank?/बैंक से कितना ऋण लिया?";
+        //public const string TookLoanAmtR = "How much Loan did you take from relatives?/रिश्तेदारों से कितना ऋण लिया?";
+        //public const string TookLoanAmtO = "How much Loan did you take from other sources?/अन्य स्रोतों से कितना ऋण लिया?";
         public const string StartBusinessInvestAmt = "How much money did you invest from your side to start your business?/आपने व्यापार शुरू करने के लिए कितना पैसा स्वयं का निवेश किया?";
         public const string StartYourBusinessTakeAmt = "How much loan did you take to start your business?/आपने व्यापार शुरू करने के लिए कितना पैसा ऋण लिया?";
         public const string MonthlyProfitBusiness = "What is your monthly profit from the business?/आपको व्यापार में मासिक लाभ कितना होता है?";
