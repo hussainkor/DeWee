@@ -32,63 +32,63 @@
                             <div class="flex-form">
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.State_Id, htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-12s">
-                                            @Html.DropDownListFor(model => model.State_Id, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.State_Id, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.District_Id, htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.DistrictId, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-12s">
-                                            @Html.DropDownListFor(model => model.District_Id, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.District_Id, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.Block_Id, htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.BlockId, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-12s">
-                                            @Html.DropDownListFor(model => model.Block_Id, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.Block_Id, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.BlockId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.Panchayat_Id, htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.PanchayatId, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.Panchayat_Id, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.Panchayat_Id, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.PanchayatId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.PanchayatId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.Village_Id, htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.VillageId, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.Village_Id, CommonModel.GetALLVillM(), null, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.Village_Id, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.VillageId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.VillageId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.CLF_Id, htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.CLFId, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.CLF_Id, CommonModel.GetALLCLFM(), null, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.CLF_Id, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.CLFId, new List<SelectListItem>(), null, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CLFId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.VO_Id, htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.VOId, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.VO_Id, CommonModel.GetALLVO(), null, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.VO_Id, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.VOId, new List<SelectListItem>(), null, new { @class = "form-control"})
+                                            @Html.ValidationMessageFor(model => model.VOId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -550,60 +550,62 @@
             </div>
     </div>
  </div>
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-                <script src="~/Scripts/JS/Master.js"></script>
-                <script>
-                    $(document).ready(function () {
-                        BindStateList("StateId", "", 0);
-                        BindDistrictList("DistrictId", "", 0, $('#StateId').val());
-                        $('#DistrictId').change(function () {
-                            BindBlockList("BlockId", "", 0, $('#DistrictId').val());
-                        });
-                        $('#BlockId').change(function () {
-                            BindPanchayatList("PanchayatId", "", 0, $('#DistrictId').val(), $('#BlockId').val(), 0);
-                        });
-                        $('#PanchayatId').change(function () {
-                            BindCLFList("VillageId", "", 0, $('#DistrictId').val(), $('#BlockId').val(), $('#PanchayatId').val());
-                        });
-                        $('#VillageId').change(function () {
-                            BindVOList("VOId", "", 0, $('#DistrictId').val(), $('#BlockId').val(), $('#PanchayatId').val(), $('#VillageId').val());
-                        });
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JS/Master.js"></script>
+    <script>
+        $(document).ready(function () {
+            BindStateList("StateId", "", 0);
+            $('#StateId').change(function () {
+                BindDistrictList("DistrictId", "", 0, $('#StateId').val());
+            });
+            $('#DistrictId').change(function () {
+                BindBlockList("BlockId", "",0, $('#StateId').val(), $('#DistrictId').val());
+            });
+            $('#BlockId').change(function () {
+                BindPanchayatList("PanchayatId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val());
+            });
+            $('#PanchayatId').change(function () {
+                BindVillageList("VillageId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val(), $('#PanchayatId').val());
+                BindVillageList("CLFId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val(), $('#PanchayatId').val());
+                BindVillageList("VOId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val(), $('#PanchayatId').val());
+            });
+            //$('#VillageId').change(function () {
+            //    BindVOList("VOId", "", 0, $('#DistrictId').val(), $('#BlockId').val(), $('#PanchayatId').val(), $('#VillageId').val());
+            //});
 
-                        BindCLFList();
-                        BindVOList();
-                        BindVillageList();
+            BindCLFList();
 
 
-                        $("#formid").on("submit", function (event) {
-                            event.preventDefault();
-                            var isvalid = $("#formid").valid();
-                            var formData = $(this).serialize();
+            $("#formid").on("submit", function (event) {
+                event.preventDefault();
+                var isvalid = $("#formid").valid();
+                var formData = $(this).serialize();
 
-                            if (isvalid) {
-                                $.ajax({
-                                    type: "POST",
-                                    url: document.baseURI + "/Participant/AddParticipant/",
-                                    data: formData,
-                                    dataType: 'json',
-                                    success: function (resp) {
-                                        if (resp.StatusType == "success") {
-                                            toastr.success("Success", resp.Message);
+                if (isvalid) {
+                    $.ajax({
+                        type: "POST",
+                        url: document.baseURI + "/Participant/AddParticipant/",
+                        data: formData,
+                        dataType: 'json',
+                        success: function (resp) {
+                            if (resp.StatusType == "success") {
+                                toastr.success("Success", resp.Message);
 
-                                            $("#formid")[0].reset();
-                                        } else {
-                                            toastr.error("Error", resp.Message);
-                                        }
-                                    },
-                                    error: function (req, error) {
-                                        var errormsg = 'There was a communication error: ' + (error === 'error' ? req.statusText : error);
-                                        toastr.error("Error", errormsg);
-                                    }
-                                });
+                                $("#formid")[0].reset();
                             } else {
-                                toastr.error("Error", "All Record Validate !!");
+                                toastr.error("Error", resp.Message);
                             }
-                        });
+                        },
+                        error: function (req, error) {
+                            var errormsg = 'There was a communication error: ' + (error === 'error' ? req.statusText : error);
+                            toastr.error("Error", errormsg);
+                        }
                     });
-                </script>
-            }
+                } else {
+                    toastr.error("Error", "All Record Validate !!");
+                }
+            });
+        });
+    </script>
+}

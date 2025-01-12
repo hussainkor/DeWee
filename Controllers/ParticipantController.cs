@@ -100,70 +100,81 @@ namespace DeWee.Controllers
                         };
                         return Json(response, JsonRequestBehavior.AllowGet);
                     }
-                    var participant = model.Indt_Id != Guid.Empty ? db.Tbl_IndtSolarization.Find(model.Indt_Id) : new Tbl_IndtSolarization();
+                    var tbl = model.Indt_Id != Guid.Empty ? db.Tbl_IndtSolarization.Find(model.Indt_Id) : new Tbl_IndtSolarization();
 
-                    if (participant != null)
+                    if (tbl != null)
                     {
-                        participant.NameofSHGMember = model.NameofSHGmember?.Trim();
-                        participant.PhoneNumber = model.PhoneNumber?.Trim();
-                        participant.Age = model.Age;
-                        participant.EducationQlf_Id = model.EducationQlf_Id;
-                        participant.YearOfSHG = model.YearOfSHG;
-                        participant.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
-                        participant.Caste_Id = model.Caste_Id;
-                        participant.TypeofEnterpriseBusin_Id = model.TypeofEnterpriseBusin_Id;
-                        participant.BusinessOwnedType_Id = model.BusinessOwnedType_Id;
-                        participant.EstablishedEnterpriseType_Id = model.EstablishedEnterpriseType_Id;
-                        participant.TypeOfInvestBusin_Id = model.TypeOfInvestBusin_Id;
-                        participant.TookSourceOfLoan_Id = model.TookSourceOfLoan_Id;
-                        participant.TookLoanAmt = model.TookLoanAmt;
-                        participant.TookLoanAmt = model.TookLoanAmtBank;
-                        participant.TookLoanAmt = model.TookLoanAmtR;
-                        participant.TookLoanAmt = model.TookLoanAmtO;
-                        participant.StartBusinessInvestAmt = model.StartBusinessInvestAmt;
-                        participant.StartYourBusinessTakeAmt = model.StartYourBusinessTakeAmt;
-                        participant.MonthlyProfitBusiness = model.MonthlyProfitBusiness;
-                        participant.WorkInEnterprises_FamilyMembers = model.WorkInEnterprises_FamilyMembers;
-                        participant.WorkInEnterprises_SHGMembers = model.WorkInEnterprises_SHGMembers;
-                        participant.WorkInEnterprises_AssitantStaffs = model.WorkInEnterprises_AssitantStaff;
-                        participant.TypeOfMachineEnterprise_Id = model.TypeOfMachineEnterprise_Id;
-                        participant.MotorBasedOnMachinesInActualUsed = model.TypeOfMachineEnterprise_Id;
-                        participant.MachineryPowerkilowatt_Id = model.MachineryPowerkilowatt_Id;
-                        participant.ElectricityConnection_Id = model.ElectricityConnection_Id;
-                        participant.ConnectionPhaseofPower_Id = model.ConnectionPhaseofPower_Id;
-                        participant.MonthlyElectricityConsumption_Id = model.MonthlyElectricityConsumption_Id;
-                        participant.MachineSourceofEnergy_Id = model.MachineSourceofEnergy_Id;
-                        participant.Solar_InKilowatt_Id = model.Solar_InKilowatt_Id;
-                        participant.Solar_EnergyPanelYesNo_Id = model.Solar_EnergyPanelYesNo_Id;
-                        participant.Solar_ExpenditureIncurredAmt = model.Solar_ExpenditureIncurredAmt;
-                        participant.SubsidySolarReceive_Id = model.SubsidySolarReceive_Id;
-                        participant.LoanSolarPanelsYesNo_Id = model.LoanSolarPanelsYesNo_Id;
-                        participant.MonthAvgAmtSavedDescription_Id = model.MonthAvgAmtSavedDescription_Id;
-                        participant.ElectricityUsedHours_Id = model.ElectricityUsedHours_Id;
-                        participant.MonthlyExpenseInElectricityBill_Id = model.MonthlyExpenseInElectricityBill_Id;
-                        participant.GeneratorElectricityUsedHours_Id = model.GeneratorElectricityUsedHours_Id;
-                        participant.MonthlyExpenseFuelSource_Id = model.MonthlyExpenseFuelSource_Id;
-                        participant.MonthlyRepairCost_Id = model.MonthlyRepairCost_Id;
-                        participant.HeardAboutSolarEYesNo_Id = model.HeardAboutSolarEYesNo_Id;
-                        participant.HeardAboutSolarEYes_IfYeswhere = model.HeardAboutSolarEYes_IfYeswhere;
-                        participant.InformationknowledgeGovtSubsidyOfSEYesNo_Id = model.InforknowledgeGovtSubsidyOfSEYesNo_Id;
-                        participant.InformationknowledgeIfYesAmtGovPaid = model.InforknowledgeIfYesAmtGovPaid;
-                        participant.LoanProcedureInSEYesNo_Id = model.LoanProcedureInSEYesNo_Id;
-                        participant.AdoptSolarizationYesNo_Id = model.AdoptSolarizationYesNo_Id;
-                        participant.CapitalArrangedForSEYesNo_Id = model.CapitalArrangedForSEYesNo_Id;
-                        participant.IfYesCapitalArrangedForSEAmt = model.IfYesCapitalArrangedForSEAmt;
-                        participant.OtherIndustriesEnterprisesYesNo_Id = model.OtherIndustriesEnterprisesYesNo_Id;
-                        participant.IfYesFillForm_OtherIndustriesEnterprises = model.IfYesFillForm_OtherIndustriesEnterprises;
-                        participant.IsActive = true;
-                        participant.CreatedOn = DateTime.Now;
+                        tbl.StateId = model.StateId;
+                        tbl.DistrictId = model.DistrictId;
+                        tbl.BlockId = model.BlockId;
+                        tbl.PanchayatId = model.PanchayatId;
+                        tbl.VillageId = model.VillageId;
+                        tbl.CLFId = model.CLFId;
+                        tbl.VOId = model.VOId;
+
+                        tbl.NameofSHGMember = model.NameofSHGmember?.Trim();
+                        tbl.PhoneNumber = model.PhoneNumber?.Trim();
+                        tbl.Age = model.Age;
+                        tbl.EducationQlf_Id = model.EducationQlf_Id;
+                        tbl.YearOfSHG = model.YearOfSHG;
+                        tbl.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
+                        tbl.Caste_Id = model.Caste_Id;
+                        tbl.TypeofEnterpriseBusin_Id = model.TypeofEnterpriseBusin_Id;
+                        tbl.BusinessOwnedType_Id = model.BusinessOwnedType_Id;
+                        tbl.EstablishedEnterpriseType_Id = model.EstablishedEnterpriseType_Id;
+                        tbl.TypeOfInvestBusin_Id = model.TypeOfInvestBusin_Id;
+                        tbl.TookSourceOfLoan_Id = model.TookSourceOfLoan_Id;
+                        tbl.TookLoanAmt = model.TookLoanAmt;
+                        tbl.TookLoanAmt = model.TookLoanAmtBank;
+                        tbl.TookLoanAmt = model.TookLoanAmtR;
+                        tbl.TookLoanAmt = model.TookLoanAmtO;
+                        tbl.StartBusinessInvestAmt = model.StartBusinessInvestAmt;
+                        tbl.StartYourBusinessTakeAmt = model.StartYourBusinessTakeAmt;
+                        tbl.MonthlyProfitBusiness = model.MonthlyProfitBusiness;
+                        tbl.WorkInEnterprises_FamilyMembers = model.WorkInEnterprises_FamilyMembers;
+                        tbl.WorkInEnterprises_SHGMembers = model.WorkInEnterprises_SHGMembers;
+                        tbl.WorkInEnterprises_AssitantStaffs = model.WorkInEnterprises_AssitantStaff;
+                        tbl.TypeOfMachineEnterprise_Id = model.TypeOfMachineEnterprise_Id;
+                        tbl.MotorBasedOnMachinesInActualUsed = model.TypeOfMachineEnterprise_Id;
+                        tbl.MachineryPowerkilowatt_Id = model.MachineryPowerkilowatt_Id;
+                        tbl.ElectricityConnection_Id = model.ElectricityConnection_Id;
+                        tbl.ConnectionPhaseofPower_Id = model.ConnectionPhaseofPower_Id;
+                        tbl.MonthlyElectricityConsumption_Id = model.MonthlyElectricityConsumption_Id;
+                        tbl.MachineSourceofEnergy_Id = model.MachineSourceofEnergy_Id;
+                        tbl.Solar_InKilowatt_Id = model.Solar_InKilowatt_Id;
+                        tbl.Solar_EnergyPanelYesNo_Id = model.Solar_EnergyPanelYesNo_Id;
+                        tbl.Solar_ExpenditureIncurredAmt = model.Solar_ExpenditureIncurredAmt;
+                        tbl.SubsidySolarReceive_Id = model.SubsidySolarReceive_Id;
+                        tbl.LoanSolarPanelsYesNo_Id = model.LoanSolarPanelsYesNo_Id;
+                        tbl.MonthAvgAmtSavedDescription_Id = model.MonthAvgAmtSavedDescription_Id;
+                        tbl.ElectricityUsedHours_Id = model.ElectricityUsedHours_Id;
+                        tbl.MonthlyExpenseInElectricityBill_Id = model.MonthlyExpenseInElectricityBill_Id;
+                        tbl.GeneratorElectricityUsedHours_Id = model.GeneratorElectricityUsedHours_Id;
+                        tbl.MonthlyExpenseFuelSource_Id = model.MonthlyExpenseFuelSource_Id;
+                        tbl.MonthlyRepairCost_Id = model.MonthlyRepairCost_Id;
+                        tbl.HeardAboutSolarEYesNo_Id = model.HeardAboutSolarEYesNo_Id;
+                        tbl.HeardAboutSolarEYes_IfYeswhere = model.HeardAboutSolarEYes_IfYeswhere;
+                        tbl.InforknowledgeGovtSubsidyOfSEYesNo_Id = model.InforknowledgeGovtSubsidyOfSEYesNo_Id;
+                        tbl.InforknowledgeIfYesAmtGovPaid = model.InforknowledgeIfYesAmtGovPaid;
+                        tbl.LoanProcedureInSEYesNo_Id = model.LoanProcedureInSEYesNo_Id;
+                        tbl.AdoptSolarizationYesNo_Id = model.AdoptSolarizationYesNo_Id;
+                        tbl.CapitalArrangedForSEYesNo_Id = model.CapitalArrangedForSEYesNo_Id;
+                        tbl.IfYesCapitalArrangedForSEAmt = model.IfYesCapitalArrangedForSEAmt;
+                        tbl.OtherIndustriesEnterprisesYesNo_Id = model.OtherIndustriesEnterprisesYesNo_Id;
+                        tbl.IfYesFillForm_OtherIndustriesEnterprises = model.IfYesFillForm_OtherIndustriesEnterprises;
+                        tbl.IsActive = true;
+
                         if (model.Indt_Id == Guid.Empty)
                         {
-                            participant.Indt_Id = Guid.NewGuid();
-                            db.Tbl_IndtSolarization.Add(participant);
+                            tbl.Indt_Id = Guid.NewGuid();
+                            tbl.CreatedBy = User.Identity.Name;
+                            tbl.CreatedOn = DateTime.Now;
+                            db.Tbl_IndtSolarization.Add(tbl);
                         }
                         else
                         {
-                            participant.UpdatedOn = DateTime.Now;
+                            tbl.UpdatedBy = User.Identity.Name;
+                            tbl.UpdatedOn = DateTime.Now;
                         }
 
                         results = db.SaveChanges();

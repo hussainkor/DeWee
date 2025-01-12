@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DeWee_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -243,13 +233,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_IndtSolarization' does not have a
             <PropertyRef Name="Indt_Id" />
           </Key>
           <Property Name="Indt_Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="State_Id" Type="int" />
-          <Property Name="District_Id" Type="int" />
-          <Property Name="Block_Id" Type="int" />
-          <Property Name="Panchayat_Id" Type="int" />
-          <Property Name="Village_Id" Type="int" />
-          <Property Name="CLF_Id" Type="int" />
-          <Property Name="VO_Id" Type="int" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="BlockId" Type="int" />
+          <Property Name="PanchayatId" Type="int" />
+          <Property Name="VillageId" Type="int" />
+          <Property Name="CLFId" Type="int" />
+          <Property Name="VOId" Type="int" />
           <Property Name="NameofSHG" Type="nvarchar" MaxLength="500" />
           <Property Name="YearOfSHG" Type="int" />
           <Property Name="TempRegNo" Type="nvarchar" MaxLength="30" />
@@ -368,10 +358,11 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="PanchayatId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DistrictId_fk" Type="int" />
           <Property Name="BlockId_fk" Type="int" />
-          <Property Name="CLFId_fk" Type="int" />
+          <Property Name="PanchayatCode" Type="int" />
           <Property Name="PanchayatName" Type="nvarchar" MaxLength="255" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="OrderBy" Type="int" />
+          <Property Name="CLFId_fk" Type="int" />
         </EntityType>
         <EntityType Name="Tbl_PowerConnectionM">
           <Key>
@@ -451,7 +442,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="BlockId_fk" Type="int" />
           <Property Name="CLFId_fk" Type="int" />
           <Property Name="PanchayatId_fk" Type="int" />
-          <Property Name="VOrgId_fk" Type="int" />
+          <Property Name="VillaggeCode" Type="int" />
           <Property Name="VillageName" Type="nvarchar" MaxLength="255" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
@@ -469,6 +460,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="BlockId_fk" Type="int" />
           <Property Name="CLFId_fk" Type="int" />
           <Property Name="PanchayatId_fk" Type="int" />
+          <Property Name="VillageId_fk" Type="int" />
           <Property Name="Village_OrganizationName" Type="nvarchar" MaxLength="255" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
@@ -534,7 +526,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DeWee_DBModelStoreContainer">
-          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -608,13 +599,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <EntitySet Name="Tbl_IndtSolarization" EntityType="Self.Tbl_IndtSolarization" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Tbl_IndtSolarization].[Indt_Id] AS [Indt_Id], 
-    [Tbl_IndtSolarization].[State_Id] AS [State_Id], 
-    [Tbl_IndtSolarization].[District_Id] AS [District_Id], 
-    [Tbl_IndtSolarization].[Block_Id] AS [Block_Id], 
-    [Tbl_IndtSolarization].[Panchayat_Id] AS [Panchayat_Id], 
-    [Tbl_IndtSolarization].[Village_Id] AS [Village_Id], 
-    [Tbl_IndtSolarization].[CLF_Id] AS [CLF_Id], 
-    [Tbl_IndtSolarization].[VO_Id] AS [VO_Id], 
+    [Tbl_IndtSolarization].[StateId] AS [StateId], 
+    [Tbl_IndtSolarization].[DistrictId] AS [DistrictId], 
+    [Tbl_IndtSolarization].[BlockId] AS [BlockId], 
+    [Tbl_IndtSolarization].[PanchayatId] AS [PanchayatId], 
+    [Tbl_IndtSolarization].[VillageId] AS [VillageId], 
+    [Tbl_IndtSolarization].[CLFId] AS [CLFId], 
+    [Tbl_IndtSolarization].[VOId] AS [VOId], 
     [Tbl_IndtSolarization].[NameofSHG] AS [NameofSHG], 
     [Tbl_IndtSolarization].[YearOfSHG] AS [YearOfSHG], 
     [Tbl_IndtSolarization].[TempRegNo] AS [TempRegNo], 
@@ -709,16 +700,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DeWee_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -768,20 +749,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
-        <EntityType Name="Tbl_Block_Master">
-          <Key>
-            <PropertyRef Name="BlockId_pk" />
-          </Key>
-          <Property Name="BlockId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StateId_fk" Type="Int32" />
-          <Property Name="DistrictId_fk" Type="Int32" />
-          <Property Name="BlockCode" Type="Int32" />
-          <Property Name="BlockName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
         <EntityType Name="Tbl_BusinessInvestmentM">
           <Key>
             <PropertyRef Name="BusinessInvestment_Id" />
@@ -825,34 +792,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="Caste_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CasteInEng" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CasteInHindi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Tbl_CLF_Master">
-          <Key>
-            <PropertyRef Name="CLFId_pk" />
-          </Key>
-          <Property Name="CLFId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DistrictId_fk" Type="Int32" />
-          <Property Name="BlockId_fk" Type="Int32" />
-          <Property Name="CLFName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Tbl_District_Master">
-          <Key>
-            <PropertyRef Name="DistrictId_pk" />
-          </Key>
-          <Property Name="DistrictId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StateId_fk" Type="Int32" />
-          <Property Name="DistrictCode" Type="Int32" />
-          <Property Name="DistrictName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
@@ -916,18 +855,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Tbl_Panchayat_Master">
-          <Key>
-            <PropertyRef Name="PanchayatId_pk" />
-          </Key>
-          <Property Name="PanchayatId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DistrictId_fk" Type="Int32" />
-          <Property Name="BlockId_fk" Type="Int32" />
-          <Property Name="CLFId_fk" Type="Int32" />
-          <Property Name="PanchayatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
           <Property Name="OrderBy" Type="Int32" />
         </EntityType>
         <EntityType Name="Tbl_PowerConnectionM">
@@ -997,41 +924,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Tbl_Village_Master">
-          <Key>
-            <PropertyRef Name="VillageId_pk" />
-          </Key>
-          <Property Name="VillageId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DistrictId_fk" Type="Int32" />
-          <Property Name="BlockId_fk" Type="Int32" />
-          <Property Name="CLFId_fk" Type="Int32" />
-          <Property Name="PanchayatId_fk" Type="Int32" />
-          <Property Name="VOrgId_fk" Type="Int32" />
-          <Property Name="VillageName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Tbl_VO_Master">
-          <Key>
-            <PropertyRef Name="VOrgId_pk" />
-          </Key>
-          <Property Name="VOrgId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DistrictId_fk" Type="Int32" />
-          <Property Name="BlockId_fk" Type="Int32" />
-          <Property Name="CLFId_fk" Type="Int32" />
-          <Property Name="PanchayatId_fk" Type="Int32" />
-          <Property Name="Village_OrganizationName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="OrderBy" Type="Int32" />
         </EntityType>
         <EntityType Name="Tbl_Educational_QualificationM">
@@ -1127,32 +1019,25 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
         <EntityContainer Name="DeWee_DBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="Tbl_Block_Master" EntityType="Self.Tbl_Block_Master" />
           <EntitySet Name="Tbl_BusinessInvestmentM" EntityType="Self.Tbl_BusinessInvestmentM" />
           <EntitySet Name="Tbl_BusinessOwnedM" EntityType="Self.Tbl_BusinessOwnedM" />
           <EntitySet Name="Tbl_BusinessTypeM" EntityType="Self.Tbl_BusinessTypeM" />
           <EntitySet Name="Tbl_CasteM" EntityType="Self.Tbl_CasteM" />
-          <EntitySet Name="Tbl_CLF_Master" EntityType="Self.Tbl_CLF_Master" />
-          <EntitySet Name="Tbl_District_Master" EntityType="Self.Tbl_District_Master" />
           <EntitySet Name="Tbl_ElectricityConsumptionM" EntityType="Self.Tbl_ElectricityConsumptionM" />
           <EntitySet Name="Tbl_ElectricityUsedM" EntityType="Self.Tbl_ElectricityUsedM" />
           <EntitySet Name="Tbl_MachineryPowerM" EntityType="Self.Tbl_MachineryPowerM" />
           <EntitySet Name="Tbl_MoneySavedSEM" EntityType="Self.Tbl_MoneySavedSEM" />
           <EntitySet Name="Tbl_MonthlyExpenseEBM" EntityType="Self.Tbl_MonthlyExpenseEBM" />
-          <EntitySet Name="Tbl_Panchayat_Master" EntityType="Self.Tbl_Panchayat_Master" />
           <EntitySet Name="Tbl_PowerConnectionM" EntityType="Self.Tbl_PowerConnectionM" />
           <EntitySet Name="Tbl_SolarkilowattM" EntityType="Self.Tbl_SolarkilowattM" />
           <EntitySet Name="Tbl_SourceEnergyM" EntityType="Self.Tbl_SourceEnergyM" />
           <EntitySet Name="Tbl_State_Master" EntityType="Self.Tbl_State_Master" />
           <EntitySet Name="Tbl_SubisdyM" EntityType="Self.Tbl_SubisdyM" />
           <EntitySet Name="Tbl_TypeYesNoM" EntityType="Self.Tbl_TypeYesNoM" />
-          <EntitySet Name="Tbl_Village_Master" EntityType="Self.Tbl_Village_Master" />
-          <EntitySet Name="Tbl_VO_Master" EntityType="Self.Tbl_VO_Master" />
           <EntitySet Name="Tbl_Educational_QualificationM" EntityType="Self.Tbl_Educational_QualificationM" />
           <EntitySet Name="Tbl_Enterprise_EstablishedM" EntityType="Self.Tbl_Enterprise_EstablishedM" />
           <EntitySet Name="Tbl_EnterpriseM" EntityType="Self.Tbl_EnterpriseM" />
@@ -1170,20 +1055,117 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Tbl_VO_Master" EntityType="DeWee_DBModel.Tbl_VO_Master" />
+          <EntitySet Name="Tbl_Block_Master" EntityType="DeWee_DBModel.Tbl_Block_Master" />
+          <EntitySet Name="Tbl_CLF_Master" EntityType="DeWee_DBModel.Tbl_CLF_Master" />
+          <EntitySet Name="Tbl_District_Master" EntityType="DeWee_DBModel.Tbl_District_Master" />
+          <EntitySet Name="Tbl_Panchayat_Master" EntityType="DeWee_DBModel.Tbl_Panchayat_Master" />
+          <EntitySet Name="Tbl_Village_Master" EntityType="DeWee_DBModel.Tbl_Village_Master" />
           <EntitySet Name="Tbl_IndtSolarization" EntityType="DeWee_DBModel.Tbl_IndtSolarization" />
         </EntityContainer>
+        <EntityType Name="Tbl_VO_Master">
+          <Key>
+            <PropertyRef Name="VOrgId_pk" />
+          </Key>
+          <Property Name="VOrgId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId_fk" Type="Int32" />
+          <Property Name="BlockId_fk" Type="Int32" />
+          <Property Name="CLFId_fk" Type="Int32" />
+          <Property Name="PanchayatId_fk" Type="Int32" />
+          <Property Name="VillageId_fk" Type="Int32" />
+          <Property Name="Village_OrganizationName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Block_Master">
+          <Key>
+            <PropertyRef Name="BlockId_pk" />
+          </Key>
+          <Property Name="BlockId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId_fk" Type="Int32" />
+          <Property Name="DistrictId_fk" Type="Int32" />
+          <Property Name="BlockCode" Type="Int32" />
+          <Property Name="BlockName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_CLF_Master">
+          <Key>
+            <PropertyRef Name="CLFId_pk" />
+          </Key>
+          <Property Name="CLFId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId_fk" Type="Int32" />
+          <Property Name="BlockId_fk" Type="Int32" />
+          <Property Name="CLFName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_District_Master">
+          <Key>
+            <PropertyRef Name="DistrictId_pk" />
+          </Key>
+          <Property Name="DistrictId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId_fk" Type="Int32" />
+          <Property Name="DistrictCode" Type="Int32" />
+          <Property Name="DistrictName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Panchayat_Master">
+          <Key>
+            <PropertyRef Name="PanchayatId_pk" />
+          </Key>
+          <Property Name="PanchayatId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId_fk" Type="Int32" />
+          <Property Name="BlockId_fk" Type="Int32" />
+          <Property Name="PanchayatCode" Type="Int32" />
+          <Property Name="PanchayatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OrderBy" Type="Int32" />
+          <Property Name="CLFId_fk" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Village_Master">
+          <Key>
+            <PropertyRef Name="VillageId_pk" />
+          </Key>
+          <Property Name="VillageId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId_fk" Type="Int32" />
+          <Property Name="BlockId_fk" Type="Int32" />
+          <Property Name="CLFId_fk" Type="Int32" />
+          <Property Name="PanchayatId_fk" Type="Int32" />
+          <Property Name="VillaggeCode" Type="Int32" />
+          <Property Name="VillageName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
         <EntityType Name="Tbl_IndtSolarization">
           <Key>
             <PropertyRef Name="Indt_Id" />
           </Key>
           <Property Name="Indt_Id" Type="Guid" Nullable="false" />
-          <Property Name="State_Id" Type="Int32" />
-          <Property Name="District_Id" Type="Int32" />
-          <Property Name="Block_Id" Type="Int32" />
-          <Property Name="Panchayat_Id" Type="Int32" />
-          <Property Name="Village_Id" Type="Int32" />
-          <Property Name="CLF_Id" Type="Int32" />
-          <Property Name="VO_Id" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="BlockId" Type="Int32" />
+          <Property Name="PanchayatId" Type="Int32" />
+          <Property Name="VillageId" Type="Int32" />
+          <Property Name="CLFId" Type="Int32" />
+          <Property Name="VOId" Type="Int32" />
           <Property Name="NameofSHG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="YearOfSHG" Type="Int32" />
           <Property Name="TempRegNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -1251,16 +1233,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DeWee_DBModelStoreContainer" CdmEntityContainer="DeWee_DBEntities">
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="DeWee_DBModel.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="DeWee_DBModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -1303,21 +1275,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Block_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Block_Master">
-              <MappingFragment StoreEntitySet="Tbl_Block_Master">
-                <ScalarProperty Name="BlockId_pk" ColumnName="BlockId_pk" />
-                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="BlockCode" ColumnName="BlockCode" />
-                <ScalarProperty Name="BlockName" ColumnName="BlockName" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1366,36 +1323,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
                 <ScalarProperty Name="Caste_Id" ColumnName="Caste_Id" />
                 <ScalarProperty Name="CasteInEng" ColumnName="CasteInEng" />
                 <ScalarProperty Name="CasteInHindi" ColumnName="CasteInHindi" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_CLF_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_CLF_Master">
-              <MappingFragment StoreEntitySet="Tbl_CLF_Master">
-                <ScalarProperty Name="CLFId_pk" ColumnName="CLFId_pk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="CLFName" ColumnName="CLFName" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_District_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_District_Master">
-              <MappingFragment StoreEntitySet="Tbl_District_Master">
-                <ScalarProperty Name="DistrictId_pk" ColumnName="DistrictId_pk" />
-                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
-                <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
-                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -1464,19 +1391,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Panchayat_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Panchayat_Master">
-              <MappingFragment StoreEntitySet="Tbl_Panchayat_Master">
-                <ScalarProperty Name="PanchayatId_pk" ColumnName="PanchayatId_pk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
-                <ScalarProperty Name="PanchayatName" ColumnName="PanchayatName" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1556,43 +1470,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Village_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Village_Master">
-              <MappingFragment StoreEntitySet="Tbl_Village_Master">
-                <ScalarProperty Name="VillageId_pk" ColumnName="VillageId_pk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
-                <ScalarProperty Name="PanchayatId_fk" ColumnName="PanchayatId_fk" />
-                <ScalarProperty Name="VOrgId_fk" ColumnName="VOrgId_fk" />
-                <ScalarProperty Name="VillageName" ColumnName="VillageName" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_VO_Master">
-            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_VO_Master">
-              <MappingFragment StoreEntitySet="Tbl_VO_Master">
-                <ScalarProperty Name="VOrgId_pk" ColumnName="VOrgId_pk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
-                <ScalarProperty Name="PanchayatId_fk" ColumnName="PanchayatId_fk" />
-                <ScalarProperty Name="Village_OrganizationName" ColumnName="Village_OrganizationName" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tbl_Educational_QualificationM">
             <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Educational_QualificationM">
               <MappingFragment StoreEntitySet="Tbl_Educational_QualificationM">
@@ -1666,6 +1543,103 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Tbl_VO_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_VO_Master">
+              <MappingFragment StoreEntitySet="Tbl_VO_Master">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Village_OrganizationName" ColumnName="Village_OrganizationName" />
+                <ScalarProperty Name="VillageId_fk" ColumnName="VillageId_fk" />
+                <ScalarProperty Name="PanchayatId_fk" ColumnName="PanchayatId_fk" />
+                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="VOrgId_pk" ColumnName="VOrgId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Block_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Block_Master">
+              <MappingFragment StoreEntitySet="Tbl_Block_Master">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BlockName" ColumnName="BlockName" />
+                <ScalarProperty Name="BlockCode" ColumnName="BlockCode" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
+                <ScalarProperty Name="BlockId_pk" ColumnName="BlockId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_CLF_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_CLF_Master">
+              <MappingFragment StoreEntitySet="Tbl_CLF_Master">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CLFName" ColumnName="CLFName" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="CLFId_pk" ColumnName="CLFId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_District_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_District_Master">
+              <MappingFragment StoreEntitySet="Tbl_District_Master">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
+                <ScalarProperty Name="DistrictId_pk" ColumnName="DistrictId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Panchayat_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Panchayat_Master">
+              <MappingFragment StoreEntitySet="Tbl_Panchayat_Master">
+                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PanchayatName" ColumnName="PanchayatName" />
+                <ScalarProperty Name="PanchayatCode" ColumnName="PanchayatCode" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="PanchayatId_pk" ColumnName="PanchayatId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Village_Master">
+            <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_Village_Master">
+              <MappingFragment StoreEntitySet="Tbl_Village_Master">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="VillageName" ColumnName="VillageName" />
+                <ScalarProperty Name="VillaggeCode" ColumnName="VillaggeCode" />
+                <ScalarProperty Name="PanchayatId_fk" ColumnName="PanchayatId_fk" />
+                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="VillageId_pk" ColumnName="VillageId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tbl_IndtSolarization">
             <EntityTypeMapping TypeName="DeWee_DBModel.Tbl_IndtSolarization">
               <MappingFragment StoreEntitySet="Tbl_IndtSolarization">
@@ -1729,13 +1703,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.Tbl_LoanDescribeSourceM' does not hav
                 <ScalarProperty Name="TempRegNo" ColumnName="TempRegNo" />
                 <ScalarProperty Name="YearOfSHG" ColumnName="YearOfSHG" />
                 <ScalarProperty Name="NameofSHG" ColumnName="NameofSHG" />
-                <ScalarProperty Name="VO_Id" ColumnName="VO_Id" />
-                <ScalarProperty Name="CLF_Id" ColumnName="CLF_Id" />
-                <ScalarProperty Name="Village_Id" ColumnName="Village_Id" />
-                <ScalarProperty Name="Panchayat_Id" ColumnName="Panchayat_Id" />
-                <ScalarProperty Name="Block_Id" ColumnName="Block_Id" />
-                <ScalarProperty Name="District_Id" ColumnName="District_Id" />
-                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="VOId" ColumnName="VOId" />
+                <ScalarProperty Name="CLFId" ColumnName="CLFId" />
+                <ScalarProperty Name="VillageId" ColumnName="VillageId" />
+                <ScalarProperty Name="PanchayatId" ColumnName="PanchayatId" />
+                <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
                 <ScalarProperty Name="Indt_Id" ColumnName="Indt_Id" />
               </MappingFragment>
             </EntityTypeMapping>

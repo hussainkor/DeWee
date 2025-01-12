@@ -15,35 +15,35 @@ namespace DeWee.Models
         [Key]
         public Guid Indt_Id { get; set; }
 
-        [Display(Name = PartDisplayName.State_Id)]
+        [Display(Name = PartDisplayName.StateId)]
         //[Required]
-        public int State_Id { get; set; }
+        public int StateId { get; set; }
 
-        [Display(Name = PartDisplayName.District_Id)]
+        [Display(Name = PartDisplayName.DistrictId)]
         //[Required]
-        public int District_Id { get; set; }
+        public int DistrictId { get; set; }
 
-        [Display(Name = PartDisplayName.Block_Id)]
+        [Display(Name = PartDisplayName.BlockId)]
         //[Required]
-        public int Block_Id { get; set; }
+        public int BlockId { get; set; }
 
-        [Display(Name = PartDisplayName.Panchayat_Id)]
+        [Display(Name = PartDisplayName.PanchayatId)]
         //[Required]
-        public int Panchayat_Id { get; set; }
+        public int PanchayatId { get; set; }
 
 
-        [Display(Name = PartDisplayName.Village_Id)]
+        [Display(Name = PartDisplayName.VillageId)]
         //[Required]
-        public int Village_Id { get; set; }
+        public int VillageId { get; set; }
 
 
-        [Display(Name = PartDisplayName.CLF_Id)]
+        [Display(Name = PartDisplayName.CLFId)]
         //[Required]
-        public int CLF_Id { get; set; }
+        public int CLFId { get; set; }
 
-        [Display(Name = PartDisplayName.VO_Id)]
+        [Display(Name = PartDisplayName.VOId)]
         //[Required]
-        public int VO_Id { get; set; }
+        public int VOId { get; set; }
 
 
         [Display(Name = PartDisplayName.NameofSHG)]
@@ -289,13 +289,13 @@ namespace DeWee.Models
     }
     public class PartDisplayName
     {
-        public const string State_Id = "State/राज्य";
-        public const string District_Id = "District/जिला";
-        public const string Block_Id = "Block/ब्लॉक";
-        public const string Panchayat_Id = "Panchayat/ग्राम पंचायत";
-        public const string Village_Id = "Village/ग्राम";
-        public const string CLF_Id = "CLF/सामान्य जीविका महासंघ";
-        public const string VO_Id = "Village Organization/ग्राम संगठन";
+        public const string StateId = "State/राज्य";
+        public const string DistrictId = "District/जिला";
+        public const string BlockId = "Block/ब्लॉक";
+        public const string PanchayatId = "Panchayat/ग्राम पंचायत";
+        public const string VillageId = "Village/ग्राम";
+        public const string CLFId = "CLF/सामान्य जीविका महासंघ";
+        public const string VOId = "Village Organization/ग्राम संगठन";
         public const string NameofSHG = "Name Of SHG/एसएचजी का नाम";
         public const string TempRegNo = "";
         public const string RegNo = "";

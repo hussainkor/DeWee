@@ -15,13 +15,13 @@ namespace DeWee.Models
     public partial class Tbl_IndtSolarization
     {
         public System.Guid Indt_Id { get; set; }
-        public Nullable<int> State_Id { get; set; }
-        public Nullable<int> District_Id { get; set; }
-        public Nullable<int> Block_Id { get; set; }
-        public Nullable<int> Panchayat_Id { get; set; }
-        public Nullable<int> Village_Id { get; set; }
-        public Nullable<int> CLF_Id { get; set; }
-        public Nullable<int> VO_Id { get; set; }
+        public Nullable<int> StateId { get; set; }
+        public Nullable<int> DistrictId { get; set; }
+        public Nullable<int> BlockId { get; set; }
+        public Nullable<int> PanchayatId { get; set; }
+        public Nullable<int> VillageId { get; set; }
+        public Nullable<int> CLFId { get; set; }
+        public Nullable<int> VOId { get; set; }
         public string NameofSHG { get; set; }
         public Nullable<int> YearOfSHG { get; set; }
         public string TempRegNo { get; set; }
@@ -66,8 +66,8 @@ namespace DeWee.Models
         public Nullable<int> MonthlyRepairCost_Id { get; set; }
         public Nullable<int> HeardAboutSolarEYesNo_Id { get; set; }
         public string HeardAboutSolarEYes_IfYeswhere { get; set; }
-        public Nullable<int> InformationknowledgeGovtSubsidyOfSEYesNo_Id { get; set; }
-        public Nullable<decimal> InformationknowledgeIfYesAmtGovPaid { get; set; }
+        public Nullable<int> InforknowledgeGovtSubsidyOfSEYesNo_Id { get; set; }
+        public Nullable<decimal> InforknowledgeIfYesAmtGovPaid { get; set; }
         public Nullable<int> LoanProcedureInSEYesNo_Id { get; set; }
         public Nullable<int> AdoptSolarizationYesNo_Id { get; set; }
         public Nullable<int> CapitalArrangedForSEYesNo_Id { get; set; }

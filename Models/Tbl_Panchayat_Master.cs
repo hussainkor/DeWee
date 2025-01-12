@@ -17,9 +17,10 @@ namespace DeWee.Models
         public int PanchayatId_pk { get; set; }
         public Nullable<int> DistrictId_fk { get; set; }
         public Nullable<int> BlockId_fk { get; set; }
-        public Nullable<int> CLFId_fk { get; set; }
+        public Nullable<int> PanchayatCode { get; set; }
         public string PanchayatName { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> OrderBy { get; set; }
+        public Nullable<int> CLFId_fk { get; set; }
     }
 }

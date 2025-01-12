@@ -1,7 +1,5 @@
 ﻿using DeWee.Helpers;
 using DeWee.Models;
-//using Irony.Parsing.Construction;
-//using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using SubSonic.Extensions;
 using SubSonic.Schema;
@@ -35,11 +33,134 @@ namespace DeWee.Manager
     {
         private static DeWee_DBEntities _db = new DeWee_DBEntities();
 
+        #region BaseUrl
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            // throw new Exception("No network adapters with an IPv4 address in the system!");
+            return "Error";
+        }
+        public static string GetPublicIPAddress()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string publicIPAddress = client.GetStringAsync("https://api.ipify.org").Result;
+                return publicIPAddress;
+            }
+        }
+
+        public static string GetBaseUrl()
+        {
+            var str = HttpContext.Current.Request.Url.Host;
+            //return str;
+            UrlHelper urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+
+            string host = HttpContext.Current.Request.Url.Host;
+            if (host == "localhost")
+            {
+                host = HttpContext.Current.Request.Url.Authority;
+                return HttpContext.Current.Request.Url.Scheme + "://" + host;
+            }
+            //return urlHelper.Content("~/");
+            return HttpContext.Current.Request.Url.Scheme + "://" + str;
+        }
+        public static string GetWebUrl()
+        {
+            return ConfigurationManager.AppSettings["WebUrl"];
+        }
+        public static bool ValidateImageSizeMemory(MemoryStream ms)
+        {
+            const int maxSizeInBytes = 1 * 1024 * 1024; // 1 MB in bytes
+
+            // Check if the stream size is less than or equal to 1 MB
+            if (ms.Length <= maxSizeInBytes)
+            {
+                return true; // Valid size
+            }
+
+            return false; // Invalid size
+        }
+        public static bool ValidateImageSize(HttpPostedFileBase image)
+        {
+            const int maxSizeInBytes = 1 * 1024 * 1024; // 1 MB in bytes
+
+            // Check if the stream size is less than or equal to 1 MB
+            if (image.ContentLength <= maxSizeInBytes)
+            {
+                return true; // Valid size
+            }
+
+            return false; // Invalid size
+        }
+
+        public static bool IsEmailConfiguredToLive()
+        {
+            var isLive = Convert.ToBoolean(ConfigurationManager.AppSettings["IsEmailSetLive"].ToString());
+            return isLive;
+        }
+        public static string GetLocalEmailAddress()
+        {
+            var emailAddr = ConfigurationManager.AppSettings["LocalEmailAddress"].ToString();
+            return emailAddr;
+        }
+
+        public static string GetFileUrl(string filePath)
+        {
+            if (!string.IsNullOrEmpty(filePath))
+                return CommonModel.GetBaseUrl() + filePath.ToString().Replace("~", "");
+            else
+                return string.Empty;
+        }
+
+        public static string GetMultipleFileUrlFromComma(string filePaths)
+        {
+            //string filePath = string.Empty;
+            //var filePathArray = filePaths.Split(',');
+            List<string> filePathList = new List<string>();
+            foreach (var path in filePaths.Split(','))
+            {
+                if (!string.IsNullOrEmpty(path))
+                {
+                    //return CommonModel.GetBaseUrl() + path.ToString().Replace("~", "");
+                    filePathList.Add(CommonModel.GetBaseUrl() + path.Trim().ToString().Replace("~", ""));
+                }
+                //else
+                //    return string.Empty;
+            }
+            //filePathList=.Join(',');
+            return string.Join(",", filePathList);
+        }
+
+        public static string GetHeaderUSLogo(string filePath)
+        {
+            if (!string.IsNullOrEmpty(filePath))
+                return filePath.ToString().Replace("src=\"..//Content/images/USAID_Template.png\"", "src=\"" + CommonModel.GetWebUrl() + "/Content/images/USAID_Template.png\"");
+            else
+                return string.Empty;
+        }
+        public static string GetHeaderCareLogo(string filePath)
+        {
+            if (!string.IsNullOrEmpty(filePath))
+                return filePath.ToString().Replace("src=\"..//Content/images/Care_Template.png\"", "src=\"" + CommonModel.GetWebUrl() + "/Content/images/Care_Template.png\"");
+            else
+                return string.Empty;
+        }
+        #endregion
+
+        #region Master
+
         public static List<SelectListItem> GetALLStateM(int IsSelect = 0)
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
             List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_State_Master.OrderBy(state => state.OrderBy).Select(state => new SelectListItem { Value = state.StateCode.ToString(), Text = state.StateName }).ToList();
+            list = _db.Tbl_State_Master.OrderBy(state => state.OrderBy).Select(state => new SelectListItem { Value = state.StateId_pk.ToString(), Text = state.StateName }).ToList();
             if (IsSelect == 0)
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
@@ -56,7 +177,7 @@ namespace DeWee.Manager
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
             List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_District_Master.Where(x => x.IsActive == true && x.StateId_fk == StateId || 0 == StateId).OrderBy(x => x.OrderBy).Select(item => new SelectListItem { Value = item.DistrictCode.ToString(), Text = item.DistrictName }).ToList();
+            list = _db.Tbl_District_Master.Where(x => x.IsActive == true && x.StateId_fk == StateId || 0 == StateId).OrderBy(x => x.OrderBy).Select(item => new SelectListItem { Value = item.DistrictId_pk.ToString(), Text = item.DistrictName }).ToList();
             if (IsSelect == 0)
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
@@ -71,7 +192,7 @@ namespace DeWee.Manager
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
             List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_Block_Master.Where(Block => Block.IsActive == true && Block.DistrictId_fk == DistrictId).OrderBy(Block => Block.OrderBy).Select(Block => new SelectListItem { Value = Block.BlockCode.ToString(), Text = Block.BlockName }).ToList();
+            list = _db.Tbl_Block_Master.Where(Block => Block.IsActive == true && Block.DistrictId_fk == DistrictId).OrderBy(Block => Block.OrderBy).Select(Block => new SelectListItem { Value = Block.BlockId_pk.ToString(), Text = Block.BlockName }).ToList();
             if (IsSelect == 0)
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
@@ -436,6 +557,7 @@ namespace DeWee.Manager
 
             return list;
         }
+        #endregion
     }
 
 

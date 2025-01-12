@@ -37,7 +37,7 @@ namespace DeWee.Controllers
                 return Json(new { IsSuccess = false, res = "There was a communication error." }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult GetDistrictList(int SelectAll, int SId)
+        public ActionResult GetDistrictList(int SelectAll, int SId=1)
         {
             try
             {

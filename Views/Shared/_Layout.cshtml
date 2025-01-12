@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dewee</title>
     @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
+        @Scripts.Render("~/bundles/modernizr")*@
     <link rel="icon" type="image/png" sizes="16x16" href="~/Content/dashboard/images/favicon.png">
     <!-- Pignose Calender -->
     <link href="~/Content/dashboard/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="~/Content/dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="~/Content/dashboard/css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel='stylesheet' type='text/css' />
+    <base href="@DeWee.Manager.CommonModel.GetBaseUrl()" />
 </head>
 <body>
     <div id="preloader">
@@ -34,36 +36,38 @@
             </div>
         </div>
         @Html.Partial("_Footer")
-    </div>    
+    </div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @*@Scripts.Render("~/bundles/bootstrap")*@
-        @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
 
-        <script src="~/Content/dashboard/plugins/common/common.min.js"></script>
-        <script src="~/Content/dashboard/js/custom.min.js"></script>
-        <script src="~/Content/dashboard/js/settings.js"></script>
-        <script src="~/Content/dashboard/js/gleek.js"></script>
-        <script src="~/Content/dashboard/js/styleSwitcher.js"></script>
+    @*<script src="~/Content/dashboard/plugins/common/common.min.js"></script>*@
+    <script src="~/Content/dashboard/js/custom.min.js"></script>
+    <script src="~/Content/dashboard/js/settings.js"></script>
+    <script src="~/Content/dashboard/js/gleek.js"></script>
+    <script src="~/Content/dashboard/js/styleSwitcher.js"></script>
 
-        <!-- Chartjs -->
-        <script src="~/Content/dashboard/plugins/chart.js/Chart.bundle.min.js"></script>
-        <!-- Circle progress -->
-        <script src="~/Content/dashboard/plugins/circle-progress/circle-progress.min.js"></script>
-        <!-- Datamap -->
-        <script src="~/Content/dashboard/plugins/d3v3/index.js"></script>
-        <script src="~/Content/dashboard/plugins/topojson/topojson.min.js"></script>
-        <script src="~/Content/dashboard/plugins/datamaps/datamaps.world.min.js"></script>
-        <!-- Morrisjs -->
-        <script src="~/Content/dashboard/plugins/raphael/raphael.min.js"></script>
-        <script src="~/Content/dashboard/plugins/morris/morris.min.js"></script>
-        <!-- Pignose Calender -->
-        <script src="~/Content/dashboard/plugins/moment/moment.min.js"></script>
-        <script src="~/Content/dashboard/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-        <!-- ChartistJS -->
-        <script src="~/Content/dashboard/plugins/chartist/js/chartist.min.js"></script>
-        <script src="~/Content/dashboard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <!-- Chartjs -->
+    <script src="~/Content/dashboard/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="~/Content/dashboard/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="~/Content/dashboard/plugins/d3v3/index.js"></script>
+    <script src="~/Content/dashboard/plugins/topojson/topojson.min.js"></script>
+    <script src="~/Content/dashboard/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="~/Content/dashboard/plugins/raphael/raphael.min.js"></script>
+    <script src="~/Content/dashboard/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="~/Content/dashboard/plugins/moment/moment.min.js"></script>
+    <script src="~/Content/dashboard/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="~/Content/dashboard/plugins/chartist/js/chartist.min.js"></script>
+    <script src="~/Content/dashboard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
-        <script src="~/Content/dashboard/js/dashboard/dashboard-1.js"></script>
+    <script src="~/Content/dashboard/js/dashboard/dashboard-1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </body>
 </html>

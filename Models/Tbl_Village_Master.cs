@@ -19,7 +19,7 @@ namespace DeWee.Models
         public Nullable<int> BlockId_fk { get; set; }
         public Nullable<int> CLFId_fk { get; set; }
         public Nullable<int> PanchayatId_fk { get; set; }
-        public Nullable<int> VOrgId_fk { get; set; }
+        public Nullable<int> VillaggeCode { get; set; }
         public string VillageName { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string CreatedBy { get; set; }
