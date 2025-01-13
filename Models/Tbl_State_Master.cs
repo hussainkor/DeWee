@@ -18,5 +18,6 @@ namespace DeWee.Models
         public int StateCode { get; set; }
         public string StateName { get; set; }
         public Nullable<int> OrderBy { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

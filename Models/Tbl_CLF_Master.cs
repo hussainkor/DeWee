@@ -17,6 +17,8 @@ namespace DeWee.Models
         public int CLFId_pk { get; set; }
         public Nullable<int> DistrictId_fk { get; set; }
         public Nullable<int> BlockId_fk { get; set; }
+        public Nullable<int> PanchayatId_fk { get; set; }
+        public Nullable<int> CLFCode { get; set; }
         public string CLFName { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string CreatedBy { get; set; }

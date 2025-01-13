@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f4b879c0e4714029947c5d3b6ab6d5aa" Name="Diagram1">
+      <Diagram DiagramId="f4b879c0e4714029947c5d3b6ab6d5aa" Name="Diagram1" ZoomLevel="66">
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="false" />
@@ -20,7 +20,6 @@
         <EntityTypeShape EntityType="DeWee_DBModel.Tbl_PowerConnectionM" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.Tbl_SolarkilowattM" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.Tbl_SourceEnergyM" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_State_Master" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.Tbl_SubisdyM" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.Tbl_TypeYesNoM" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Educational_QualificationM" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="false" />
@@ -32,13 +31,14 @@
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="false" />
         <AssociationConnector Association="DeWee_DBModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_VO_Master" Width="1.5" PointX="15.375" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Block_Master" Width="1.5" PointX="10.375" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_CLF_Master" Width="1.5" PointX="12.375" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_District_Master" Width="1.5" PointX="9.375" PointY="16.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Panchayat_Master" Width="1.5" PointX="11.375" PointY="16.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Village_Master" Width="1.5" PointX="17.375" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_IndtSolarization" Width="1.5" PointX="13.375" PointY="15.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_IndtSolarization" Width="1.5" PointX="13.375" PointY="15.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Block_Master" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_CLF_Master" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_District_Master" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_State_Master" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Village_Master" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_VO_Master" Width="1.5" PointX="15.75" PointY="15.75" IsExpanded="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

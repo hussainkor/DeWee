@@ -22,7 +22,7 @@ namespace DeWee.Controllers
         //}
         public ActionResult AddParticipant()
         {
-            //Participant model = new Participant();
+            Participant model = new Participant();
             //if (Indt_Id != Guid.Empty && Indt_Id != null)
             //{
             //    var tbl = db.Tbl_IndtSolarization.Find(Indt_Id);
@@ -81,7 +81,7 @@ namespace DeWee.Controllers
             //        model.IfYesFillForm_OtherIndustriesEnterprises = tbl.IfYesFillForm_OtherIndustriesEnterprises;
             //    }
             //}
-            return View();
+            return View(model);
         }
         public ActionResult GetAddParticipant(Participant model)
         {
@@ -121,6 +121,7 @@ namespace DeWee.Controllers
                         tbl.Age = model.Age;
                         tbl.EducationQlf_Id = model.EducationQlf_Id;
                         tbl.YearOfSHG = model.YearOfSHG;
+                        tbl.NameofSHG = model.NameofSHG?.Trim();
                         tbl.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
                         tbl.Caste_Id = model.Caste_Id;
                         tbl.TypeofEnterpriseBusin_Id = model.TypeofEnterpriseBusin_Id;

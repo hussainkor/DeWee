@@ -252,11 +252,11 @@ namespace DeWee.Manager
 
             return list;
         }
-        public static List<SelectListItem> GetALLVO(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0, int PanchayatId = 0, int CLFId = 0,int VId=0)
+        public static List<SelectListItem> GetALLVO(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0, int PanchayatId = 0, int CLFId = 0, int VId = 0)
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
-            List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_VO_Master.Where(x => x.IsActive == true && x.DistrictId_fk == DistrictId && x.BlockId_fk == BlockId && x.PanchayatId_fk == PanchayatId && x.CLFId_fk == CLFId).OrderBy(VO => VO.OrderBy).Select(VO => new SelectListItem { Value = VO.VOrgId_pk.ToString(), Text = VO.Village_OrganizationName }).ToList();
+            List<SelectListItem> list = new List<SelectListItem>();// && x.CLFId_fk == CLFId 
+            list = _db.Tbl_VO_Master.Where(x => x.IsActive == true && x.DistrictId_fk == DistrictId && x.BlockId_fk == BlockId && x.PanchayatId_fk == PanchayatId && x.VillageId_fk == VId).OrderBy(VO => VO.OrderBy).Select(VO => new SelectListItem { Value = VO.VOrgId_pk.ToString(), Text = VO.Village_OrganizationName }).ToList();
             if (IsSelect == 0)
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "Select" });

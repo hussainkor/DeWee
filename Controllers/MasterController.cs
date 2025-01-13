@@ -137,7 +137,6 @@ namespace DeWee.Controllers
                 return Json(new { IsSuccess = false, res = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
             }
         }
-
         public ActionResult GetVOList(int SelectAll, int SId, int DId, int BId, int PId, int CId, int VId)
         {
             try
@@ -160,6 +159,5 @@ namespace DeWee.Controllers
         }
 
         #endregion
-
     }
 }
