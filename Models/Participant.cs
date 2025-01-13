@@ -83,6 +83,9 @@ namespace DeWee.Models
         [Display(Name = PartDisplayName.TypeofEnterpriseBusin_Id)]
         //[Required]
         public int TypeofEnterpriseBusin_Id { get; set; }
+        [Display(Name = PartDisplayName.TypeofEnterpriseBusin_Other)]
+        //[Required]
+        public string TypeofEnterpriseBusin_Other { get; set; }
 
         [Display(Name = PartDisplayName.BusinessOwnedType_Id)]
         //[Required]
@@ -171,9 +174,12 @@ namespace DeWee.Models
         [Display(Name = PartDisplayName.MachineSourceofEnergy_Id)]
         //[Required]
         public int MachineSourceofEnergy_Id { get; set; }
+        [Display(Name = PartDisplayName.MachineSourceofEnergy_Others)]
+        public string MachineSourceofEnergy_Others { get; set; }
 
         [Display(Name = PartDisplayName.Solar_InKilowatt_Id)]
         //[Required]
+
         public int Solar_InKilowatt_Id { get; set; }
 
         [Display(Name = PartDisplayName.Solar_EnergyPanelYesNo_Id)]
@@ -285,7 +291,12 @@ namespace DeWee.Models
         public DateTime? DeletedOn { get; set; }
 
         public List<Participant> Participants { get; set; }
-
+        public string Latitude {  get; set; }   
+        public string Longitude {  get; set; }   
+        public string Location {  get; set; }   
+        public string Accuracy {  get; set; }   
+        public string ParticipantPicPath {  get; set; }   
+        public string SolarEnterprisePicPath {  get; set; }   
     }
     public class PartDisplayName
     {
@@ -309,14 +320,15 @@ namespace DeWee.Models
         public const string EducationQlf_Id = "What is your educational qualification?/आप कहां तक पढ़े हैं?";
         public const string Caste_Id = "What is your caste?/आपकी जाति क्या है?";
         public const string TypeofEnterpriseBusin_Id = "Type of Business or Enterprise/व्यापार/उद्यम का प्रकार";
+        public const string TypeofEnterpriseBusin_Other = "Type of Business or Enterprise (Other)/व्यापार/उद्यम का प्रकार (अन्य)";
         public const string BusinessOwnedType_Id = "Type of Business Owned?/उद्यम का प्रकार";
         public const string EstablishedEnterpriseType_Id = "Where is your enterprise established?/आपका उद्यम कहां स्थापित है?";
         public const string TypeOfInvestBusin_Id = "How did you arrange capital for investment in your business?/आपके व्यापार में निवेश करने के लिए पूंजी का इंतजाम कैसे किया";
         public const string TookSourceOfLoan_Id = "If you took a loan, describe source?/यदि ऋण लिया, तो कहां से ऋण लिया";
         public const string TookLoanAmt = "How much loan did you take from SHG?/समूह से कितना ऋण लिया?";
-        //public const string TookLoanAmtBank = "How much Loan did you take from bank?/बैंक से कितना ऋण लिया?";
-        //public const string TookLoanAmtR = "How much Loan did you take from relatives?/रिश्तेदारों से कितना ऋण लिया?";
-        //public const string TookLoanAmtO = "How much Loan did you take from other sources?/अन्य स्रोतों से कितना ऋण लिया?";
+        public const string TookLoanAmtBank = "How much Loan did you take from bank?/बैंक से कितना ऋण लिया?";
+        public const string TookLoanAmtR = "How much Loan did you take from relatives?/रिश्तेदारों से कितना ऋण लिया?";
+        public const string TookLoanAmtO = "How much Loan did you take from other sources?/अन्य स्रोतों से कितना ऋण लिया?";
         public const string StartBusinessInvestAmt = "How much money did you invest from your side to start your business?/आपने व्यापार शुरू करने के लिए कितना पैसा स्वयं का निवेश किया?";
         public const string StartYourBusinessTakeAmt = "How much loan did you take to start your business?/आपने व्यापार शुरू करने के लिए कितना पैसा ऋण लिया?";
         public const string MonthlyProfitBusiness = "What is your monthly profit from the business?/आपको व्यापार में मासिक लाभ कितना होता है?";
@@ -328,8 +340,9 @@ namespace DeWee.Models
         public const string MachineryPowerkilowatt_Id = "What is the estimated power of all your machinery? (In kilowatt)/आपकी सभी मशीनरी की अनुमानित शक्ति (Power) कितनी है? (किलोवाट में)";
         public const string ElectricityConnection_Id = "Your Electricity Connection is of how many kilowatt?/आपका बिजली कनेक्शन कितने किलोवाट का है?";
         public const string ConnectionPhaseofPower_Id = "How many phases of power connection do you have?/आपका कितना फेज कनेक्शन है?";
-        public const string MonthlyElectricityConsumption_Id = "How much is your monthly electricity consumption? ( refer electricity Bill, if available)/आपका मासिक प्रति माह बिजली खपत कितना है? (बिजली बिल से यह उपलब्ध है)";
+        public const string MonthlyElectricityConsumption_Id = "How much is your monthly electricity consumption? (refer electricity Bill, if available)/आपका मासिक प्रति माह बिजली खपत कितना है? (बिजली बिल से यह उपलब्ध है)";
         public const string MachineSourceofEnergy_Id = "What is the source of energy for your machines?/मशीनों के लिए ऊर्जा स्रोत क्या है?";
+        public const string MachineSourceofEnergy_Others = "What is the source of energy for your machines?(Other)/मशीनों के लिए ऊर्जा स्रोत क्या है?(अन्य)";
         public const string Solar_InKilowatt_Id = "If its solar, how many kilowatt is it?/यदि सौर है, तो कितने किलोवाट का है?";
         public const string Solar_EnergyPanelYesNo_Id = "Did you set up solar energy panel ?/क्या आपने सौर ऊर्जा पैनल / सेटअप लगाया था?";
         public const string Solar_ExpenditureIncurredAmt = "How much expenditure was incurred on solar energy panel set-up / establishment?/सौर ऊर्जा पैनल / सेटअप / स्थापना का कितना खर्चा आया था?";

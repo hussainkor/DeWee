@@ -20,67 +20,65 @@ namespace DeWee.Controllers
         //{
         //    return View();
         //}
-        public ActionResult AddParticipant()
+        public ActionResult AddParticipant(Guid? Indt_Id)
         {
             Participant model = new Participant();
-            //if (Indt_Id != Guid.Empty && Indt_Id != null)
-            //{
-            //    var tbl = db.Tbl_IndtSolarization.Find(Indt_Id);
-            //    if (tbl != null)
-            //    {
-            //        model.Indt_Id = tbl.Indt_Id;
-            //        model.NameofSHGmember = tbl.NameofSHGMember;
-            //        model.YearOfSHG = Convert.ToInt32(tbl.YearOfSHG);
-            //        model.PhoneNumber = tbl.PhoneNumber;
-            //        model.NameofEnterpriseOwner = tbl.NameofEnterpriseOwner;
-            //        model.Age = Convert.ToInt32(tbl.Age);
-            //        model.EducationQlf_Id = Convert.ToInt32(tbl.EducationQlf_Id);
-            //        model.Caste_Id = Convert.ToInt32(tbl.Caste_Id);
-            //        model.TypeofEnterpriseBusin_Id = Convert.ToInt32(tbl.TypeofEnterpriseBusin_Id);
-            //        model.BusinessOwnedType_Id = Convert.ToInt32(tbl.BusinessOwnedType_Id);
-            //        model.EstablishedEnterpriseType_Id = Convert.ToInt32(tbl.EstablishedEnterpriseType_Id);
-            //        model.TypeOfInvestBusin_Id = Convert.ToInt32(tbl.TypeOfInvestBusin_Id);
-            //        model.TookSourceOfLoan_Id = Convert.ToInt32(tbl.TookSourceOfLoan_Id);
-            //        model.TookLoanAmt = Convert.ToInt32(tbl.TookLoanAmt);
-            //        model.TookLoanAmtBank = Convert.ToInt32(tbl.TookLoanAmt);
-            //        model.TookLoanAmtR = Convert.ToInt32(tbl.TookLoanAmt);
-            //        model.TookLoanAmtO = Convert.ToInt32(tbl.TookLoanAmt);
-            //        model.StartBusinessInvestAmt = Convert.ToInt32(tbl.StartBusinessInvestAmt);
-            //        model.StartYourBusinessTakeAmt = Convert.ToInt32(tbl.StartYourBusinessTakeAmt);
-            //        model.MonthlyProfitBusiness = Convert.ToInt32(tbl.MonthlyProfitBusiness);
-            //        model.WorkInEnterprises_FamilyMembers = Convert.ToInt32(tbl.WorkInEnterprises_FamilyMembers);
-            //        model.WorkInEnterprises_SHGMembers = Convert.ToInt32(tbl.WorkInEnterprises_SHGMembers);
-            //        model.WorkInEnterprises_AssitantStaff = Convert.ToInt32(tbl.WorkInEnterprises_AssitantStaffs);
-            //        model.TypeOfMachineEnterprise_Id = Convert.ToInt32(tbl.TypeOfMachineEnterprise_Id);
-            //        model.MotorBasedOnMachinesInActualUsed = Convert.ToInt32(tbl.TypeOfMachineEnterprise_Id);
-            //        model.MachineryPowerkilowatt_Id = Convert.ToInt32(tbl.MachineryPowerkilowatt_Id);
-            //        model.ElectricityConnection_Id = Convert.ToInt32(tbl.ElectricityConnection_Id);
-            //        model.ConnectionPhaseofPower_Id = Convert.ToInt32(tbl.ConnectionPhaseofPower_Id);
-            //        model.MonthlyElectricityConsumption_Id = Convert.ToInt32(tbl.MonthlyElectricityConsumption_Id);
-            //        model.MachineSourceofEnergy_Id = Convert.ToInt32(tbl.MachineSourceofEnergy_Id);
-            //        model.Solar_InKilowatt_Id = Convert.ToInt32(tbl.Solar_InKilowatt_Id);
-            //        model.Solar_EnergyPanelYesNo_Id = Convert.ToInt32(tbl.Solar_EnergyPanelYesNo_Id);
-            //        model.Solar_ExpenditureIncurredAmt = Convert.ToInt32(tbl.Solar_ExpenditureIncurredAmt);
-            //        model.SubsidySolarReceive_Id = Convert.ToInt32(tbl.SubsidySolarReceive_Id);
-            //        model.LoanSolarPanelsYesNo_Id = Convert.ToInt32(tbl.LoanSolarPanelsYesNo_Id);
-            //        model.MonthAvgAmtSavedDescription_Id = Convert.ToInt32(tbl.MonthAvgAmtSavedDescription_Id);
-            //        model.ElectricityUsedHours_Id = Convert.ToInt32(tbl.ElectricityUsedHours_Id);
-            //        model.MonthlyExpenseInElectricityBill_Id = Convert.ToInt32(tbl.MonthlyExpenseInElectricityBill_Id);
-            //        model.GeneratorElectricityUsedHours_Id = Convert.ToInt32(tbl.GeneratorElectricityUsedHours_Id);
-            //        model.MonthlyExpenseFuelSource_Id = Convert.ToInt32(tbl.MonthlyExpenseFuelSource_Id);
-            //        model.MonthlyRepairCost_Id = Convert.ToInt32(tbl.MonthlyRepairCost_Id);
-            //        model.HeardAboutSolarEYesNo_Id = Convert.ToInt32(tbl.HeardAboutSolarEYesNo_Id);
-            //        model.HeardAboutSolarEYes_IfYeswhere = tbl.HeardAboutSolarEYes_IfYeswhere;
-            //        model.InforknowledgeGovtSubsidyOfSEYesNo_Id = Convert.ToInt32(tbl.InformationknowledgeGovtSubsidyOfSEYesNo_Id);
-            //        model.InforknowledgeIfYesAmtGovPaid = Convert.ToInt32(tbl.InformationknowledgeIfYesAmtGovPaid);
-            //        model.LoanProcedureInSEYesNo_Id = Convert.ToInt32(tbl.LoanProcedureInSEYesNo_Id);
-            //        model.AdoptSolarizationYesNo_Id = Convert.ToInt32(tbl.AdoptSolarizationYesNo_Id);
-            //        model.CapitalArrangedForSEYesNo_Id = Convert.ToInt32(tbl.CapitalArrangedForSEYesNo_Id);
-            //        model.IfYesCapitalArrangedForSEAmt = Convert.ToInt32(tbl.IfYesCapitalArrangedForSEAmt);
-            //        model.OtherIndustriesEnterprisesYesNo_Id = Convert.ToInt32(tbl.OtherIndustriesEnterprisesYesNo_Id);
-            //        model.IfYesFillForm_OtherIndustriesEnterprises = tbl.IfYesFillForm_OtherIndustriesEnterprises;
-            //    }
-            //}
+            if (Indt_Id != Guid.Empty && Indt_Id != null)
+            {
+                var tbl = db.Tbl_IndtSolarization.Find(Indt_Id);
+                if (tbl != null)
+                {
+                    //model.Indt_Id = tbl.Indt_Id;
+                    //model.NameofSHGmember = tbl.NameofSHGMember;
+                    //model.YearOfSHG = Convert.ToInt32(tbl.YearOfSHG);
+                    //model.PhoneNumber = tbl.PhoneNumber;
+                    //model.NameofEnterpriseOwner = tbl.NameofEnterpriseOwner;
+                    //model.Age = tbl.Age.Value;
+                    //model.EducationQlf_Id = tbl.EducationQlf_Id.Value;
+                    //model.Caste_Id = Convert.ToInt32(tbl.Caste_Id);
+                    //model.TypeofEnterpriseBusin_Id = Convert.ToInt32(tbl.TypeofEnterpriseBusin_Id);
+                    //model.BusinessOwnedType_Id = Convert.ToInt32(tbl.BusinessOwnedType_Id);
+                    //model.EstablishedEnterpriseType_Id = Convert.ToInt32(tbl.EstablishedEnterpriseType_Id);
+                    //model.TypeOfInvestBusin_Id = Convert.ToInt32(tbl.TypeOfInvestBusin_Id);
+                    //model.TookSourceOfLoan_Id = Convert.ToInt32(tbl.TookSourceOfLoan_Id);
+                    //model.TookLoanAmt = Convert.ToInt32(tbl.TookLoanAmt);
+                    //model.StartBusinessInvestAmt = Convert.ToInt32(tbl.StartBusinessInvestAmt);
+                    //model.StartYourBusinessTakeAmt = Convert.ToInt32(tbl.StartYourBusinessTakeAmt);
+                    //model.MonthlyProfitBusiness = Convert.ToInt32(tbl.MonthlyProfitBusiness);
+                    //model.WorkInEnterprises_FamilyMembers = Convert.ToInt32(tbl.WorkInEnterprises_FamilyMembers);
+                    //model.WorkInEnterprises_SHGMembers = Convert.ToInt32(tbl.WorkInEnterprises_SHGMembers);
+                    //model.WorkInEnterprises_AssitantStaff = Convert.ToInt32(tbl.WorkInEnterprises_AssitantStaffs);
+                    //model.TypeOfMachineEnterprise_Id = Convert.ToInt32(tbl.TypeOfMachineEnterprise_Id);
+                    //model.MotorBasedOnMachinesInActualUsed = Convert.ToInt32(tbl.TypeOfMachineEnterprise_Id);
+                    //model.MachineryPowerkilowatt_Id = Convert.ToInt32(tbl.MachineryPowerkilowatt_Id);
+                    //model.ElectricityConnection_Id = Convert.ToInt32(tbl.ElectricityConnection_Id);
+                    //model.ConnectionPhaseofPower_Id = Convert.ToInt32(tbl.ConnectionPhaseofPower_Id);
+                    //model.MonthlyElectricityConsumption_Id = Convert.ToInt32(tbl.MonthlyElectricityConsumption_Id);
+                    //model.MachineSourceofEnergy_Id = Convert.ToInt32(tbl.MachineSourceofEnergy_Id);
+                    //model.MachineSourceofEnergy_Others = tbl.MachineSourceofEnergy_Others;
+                    //model.Solar_InKilowatt_Id = Convert.ToInt32(tbl.Solar_InKilowatt_Id);
+                    //model.Solar_EnergyPanelYesNo_Id = Convert.ToInt32(tbl.Solar_EnergyPanelYesNo_Id);
+                    //model.Solar_ExpenditureIncurredAmt = Convert.ToInt32(tbl.Solar_ExpenditureIncurredAmt);
+                    //model.SubsidySolarReceive_Id = Convert.ToInt32(tbl.SubsidySolarReceive_Id);
+                    //model.LoanSolarPanelsYesNo_Id = Convert.ToInt32(tbl.LoanSolarPanelsYesNo_Id);
+                    //model.MonthAvgAmtSavedDescription_Id = Convert.ToInt32(tbl.MonthAvgAmtSavedDescription_Id);
+                    //model.ElectricityUsedHours_Id = Convert.ToInt32(tbl.ElectricityUsedHours_Id);
+                    //model.MonthlyExpenseInElectricityBill_Id = Convert.ToInt32(tbl.MonthlyExpenseInElectricityBill_Id);
+                    //model.GeneratorElectricityUsedHours_Id = Convert.ToInt32(tbl.GeneratorElectricityUsedHours_Id);
+                    //model.MonthlyExpenseFuelSource_Id = Convert.ToInt32(tbl.MonthlyExpenseFuelSource_Id);
+                    //model.MonthlyRepairCost_Id = Convert.ToInt32(tbl.MonthlyRepairCost_Id);
+                    //model.HeardAboutSolarEYesNo_Id = Convert.ToInt32(tbl.HeardAboutSolarEYesNo_Id);
+                    //model.HeardAboutSolarEYes_IfYeswhere = tbl.HeardAboutSolarEYes_IfYeswhere;
+                    //model.InforknowledgeGovtSubsidyOfSEYesNo_Id = Convert.ToInt32(tbl.InforknowledgeGovtSubsidyOfSEYesNo_Id);
+                    //model.InforknowledgeIfYesAmtGovPaid = Convert.ToInt32(tbl.InforknowledgeIfYesAmtGovPaid);
+                    //model.LoanProcedureInSEYesNo_Id = Convert.ToInt32(tbl.LoanProcedureInSEYesNo_Id);
+                    //model.AdoptSolarizationYesNo_Id = Convert.ToInt32(tbl.AdoptSolarizationYesNo_Id);
+                    //model.CapitalArrangedForSEYesNo_Id = Convert.ToInt32(tbl.CapitalArrangedForSEYesNo_Id);
+                    //model.IfYesCapitalArrangedForSEAmt = Convert.ToInt32(tbl.IfYesCapitalArrangedForSEAmt);
+                    //model.OtherIndustriesEnterprisesYesNo_Id = Convert.ToInt32(tbl.OtherIndustriesEnterprisesYesNo_Id);
+                    //model.IfYesFillForm_OtherIndustriesEnterprises = tbl.IfYesFillForm_OtherIndustriesEnterprises;
+                }
+            }
             return View(model);
         }
         public ActionResult GetAddParticipant(Participant model)
@@ -88,8 +86,8 @@ namespace DeWee.Controllers
             JsonResponseData response = new JsonResponseData();
             try
             {
-                if (ModelState.IsValid)
-                {
+                //if (ModelState.IsValid)
+                //{
                     //var existingPart = SPManager.Check_ParticipantAlready(model.Indt_Id.ToString(), model.PhoneNumber, model.AadharNo); //db.Tbl_IndtSolarization.Where(x => x.IsActive == true && x.PhoneNumber == model.PhoneNumber.Trim())?.FirstOrDefault();
 
                     //if (existingPart.Rows.Count > 0)
@@ -125,14 +123,13 @@ namespace DeWee.Controllers
                         tbl.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
                         tbl.Caste_Id = model.Caste_Id;
                         tbl.TypeofEnterpriseBusin_Id = model.TypeofEnterpriseBusin_Id;
+                        tbl.TypeofEnterpriseBusin_Other = model.TypeofEnterpriseBusin_Other;
                         tbl.BusinessOwnedType_Id = model.BusinessOwnedType_Id;
                         tbl.EstablishedEnterpriseType_Id = model.EstablishedEnterpriseType_Id;
                         tbl.TypeOfInvestBusin_Id = model.TypeOfInvestBusin_Id;
                         tbl.TookSourceOfLoan_Id = model.TookSourceOfLoan_Id;
                         tbl.TookLoanAmt = model.TookLoanAmt;
-                        //tbl.TookLoanAmt = model.TookLoanAmtBank;
-                        //tbl.TookLoanAmt = model.TookLoanAmtR;
-                        //tbl.TookLoanAmt = model.TookLoanAmtO;
+                      
                         tbl.StartBusinessInvestAmt = model.StartBusinessInvestAmt;
                         tbl.StartYourBusinessTakeAmt = model.StartYourBusinessTakeAmt;
                         tbl.MonthlyProfitBusiness = model.MonthlyProfitBusiness;
@@ -146,6 +143,7 @@ namespace DeWee.Controllers
                         tbl.ConnectionPhaseofPower_Id = model.ConnectionPhaseofPower_Id;
                         tbl.MonthlyElectricityConsumption_Id = model.MonthlyElectricityConsumption_Id;
                         tbl.MachineSourceofEnergy_Id = model.MachineSourceofEnergy_Id;
+                        tbl.MachineSourceofEnergy_Others = model.MachineSourceofEnergy_Others;
                         tbl.Solar_InKilowatt_Id = model.Solar_InKilowatt_Id;
                         tbl.Solar_EnergyPanelYesNo_Id = model.Solar_EnergyPanelYesNo_Id;
                         tbl.Solar_ExpenditureIncurredAmt = model.Solar_ExpenditureIncurredAmt;
@@ -197,17 +195,17 @@ namespace DeWee.Controllers
                         };
                         return Json(response, JsonRequestBehavior.AllowGet);
                     }
-                }
-                else
-                {
-                    response = new JsonResponseData
-                    {
-                        StatusType = eAlertType.error.ToString(),
-                        Message = "All Record Required !!",
-                        Data = null
-                    };
-                    return Json(response, JsonRequestBehavior.AllowGet);
-                }
+                //}
+                //else
+                //{
+                //    response = new JsonResponseData
+                //    {
+                //        StatusType = eAlertType.error.ToString(),
+                //        Message = "All Record Required !!",
+                //        Data = null
+                //    };
+                //    return Json(response, JsonRequestBehavior.AllowGet);
+                //}
             }
             catch (Exception ex)
             {

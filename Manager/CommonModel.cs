@@ -429,11 +429,11 @@ namespace DeWee.Manager
 
             return list;
         }
-        public static List<SelectListItem> GetALLMB(int IsSelect = 0)
+        public static List<SelectListItem> GetALLECBILL(int IsSelect = 0)
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
             List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.Tbl_MonthlyExpenseEBM.Where(MB => MB.IsActive == true).OrderBy(MB => MB.OrderBy).Select(MB => new SelectListItem { Value = MB.MonthlyExpenseEB_Id.ToString(), Text = MB.MonthlyExpenseEBInEng }).ToList();
+            list = _db.Tbl_ElectricityConsumptionM.Where(x => x.IsActive == true).OrderBy(x => x.OrderBy).Select(x => new SelectListItem { Value = x.ElectricityConsumption_Id.ToString(), Text = x.ElectricityConsumptionInEng }).ToList();
             if (IsSelect == 0)
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "Select" });

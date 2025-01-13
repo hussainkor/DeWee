@@ -49,12 +49,12 @@ namespace DeWee.Models
         public virtual DbSet<Tbl_EnterpriseMachineM> Tbl_EnterpriseMachineM { get; set; }
         public virtual DbSet<Tbl_LoanDescribeSourceM> Tbl_LoanDescribeSourceM { get; set; }
         public virtual DbSet<Tbl_Panchayat_Master> Tbl_Panchayat_Master { get; set; }
-        public virtual DbSet<Tbl_IndtSolarization> Tbl_IndtSolarization { get; set; }
         public virtual DbSet<Tbl_Block_Master> Tbl_Block_Master { get; set; }
         public virtual DbSet<Tbl_CLF_Master> Tbl_CLF_Master { get; set; }
         public virtual DbSet<Tbl_District_Master> Tbl_District_Master { get; set; }
         public virtual DbSet<Tbl_State_Master> Tbl_State_Master { get; set; }
         public virtual DbSet<Tbl_Village_Master> Tbl_Village_Master { get; set; }
         public virtual DbSet<Tbl_VO_Master> Tbl_VO_Master { get; set; }
+        public virtual DbSet<Tbl_IndtSolarization> Tbl_IndtSolarization { get; set; }
     }
 }

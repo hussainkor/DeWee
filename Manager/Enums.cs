@@ -90,6 +90,8 @@ namespace DeWee.Manager
             ExceptionError = 6,
             [Description("All fields are mandatory !!.")]
             AllFieldsRequired = 7,
+            [Description("Please Enable Geolocation Latitude and Longitude !!.")]
+            LatLong = 8
         }
 
         public enum eIsStatus

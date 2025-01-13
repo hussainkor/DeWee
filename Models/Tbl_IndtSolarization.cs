@@ -35,6 +35,7 @@ namespace DeWee.Models
         public Nullable<int> EducationQlf_Id { get; set; }
         public Nullable<int> Caste_Id { get; set; }
         public Nullable<int> TypeofEnterpriseBusin_Id { get; set; }
+        public string TypeofEnterpriseBusin_Other { get; set; }
         public Nullable<int> BusinessOwnedType_Id { get; set; }
         public Nullable<int> EstablishedEnterpriseType_Id { get; set; }
         public Nullable<int> TypeOfInvestBusin_Id { get; set; }
@@ -53,6 +54,7 @@ namespace DeWee.Models
         public Nullable<int> ConnectionPhaseofPower_Id { get; set; }
         public Nullable<int> MonthlyElectricityConsumption_Id { get; set; }
         public Nullable<int> MachineSourceofEnergy_Id { get; set; }
+        public string MachineSourceofEnergy_Others { get; set; }
         public Nullable<int> Solar_InKilowatt_Id { get; set; }
         public Nullable<int> Solar_EnergyPanelYesNo_Id { get; set; }
         public Nullable<decimal> Solar_ExpenditureIncurredAmt { get; set; }
@@ -82,5 +84,11 @@ namespace DeWee.Models
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<System.DateTime> IsDeletedOn { get; set; }
         public Nullable<int> OrderBy { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Location { get; set; }
+        public string Accuracy { get; set; }
+        public string ParticipantPicPath { get; set; }
+        public string SolarEnterprisePicPath { get; set; }
     }
 }
