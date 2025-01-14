@@ -561,7 +561,7 @@ namespace DeWee.Manager
         }
         #endregion
 
-        #region Save Files
+       
         #region Document Upload
         public static string GetFilePath(HttpPostedFileBase file, string Module, string RegNo, string Ques_fk, string Folder)
         {
@@ -974,7 +974,7 @@ namespace DeWee.Manager
             return ext;
         }
         #endregion
-        #endregion
+       
 
     }
 }

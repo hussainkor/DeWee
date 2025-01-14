@@ -237,25 +237,22 @@ namespace DeWee.Controllers
         }
         public ActionResult GetParticipantList()
         {
-            DataTable tbllist = new DataTable();
+            DataTable tbllist = SPManager.Get_USP_ParticipantList();
             try
             {
-                tbllist = SPManager.Get_USP_ParticipantList();
-                bool IsCheck = tbllist.Rows.Count > 0;
-
-                if (IsCheck)
+                if (tbllist.Rows.Count > 0)
                 {
                     var html = ConvertViewToString("_PData", tbllist);
                     return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    return Json(new { IsSuccess = false, Data = "No records found." }, JsonRequestBehavior.AllowGet);
+                    return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
             {
-                return Json(new { IsSuccess = false, Data = ex.Message }, JsonRequestBehavior.AllowGet);
+                return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
             }
         }
 
