@@ -172,12 +172,12 @@ namespace DeWee.Controllers
                     tbl.OtherIndustriesEnterprisesYesNo_Id = model.OtherIndustriesEnterprisesYesNo_Id;
                     tbl.IfYesFillForm_OtherIndustriesEnterprises = model.IfYesFillForm_OtherIndustriesEnterprises;
                     var EnterpriPic = Request.Files["SolarEnterprisePic"];
-                    //comment image
-                    if (!string.IsNullOrWhiteSpace(model.SolarEnterprisePicHd))
-                    {
-                        var picexterpries = CommonModel.SaveSingleFileBase64string(model.SolarEnterprisePicHd, "Enterprises", tbl.Indt_Id.ToString());
-                        tbl.SolarEnterprisePicPath = picexterpries.ToString();
-                    }
+                    ////comment image
+                    //if (!string.IsNullOrWhiteSpace(model.SolarEnterprisePicHd))
+                    //{
+                    //    var picexterpries = CommonModel.SaveSingleFileBase64string(model.SolarEnterprisePicHd, "Enterprises", tbl.Indt_Id.ToString());
+                    //    tbl.SolarEnterprisePicPath = picexterpries.ToString();
+                    //}
 
                     tbl.IsActive = true;
                     if (model.Indt_Id == Guid.Empty)
