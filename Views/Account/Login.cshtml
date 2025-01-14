@@ -27,7 +27,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="input-box">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-form-label" })
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder="Enter Email" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder="Enter User Name" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
                 <div class="input-box">
@@ -35,18 +35,18 @@
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter Password" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
-                <div class="input-box">
+                @*<div class="input-box">
                     <div class="check-box">
                         @Html.CheckBoxFor(m => m.RememberMe)
                         @Html.LabelFor(m => m.RememberMe)
                     </div>
-                </div>
+                </div>*@
                 <div class="input-box">
                     <input type="submit" value="Log in" class="login-btn" />
                 </div>
-                <p>
+                @*<p>
                     @Html.ActionLink("Register as a new user", "Register")
-                </p>
+                </p>*@
             }
         </section>
     </div>

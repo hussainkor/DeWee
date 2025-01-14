@@ -11,6 +11,7 @@ using static DeWee.Manager.Enums;
 
 namespace DeWee.Controllers
 {
+    [Authorize]
     public class ParticipantController : Controller
     {
         DeWee_DBEntities db = new DeWee_DBEntities();
@@ -81,7 +82,8 @@ namespace DeWee.Controllers
             }
             return View(model);
         }
-        public ActionResult GetAddParticipant(Participant model)
+        [HttpPost]
+        public ActionResult AddParticipant(Participant model)
         {
             JsonResponseData response = new JsonResponseData();
             try
@@ -170,6 +172,7 @@ namespace DeWee.Controllers
                     tbl.OtherIndustriesEnterprisesYesNo_Id = model.OtherIndustriesEnterprisesYesNo_Id;
                     tbl.IfYesFillForm_OtherIndustriesEnterprises = model.IfYesFillForm_OtherIndustriesEnterprises;
                     var EnterpriPic = Request.Files["SolarEnterprisePic"];
+                    //comment image
                     if (!string.IsNullOrWhiteSpace(model.SolarEnterprisePicHd))
                     {
                         var picexterpries = CommonModel.SaveSingleFileBase64string(model.SolarEnterprisePicHd, "Enterprises", tbl.Indt_Id.ToString());
