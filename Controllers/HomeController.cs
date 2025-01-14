@@ -21,9 +21,9 @@ namespace DeWee.Controllers
             DataSet ds = SPManager.USP_GetDashboardLegend();
             try
             {
-                if (ds.Tables.Count>0)
+                if (ds.Tables.Count > 0)
                 {
-                    var dsdata= JsonConvert.SerializeObject(ds);
+                    var dsdata = JsonConvert.SerializeObject(ds);
                     return Json(new { IsSuccess = true, Data = dsdata }, JsonRequestBehavior.AllowGet);
                 }
                 else

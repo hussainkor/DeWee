@@ -717,7 +717,7 @@ namespace DeWee.Manager
             string URL = "";
             string filepath = string.Empty;
            // byte[] base64String = Convert.FromBase64String(files);//Convert.FromBase64String(base64);
-            if (base64Stringfiles != null && base64Stringfiles.Length > 0)
+            if (!string.IsNullOrWhiteSpace(base64Stringfiles) && base64Stringfiles.Length > 0)
             {
                 // Remove the data URI scheme prefix (if it exists), e.g., "data:image/png;base64,"
                 string base64Data = base64Stringfiles.Split(',')[1]; // Get the Base64 data part
@@ -727,9 +727,9 @@ namespace DeWee.Manager
                 if (ValidateImageSizeDocoument(imageBytes, 5)) // 5 MB validation
                 {
                     // Determine file extension (you may have the MIME type in the base64String or set it manually)
-                    string extension = ".png"; // Default to PNG or infer based on MIME type if available
+                    string extension = ".jpeg"; // Default to PNG or infer based on MIME type if available
                     string fileName = RegNo;
-                    URL = "~/Uploads/" + RegNo + "/";
+                    URL = "~/Uploads/" + Module + "/";
                     if (!Directory.Exists(HttpContext.Current.Server.MapPath(URL)))
                     {
                         Directory.CreateDirectory(HttpContext.Current.Server.MapPath(URL));
@@ -741,13 +741,14 @@ namespace DeWee.Manager
                         index++;
                         fname = fileName + "(" + index.ToString() + ")" + extension;
                     }
-                    var fpicpath = HttpContext.Current.Server.MapPath(URL + (Module + "-" + fname));
+                    filepath = URL + fname + extension;
+                    var fpicpath = HttpContext.Current.Server.MapPath(filepath);
                     // Specify the full file path
-                    string filePath = Path.Combine(fpicpath, fileName);
-                    ResizeImage(filePath, filePath, 300, 300); // Resize to 300x300 px
+                    //string filePath = Path.Combine(fpicpath, fileName);
 
                     // Save the byte array as an image file
-                    System.IO.File.WriteAllBytes(filePath, imageBytes);
+                    System.IO.File.WriteAllBytes(fpicpath, imageBytes);
+                    //ResizeImage(filePath, filePath, 300, 300); // Resize to 300x300 px
                 }
                 else
                 {

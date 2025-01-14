@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using static DeWee.Manager.Enums;
@@ -171,13 +173,15 @@ namespace DeWee.Controllers
                     tbl.IfYesCapitalArrangedForSEAmt = model.IfYesCapitalArrangedForSEAmt;
                     tbl.OtherIndustriesEnterprisesYesNo_Id = model.OtherIndustriesEnterprisesYesNo_Id;
                     tbl.IfYesFillForm_OtherIndustriesEnterprises = model.IfYesFillForm_OtherIndustriesEnterprises;
-                    var EnterpriPic = Request.Files["SolarEnterprisePic"];
-                    ////comment image
-                    //if (!string.IsNullOrWhiteSpace(model.SolarEnterprisePicHd))
-                    //{
-                    //    var picexterpries = CommonModel.SaveSingleFileBase64string(model.SolarEnterprisePicHd, "Enterprises", tbl.Indt_Id.ToString());
-                    //    tbl.SolarEnterprisePicPath = picexterpries.ToString();
-                    //}
+                    tbl.Latitude = model.Latitude;
+                    tbl.Longitude = model.Longitude;
+                    tbl.Location = model.Location;
+                    //image
+                    if (!string.IsNullOrWhiteSpace(model.SolarEnterprisePicHd))
+                    {
+                        var picexterpries = CommonModel.SaveSingleFileBase64string(model.SolarEnterprisePicHd, "Enterprises", tbl.Indt_Id.ToString());
+                        tbl.SolarEnterprisePicPath = picexterpries;
+                    }
 
                     tbl.IsActive = true;
                     if (model.Indt_Id == Guid.Empty)
@@ -265,6 +269,28 @@ namespace DeWee.Controllers
                 var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
                 viewResult.View.Render(viewContext, sw);
                 return sw.GetStringBuilder().ToString();
+            }
+        }
+
+        private const string GoogleApiKey = "AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U";
+
+        [HttpGet]
+        public async Task<JsonResult> GetAddress(double lat, double lng)
+        {
+            string apiUrl = $"https://maps.googleapis.com/maps/api/geocode/json?latlng={lat},{lng}&key={GoogleApiKey}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonData = await response.Content.ReadAsStringAsync();
+                    return Json(jsonData, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { error = "Failed to fetch geocode data." }, JsonRequestBehavior.AllowGet);
+                }
             }
         }
     }
