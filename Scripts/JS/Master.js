@@ -837,3 +837,47 @@ function parseToNumber(str) {
     var val = parseFloat(str);
     return val ? val : 0;
 }
+(function ($) {
+    $.fn.validateMinMaxDigits = function (options) {
+        // Default settings
+        var settings = $.extend({
+            minDigits: 1,       // Minimum digits allowed
+            maxDigits: 10,      // Maximum digits allowed
+            errorMessage: "Input must be between {min} and {max} digits."
+        }, options);
+
+        // Apply validation to each element in the jQuery collection
+        return this.each(function () {
+            var $input = $(this);
+
+            $input.on("input", function () {
+                var value = $input.val();
+                var digits = value.replace(/\D/g, "").length; // Count digits only
+
+                if (digits < settings.minDigits || digits > settings.maxDigits) {
+                    $input.addClass("error");
+                    alert(
+                        settings.errorMessage
+                            .replace("{min}", settings.minDigits)
+                            .replace("{max}", settings.maxDigits)
+                    );
+                } else {
+                    $input.removeClass("error");
+                }
+            });
+        });
+    };
+})(jQuery);
+function validateNumber(event) {
+    const inputValue = event.target.value;
+    if (/[^0-9]/g.test(inputValue)) {
+        event.target.value = inputValue.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+    }
+}
+function validateDecimalNumber(event) {
+    const inputValue = event.target.value;
+    // Allow only numbers and one decimal point
+    if (/[^0-9.]/g.test(inputValue) || (inputValue.split('.').length > 2)) {
+        event.target.value = inputValue.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
+    }
+}

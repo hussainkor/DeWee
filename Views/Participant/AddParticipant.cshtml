@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "Participant Form";
 }
-@*<style>
-        .label-control {
-            display: flex;
-            gap: 10px;
-            justify-content:start
-        }
-    </style>*@
+<style>
+    #results {
+        float: right;
+        /*  margin: 20px;
+        padding: 20px;*/
+        border: 1px solid;
+        background: #ccc;
+    }
+</style>
 <div class="page-bread page-titles">
     <div class="bread-flex">
         <h1>@ViewBag.Title</h1>
@@ -31,9 +33,12 @@
                     @Html.HiddenFor(model => model.Latitude)
                     @Html.HiddenFor(model => model.Longitude)
                     @Html.HiddenFor(model => model.Location)
+                    @Html.HiddenFor(model => model.SolarEnterprisePicHd)
+
                     <div class="basic-form">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="flex-form">
+
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
@@ -104,53 +109,59 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.AadharNo, htmlAttributes: new { @class = "control-label" })
-                                    <span style="color:red;">*</span>
-                                    <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.AadharNo, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.AadharNo, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label" })
-                                    <span style="color:red;">*</span>
-                                    <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.DOB, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
                                     @Html.LabelFor(model => model.YearOfSHG, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.YearOfSHG, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.YearOfSHG, new { @class = "form-control", @minlength = "4", @maxlength = "4", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.YearOfSHG, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+
+
                             </div>
+
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-5">
+                                    @Html.LabelFor(model => model.AadharNo, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.AadharNo, new { @class = "form-control", @minlength = "12", @maxlength = "12", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.AadharNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @*<div class="form-group col-md-4">
+                                        @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label" })
+                                        <span style="color:red;">*</span>
+                                        <div class="col-md-10s">
+                                            @Html.TextBoxFor(model => model.DOB, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
+                                            @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+                                <div class="form-group col-md-2">
+                                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @minlength = "2", @maxlength = "2", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
                                     @Html.LabelFor(model => model.NameofSHGmember, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
                                         @Html.TextBoxFor(model => model.NameofSHGmember, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.NameofSHGmember, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                    <span style="color:red;">*</span>
-                                    <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                    <span style="color:red;">*</span>
-                                    <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.Age, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +184,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-5">
+                                <div class="form-group col-md-6">
                                     @Html.LabelFor(model => model.NameofEnterpriseOwner, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
@@ -219,7 +230,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     @Html.LabelFor(model => model.TypeOfInvestBusin_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
@@ -227,7 +238,10 @@
                                         @Html.ValidationMessageFor(model => model.TypeOfInvestBusin_Id, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6" id="dv-TookSourceOfLoan" style="display:none">
                                     @Html.LabelFor(model => model.TookSourceOfLoan_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
@@ -235,14 +249,11 @@
                                         @Html.ValidationMessageFor(model => model.TookSourceOfLoan_Id, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-row" id="div-TookLoanAmt" style="display:none;">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" id="div-TookLoanAmt" style="display:none;">
                                     @Html.LabelFor(model => model.TookLoanAmt, htmlAttributes: new { @class = "control-label col-md-2s", id = "lblTookLoanAmt" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.TookLoanAmt, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.TookLoanAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.TookLoanAmt, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -252,7 +263,7 @@
                                     @Html.LabelFor(model => model.StartBusinessInvestAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.StartBusinessInvestAmt, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.StartBusinessInvestAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.StartBusinessInvestAmt, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -261,7 +272,7 @@
                                     @Html.LabelFor(model => model.StartYourBusinessTakeAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.StartYourBusinessTakeAmt, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.StartYourBusinessTakeAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.StartYourBusinessTakeAmt, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -271,7 +282,7 @@
                                     @Html.LabelFor(model => model.MonthlyProfitBusiness, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.MonthlyProfitBusiness, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.MonthlyProfitBusiness, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.MonthlyProfitBusiness, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -280,7 +291,7 @@
                                     @Html.LabelFor(model => model.WorkInEnterprises_FamilyMembers, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.WorkInEnterprises_FamilyMembers, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.WorkInEnterprises_FamilyMembers, new { @class = "form-control", @minlength = "0", @maxlength = "2", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.WorkInEnterprises_FamilyMembers, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -290,7 +301,7 @@
                                     @Html.LabelFor(model => model.WorkInEnterprises_SHGMembers, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.WorkInEnterprises_SHGMembers, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.WorkInEnterprises_SHGMembers, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.WorkInEnterprises_SHGMembers, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -298,7 +309,7 @@
                                     @Html.LabelFor(model => model.WorkInEnterprises_AssitantStaff, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.WorkInEnterprises_AssitantStaff, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.WorkInEnterprises_AssitantStaff, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.WorkInEnterprises_AssitantStaff, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -316,7 +327,7 @@
                                     @Html.LabelFor(model => model.MotorBasedOnMachinesInActualUsed, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.MotorBasedOnMachinesInActualUsed, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.MotorBasedOnMachinesInActualUsed, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.MotorBasedOnMachinesInActualUsed, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -397,7 +408,7 @@
                                     @Html.LabelFor(model => model.Solar_ExpenditureIncurredAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.Solar_ExpenditureIncurredAmt, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.Solar_ExpenditureIncurredAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.Solar_ExpenditureIncurredAmt, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -465,7 +476,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     @Html.LabelFor(model => model.MonthlyRepairCost_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
@@ -507,7 +518,7 @@
                                     @Html.LabelFor(model => model.InforknowledgeIfYesAmtGovPaid, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.InforknowledgeIfYesAmtGovPaid, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.InforknowledgeIfYesAmtGovPaid, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.InforknowledgeIfYesAmtGovPaid, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -543,7 +554,7 @@
                                     @Html.LabelFor(model => model.IfYesCapitalArrangedForSEAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.IfYesCapitalArrangedForSEAmt, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.IfYesCapitalArrangedForSEAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.IfYesCapitalArrangedForSEAmt, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -567,8 +578,21 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div id="my_camera"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div id="results">Your captured image will appear here...</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <input type=button id="takeshot" value="Take Snapshot" onClick="take_snapshot()">
+                            </div>
+                            <div class="form-row pt-1">
+                                <div class="form-group col-md-4 offset-4">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -576,16 +600,62 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-        <script src="~/Scripts/JS/Master.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JS/Master.js"></script>
+    @*<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.swf"></script>
 
-        <script>
+
+    <script language="JavaScript">
+        Webcam.set({
+            width: 320,
+            height: 240,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        Webcam.attach('#my_camera');
+    </script>
+    <!-- Code to handle taking the snapshot and displaying it locally -->
+    <script language="JavaScript">
+        var strfilepic;
+        //window.onload = function () {
+        //    setInterval(function () { take_snapshot() }, 5000);
+        //}
+        function take_snapshot() {
+            // take snapshot and get image data
+            Webcam.snap(function (data_uri) {
+                // display results in page
+                document.getElementById('results').innerHTML = '<h6>Here is your image:</h2>' + '<img id="base64image" src="' + data_uri + '"/>';
+            });
+
+            var file = document.getElementById("base64image").src;
+            $('#SolarEnterprisePicHd').val(file);
+            strfilepic = file;
+
+            //var formdata = new FormData();
+            //formdata.append("SolarEnterprisePic", file);
+            //$.ajax({
+            //    url: "http://localhost:26792/home/SaveImage",
+            //    type: "POST",
+            //    data: formdata,
+            //    processData: false,
+            //    contentType: false
+            //});
+            //
+        }
+    </script>
+
+    <script>
         $(document).ready(function () {
+            $("#DOB").datepicker();
             BindStateList("StateId", "", 0);
+            $('#StateId').prop('selectedIndex', 1);
+            BindDistrictList("DistrictId", "", 0, $('#StateId').val());
             $('#StateId').change(function () {
                 BindDistrictList("DistrictId", "", 0, $('#StateId').val());
             });
@@ -611,9 +681,16 @@
                 if ($(this).val() == 25)//Others
                     $('#dv-TypeofEnterpriseBusin_Other').show();
             });
-            $('#TookSourceOfLoan_Id').change(function () {  // Hide all loan amount textboxes initially
+            $('#TypeOfInvestBusin_Id').change(function () {
+                $('#TookSourceOfLoan_Id').val(''); $('#TookLoanAmt').val('');
+                $('#dv-TookSourceOfLoan').hide();
                 $('#div-TookLoanAmt').hide();
-                $('#TookLoanAmt').val();
+                if ($(this).val() == 1 || $(this).val()==3)//Others
+                    $('#dv-TookSourceOfLoan').show();
+            });
+            $('#TookSourceOfLoan_Id').change(function () {  //dv-TookSourceOfLoan Hide all loan amount textboxes initially
+                $('#div-TookLoanAmt').hide();
+                $('#TookLoanAmt').val('');
                 var selectedValue = $(this).val();
                 if (selectedValue == "1") {
                     $('#tbllblTookLoanAmt').text('@(DeWee.Models.PartDisplayName.TookLoanAmt)');
@@ -680,20 +757,28 @@
                 //        $('#Latitude').val(lat);
                 //        $('#Longitude').val(lng);
                 //        $('#Location').val(location);
-                        var isvalid = $("#formid").valid();
-                        var formData = $(this).serialize();
+                var isvalid = $("#formid").valid();
+                $('#SolarEnterprisePicHd').val(strfilepic);
+                       // var formData = $(this).serialize();
+                var formData = new FormData(this);
 
+                // Optional: Add additional data if needed
+                formData.append("SolarEnterprisePicHd", strfilepic);
                         if (isvalid) {
                             if (confirm('Are you sure you want to Submit form?')) {
+
                                 $.ajax({
                                     type: "POST",
                                     url: document.baseURI + "/Participant/GetAddParticipant/",
                                     data: formData,
-                                    dataType: 'json',
+                                    processData: false, // Prevent jQuery from processing the data
+                                    contentType: false, // Prevent jQuery from setting contentType
+                                    //data: formData,
+                                    //dataType: 'json',
                                     success: function (resp) {
                                         if (resp.StatusType == "success") {
                                             toastr.success("Success", resp.Message);
-                                            $("#formid")[0].reset();
+                                           // $("#formid")[0].reset();
                                         } else {
                                             toastr.error("Error", resp.Message);
                                         }
@@ -769,5 +854,5 @@
             });
 
         }
-        </script>
-    }
+    </script>
+}

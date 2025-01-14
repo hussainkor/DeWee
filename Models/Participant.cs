@@ -296,6 +296,8 @@ namespace DeWee.Models
         public string Location {  get; set; }   
         public string Accuracy {  get; set; }   
         public string ParticipantPicPath {  get; set; }   
+        public HttpPostedFileBase SolarEnterprisePic {  get; set; }   
+        public string SolarEnterprisePicHd {  get; set; }   
         public string SolarEnterprisePicPath {  get; set; }   
     }
     public class PartDisplayName

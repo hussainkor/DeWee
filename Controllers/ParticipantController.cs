@@ -88,113 +88,122 @@ namespace DeWee.Controllers
             {
                 //if (ModelState.IsValid)
                 //{
-                    //var existingPart = SPManager.Check_ParticipantAlready(model.Indt_Id.ToString(), model.PhoneNumber, model.AadharNo); //db.Tbl_IndtSolarization.Where(x => x.IsActive == true && x.PhoneNumber == model.PhoneNumber.Trim())?.FirstOrDefault();
+                //var existingPart = SPManager.Check_ParticipantAlready(model.Indt_Id.ToString(), model.PhoneNumber, model.AadharNo); //db.Tbl_IndtSolarization.Where(x => x.IsActive == true && x.PhoneNumber == model.PhoneNumber.Trim())?.FirstOrDefault();
 
-                    //if (existingPart.Rows.Count > 0)
-                    //{
-                    //    response = new JsonResponseData
-                    //    {
-                    //        StatusType = eAlertType.error.ToString(),
-                    //        Message = $"Already Exists Registration.<br /> <span> Reg ID : <strong> {existingPart.Rows[0]["RegNo"].ToString()} </strong>  </span>",
-                    //        Data = null
-                    //    };
-                    //    return Json(response, JsonRequestBehavior.AllowGet);
-                    //}
-                    var tbl = model.Indt_Id != Guid.Empty ? db.Tbl_IndtSolarization.Find(model.Indt_Id) : new Tbl_IndtSolarization();
+                //if (existingPart.Rows.Count > 0)
+                //{
+                //    response = new JsonResponseData
+                //    {
+                //        StatusType = eAlertType.error.ToString(),
+                //        Message = $"Already Exists Registration.<br /> <span> Reg ID : <strong> {existingPart.Rows[0]["RegNo"].ToString()} </strong>  </span>",
+                //        Data = null
+                //    };
+                //    return Json(response, JsonRequestBehavior.AllowGet);
+                //}
+                var tbl = model.Indt_Id != Guid.Empty ? db.Tbl_IndtSolarization.Find(model.Indt_Id) : new Tbl_IndtSolarization();
 
-                    if (tbl != null)
+                if (tbl != null)
+                {
+                    if (model.Indt_Id == Guid.Empty)
                     {
-
-                        tbl.StateId = model.StateId;
-                        tbl.DistrictId = model.DistrictId;
-                        tbl.BlockId = model.BlockId;
-                        tbl.PanchayatId = model.PanchayatId;
-                        tbl.VillageId = model.VillageId;
-                        tbl.CLFId = model.CLFId;
-                        tbl.VOId = model.VOId;
-                        tbl.AadharNo = model.AadharNo;
-                        tbl.DOB = model.DOB;
-                        tbl.NameofSHGMember = model.NameofSHGmember?.Trim();
-                        tbl.PhoneNumber = model.PhoneNumber?.Trim();
-                        tbl.Age = model.Age;
-                        tbl.EducationQlf_Id = model.EducationQlf_Id;
-                        tbl.YearOfSHG = model.YearOfSHG;
-                        tbl.NameofSHG = model.NameofSHG?.Trim();
-                        tbl.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
-                        tbl.Caste_Id = model.Caste_Id;
-                        tbl.TypeofEnterpriseBusin_Id = model.TypeofEnterpriseBusin_Id;
-                        tbl.TypeofEnterpriseBusin_Other = model.TypeofEnterpriseBusin_Other;
-                        tbl.BusinessOwnedType_Id = model.BusinessOwnedType_Id;
-                        tbl.EstablishedEnterpriseType_Id = model.EstablishedEnterpriseType_Id;
-                        tbl.TypeOfInvestBusin_Id = model.TypeOfInvestBusin_Id;
-                        tbl.TookSourceOfLoan_Id = model.TookSourceOfLoan_Id;
-                        tbl.TookLoanAmt = model.TookLoanAmt;
-                      
-                        tbl.StartBusinessInvestAmt = model.StartBusinessInvestAmt;
-                        tbl.StartYourBusinessTakeAmt = model.StartYourBusinessTakeAmt;
-                        tbl.MonthlyProfitBusiness = model.MonthlyProfitBusiness;
-                        tbl.WorkInEnterprises_FamilyMembers = model.WorkInEnterprises_FamilyMembers;
-                        tbl.WorkInEnterprises_SHGMembers = model.WorkInEnterprises_SHGMembers;
-                        tbl.WorkInEnterprises_AssitantStaffs = model.WorkInEnterprises_AssitantStaff;
-                        tbl.TypeOfMachineEnterprise_Id = model.TypeOfMachineEnterprise_Id;
-                        tbl.MotorBasedOnMachinesInActualUsed = model.TypeOfMachineEnterprise_Id;
-                        tbl.MachineryPowerkilowatt_Id = model.MachineryPowerkilowatt_Id;
-                        tbl.ElectricityConnection_Id = model.ElectricityConnection_Id;
-                        tbl.ConnectionPhaseofPower_Id = model.ConnectionPhaseofPower_Id;
-                        tbl.MonthlyElectricityConsumption_Id = model.MonthlyElectricityConsumption_Id;
-                        tbl.MachineSourceofEnergy_Id = model.MachineSourceofEnergy_Id;
-                        tbl.MachineSourceofEnergy_Others = model.MachineSourceofEnergy_Others;
-                        tbl.Solar_InKilowatt_Id = model.Solar_InKilowatt_Id;
-                        tbl.Solar_EnergyPanelYesNo_Id = model.Solar_EnergyPanelYesNo_Id;
-                        tbl.Solar_ExpenditureIncurredAmt = model.Solar_ExpenditureIncurredAmt;
-                        tbl.SubsidySolarReceive_Id = model.SubsidySolarReceive_Id;
-                        tbl.LoanSolarPanelsYesNo_Id = model.LoanSolarPanelsYesNo_Id;
-                        tbl.MonthAvgAmtSavedDescription_Id = model.MonthAvgAmtSavedDescription_Id;
-                        tbl.ElectricityUsedHours_Id = model.ElectricityUsedHours_Id;
-                        tbl.MonthlyExpenseInElectricityBill_Id = model.MonthlyExpenseInElectricityBill_Id;
-                        tbl.GeneratorElectricityUsedHours_Id = model.GeneratorElectricityUsedHours_Id;
-                        tbl.MonthlyExpenseFuelSource_Id = model.MonthlyExpenseFuelSource_Id;
-                        tbl.MonthlyRepairCost_Id = model.MonthlyRepairCost_Id;
-                        tbl.HeardAboutSolarEYesNo_Id = model.HeardAboutSolarEYesNo_Id;
-                        tbl.HeardAboutSolarEYes_IfYeswhere = model.HeardAboutSolarEYes_IfYeswhere;
-                        tbl.InforknowledgeGovtSubsidyOfSEYesNo_Id = model.InforknowledgeGovtSubsidyOfSEYesNo_Id;
-                        tbl.InforknowledgeIfYesAmtGovPaid = model.InforknowledgeIfYesAmtGovPaid;
-                        tbl.LoanProcedureInSEYesNo_Id = model.LoanProcedureInSEYesNo_Id;
-                        tbl.AdoptSolarizationYesNo_Id = model.AdoptSolarizationYesNo_Id;
-                        tbl.CapitalArrangedForSEYesNo_Id = model.CapitalArrangedForSEYesNo_Id;
-                        tbl.IfYesCapitalArrangedForSEAmt = model.IfYesCapitalArrangedForSEAmt;
-                        tbl.OtherIndustriesEnterprisesYesNo_Id = model.OtherIndustriesEnterprisesYesNo_Id;
-                        tbl.IfYesFillForm_OtherIndustriesEnterprises = model.IfYesFillForm_OtherIndustriesEnterprises;
-                        tbl.IsActive = true;
-
-                        if (model.Indt_Id == Guid.Empty)
-                        {
-                            tbl.Indt_Id = Guid.NewGuid();
-                            tbl.CreatedBy = User.Identity.Name;
-                            tbl.CreatedOn = DateTime.Now;
-                            db.Tbl_IndtSolarization.Add(tbl);
-                        }
-                        else
-                        {
-                            tbl.UpdatedBy = User.Identity.Name;
-                            tbl.UpdatedOn = DateTime.Now;
-                        }
-
-                        results = db.SaveChanges();
+                        tbl.Indt_Id = Guid.NewGuid();
                     }
 
-                    if (results > 0)
+                    tbl.StateId = model.StateId;
+                    tbl.DistrictId = model.DistrictId;
+                    tbl.BlockId = model.BlockId;
+                    tbl.PanchayatId = model.PanchayatId;
+                    tbl.VillageId = model.VillageId;
+                    tbl.CLFId = model.CLFId;
+                    tbl.VOId = model.VOId;
+                    tbl.AadharNo = model.AadharNo;
+                    tbl.DOB = model.DOB;
+                    tbl.NameofSHGMember = model.NameofSHGmember?.Trim();
+                    tbl.PhoneNumber = model.PhoneNumber?.Trim();
+                    tbl.Age = model.Age;
+                    tbl.EducationQlf_Id = model.EducationQlf_Id;
+                    tbl.YearOfSHG = model.YearOfSHG;
+                    tbl.NameofSHG = model.NameofSHG?.Trim();
+                    tbl.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
+                    tbl.Caste_Id = model.Caste_Id;
+                    tbl.TypeofEnterpriseBusin_Id = model.TypeofEnterpriseBusin_Id;
+                    tbl.TypeofEnterpriseBusin_Other = model.TypeofEnterpriseBusin_Other;
+                    tbl.BusinessOwnedType_Id = model.BusinessOwnedType_Id;
+                    tbl.EstablishedEnterpriseType_Id = model.EstablishedEnterpriseType_Id;
+                    tbl.TypeOfInvestBusin_Id = model.TypeOfInvestBusin_Id;
+                    tbl.TookSourceOfLoan_Id = model.TookSourceOfLoan_Id;
+                    tbl.TookLoanAmt = model.TookLoanAmt;
+
+                    tbl.StartBusinessInvestAmt = model.StartBusinessInvestAmt;
+                    tbl.StartYourBusinessTakeAmt = model.StartYourBusinessTakeAmt;
+                    tbl.MonthlyProfitBusiness = model.MonthlyProfitBusiness;
+                    tbl.WorkInEnterprises_FamilyMembers = model.WorkInEnterprises_FamilyMembers;
+                    tbl.WorkInEnterprises_SHGMembers = model.WorkInEnterprises_SHGMembers;
+                    tbl.WorkInEnterprises_AssitantStaffs = model.WorkInEnterprises_AssitantStaff;
+                    tbl.TypeOfMachineEnterprise_Id = model.TypeOfMachineEnterprise_Id;
+                    tbl.MotorBasedOnMachinesInActualUsed = model.TypeOfMachineEnterprise_Id;
+                    tbl.MachineryPowerkilowatt_Id = model.MachineryPowerkilowatt_Id;
+                    tbl.ElectricityConnection_Id = model.ElectricityConnection_Id;
+                    tbl.ConnectionPhaseofPower_Id = model.ConnectionPhaseofPower_Id;
+                    tbl.MonthlyElectricityConsumption_Id = model.MonthlyElectricityConsumption_Id;
+                    tbl.MachineSourceofEnergy_Id = model.MachineSourceofEnergy_Id;
+                    tbl.MachineSourceofEnergy_Others = model.MachineSourceofEnergy_Others;
+                    tbl.Solar_InKilowatt_Id = model.Solar_InKilowatt_Id;
+                    tbl.Solar_EnergyPanelYesNo_Id = model.Solar_EnergyPanelYesNo_Id;
+                    tbl.Solar_ExpenditureIncurredAmt = model.Solar_ExpenditureIncurredAmt;
+                    tbl.SubsidySolarReceive_Id = model.SubsidySolarReceive_Id;
+                    tbl.LoanSolarPanelsYesNo_Id = model.LoanSolarPanelsYesNo_Id;
+                    tbl.MonthAvgAmtSavedDescription_Id = model.MonthAvgAmtSavedDescription_Id;
+                    tbl.ElectricityUsedHours_Id = model.ElectricityUsedHours_Id;
+                    tbl.MonthlyExpenseInElectricityBill_Id = model.MonthlyExpenseInElectricityBill_Id;
+                    tbl.GeneratorElectricityUsedHours_Id = model.GeneratorElectricityUsedHours_Id;
+                    tbl.MonthlyExpenseFuelSource_Id = model.MonthlyExpenseFuelSource_Id;
+                    tbl.MonthlyRepairCost_Id = model.MonthlyRepairCost_Id;
+                    tbl.HeardAboutSolarEYesNo_Id = model.HeardAboutSolarEYesNo_Id;
+                    tbl.HeardAboutSolarEYes_IfYeswhere = model.HeardAboutSolarEYes_IfYeswhere;
+                    tbl.InforknowledgeGovtSubsidyOfSEYesNo_Id = model.InforknowledgeGovtSubsidyOfSEYesNo_Id;
+                    tbl.InforknowledgeIfYesAmtGovPaid = model.InforknowledgeIfYesAmtGovPaid;
+                    tbl.LoanProcedureInSEYesNo_Id = model.LoanProcedureInSEYesNo_Id;
+                    tbl.AdoptSolarizationYesNo_Id = model.AdoptSolarizationYesNo_Id;
+                    tbl.CapitalArrangedForSEYesNo_Id = model.CapitalArrangedForSEYesNo_Id;
+                    tbl.IfYesCapitalArrangedForSEAmt = model.IfYesCapitalArrangedForSEAmt;
+                    tbl.OtherIndustriesEnterprisesYesNo_Id = model.OtherIndustriesEnterprisesYesNo_Id;
+                    tbl.IfYesFillForm_OtherIndustriesEnterprises = model.IfYesFillForm_OtherIndustriesEnterprises;
+                    var EnterpriPic = Request.Files["SolarEnterprisePic"];
+                    if (!string.IsNullOrWhiteSpace(model.SolarEnterprisePicHd))
                     {
-                        response = new JsonResponseData
-                        {
-                            StatusType = eAlertType.success.ToString(),
-                            Message = model.Indt_Id != Guid.Empty
-                                ? "Congratulations, you have been updated successfully!"
-                                : "Congratulations, you have been successfully registered!",
-                            Data = null
-                        };
-                        return Json(response, JsonRequestBehavior.AllowGet);
+                        var picexterpries = CommonModel.SaveSingleFileBase64string(model.SolarEnterprisePicHd, "Enterprises", tbl.Indt_Id.ToString());
+                        tbl.SolarEnterprisePicPath = picexterpries.ToString();
                     }
+
+                    tbl.IsActive = true;
+                    if (model.Indt_Id == Guid.Empty)
+                    {
+                        tbl.CreatedBy = User.Identity.Name;
+                        tbl.CreatedOn = DateTime.Now;
+                        db.Tbl_IndtSolarization.Add(tbl);
+                    }
+                    else
+                    {
+                        tbl.UpdatedBy = User.Identity.Name;
+                        tbl.UpdatedOn = DateTime.Now;
+                    }
+
+                    results = db.SaveChanges();
+                }
+
+                if (results > 0)
+                {
+                    response = new JsonResponseData
+                    {
+                        StatusType = eAlertType.success.ToString(),
+                        Message = model.Indt_Id != Guid.Empty
+                            ? "Congratulations, you have been updated successfully!"
+                            : "Congratulations, you have been successfully registered!",
+                        Data = null
+                    };
+                    return Json(response, JsonRequestBehavior.AllowGet);
+                }
                 //}
                 //else
                 //{
