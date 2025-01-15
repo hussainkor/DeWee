@@ -960,6 +960,7 @@
     <Content Include="Views\Participant\AddParticipant.cshtml" />
     <Content Include="Views\Participant\ParticipantList.cshtml" />
     <Content Include="Views\Participant\_PData.cshtml" />
+    <Content Include="Scripts\JS\UPMap.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
