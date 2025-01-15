@@ -54,9 +54,11 @@
 </div>
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 mb-1">
         <div class="row">
-            <div class="col-6">
+            <div class="col-6" id="chartpart">
+                </div>
+            <div class="col-6" id="containermap">
             </div>
         </div>
     </div>
@@ -560,12 +562,21 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+
+    @*<script src="~/Scripts/Map/india_st.js"></script>*@
     <script src="~/Scripts/JS/UPMap.js"></script>
+
     <script>
-        var dislist = [];
+        var dislist = [],MonthParts=[];
         $(document).ready(function () {
-            Load_Databox();
-            
+            Load_Databox();//chartpart
         });
         function Load_Databox() {
              $.ajax({
@@ -576,28 +587,139 @@
                      var resD = JSON.parse(resp.Data);
                      $('#TotalParticipant').text(resD.Table[0].TotalParticipant);
                      dislist = resD.Table1;
-                     Load_DistrictMap(dislist);
+                     MonthParts = resD.Table2;
+                     if (dislist != null && dislist != undefined) 
+                         Load_DistrictMap(dislist);
+                     else
+                     toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)' + error);
+                     if (MonthParts != null && MonthParts != undefined)
+                         ChartPart(MonthParts);
+                     else
+                     toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)' + error);
                  },
                  error: function (xhr, status, error) {
-                     toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.ExceptionError)' + error);
+                     toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)' + error);
                  }
              });
         }
+        function ChartPart(DList) {
+            var jsonObj = JSON.parse(DList[0].PartJsonData);
+            seriesData = [];
+            seriesObj = {};
+            for (var i = 0; i < jsonObj.length; i++) {
+                //seriesData.push({ name: jsonObj[i].MonthYear, y: jsonObj[i].Total });
+                seriesObj = { name: jsonObj[i].MonthYear, y: jsonObj[i].Total };
+                seriesData.push(seriesObj);
+            }
+            Highcharts.chart('chartpart', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Monthly Enterprises Onboarded'
+                },
+                //subtitle: {
+                //    text: 'Source: <a href="https://worldpopulationreview.com/world-cities" target="_blank">World Population Review</a>'
+                //},
+                xAxis: {
+                    type: 'category',
+                    labels: {
+                        autoRotation: [-45, -90],
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                },
+                credits: {
+                    enabled: false
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: 'No.of Enterprises Onboarded: <b>{point.y}</b>'
+                },
+                series: [{
+                    name: 'Enterprises Onboarded',
+                    colors: [
+                        '#9b20d9', '#9215ac', '#861ec9', '#7a17e6', '#7010f9', '#691af3',
+                        '#6225ed', '#5b30e7', '#533be1', '#4c46db', '#4551d5', '#3e5ccf',
+                        '#3667c9', '#2f72c3', '#277dbd', '#1f88b7', '#1693b1', '#0a9eaa',
+                        '#03c69b', '#00f194'
+                    ],
+                    colorByPoint: true,
+                    groupPadding: 0,
+                    data: seriesData,
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        inside: true,
+                        verticalAlign: 'top',
+                        format: '{point.y}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+            });
+            //Highcharts.chart('chartpart', {
+            //    chart: {
+            //        type: 'spline'
+            //    },
+            //    title: {
+            //        text: 'Monthly Enterprises Onboarded'
+            //    },
+            //    xAxis: {
+            //    //    //categories: [
+            //    //    //    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            //    //    //    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+            //    //    //],
+            //        //accessibility: {
+            //        //    description: 'Months of the year'
+            //        //}
+            //    },
+            //    yAxis: {
+            //        title: {
+            //            text: ''
+            //        },
+            //        //labels: {
+            //        //    format: '{value}°'
+            //        //}
+            //    },
+            //    tooltip: {
+            //        crosshairs: true,
+            //        shared: true
+            //    },
+            //    plotOptions: {
+            //        spline: {
+            //            marker: {
+            //                radius: 4,
+            //                lineColor: '#666666',
+            //                lineWidth: 1
+            //            }
+            //        }
+            //    },
+            //    series: [{
+            //        name: 'Enterprises Onboarded',
+            //        marker: {
+            //            symbol: 'square'
+            //        },
+            //        data: seriesData
+            //    }]
+            //});
+        }
         function Load_DistrictMap(dislist) {
-            debugger;
-        @*$.ajax({
-            url: '@Url.Action("GetDashboard", "home")',
-            data: { mode: 4 },
-            async: false,
-            success: function (result) {
-                console.log(result);
-                if (result.IsSuccess) {*@
             if (dislist != null && dislist != undefined) {
-                var data = (dislist);
-
-                var jsonObject = JSON.parse(data.LocationJsonData);
+                var jsonObject = JSON.parse(dislist[0].LocationJsonData);
                 console.log(jsonObject);
-                var reportMapDivWidth = $("#containermapp").width();
+                var reportMapDivWidth = $("#containermap").width();
                 var MapHeight = reportMapDivWidth > 620 ? 620 : null;
                 colors = ['#4443a0', '#ae77b8', '#9be0ba', '#4194ac', '#44449e', '#47a372', '#3466ab', '#8a3b99'];
                 for (var i = 0; i < jsonObject.length; i++) {
@@ -682,7 +804,7 @@
                             dataLabels: {
                                 enabled: false,
                                 color: '#000000',
-                                format: '{point.DistrictName}',
+                               // format: '{point.DistrictName}',
                                 style: {
                                     fontSize: 9,
                                     fontWeight: 700
@@ -695,10 +817,7 @@
                     ]
                 });
             }
-            
-        //        }
-        //    }
-        //});
+
     }
     </script>
 }
