@@ -881,3 +881,21 @@ function validateDecimalNumber(event) {
         event.target.value = inputValue.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
     }
 }
+
+function InputAllowcharacter(intput) {
+    $('.' + intput).on('keypress', function (e) {
+        // Get the key code of the pressed key
+        var charCode = e.which || e.keyCode;
+        // Allow letters (A-Z, a-z), numbers (0-9), space (32)
+        if (
+            (charCode >= 65 && charCode <= 90) ||  // A-Z
+            (charCode >= 97 && charCode <= 122) || // a-z
+            (charCode >= 48 && charCode <= 57) ||  // 0-9
+            charCode === 32 // Space
+        ) {
+            return true;  // Allow the character
+        } else {
+            return false; // Block special characters
+        }
+    });
+}

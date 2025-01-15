@@ -11,7 +11,9 @@
                     <h2 class="text-white" id="TotalParticipant"></h2>
                     @*<p class="text-white mb-0">Jan - March 2019</p>*@
                 </div>
-                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                <span class="float-right display-5 opacity-5">
+                    <i class="fa fa-handshake-o"></i>
+                </span>
             </div>
         </div>
     </div>
@@ -23,7 +25,7 @@
                     <h2 class="text-white">0</h2>
                     @*<p class="text-white mb-0">Jan - March 2019</p>*@
                 </div>
-                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-list-alt"></i></span>
             </div>
         </div>
     </div>
@@ -35,19 +37,19 @@
                     <h2 class="text-white">0</h2>
                     @*<p class="text-white mb-0">Jan - March 2019</p>*@
                 </div>
-                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-battery-half"></i></span>
             </div>
         </div>
     </div>
     <div class="col-lg-3 col-sm-6">
-        <div class="card gradient-4">
+        <div class="card gradient-7">
             <div class="card-body">
                 <h3 class="card-title text-white">GHG Emissions Mitigated</h3>
                 <div class="d-inline-block">
                     <h2 class="text-white">0</h2>
                     @*<p class="text-white mb-0">Jan - March 2019</p>*@
                 </div>
-                <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-soundcloud"></i></span>
             </div>
         </div>
     </div>
@@ -57,7 +59,7 @@
     <div class="col-12 mb-1">
         <div class="row">
             <div class="col-6" id="chartpart">
-                </div>
+            </div>
             <div class="col-6" id="containermap">
             </div>
         </div>
@@ -588,7 +590,7 @@
                      $('#TotalParticipant').text(resD.Table[0].TotalParticipant);
                      dislist = resD.Table1;
                      MonthParts = resD.Table2;
-                     if (dislist != null && dislist != undefined) 
+                     if (dislist != null && dislist != undefined)
                          Load_DistrictMap(dislist);
                      else
                      toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)' + error);
@@ -723,7 +725,15 @@
                 var MapHeight = reportMapDivWidth > 620 ? 620 : null;
                 colors = ['#4443a0', '#ae77b8', '#9be0ba', '#4194ac', '#44449e', '#47a372', '#3466ab', '#8a3b99'];
                 for (var i = 0; i < jsonObject.length; i++) {
-                    //jsonObject[i].color = colors[i % colors.length];
+                    if (jsonObject[i].Total > 0) {
+                        jsonObject[i].color = "#13e5138f";
+                    }
+                    else {
+                        jsonObject[i].color = "#4443a0";
+                        //jsonObject[i].Total = 6;
+                        //jsonObject[i].Percentage = 6;
+                    }
+
                     jsonObject[i].showInLegend = true;
                 }
 
@@ -758,7 +768,7 @@
                         //  map: topology
                     },
                     title: {
-                        text: ''
+                        text: 'Intervention Areas (District Wise-UP)'
                     },
                     credits: {
                         enabled: false
@@ -795,7 +805,7 @@
                         {
                             showInLegend: false,
                             borderColor: 'green',
-                            color: '#13e5138f',
+                            //color: '#13e5138f',
                             borderWidth: 1,
                             mapData: Highcharts.maps['custom/UPMap'],
                             data: jsonObject,

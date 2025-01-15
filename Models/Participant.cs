@@ -35,22 +35,16 @@ namespace DeWee.Models
         [Display(Name = PartDisplayName.VillageId)]
         //[Required]
         public int VillageId { get; set; }
-
-
         [Display(Name = PartDisplayName.CLFId)]
         //[Required]
         public int CLFId { get; set; }
-
         [Display(Name = PartDisplayName.VOId)]
         //[Required]
         public int VOId { get; set; }
-
-
         [Display(Name = PartDisplayName.NameofSHG)]
         //[Required]
         public string NameofSHG { get; set; }
-
-
+        //[Range(2000, 2025, ErrorMessage = "Year must be between 2000 and 2025.")]
         [Display(Name = PartDisplayName.YearOfSHG)]
         //[Required]
         public int YearOfSHG { get; set; }
@@ -147,7 +141,7 @@ namespace DeWee.Models
         //[Required]
         public int WorkInEnterprises_AssitantStaff { get; set; }
 
-        [Display(Name = PartDisplayName.TypeofEnterpriseBusin_Id)]
+        [Display(Name = PartDisplayName.TypeOfMachineEnterprise_Id)]
         //[Required]
         public int TypeOfMachineEnterprise_Id { get; set; }
 
@@ -314,7 +308,7 @@ namespace DeWee.Models
         public const string RegNo = "";
         public const string AadharNo = "Aadhar Number/आधार नंबर";
         public const string PhoneNumber = "Phone Number/मोबाइल नंबर";
-        public const string YearOfSHG = "Year Of SHG/समूह का वर्ष";
+        public const string YearOfSHG = "Establishment Year Of SHG/एसएचजी का स्थापना वर्ष";
         public const string NameofSHGmember = "Name of SHG member/समूह से जुड़ी महिला का नाम";
         public const string NameofEnterpriseOwner = "Name of Enterprise owner/उद्यम के मालिक का नाम";
         public const string Age = "Age/उम्र";
@@ -322,8 +316,8 @@ namespace DeWee.Models
         public const string EducationQlf_Id = "What is your educational qualification?/आप कहां तक पढ़े हैं?";
         public const string Caste_Id = "What is your caste?/आपकी जाति क्या है?";
         public const string TypeofEnterpriseBusin_Id = "Type of Business or Enterprise/व्यापार/उद्यम का प्रकार";
-        public const string TypeofEnterpriseBusin_Other = "Type of Business or Enterprise (Other)/व्यापार/उद्यम का प्रकार (अन्य)";
-        public const string BusinessOwnedType_Id = "Type of Business Owned?/उद्यम का प्रकार";
+        public const string TypeofEnterpriseBusin_Other = "Type of Business or Enterprise (Describe)/व्यापार/उद्यम का प्रकार (वर्णन)";
+        public const string BusinessOwnedType_Id = "Type of Business Owned/उद्यम का प्रकार";
         public const string EstablishedEnterpriseType_Id = "Where is your enterprise established?/आपका उद्यम कहां स्थापित है?";
         public const string TypeOfInvestBusin_Id = "How did you arrange capital for investment in your business?/आपके व्यापार में निवेश करने के लिए पूंजी का इंतजाम कैसे किया";
         public const string TookSourceOfLoan_Id = "If you took a loan, describe source?/यदि ऋण लिया, तो कहां से ऋण लिया";
@@ -335,10 +329,10 @@ namespace DeWee.Models
         public const string StartYourBusinessTakeAmt = "How much loan did you take to start your business?/आपने व्यापार शुरू करने के लिए कितना पैसा ऋण लिया?";
         public const string MonthlyProfitBusiness = "What is your monthly profit from the business?/आपको व्यापार में मासिक लाभ कितना होता है?";
         public const string WorkInEnterprises_FamilyMembers = "How many people work in your enterprise(Number's only)/कितने लोग आपके उद्यम में काम करते हैं? (संख्या लिखें)";
-        public const string WorkInEnterprises_SHGMembers = "How many SHG people work in your enterprise(Number's only)/कितने लोग आपके एसएचजी में काम करते हैं? (संख्या लिखें)";
-        public const string WorkInEnterprises_AssitantStaffs = "How many Assitant Staffs work in your enterprise(Number's only)/आपके उद्यम में कितने सहायक कर्मचारी काम करते हैं? (सिर्फ़ संख्या)";
+        public const string WorkInEnterprises_SHGMembers = "How many people from SHG HHs work in your enterprise(Number's only)/कितने लोग आपके एसएचजी में काम करते हैं? (संख्या लिखें)";
+        public const string WorkInEnterprises_AssitantStaffs = "How many Assistant Staffs work in your enterprise(Number's only)/आपके उद्यम में कितने सहायक कर्मचारी काम करते हैं? (सिर्फ़ संख्या)";
         public const string TypeOfMachineEnterprise_Id = "What is the type of machine in your enterprise?/उद्यम में मशीन का प्रकार क्या है?";
-        public const string MotorBasedOnMachinesInActualUsed = "If Mechanised (Motor based) , then how many machines are in actual use?/यदि मैकेनाइज्ड (मोटर आधारित) है, तो उपयोग की जाने वाली मशीनों की कितनी संख्या है?";
+        public const string MotorBasedOnMachinesInActualUsed = "If Mechanised (Motor based), then how many machines are in actual use?/यदि मैकेनाइज्ड (मोटर आधारित) है, तो उपयोग की जाने वाली मशीनों की कितनी संख्या है?";
         public const string MachineryPowerkilowatt_Id = "What is the estimated power of all your machinery? (In kilowatt)/आपकी सभी मशीनरी की अनुमानित शक्ति (Power) कितनी है? (किलोवाट में)";
         public const string ElectricityConnection_Id = "Your Electricity Connection is of how many kilowatt?/आपका बिजली कनेक्शन कितने किलोवाट का है?";
         public const string ConnectionPhaseofPower_Id = "How many phases of power connection do you have?/आपका कितना फेज कनेक्शन है?";
@@ -346,10 +340,10 @@ namespace DeWee.Models
         public const string MachineSourceofEnergy_Id = "What is the source of energy for your machines?/मशीनों के लिए ऊर्जा स्रोत क्या है?";
         public const string MachineSourceofEnergy_Others = "What is the source of energy for your machines?(Other)/मशीनों के लिए ऊर्जा स्रोत क्या है?(अन्य)";
         public const string Solar_InKilowatt_Id = "If its solar, how many kilowatt is it?/यदि सौर है, तो कितने किलोवाट का है?";
-        public const string Solar_EnergyPanelYesNo_Id = "Did you set up solar energy panel ?/क्या आपने सौर ऊर्जा पैनल / सेटअप लगाया था?";
-        public const string Solar_ExpenditureIncurredAmt = "How much expenditure was incurred on solar energy panel set-up / establishment?/सौर ऊर्जा पैनल / सेटअप / स्थापना का कितना खर्चा आया था?";
-        public const string SubsidySolarReceive_Id = "Did you receive any subisdy for setting up of solar energy panels ?/क्या सौर ऊर्जा पैनल / सेटअप के लिए कोई सब्सिडी प्राप्त हुई थी?";
-        public const string LoanSolarPanelsYesNo_Id = "Did you receive any loan for setting up of solar energy panels?/क्या सौर ऊर्जा पैनल / सेटअप के लिए कोई ऋण/लोन प्राप्त हुआ था?";
+        public const string Solar_EnergyPanelYesNo_Id = "Did you set up solar panel ?/क्या आपने सौर पैनल / सेटअप लगाया था?";
+        public const string Solar_ExpenditureIncurredAmt = "How much expenditure was incurred on solar panel set-up / establishment?/सौर पैनल / सेटअप / स्थापना का कितना खर्चा आया था?";
+        public const string SubsidySolarReceive_Id = "Did you receive any subisdy for setting up of solar panels ?/क्या सौर पैनल / सेटअप के लिए कोई सब्सिडी प्राप्त हुई थी?";
+        public const string LoanSolarPanelsYesNo_Id = "Did you receive any loan for setting up of solar panels?/क्या सौर पैनल / सेटअप के लिए कोई ऋण/लोन प्राप्त हुआ था?";
         public const string MonthAvgAmtSavedDescription_Id = "What is the average amount saved every month due to solar energy?/अपने द्वारा हर महीने सौर-ऊर्जा के कारण बचाई गई धनराशि का औसत विवरण में?";
         public const string ElectricityUsedHours_Id = "How many hours is the electricity used? (1-24 hours)/यदि बिजली का उपयोग होता है तो, कितने घंटे उपयोग होता है? (1-24 घंटे)";
         public const string MonthlyExpenseInElectricityBill_Id = "What is your monthly expense on the electricity bill?/आपका बिजली बिल पर कितना व्यय हो जाता है? (मासिक)";
@@ -366,8 +360,8 @@ namespace DeWee.Models
         public const string IfYesCapitalArrangedForSEAmt = "If yes, then what amount of capital is arranged for investment in solar energy?/यदि हां, तो आपके पास सौर ऊर्जा में निवेश के लिए कितनी धनराशि उपलब्ध है?";
         public const string OtherIndustriesEnterprisesYesNo_Id = "Is there any other industry/enterprise in your village which has motor-operated machines installed? (includes SHG members)/क्या आपके गांव में और भी कोई उद्योग है जिसमें मोटर आधारित मशीनें लगी हुई हैं? (सभी SHG शामिल करें)";
         public const string IfYesFillForm_OtherIndustriesEnterprises = "If yes, then kindly fill in the details of the family and visit them to fill a fresh form./यदि हां, तो उस परिवार की जानकारी यहां लिखें और वह जाकर इस फॉर्म को भरें";
-        public int curreyear = DateTime.Now.Year;
-        public int curreonward = 2000;
+        public static int currentyear = DateTime.Now.Year;
+        public static int currentonward = 2000;
 
 
     }

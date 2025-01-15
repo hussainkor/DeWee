@@ -220,7 +220,7 @@ namespace DeWee.Manager
                 list.Insert(0, new SelectListItem { Value = "", Text = "All" });
             }
 
-            return list;
+            return list.OrderBy(x => x.Text).ToList();
         }
         public static List<SelectListItem> GetALLVillM(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0, int PanchayatId = 0)
         {
@@ -236,7 +236,7 @@ namespace DeWee.Manager
                 list.Insert(0, new SelectListItem { Value = "", Text = "All" });
             }
 
-            return list;
+            return list.OrderBy(x => x.Text).ToList();
         }
         public static List<SelectListItem> GetALLCLFM(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0)
         {
@@ -284,8 +284,7 @@ namespace DeWee.Manager
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "All" });
             }
-
-            return list;
+            return list.OrderBy(x=>x.Text).ToList();
         }
         public static List<SelectListItem> GetALLCaste(int IsSelect = 0)
         {

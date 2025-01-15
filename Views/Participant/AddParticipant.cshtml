@@ -26,7 +26,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                @using (Html.BeginForm("AddParticipant", "Participant", FormMethod.Post, new { @id = "formid", @class = "", role = "form", autocomplete = "off", enctype = "multipart/form-data", noValidate = "novalidate" }))
+                @using (Html.BeginForm("AddParticipant", "Participant", FormMethod.Post, new { @id = "formid", @class = "", role = "form", autocomplete = "off", enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.Indt_Id)
@@ -34,569 +34,576 @@
                     @Html.HiddenFor(model => model.Longitude)
                     @Html.HiddenFor(model => model.Location)
                     @Html.HiddenFor(model => model.SolarEnterprisePicHd)
-                    
+
                     <div class="basic-form">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="flex-form">
                             <div class="form-row">
                                 <div class="col-md-12"><h6 id="laclngloc"></h6></div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-12s">
-                                            @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.DistrictId, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-12s">
-                                            @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.BlockId, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-12s">
-                                            @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.BlockId, "", new { @class = "text-danger" })
-                                        </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-12s">
+                                        @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.PanchayatId, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.PanchayatId, new List<SelectListItem>(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.PanchayatId, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.VillageId, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.VillageId, new List<SelectListItem>(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.VillageId, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.CLFId, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.CLFId, new List<SelectListItem>(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.CLFId, "", new { @class = "text-danger" })
-                                        </div>
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.DistrictId, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-12s">
+                                        @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.VOId, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.VOId, new List<SelectListItem>(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.VOId, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.NameofSHG, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.NameofSHG, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.NameofSHG, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        @Html.LabelFor(model => model.YearOfSHG, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.YearOfSHG, new { @class = "form-control", @minlength = "4", @maxlength = "4", @oninput = "validateNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.YearOfSHG, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-5">
-                                        @Html.LabelFor(model => model.AadharNo, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.AadharNo, new { @class = "form-control", @minlength = "12", @maxlength = "12", @oninput = "validateNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.AadharNo, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-5">
-                                        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    @*<div class="form-group col-md-4">
-                    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label" })
-                    <span style="color:red;">*</span>
-                    <div class="col-md-10s">
-                        @Html.TextBoxFor(model => model.DOB, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
-                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
-                    </div>
-                </div>*@
-                                    <div class="form-group col-md-2">
-                                        @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @minlength = "2", @maxlength = "2", @oninput = "validateNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        @Html.LabelFor(model => model.NameofSHGmember, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.NameofSHGmember, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.NameofSHGmember, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.EducationQlf_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.EducationQlf_Id, CommonModel.GetALLEQ(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.EducationQlf_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.Caste_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.Caste_Id, CommonModel.GetALLCaste(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Caste_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.NameofEnterpriseOwner, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.NameofEnterpriseOwner, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.NameofEnterpriseOwner, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.TypeofEnterpriseBusin_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.TypeofEnterpriseBusin_Id, CommonModel.GetALLBE(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusin_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" id="dv-TypeofEnterpriseBusin_Other" style="display:none;">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.TypeofEnterpriseBusin_Other, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.TypeofEnterpriseBusin_Other, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusin_Other, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.BusinessOwnedType_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.BusinessOwnedType_Id, CommonModel.GetALLBOT(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.BusinessOwnedType_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.EstablishedEnterpriseType_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.EstablishedEnterpriseType_Id, CommonModel.GetALLEE(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.EstablishedEnterpriseType_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        @Html.LabelFor(model => model.TypeOfInvestBusin_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.TypeOfInvestBusin_Id, CommonModel.GetALLIB(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.TypeOfInvestBusin_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6" id="dv-TookSourceOfLoan" style="display:none">
-                                        @Html.LabelFor(model => model.TookSourceOfLoan_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.TookSourceOfLoan_Id, CommonModel.GetALLLS(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.TookSourceOfLoan_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6" id="div-TookLoanAmt" style="display:none;">
-                                        @Html.LabelFor(model => model.TookLoanAmt, htmlAttributes: new { @class = "control-label col-md-2s", id = "lblTookLoanAmt" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.TookLoanAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.TookLoanAmt, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.StartBusinessInvestAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.StartBusinessInvestAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.StartBusinessInvestAmt, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.StartYourBusinessTakeAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.StartYourBusinessTakeAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.StartYourBusinessTakeAmt, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.MonthlyProfitBusiness, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.MonthlyProfitBusiness, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.MonthlyProfitBusiness, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.WorkInEnterprises_FamilyMembers, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.WorkInEnterprises_FamilyMembers, new { @class = "form-control", @minlength = "0", @maxlength = "2", @oninput = "validateNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.WorkInEnterprises_FamilyMembers, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.WorkInEnterprises_SHGMembers, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.WorkInEnterprises_SHGMembers, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.WorkInEnterprises_SHGMembers, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.WorkInEnterprises_AssitantStaff, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.WorkInEnterprises_AssitantStaff, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.WorkInEnterprises_AssitantStaff, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.TypeOfMachineEnterprise_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.TypeOfMachineEnterprise_Id, CommonModel.GetALLEM(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.TypeOfMachineEnterprise_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6" id="dv-TypeOfMachineEnterprise_Id" style="display:none">
-                                        @Html.LabelFor(model => model.MotorBasedOnMachinesInActualUsed, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.MotorBasedOnMachinesInActualUsed, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.MotorBasedOnMachinesInActualUsed, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.MachineryPowerkilowatt_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.MachineryPowerkilowatt_Id, CommonModel.GetALLMK(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.MachineryPowerkilowatt_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.ElectricityConnection_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.ElectricityConnection_Id, CommonModel.GetALLMK(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.ElectricityConnection_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.ConnectionPhaseofPower_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.ConnectionPhaseofPower_Id, CommonModel.GetALLPhase(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.ConnectionPhaseofPower_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.MonthlyElectricityConsumption_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.MonthlyElectricityConsumption_Id, CommonModel.GetALLECBILL(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.MonthlyElectricityConsumption_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.MachineSourceofEnergy_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10">
-                                            @Html.DropDownListFor(model => model.MachineSourceofEnergy_Id, CommonModel.GetALLMS(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.MachineSourceofEnergy_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6" id="dv-MachineSourceofEnergy_Others" style="display:none;">
-                                        @Html.LabelFor(model => model.MachineSourceofEnergy_Others, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.MachineSourceofEnergy_Others, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.MachineSourceofEnergy_Others, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row" id="dv-MachineSourceofEnergy_solar6" style="display:none">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.Solar_InKilowatt_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10">
-                                            @Html.DropDownListFor(model => model.Solar_InKilowatt_Id, CommonModel.GetALLSK(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Solar_InKilowatt_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.Solar_EnergyPanelYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.Solar_EnergyPanelYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Solar_EnergyPanelYesNo_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6 Solar_EnergyPanelYesNo" style="display:none">
-                                        @Html.LabelFor(model => model.Solar_ExpenditureIncurredAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.Solar_ExpenditureIncurredAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.Solar_ExpenditureIncurredAmt, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6 Solar_EnergyPanelYesNo" style="display:none">
-                                        @Html.LabelFor(model => model.SubsidySolarReceive_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.SubsidySolarReceive_Id, CommonModel.GetALLSubsidy(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.SubsidySolarReceive_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6 Solar_EnergyPanelYesNo" style="display:none">
-                                        @Html.LabelFor(model => model.LoanSolarPanelsYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.LoanSolarPanelsYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.LoanSolarPanelsYesNo_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.MonthAvgAmtSavedDescription_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.MonthAvgAmtSavedDescription_Id, CommonModel.GetALLAvgAmt(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.MonthAvgAmtSavedDescription_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row" id="dv-MachineSourceofEnergy_Electricity1" style="display:none;">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.ElectricityUsedHours_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.ElectricityUsedHours_Id, CommonModel.GetALLEU(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.ElectricityUsedHours_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.MonthlyExpenseInElectricityBill_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.MonthlyExpenseInElectricityBill_Id, CommonModel.GetALLEBM(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.MonthlyExpenseInElectricityBill_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.GeneratorElectricityUsedHours_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.GeneratorElectricityUsedHours_Id, CommonModel.GetALLEU(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.GeneratorElectricityUsedHours_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.MonthlyExpenseFuelSource_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.MonthlyExpenseFuelSource_Id, CommonModel.GetALLEBM(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.MonthlyExpenseFuelSource_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        @Html.LabelFor(model => model.MonthlyRepairCost_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.MonthlyRepairCost_Id, CommonModel.GetALLEBM(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.MonthlyRepairCost_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.HeardAboutSolarEYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.HeardAboutSolarEYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.HeardAboutSolarEYesNo_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6" id="dv-HeardAboutSolarEYes_IfYeswhere" style="display:none">
-                                        @Html.LabelFor(model => model.HeardAboutSolarEYes_IfYeswhere, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextAreaFor(model => model.HeardAboutSolarEYes_IfYeswhere, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.HeardAboutSolarEYes_IfYeswhere, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.InforknowledgeGovtSubsidyOfSEYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.InforknowledgeGovtSubsidyOfSEYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.InforknowledgeGovtSubsidyOfSEYesNo_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6" id="dv-InforknowledgeIfYesAmtGovPaid" style="display:none;">
-                                        @Html.LabelFor(model => model.InforknowledgeIfYesAmtGovPaid, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.InforknowledgeIfYesAmtGovPaid, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.InforknowledgeIfYesAmtGovPaid, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.LoanProcedureInSEYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.LoanProcedureInSEYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.LoanProcedureInSEYesNo_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.AdoptSolarizationYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.AdoptSolarizationYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.AdoptSolarizationYesNo_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.CapitalArrangedForSEYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.CapitalArrangedForSEYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.CapitalArrangedForSEYesNo_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6" id="dv-IfYesCapitalArrangedForSEAmt" style="display:none">
-                                        @Html.LabelFor(model => model.IfYesCapitalArrangedForSEAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.IfYesCapitalArrangedForSEAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
-                                            @Html.ValidationMessageFor(model => model.IfYesCapitalArrangedForSEAmt, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.OtherIndustriesEnterprisesYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.OtherIndustriesEnterprisesYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.OtherIndustriesEnterprisesYesNo_Id, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6" id="dv-IfYesFillForm_OtherIndustriesEnterprises" style="display:none;">
-                                        @Html.LabelFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextAreaFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <div id="my_camera"></div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <div id="results">Your captured image will appear here...</div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <input type=button id="takeshot" value="Take Snapshot" onClick="take_snapshot()">
-                                </div>
-                                <div class="form-row pt-1">
-                                    <div class="form-group col-md-4 offset-4">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.BlockId, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-12s">
+                                        @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.BlockId, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.PanchayatId, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.PanchayatId, new List<SelectListItem>(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.PanchayatId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.VillageId, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.VillageId, new List<SelectListItem>(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.VillageId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.CLFId, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.CLFId, new List<SelectListItem>(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.CLFId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.VOId, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.VOId, new List<SelectListItem>(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.VOId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.NameofSHG, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.NameofSHG, new { @class = "form-control inputcharallow" })
+                                        @Html.ValidationMessageFor(model => model.NameofSHG, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.YearOfSHG, htmlAttributes: new { @class = "control-label", @style = "font-size: small" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.YearOfSHG, new { @class = "form-control", @minlength = "4", @maxlength = "4", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.YearOfSHG, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-5">
+                                    @Html.LabelFor(model => model.AadharNo, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.AadharNo, new { @class = "form-control", @minlength = "12", @maxlength = "12", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.AadharNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @*<div class="form-group col-md-4">
+                                        @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label" })
+                                        <span style="color:red;">*</span>
+                                        <div class="col-md-10s">
+                                            @Html.TextBoxFor(model => model.DOB, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
+                                            @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+                                <div class="form-group col-md-2">
+                                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @minlength = "2", @maxlength = "2", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    @Html.LabelFor(model => model.NameofSHGmember, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.NameofSHGmember, new { @class = "form-control inputcharallow" })
+                                        @Html.ValidationMessageFor(model => model.NameofSHGmember, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.EducationQlf_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.EducationQlf_Id, CommonModel.GetALLEQ(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.EducationQlf_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.Caste_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.Caste_Id, CommonModel.GetALLCaste(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Caste_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.NameofEnterpriseOwner, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.NameofEnterpriseOwner, new { @class = "form-control inputcharallow" })
+                                        @Html.ValidationMessageFor(model => model.NameofEnterpriseOwner, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.TypeofEnterpriseBusin_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.TypeofEnterpriseBusin_Id, CommonModel.GetALLBE(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusin_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row" id="dv-TypeofEnterpriseBusin_Other" style="display:none;">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.TypeofEnterpriseBusin_Other, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.TypeofEnterpriseBusin_Other, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusin_Other, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BusinessOwnedType_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.BusinessOwnedType_Id, CommonModel.GetALLBOT(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.BusinessOwnedType_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.EstablishedEnterpriseType_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.EstablishedEnterpriseType_Id, CommonModel.GetALLEE(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.EstablishedEnterpriseType_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    @Html.LabelFor(model => model.TypeOfInvestBusin_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.TypeOfInvestBusin_Id, CommonModel.GetALLIB(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.TypeOfInvestBusin_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6" id="dv-TookSourceOfLoan" style="display:none">
+                                    @Html.LabelFor(model => model.TookSourceOfLoan_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.TookSourceOfLoan_Id, CommonModel.GetALLLS(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.TookSourceOfLoan_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6" id="div-TookLoanAmt" style="display:none;">
+                                    @Html.LabelFor(model => model.TookLoanAmt, htmlAttributes: new { @class = "control-label col-md-2s", id = "lblTookLoanAmt" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.TookLoanAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.TookLoanAmt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.StartBusinessInvestAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.StartBusinessInvestAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.StartBusinessInvestAmt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.StartYourBusinessTakeAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.StartYourBusinessTakeAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.StartYourBusinessTakeAmt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.MonthlyProfitBusiness, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.MonthlyProfitBusiness, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.MonthlyProfitBusiness, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.WorkInEnterprises_FamilyMembers, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.WorkInEnterprises_FamilyMembers, new { @class = "form-control", @minlength = "0", @maxlength = "4", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.WorkInEnterprises_FamilyMembers, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.WorkInEnterprises_SHGMembers, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.WorkInEnterprises_SHGMembers, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.WorkInEnterprises_SHGMembers, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.WorkInEnterprises_AssitantStaff, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.WorkInEnterprises_AssitantStaff, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.WorkInEnterprises_AssitantStaff, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.TypeOfMachineEnterprise_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.TypeOfMachineEnterprise_Id, CommonModel.GetALLEM(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.TypeOfMachineEnterprise_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6" id="dv-TypeOfMachineEnterprise_Id" style="display:none">
+                                    @Html.LabelFor(model => model.MotorBasedOnMachinesInActualUsed, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.MotorBasedOnMachinesInActualUsed, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.MotorBasedOnMachinesInActualUsed, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.MachineryPowerkilowatt_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.MachineryPowerkilowatt_Id, CommonModel.GetALLMK(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MachineryPowerkilowatt_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.ElectricityConnection_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.ElectricityConnection_Id, CommonModel.GetALLMK(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ElectricityConnection_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.ConnectionPhaseofPower_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.ConnectionPhaseofPower_Id, CommonModel.GetALLPhase(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ConnectionPhaseofPower_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.MonthlyElectricityConsumption_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.MonthlyElectricityConsumption_Id, CommonModel.GetALLECBILL(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MonthlyElectricityConsumption_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.HeardAboutSolarEYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.HeardAboutSolarEYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.HeardAboutSolarEYesNo_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6" id="dv-HeardAboutSolarEYes_IfYeswhere" style="display:none">
+                                    @Html.LabelFor(model => model.HeardAboutSolarEYes_IfYeswhere, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextAreaFor(model => model.HeardAboutSolarEYes_IfYeswhere, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.HeardAboutSolarEYes_IfYeswhere, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row dv-HeardAboutSolarENo" hidden>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.InforknowledgeGovtSubsidyOfSEYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.InforknowledgeGovtSubsidyOfSEYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.InforknowledgeGovtSubsidyOfSEYesNo_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6" id="dv-InforknowledgeIfYesAmtGovPaid" style="display:none;">
+                                    @Html.LabelFor(model => model.InforknowledgeIfYesAmtGovPaid, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.InforknowledgeIfYesAmtGovPaid, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.InforknowledgeIfYesAmtGovPaid, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row dv-HeardAboutSolarENo">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.LoanProcedureInSEYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.LoanProcedureInSEYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LoanProcedureInSEYesNo_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.AdoptSolarizationYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.AdoptSolarizationYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.AdoptSolarizationYesNo_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row dv-HeardAboutSolarENo dv-AdoptSolarizationYes">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.CapitalArrangedForSEYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.CapitalArrangedForSEYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CapitalArrangedForSEYesNo_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6" id="dv-IfYesCapitalArrangedForSEAmt" style="display:none">
+                                    @Html.LabelFor(model => model.IfYesCapitalArrangedForSEAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.IfYesCapitalArrangedForSEAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.IfYesCapitalArrangedForSEAmt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.MachineSourceofEnergy_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.MachineSourceofEnergy_Id, CommonModel.GetALLMS(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MachineSourceofEnergy_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6" id="dv-MachineSourceofEnergy_Others" style="display:none;">
+                                    @Html.LabelFor(model => model.MachineSourceofEnergy_Others, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.MachineSourceofEnergy_Others, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MachineSourceofEnergy_Others, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row" id="dv-MachineSourceofEnergy_solar6" style="display:none">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.Solar_InKilowatt_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.Solar_InKilowatt_Id, CommonModel.GetALLSK(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Solar_InKilowatt_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.Solar_EnergyPanelYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.Solar_EnergyPanelYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Solar_EnergyPanelYesNo_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 Solar_EnergyPanelYesNo" style="display:none">
+                                    @Html.LabelFor(model => model.Solar_ExpenditureIncurredAmt, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextBoxFor(model => model.Solar_ExpenditureIncurredAmt, new { @class = "form-control", @minlength = "0", @maxlength = "7", @oninput = "validateDecimalNumber(event)" })
+                                        @Html.ValidationMessageFor(model => model.Solar_ExpenditureIncurredAmt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 Solar_EnergyPanelYesNo" style="display:none">
+                                    @Html.LabelFor(model => model.SubsidySolarReceive_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.SubsidySolarReceive_Id, CommonModel.GetALLSubsidy(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.SubsidySolarReceive_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 Solar_EnergyPanelYesNo" style="display:none">
+                                    @Html.LabelFor(model => model.LoanSolarPanelsYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.LoanSolarPanelsYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LoanSolarPanelsYesNo_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.MonthAvgAmtSavedDescription_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.MonthAvgAmtSavedDescription_Id, CommonModel.GetALLAvgAmt(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MonthAvgAmtSavedDescription_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row" id="dv-MachineSourceofEnergy_Electricity1" style="display:none;">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.ElectricityUsedHours_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.ElectricityUsedHours_Id, CommonModel.GetALLEU(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ElectricityUsedHours_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.MonthlyExpenseInElectricityBill_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.MonthlyExpenseInElectricityBill_Id, CommonModel.GetALLEBM(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MonthlyExpenseInElectricityBill_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.GeneratorElectricityUsedHours_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.GeneratorElectricityUsedHours_Id, CommonModel.GetALLEU(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.GeneratorElectricityUsedHours_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.MonthlyExpenseFuelSource_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.MonthlyExpenseFuelSource_Id, CommonModel.GetALLEBM(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MonthlyExpenseFuelSource_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    @Html.LabelFor(model => model.MonthlyRepairCost_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.MonthlyRepairCost_Id, CommonModel.GetALLEBM(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MonthlyRepairCost_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.OtherIndustriesEnterprisesYesNo_Id, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.OtherIndustriesEnterprisesYesNo_Id, CommonModel.GetALLYesandNo(), null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.OtherIndustriesEnterprisesYesNo_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6" id="dv-IfYesFillForm_OtherIndustriesEnterprises" style="display:none;">
+                                    @Html.LabelFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.TextAreaFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.IfYesFillForm_OtherIndustriesEnterprises, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @*<div id="my_camera"></div>*@
+                                    <video id="my_camera" height="280" autoplay></video>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <canvas id="canvas" height="280" style="display: none;"></canvas>
+                                    <div id="results">Your captured image will appear here...</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <input type=button id="takeshot" value="Take Snapshot"
+                                       @*onClick="take_snapshot()"*@>
+                            </div>
+                            <div class="form-row pt-1">
+                                <div class="form-group col-md-4 offset-4">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
                         </div>
+                    </div>
                 }
             </div>
         </div>
@@ -607,55 +614,49 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/JS/Master.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U" async></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
-    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>*@
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.swf"></script>
 
-    <script language="JavaScript">
-        Webcam.set({
-            width: 320,
-            height: 240,
-            image_format: 'jpeg',
-            jpeg_quality: 90
-        });
-        Webcam.attach('#my_camera');
-    </script>
-    <!-- Code to handle taking the snapshot and displaying it locally -->
     <script language="JavaScript">
         var strfilepic;
-        //window.onload = function () {
-        //    setInterval(function () { take_snapshot() }, 5000);
-        //}
-        function take_snapshot() {
-            // take snapshot and get image data
-            Webcam.snap(function (data_uri) {
-                // display results in page
-                document.getElementById('results').innerHTML = '<h6>Here is your image:</h2>' + '<img id="base64image" src="' + data_uri + '"/>';
+
+        const video = document.getElementById('my_camera');
+        const canvas = document.getElementById('canvas');
+        const captureBtn = document.getElementById('takeshot');
+        const context = canvas.getContext('2d');
+
+        // Request access to the user's camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((error) => {
+                console.error("Error accessing the camera: ", error);
             });
 
-            var file = document.getElementById("base64image").src;
-            $('#SolarEnterprisePicHd').val(file);
-            strfilepic = file;
+        // Capture photo on button click
+        captureBtn.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            //var formdata = new FormData();
-            //formdata.append("SolarEnterprisePic", file);
-            //$.ajax({
-            //    url: "http://localhost:26792/home/SaveImage",
-            //    type: "POST",
-            //    data: formdata,
-            //    processData: false,
-            //    contentType: false
-            //});
-            //
-        }
+            // Get the image data from the canvas
+            const imageData = canvas.toDataURL('image/jpeg');
+
+            // Display the captured image
+            //capturedImage.src = imageData;
+
+            document.getElementById('results').innerHTML = '<img id="base64image" height="280" src="' + imageData + '"/>' + '<h6>Here is your image:</h2>';
+            $('#SolarEnterprisePicHd').val(imageData);
+            strfilepic = imageData;
+        });
     </script>
 
     <script>
         $(document).ready(function () {
+
             getLocation();
-              
-                
-            $("#DOB").datepicker();
+           $(".select2").select2();
+            InputAllowcharacter('inputcharallow');
+            //$("#DOB").datepicker();
             BindStateList("StateId", "", 0);
             $('#StateId').prop('selectedIndex', 1);
             BindDistrictList("DistrictId", "", 0, $('#StateId').val());
@@ -696,7 +697,7 @@
                 $('#TookLoanAmt').val('');
                 var selectedValue = $(this).val();
                 if (selectedValue == "1") {
-                    $('#tbllblTookLoanAmt').text('@(DeWee.Models.PartDisplayName.TookLoanAmt)');
+                    $('#lblTookLoanAmt').text('@(DeWee.Models.PartDisplayName.TookLoanAmt)');
                 } else if (selectedValue == "2") {
                     $('#lblTookLoanAmt').text('@(DeWee.Models.PartDisplayName.TookLoanAmtBank)');
                 } else if (selectedValue == "3") {
@@ -719,19 +720,45 @@
                 $('#dv-MachineSourceofEnergy_Others').hide();
                 $('#dv-MachineSourceofEnergy_solar6').hide();
                 $('#dv-MachineSourceofEnergy_Electricity1').hide();
+                $('#Solar_InKilowatt_Id').val('');
+                $('#Solar_EnergyPanelYesNo_Id').val('');
+                $('#Solar_ExpenditureIncurredAmt').val('');
+                $('#SubsidySolarReceive_Id').val('');
+                $('#LoanSolarPanelsYesNo_Id').val('');
+                $('#MonthAvgAmtSavedDescription_Id').val('');
+                //1
+                $('#ElectricityUsedHours_Id').val('');
+                $('#MonthlyExpenseInElectricityBill_Id').val('');
                 if ($(this).val() == 7)//Other
                     $('#dv-MachineSourceofEnergy_Others').show();
-                else if ($(this).val() == 6)//Solar
+                else if ($(this).val() == 6) //Solar
                     $('#dv-MachineSourceofEnergy_solar6').show();
-                else if ($(this).val() == 1) {
+                else if ($(this).val() == 1)  //Electricity
                     $('#dv-MachineSourceofEnergy_Electricity1').show();
-                }
             });
             $('#HeardAboutSolarEYesNo_Id').change(function () {
                 $('#HeardAboutSolarEYes_IfYeswhere').val('');
                 $('#dv-HeardAboutSolarEYes_IfYeswhere').hide();
-                if ($(this).val() == 1)//Yes
+                //No-2
+                $('.dv-HeardAboutSolarENo').hide();
+                $('#InforknowledgeGovtSubsidyOfSEYesNo_Id').val('');
+                $('#InforknowledgeIfYesAmtGovPaid').val('');
+                $('#LoanProcedureInSEYesNo_Id').val('');
+                //$('#AdoptSolarizationYesNo_Id').val('');
+                //$('#CapitalArrangedForSEYesNo_Id').val('');
+                //$('#IfYesCapitalArrangedForSEAmt').val('');
+                if ($(this).val() == 1)//Yes-1
                     $('#dv-HeardAboutSolarEYes_IfYeswhere').show();
+                else {//No-2
+                    $('.dv-HeardAboutSolarENo').show();
+                }
+            });
+            $('#AdoptSolarizationYesNo_Id').change(function () {
+                $('#CapitalArrangedForSEYesNo_Id').val('');
+                $('#IfYesCapitalArrangedForSEAmt').val('');
+                $('.dv-AdoptSolarizationYes').hide();
+                if ($(this).val() == 1)//Yes
+                    $('.dv-AdoptSolarizationYes').show();
             });
             $('#InforknowledgeGovtSubsidyOfSEYesNo_Id').change(function () {
                 $('#InforknowledgeIfYesAmtGovPaid').val('');
@@ -760,21 +787,21 @@
                     $('.Solar_EnergyPanelYesNo').show();
             });
 
-            //FORM SUBMITTED 
+            //FORM SUBMITTED
             $("#formid").on("submit", function (event) {
                 event.preventDefault();
                 getLocation().then(function () {
                     if (lat != '' && lng != '' && lat != undefined && lng != undefined) {
                         $('#Latitude').val(lat);
                         $('#Longitude').val(lng);
-                        $('#Location').val(location);
-                var isvalid = $("#formid").valid();
-                $('#SolarEnterprisePicHd').val(strfilepic);
-                       // var formData = $(this).serialize();
-                var formData = new FormData(this);
+                        $('#Location').val(locationAddr);
+                        var isvalid = true;$("#formid").valid();
 
-                // Optional: Add additional data if needed
-                formData.append("SolarEnterprisePicHd", strfilepic);
+                       // var formData = $(this).serialize();
+                      //var formData = new FormData(this);
+                  var formData = new FormData(document.getElementById("formid"));
+                        // Optional: Add additional data if needed
+                        formData.append("SolarEnterprisePicHd", $('#SolarEnterprisePicHd').val());
                         if (isvalid) {
                             if (confirm('Are you sure you want to Submit form?')) {
 
@@ -789,7 +816,7 @@
                                     success: function (resp) {
                                         if (resp.StatusType == "success") {
                                             toastr.success("Success", resp.Message);
-                                           // $("#formid")[0].reset();
+                                            $("#formid")[0].reset();
                                         } else {
                                             toastr.error("Error", resp.Message);
                                         }
@@ -820,7 +847,7 @@
 
         });
 
-        var lat, lng,location;
+        var lat, lng,locationAddr;
         const getLocation = async () => {
             const pos = await new Promise((resolve, reject) => {
                 if (navigator.geolocation) {
@@ -841,12 +868,12 @@
             //    $('#Location').val(address);
             //    location = address;
             //});
-            debugger;
+
             fetchGeocodeData(lat, lng);
             return {
                 long: pos.coords.longitude,
                 lat: pos.coords.latitude,
-                location: location,
+                locationAddr: locationAddr,
             };
         }
         function handleLocationError(browserHasGeolocation) {
@@ -870,7 +897,7 @@
 
         const fetchGeocodeData = async (lat,lng) => {
             const url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "sensor=true&key=AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U";
-            debugger;
+
             try {
                 $.ajax({
                     url: "/Participant/GetAddress",
@@ -881,10 +908,10 @@
                         var geocodeData = JSON.parse(data);
                         if (geocodeData.results && geocodeData.results.length > 0) {
                             var address = geocodeData.results[0].formatted_address;
+                            locationAddr = address;
                             $('#Location').val(address);
                             $('#laclngloc').text("Lat: " + lat + ",  Lng: " + lng + ",  Address: " + address);
                             // alert("Lat: " + lat + ", Lng: " + lng + ", Address: " + address);
-                            laclngloc
                         } else {
                             toastr.error("No address found.");
                         }
@@ -894,7 +921,7 @@
                         toastr.error("Error fetching data.");
                     }
                 });
-                
+
             } catch (error) {
                 console.error("Error fetching geocode data:", error);
             }
