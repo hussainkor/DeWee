@@ -575,7 +575,7 @@
                  success: function (resp) {
                      var resD = JSON.parse(resp.Data);
                      $('#TotalParticipant').text(resD.Table[0].TotalParticipant);
-                     dislist = resD.Table;
+                     dislist = resD.Table1;
                      Load_DistrictMap(dislist);
                  },
                  error: function (xhr, status, error) {
@@ -584,6 +584,7 @@
              });
         }
         function Load_DistrictMap(dislist) {
+            debugger;
         @*$.ajax({
             url: '@Url.Action("GetDashboard", "home")',
             data: { mode: 4 },
@@ -592,7 +593,7 @@
                 console.log(result);
                 if (result.IsSuccess) {*@
             if (dislist != null && dislist != undefined) {
-                var data = JSON.parse(dislist);
+                var data = (dislist);
 
                 var jsonObject = JSON.parse(data.LocationJsonData);
                 console.log(jsonObject);

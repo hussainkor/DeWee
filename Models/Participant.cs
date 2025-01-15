@@ -58,7 +58,7 @@ namespace DeWee.Models
         [Display(Name = PartDisplayName.NameofSHGmember)]
         //[Required]
         public string NameofSHGmember { get; set; }
-
+        
         [Display(Name = PartDisplayName.NameofEnterpriseOwner)]
         //[Required]
         public string NameofEnterpriseOwner { get; set; }
@@ -366,6 +366,8 @@ namespace DeWee.Models
         public const string IfYesCapitalArrangedForSEAmt = "If yes, then what amount of capital is arranged for investment in solar energy?/यदि हां, तो आपके पास सौर ऊर्जा में निवेश के लिए कितनी धनराशि उपलब्ध है?";
         public const string OtherIndustriesEnterprisesYesNo_Id = "Is there any other industry/enterprise in your village which has motor-operated machines installed? (includes SHG members)/क्या आपके गांव में और भी कोई उद्योग है जिसमें मोटर आधारित मशीनें लगी हुई हैं? (सभी SHG शामिल करें)";
         public const string IfYesFillForm_OtherIndustriesEnterprises = "If yes, then kindly fill in the details of the family and visit them to fill a fresh form./यदि हां, तो उस परिवार की जानकारी यहां लिखें और वह जाकर इस फॉर्म को भरें";
+        public int curreyear = DateTime.Now.Year;
+        public int curreonward = 2000;
 
 
     }
