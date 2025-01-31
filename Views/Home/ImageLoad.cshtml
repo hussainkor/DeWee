@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ImageLoad";
+}
+
+<h2>ImageLoad</h2>
+
+<h2>Image Detection (Battery, Solar Panel)</h2>
+
+<input type="file" id="imageUpload" accept="image/*">
+<br>
+<br>
+<img id="uploadedImage" src="" alt="Uploaded Image" width="300" style="display: none;">
+<div id="result">Please upload an image to detect.</div>
+
+ <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+  <style>
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+
+
+<script>
+    async function loadModel() {
+        // Load the MobileNet model for image classification
+        const model = await mobilenet.load();
+        console.log("Model loaded.");
+        return model;
+    }
+
+    async function detectObject() {
+        const image = document.getElementById('uploadedImage');
+        const model = await loadModel();
+
+        // Classify the image and get the prediction
+        const predictions = await model.classify(image);
+
+        // Display the result
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `Prediction: ${predictions[0].className} (Confidence: ${predictions[0].probability.toFixed(4)})`;
+
+        // Check if we detected specific objects
+        if (predictions[0].className.toLowerCase().includes('battery')) {
+            alert('Battery detected!');
+        } else if (predictions[0].className.toLowerCase().includes('solar')) {
+            alert('Solar Panel detected!');
+        }
+    }
+
+    document.getElementById('imageUpload').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const image = document.getElementById('uploadedImage');
+                image.src = e.target.result;
+                image.style.display = 'block';
+                detectObject();
+            };
+            reader.readAsDataURL(file);
+        }
+    });</script>
