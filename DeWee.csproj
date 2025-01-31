@@ -961,6 +961,7 @@
     <Content Include="Views\Participant\ParticipantList.cshtml" />
     <Content Include="Views\Participant\_PData.cshtml" />
     <Content Include="Scripts\JS\UPMap.js" />
+    <Content Include="Views\Home\ImageLoad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

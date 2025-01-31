@@ -54,5 +54,10 @@ namespace DeWee.Controllers
         {
             return View();
         }
+
+        public ActionResult ImageLoad()
+        {
+            return View();
+        }
     }
 }
