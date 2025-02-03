@@ -29,7 +29,7 @@
                 @using (Html.BeginForm("AddBeneficiary", "Beneficiary", FormMethod.Post, new { @id = "formid", @class = "", role = "form", autocomplete = "off", enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.HiddenFor(model => model.BeneficiaryId)
+                    @Html.HiddenFor(model => model.BeneficiaryId_pk)
                     @Html.HiddenFor(model => model.Latitude)
                     @Html.HiddenFor(model => model.Longitude)
                     @Html.HiddenFor(model => model.Location)
@@ -40,6 +40,9 @@
                         <div class="flex-form">
                             <div class="form-row">
                                 <div class="col-md-12"><h6 id="laclngloc"></h6></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12"><h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section1st</h5></div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
@@ -77,18 +80,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.VillageId, htmlAttributes: new { @class = "control-label" })
+                                    @Html.LabelFor(model => model.Village, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.DropDownListFor(model => model.VillageId, new List<SelectListItem>(), null, new { @class = "form-control select2" })
-                                        @Html.ValidationMessageFor(model => model.VillageId, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.Village, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Village, "", new { @class = "text-danger" })
                                     </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12"><h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section2nd</h5></div>
                                 </div>
                                 <div class="form-group col-md-4">
                                     @Html.LabelFor(model => model.CLF, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.DropDownListFor(model => model.CLF, new List<SelectListItem>(), null, new { @class = "form-control select2" })
+                                        @Html.TextBoxFor(model => model.CLF, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.CLF, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -96,7 +102,7 @@
                                     @Html.LabelFor(model => model.VO, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.DropDownListFor(model => model.VO, new List<SelectListItem>(), null, new { @class = "form-control select2" })
+                                        @Html.TextBoxFor(model => model.VO, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.VO, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -117,13 +123,8 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.TypeofRelative, htmlAttributes: new { @class = "control-label col-md-2s" })
-                                    <span style="color:red;">*</span>
-                                    <div class="col-md-10s">
-                                        @Html.DropDownListFor(model => model.TypeofRelative, CommonModel.GetALLEQ(), null, new { @class = "form-control select2" })
-                                        @Html.ValidationMessageFor(model => model.TypeofRelative, "", new { @class = "text-danger" })
-                                    </div>
+                                <div class="form-row">
+                                    <div class="col-md-12"><h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section3rd</h5></div>
                                 </div>
 
                                 <div class="form-group col-md-4">
@@ -139,7 +140,7 @@
                                     @Html.LabelFor(model => model.TypeofEnterpriseBusinId, htmlAttributes: new { @class = "control-label col-md-2s" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(), null, new { @class = "form-control select2"})
+                                        @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(), null, new { @class = "form-control select2" })
                                         @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusinId, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -148,7 +149,7 @@
                                     @Html.LabelFor(model => model.EnterpriseBusinId_other, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.EnterpriseBusinId_other, new { @class = "form-control inputcharallow"})
+                                        @Html.TextBoxFor(model => model.EnterpriseBusinId_other, new { @class = "form-control inputcharallow" })
                                         @Html.ValidationMessageFor(model => model.EnterpriseBusinId_other, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -163,13 +164,13 @@
                                 </div>
 
                                 @*<div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.NameofSHGMember, htmlAttributes: new { @class = "control-label" })
-                                    <span style="color:red;">*</span>
-                                    <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.NameofSHGMember, new { @class = "form-control inputcharallow" })
-                                        @Html.ValidationMessageFor(model => model.NameofSHGMember, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>*@
+            @Html.LabelFor(model => model.NameofSHGMember, htmlAttributes: new { @class = "control-label" })
+            <span style="color:red;">*</span>
+            <div class="col-md-10s">
+                @Html.TextBoxFor(model => model.NameofSHGMember, new { @class = "form-control inputcharallow" })
+                @Html.ValidationMessageFor(model => model.NameofSHGMember, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
                                 <div class="form-group col-md-4">
                                     @Html.LabelFor(model => model.NameofEnterpriseOwner, htmlAttributes: new { @class = "control-label" })
@@ -184,10 +185,10 @@
                                     @Html.LabelFor(model => model.EnterpriseOwner_Gender, htmlAttributes: new { @class = "control-label " })
                                     <div>
                                         <label>
-                                            @Html.RadioButtonFor(model => model.EnterpriseOwner_Gender, "1", new { @id = "OwnerGenderYes" }) Yes
+                                            @Html.RadioButtonFor(model => model.EnterpriseOwner_Gender, "Male", new { @id = "OwnerGenderYes" }) Male
                                         </label>
                                         <label>
-                                            @Html.RadioButtonFor(model => model.EnterpriseOwner_Gender, "2", new { @id = "OwnerGenderNo" }) No
+                                            @Html.RadioButtonFor(model => model.EnterpriseOwner_Gender, "Female", new { @id = "OwnerGenderNo" }) Female
                                         </label>
                                     </div>
                                 </div>
@@ -197,10 +198,18 @@
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
                                         @Html.TextBoxFor(model => model.DOB, new { @class = "form-control inputcharallow" })
+                                        <span id="lblage"></span>
                                         @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.TypeofRelative, htmlAttributes: new { @class = "control-label col-md-2s" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.DropDownListFor(model => model.TypeofRelative, CommonModel.GetTypeOfRelative(), null, new { @class = "form-control select2" })
+                                        @Html.ValidationMessageFor(model => model.TypeofRelative, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
                                 <div class="form-group col-md-4">
                                     @Html.LabelFor(model => model.NameofGuardian, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
@@ -214,10 +223,10 @@
                                     @Html.LabelFor(model => model.Guardian_Gender, htmlAttributes: new { @class = "control-label " })
                                     <div>
                                         <label>
-                                            @Html.RadioButtonFor(model => model.Guardian_Gender, "1", new { @id = "GuardianGenderYes" }) Yes
+                                            @Html.RadioButtonFor(model => model.Guardian_Gender, "Male", new { @id = "GuardianGenderYes" }) Male
                                         </label>
                                         <label>
-                                            @Html.RadioButtonFor(model => model.Guardian_Gender, "2", new { @id = "GuardianGenderNo" }) No
+                                            @Html.RadioButtonFor(model => model.Guardian_Gender, "Female", new { @id = "GuardianGenderNo" }) Female
                                         </label>
                                     </div>
                                 </div>
@@ -226,7 +235,7 @@
                                     @Html.LabelFor(model => model.PrimaryMobileNo, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.PrimaryMobileNo, new { @class = "form-control inputcharallow" })
+                                        @Html.TextBoxFor(model => model.PrimaryMobileNo, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.PrimaryMobileNo, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -235,8 +244,16 @@
                                     @Html.LabelFor(model => model.AlternateMobileNo, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.AlternateMobileNo, new { @class = "form-control inputcharallow" })
+                                        @Html.TextBoxFor(model => model.AlternateMobileNo, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.AlternateMobileNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    @Html.LabelFor(model => model.IsSamePrimayMobileNo, htmlAttributes: new { @class = "control-label" })
+                                    <span style="color:red;">*</span>
+                                    <div class="col-md-10s">
+                                        @Html.CheckBoxFor(model => model.IsSamePrimayMobileNo)
+                                        @Html.ValidationMessageFor(model => model.IsSamePrimayMobileNo, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
@@ -244,25 +261,18 @@
                                     @Html.LabelFor(model => model.WhatsAppMobileNo, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.WhatsAppMobileNo, new { @class = "form-control inputcharallow" })
+                                        @Html.TextBoxFor(model => model.WhatsAppMobileNo, new { @class = "form-control", @minlength = "10", @maxlength = "10", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.WhatsAppMobileNo, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.IsSamePrimayMobileNo, htmlAttributes: new { @class = "control-label" })
-                                    <span style="color:red;">*</span>
-                                    <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.IsSamePrimayMobileNo, new { @class = "form-control inputcharallow" })
-                                        @Html.ValidationMessageFor(model => model.IsSamePrimayMobileNo, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
+
 
                                 <div class="form-group col-md-4">
                                     @Html.LabelFor(model => model.SiteAddress1st, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextAreaFor(model => model.SiteAddress1st, new { @class = "form-control inputcharallow" })
+                                        @Html.TextAreaFor(model => model.SiteAddress1st, new { @class = "form-control", @placeholder = "Shop No / Building Name / Both" })
                                         @Html.ValidationMessageFor(model => model.SiteAddress1st, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -271,7 +281,7 @@
                                     @Html.LabelFor(model => model.SiteAddress2nd, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextAreaFor(model => model.SiteAddress2nd, new { @class = "form-control inputcharallow" })
+                                        @Html.TextAreaFor(model => model.SiteAddress2nd, new { @class = "form-control", @placeholder = "Landmark / Locality / Road Name " })
                                         @Html.ValidationMessageFor(model => model.SiteAddress2nd, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -280,7 +290,7 @@
                                     @Html.LabelFor(model => model.Pincode, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.Pincode, new { @class = "form-control inputcharallow" })
+                                        @Html.TextBoxFor(model => model.Pincode, new { @class = "form-control", @minlength = "6", @maxlength = "6", @oninput = "validateNumber(event)" })
                                         @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -327,7 +337,7 @@
                                     @Html.LabelFor(model => model.NatureofSpace_other, htmlAttributes: new { @class = "control-label" })
                                     <span style="color:red;">*</span>
                                     <div class="col-md-10s">
-                                        @Html.TextBoxFor(model => model.NatureofSpace_other, new { @class = "form-control inputcharallow"})
+                                        @Html.TextBoxFor(model => model.NatureofSpace_other, new { @class = "form-control inputcharallow" })
                                         @Html.ValidationMessageFor(model => model.NatureofSpace_other, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -413,18 +423,20 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         @*<div id="my_camera"></div>*@
-                                        <video id="Beneficiary_camera" height="280" autoplay></video>
+                                        <video id="my_camera" height="280" autoplay></video>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <canvas id="Beneficiarycanvas" height="280" style="display: none;"></canvas>
-                                        <div id="Beneficiaryresults">Your captured image will appear here...</div>
+                                        <canvas id="canvas" height="280" style="display: none;"></canvas>
+                                        <div id="results">Your captured image will appear here...</div>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <input type=button id="Beneficiarytakeshot" value="Take Snapshot"
-                                           @*onClick="take_snapshot()"*@>
-                                </div>
 
+                                <div class="form-row pt-1">
+                                    <div class="form-group col-md-4 offset-4">
+                                        <input type=button id="takeshot" value="Take Snapshot"
+                                               @*onClick="take_snapshot()"*@>
+                                    </div>
+                                </div>
 
                                 <div class="form-row pt-1">
                                     <div class="form-group col-md-4 offset-4">
@@ -441,50 +453,73 @@
             </div>
         </div>
     </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JS/Master.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U" async></script>
+    <script language="JavaScript">
+        var strfilepic;
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-        <script src="~/Scripts/JS/Master.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U" async></script>
-        <script language="JavaScript">
-            var strfilepic;
+        const video = document.getElementById('my_camera');
+        const canvas = document.getElementById('canvas');
+        const captureBtn = document.getElementById('takeshot');
+        const context = canvas.getContext('2d');
 
-            const video = document.getElementById('Beneficiary_camera');
-            const canvas = document.getElementById('Beneficiarycanvas');
-            const captureBtn = document.getElementById('Beneficiarytakeshot');
-            const context = canvas.getContext('2d');
-
-            // Request access to the user's camera
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then((stream) => {
-                    video.srcObject = stream;
-                })
-                .catch((error) => {
-                    console.error("Error accessing the camera: ", error);
-                });
-
-            // Capture photo on button click
-            captureBtn.addEventListener('click', () => {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-                // Get the image data from the canvas
-                const imageData = canvas.toDataURL('image/jpeg');
-
-                // Display the captured image
-                //capturedImage.src = imageData;
-
-                document.getElementById('results').innerHTML = '<img id="base64image" height="280" src="' + imageData + '"/>' + '<h6>Here is your image:</h2>';
-                $('#BeneficiaryPicHd').val(imageData);
-                strfilepic = imageData;
+        // Request access to the user's camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((error) => {
+                console.error("Error accessing the camera: ", error);
             });
-        </script>
-        <script>
+
+        // Capture photo on button click
+        captureBtn.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Get the image data from the canvas
+            const imageData = canvas.toDataURL('image/jpeg');
+
+            // Display the captured image
+            //capturedImage.src = imageData;
+
+            document.getElementById('results').innerHTML = '<img id="base64image" height="280" src="' + imageData + '"/>' + '<h6>Here is your image:</h2>';
+            $('#BeneficiaryPicHd').val(imageData);
+            strfilepic = imageData;
+        });
+    </script>
+    <script>
             $(document).ready(function () {
                 getLocation();
-                $(".select2").select2();
                 InputAllowcharacter('inputcharallow');
+
+                $(".select2").select2();
+                $("#DOB").datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    //showButtonPanel: true,
+                    dateFormat: 'dd-M-yy',
+                });
+                $('#DOB').change(function () {
+                    var agecla = getAge($(this).val());
+                    $('#lblage').text(agecla);
+                })
+                BindStateList("StateId", "", 0);
+                $('#StateId').prop('selectedIndex', 1);
+                BindDistrictList("DistrictId", "", 0, $('#StateId').val());
+                $('#StateId').change(function () {
+                    BindDistrictList("DistrictId", "", 0, $('#StateId').val());
+                });
+                $('#DistrictId').change(function () {
+                    BindBlockList("BlockId", "", 0, $('#StateId').val(), $('#DistrictId').val());
+                });
+                $('#BlockId').change(function () {
+                    BindPanchayatList("GPId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val());
+                });
                 $('#TypeofEnterpriseBusinId').change(function () {
                     if ($(this).val() == '25') { // Assuming '25' is the value for "Others"
                         $('#EnterpriseBusinId_other_div').show();
@@ -503,29 +538,25 @@
                         $('#NatureofSpace_other').val(''); // Clear the input if hidden
                     }
                 });
-                $(".select2").select2();
-                //InputAllowcharacter('inputcharallow');
-                BindStateList("StateId", "", 0);
-                $('#StateId').change(function () {
-                    BindDistrictList("DistrictId", "", 0, $('#StateId').val());
-                });
-                $('#DistrictId').change(function () {
-                    BindBlockList("BlockId", "", 0, $('#StateId').val(), $('#DistrictId').val());
-                });
-                $('#BlockId').change(function () {
-                    BindPanchayatList("PanchayatId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val());
-                });
-                $('#GPId').change(function () {
-                    BindVillageList("VillageId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val(), $('#GPId_pk').val());
-                    BindVillageList("CLFId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val(), $('#GPId_pk').val());
-                });
-                $('#CLFId').change(function () {
-                    BindVOList("VOId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val(), $('#GPId_pk').val(), $('#CLFId').val(), $('#VillageId').val());
-                });
-            });
-           
+                //IsSamePrimayMobileNo
+                $('#IsSamePrimayMobileNo').change(function () {
+                    SamePryMobileNoOnchg();
+                })
+                $('#PrimaryMobileNo').change(function () {
+                    SamePryMobileNoOnchg();
+                })
 
-            $("#formid").on("submit", function (event) {
+
+            });
+        function SamePryMobileNoOnchg() {
+            $('#WhatsAppMobileNo').val(''); $('#WhatsAppMobileNo').removeAttr('readonly');
+            if ($("#IsSamePrimayMobileNo").prop('checked') == true) {
+                $('#WhatsAppMobileNo').attr('readonly', 'readonly');
+                $('#WhatsAppMobileNo').val($('#PrimaryMobileNo').val());
+            }
+        }
+        //Submit Data
+        $("#formid").on("submit", function (event) {
                 event.preventDefault();
                 getLocation().then(function () {
                     if (lat != '' && lng != '' && lat != undefined && lng != undefined) {
@@ -577,6 +608,7 @@
                 });
 
             });
+
         var lat, lng,locationAddr;
         const getLocation = async () => {
             const pos = await new Promise((resolve, reject) => {
@@ -656,5 +688,5 @@
                 console.error("Error fetching geocode data:", error);
             }
         };
-        </script>
-    }
+    </script>
+}

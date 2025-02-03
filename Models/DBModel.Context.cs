@@ -63,6 +63,7 @@ namespace DeWee.Models
         public virtual DbSet<mst_SolarInstallation> mst_SolarInstallation { get; set; }
         public virtual DbSet<mst_SpaceAvailable> mst_SpaceAvailable { get; set; }
         public virtual DbSet<tbl_IndtSolarization> tbl_IndtSolarization { get; set; }
+        public virtual DbSet<mst_Relative> mst_Relative { get; set; }
         public virtual DbSet<tbl_Beneficiary> tbl_Beneficiary { get; set; }
     }
 }

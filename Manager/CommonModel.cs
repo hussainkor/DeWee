@@ -158,6 +158,7 @@ namespace DeWee.Manager
         #endregion
 
         #region Master
+
         public static List<SelectListItem> GetALLStateM(int IsSelect = 0)
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
@@ -642,6 +643,21 @@ namespace DeWee.Manager
             }
 
             return list;
+        }
+        public static List<SelectListItem> GetTypeOfRelative(int IsSelect = 0)
+        {
+            DeWee_DBEntities _db = new DeWee_DBEntities();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list = _db.mst_Relative.Where(EQ => EQ.IsActive == true).OrderBy(EQ => EQ.OrderBy).Select(EQ => new SelectListItem { Value = EQ.TypeOfRelativeId_pk.ToString(), Text = EQ.TypeOfRelative }).ToList();
+            if (IsSelect == 0)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
+            }
+            else if (IsSelect == 1)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
+            }
+            return list.OrderBy(x => x.Text).ToList();
         }
         #endregion
 

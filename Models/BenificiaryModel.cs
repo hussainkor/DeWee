@@ -7,10 +7,10 @@ namespace DeWee.Models
     {
         public BeneficiaryModel()
         {
-            BeneficiaryId = Guid.Empty; // Initialize to Guid.Empty
+            BeneficiaryId_pk = Guid.Empty; // Initialize to Guid.Empty
         }
         [Key]
-        public Guid BeneficiaryId { get; set; }
+        public Guid BeneficiaryId_pk { get; set; }
 
         [Display(Name = DisplayName.StateId)]
         //[Required]
@@ -30,15 +30,15 @@ namespace DeWee.Models
 
         [Display(Name = DisplayName.Village)]
         //[Required]
-        public int VillageId { get; set; }
+        public string Village { get; set; }
 
         [Display(Name = DisplayName.CLF)]
         //[Required]
-        public int CLF { get; set; }
+        public string CLF { get; set; }
 
         [Display(Name = DisplayName.VO)]
         //[Required]
-        public int VO { get; set; }
+        public string VO { get; set; }
 
         [Display(Name = DisplayName.NameofSHG)]
         //[Required]
@@ -74,7 +74,7 @@ namespace DeWee.Models
 
         [Display(Name = DisplayName.DOB)]
         //[Required]
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
 
         [Display(Name = DisplayName.NameofGuardian)]
         //[Required]
@@ -183,46 +183,51 @@ namespace DeWee.Models
     }
     public class DisplayName
     {
-        public const string StateId = "A.राज्य/STATE";
-        public const string DistrictId = "B.जनपद/DISTRICT";
-        public const string BlockId = "C.ब्लॉक/Block";
-        public const string GPId = "D.ग्राम पंचायत/GPName ";
-        public const string Village = "E.ग्राम/Village Name";
-        public const string CLF = "A.सामान्य जीविका महासंघ/CLF Name";
-        public const string VO = "B.ग्राम संगठन/VO Name";
-        public const string NameofSHG = "C.एसएचजी का नाम/SHG Name";
-        public const string YearOfSHG = "D.एसएचजी का स्थापना वर्ष/Establishment Year of SHG";
-        public const string NameofEnterprise = "A.Name of Enterprise";
-        public const string TypeofEnterpriseBusinId = "B.Type of Enterprise";
-        public const string NameofSHGMember = "C.Name of SHG Member in family";
-        public const string NameofEnterpriseOwner = "D.Name of Owner";
-        public const string EnterpriseOwner_Gender = "D.(a)Owner Gender";
-        public const string DOB = "E.DOB (DD-MM-YYYY)";
-        public const string NameofGuardian = "F.Name of Guardian";
-        public const string Guardian_Gender = "F(a).Guardian Gender";
-        public const string PrimaryMobileNo = "G.Primary Mobile Number";
-        public const string TypeofRelative = "W.Type Of Relative";
-        public const string AlternateMobileNo = "H.Alternate Mobile Number";
-        public const string IsSamePrimayMobileNo = "";
-        public const string WhatsAppMobileNo = "I.WhatsApp Mobile Number";
+        public const string Section1st = "Level 1: Geographical Background";
+        public const string StateId = "A. राज्य/STATE";
+        public const string DistrictId = "B. जनपद/DISTRICT";
+        public const string BlockId = "C. ब्लॉक/Block";
+        public const string GPId = "D. ग्राम पंचायत/GPName ";
+        public const string Village = "E. ग्राम/Village Name";
+
+        public const string Section2nd = "Level 2: SHG Network";
+        public const string CLF = "A. सामान्य जीविका महासंघ/CLF Name";
+        public const string VO = "B. ग्राम संगठन/VO Name";
+        public const string NameofSHG = "C. एसएचजी का नाम/SHG Name";
+        public const string YearOfSHG = "D. एसएचजी का स्थापना वर्ष/Establishment Year of SHG";
+
+        public const string Section3rd = "Level 3: Basic Information";
+        public const string NameofEnterprise = "A. उद्यम का नाम / Name of Enterprise";
+        public const string TypeofEnterpriseBusinId = "B. उद्यम का प्रकार / Type of Enterprise";
+        public const string EnterpriseBusinId_other = "B(a).Type of Enterprise (Other)";
+        public const string NameofSHGMember = "C. परिवार में SHG सदस्य का नाम / Name of SHG Member in family";
+        public const string NameofEnterpriseOwner = "D. मालिक का नाम / Name of Owner";
+        public const string EnterpriseOwner_Gender = "D.(a) लिंग / Gender";
+        public const string DOB = "E. मालिक की जन्म तिथि / DOB";
+        public const string TypeofRelative = "F.Type Of Relative";
+        public const string NameofGuardian = "F(a). अभिभावक का नाम / Name of Guardian";
+        public const string Guardian_Gender = "F(b). लिंग / Gender";
+        public const string PrimaryMobileNo = "G. मुख्य मोबाइल नंबर / Primary Mobile Number";
+        public const string AlternateMobileNo = "H. वैकल्पिक मोबाइल नंबर / Alternate Mobile Number";
+        public const string IsSamePrimayMobileNo = "G(a).Same as Primary Number";
+        public const string WhatsAppMobileNo = "I. व्हाट्सएप मोबाइल नंबर / WhatsApp Mobile Number";
         public const string SiteAddress1stId = "";
-        public const string SiteAddress1st = "J.Site Address (Line 1)";
+        public const string SiteAddress1st = "J. साइट का पता लाइन 1 / Site Address (Line 1)";
         public const string SiteAddress2ndId = "";
-        public const string SiteAddress2nd = "K.Site Address (Line 2)";
-        public const string Pincode = "L.Pincode";
-        public const string CategoryBusinessInstallationId = "M.Category of Business Installation";
-        public const string SpaceAvailableId = "N.Space Available";
-        public const string SpaceAvailable_Area = "N(a).Space Available Area(sq.ft)";
-        public const string NatureofSpaceId = "O.Nature of Space";
-        public const string NatureofSpace_other = "O(a).Other";
-        public const string YNGridconnection = "P.Do you have a grid connection?";
-        public const string YNDieselGenerator = "Q.Do you use DG (diesel generator)";
-        public const string YNMotorAppliances = "R.Do you use any motor appliances";
-        public const string OtherSourceEnergyMachineId = "S.Do you use any other source of energy for the machine?";
-        public const string YNGovtSchemessubsidy = "T.Are you aware of any govt. schemes / subsidy related to solar energy?";
-        public const string SolarInstallationId = "U.Do you want a solar installation?";
-        public const string YNFinancialSupport = "V.Do you need financial support?";
-        public const string EnterprisePhotoPath = "W.Capture photo with coordinate of enterprise / space";
-        public const string EnterpriseBusinId_other = "B(a).Type of Enterprise Other";
+        public const string SiteAddress2nd = "K. साइट का पता लाइन 2 / Site Address (Line 2)";
+        public const string Pincode = "L. पिन कोड / PIN Code";
+        public const string CategoryBusinessInstallationId = "M. व्यवसाय स्थापना की श्रेणी / Category of Business Installation";
+        public const string SpaceAvailableId = "N. उपलब्ध स्थान / Space Available";
+        public const string SpaceAvailable_Area = "N(a). Space Available Area(sq.ft)";
+        public const string NatureofSpaceId = "O. उपलब्ध स्थान की प्रकृति / Nature of Space";
+        public const string NatureofSpace_other = "O(a). Other";
+        public const string YNGridconnection = "P. क्या आपके पास पावर ग्रिड कनेक्शन है? / Do you have a grid connection?";
+        public const string YNDieselGenerator = "Q. क्या आप डीजल जनरेटर का उपयोग करते हैं? / Do you use DG (diesel generator) set?";
+        public const string YNMotorAppliances = "R. क्या आप किसी मोटर उपकरण का उपयोग करते हैं? / Do you use any motor appliances?";
+        public const string OtherSourceEnergyMachineId = "S. क्या आप मशीन के लिए किसी अन्य ऊर्जा स्रोत का उपयोग करते हैं? / Do you use any other source of energy for the machine?";
+        public const string YNGovtSchemessubsidy = "T. क्या आप सौर ऊर्जा से संबंधित किसी सरकारी योजना/सब्सिडी के बारे में जानते हैं? / Are you aware of any govt. schemes / subsidy related to solar energy?";
+        public const string SolarInstallationId = "U. क्या आप सौर ऊर्जा की स्थापना चाहते हैं? / Do you want a solar installation?";
+        public const string YNFinancialSupport = "V. क्या आपको वित्तीय सहायता की आवश्यकता है? / Do you need financial support?";
+        public const string EnterprisePhotoPath = "W. उद्यम / स्थान के निर्देशांक के साथ फोटो कैप्चर करें / Capture photo with coordinate of enterprise / space";
     }
 }

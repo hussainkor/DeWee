@@ -1,0 +1,55 @@
+﻿@model DataTable
+@using System.Data
+
+<table class="table table-bordered table-hover dt-responsive display tbl" id="tbl" width="100%">
+    <thead>
+        <tr>
+            <th>Solar Enterprise</th>
+            <th>State</th>
+            <th>District</th>
+            <th>Block</th>
+            <th>Panchayat</th>
+            <th>Village</th>
+            <th>CLF</th>
+            <th>VO</th>
+            <th>Name of SHG</th>
+            <th>Year Of SHG</th>
+            <th>Phone Number</th>
+            <th>Date</th>
+            @*<th>Actions</th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.Rows.Count > 0)
+            {
+                foreach (DataRow row in Model.Rows)
+                {
+                    <tr>
+                        <td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /></td>
+                        <td>@row["StateName"]</td>
+                        <td>@row["DistrictName"]</td>
+                        <td>@row["BlockName"]</td>
+                        <td>@row["GPName"]</td>
+                        <td>@row["Village"]</td>
+                        <td>@row["CLFName"]</td>
+                        <td>@row["VOName"]</td>
+                        <td>@row["NameofSHG"]</td>
+                        <td>@row["YearOfSHG"]</td>
+                        <td>@row["PhoneNumber"]</td>
+                        <td>@row["CreatedOn"]</td>
+                        @*<td>
+                                <a href="@Url.Action("AddParticipant", "Participant", new { Indt_Id = row["Indt_Id"] })" class="btn btn-primary btn-sm">Edit</a>
+                            </td>*@
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="11" class="text-center">No data available</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

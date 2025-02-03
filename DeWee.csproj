@@ -378,6 +378,9 @@
     <Compile Include="Models\mst_PowerConnection.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\mst_Relative.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\mst_SolarInstallation.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -997,6 +1000,8 @@
     <Content Include="Views\Home\ImageLoad.cshtml" />
     <Content Include="Views\Participant\ParticipantDownload.cshtml" />
     <Content Include="Views\Beneficiary\AddBeneficiary.cshtml" />
+    <Content Include="Views\Beneficiary\BeneficiaryList.cshtml" />
+    <Content Include="Views\Beneficiary\_BeneficiaryData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

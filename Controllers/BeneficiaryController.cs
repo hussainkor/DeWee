@@ -18,6 +18,7 @@ namespace DeWee.Controllers
     public class BeneficiaryController : Controller
     {
         DeWee_DBEntities db = new DeWee_DBEntities();
+        private const string GoogleApiKey = "AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U";
         int results = 0;
         // GET: Beneficiary
         //public ActionResult Index()
@@ -91,11 +92,11 @@ namespace DeWee.Controllers
             JsonResponseData response = new JsonResponseData();
             try
             {
-                var tbl = model.BeneficiaryId != Guid.Empty ? db.tbl_Beneficiary.Find(model.BeneficiaryId) : new tbl_Beneficiary();
+                var tbl = model.BeneficiaryId_pk != Guid.Empty ? db.tbl_Beneficiary.Find(model.BeneficiaryId_pk) : new tbl_Beneficiary();
 
                 if (tbl != null)
                 {
-                    if (model.BeneficiaryId == Guid.Empty)
+                    if (model.BeneficiaryId_pk == Guid.Empty)
                     {
                         tbl.BeneficiaryId_pk = Guid.NewGuid();
                     }
@@ -103,7 +104,7 @@ namespace DeWee.Controllers
                     tbl.DistrictId = model.DistrictId;
                     tbl.BlockId = model.BlockId;
                     tbl.GPId = model.GPId;
-                    tbl.Village = model.VillageId;
+                    tbl.Village = model.Village;
                     tbl.CLF = model.CLF;
                     tbl.VO = model.VO;
                     tbl.NameofSHG = model.NameofSHG;
@@ -148,7 +149,7 @@ namespace DeWee.Controllers
                     }
 
                     tbl.IsActive = true;
-                    if (model.BeneficiaryId == Guid.Empty)
+                    if (model.BeneficiaryId_pk == Guid.Empty)
                     {
                         tbl.CreatedBy = User.Identity.Name;
                         tbl.CreatedOn = DateTime.Now;
@@ -168,7 +169,7 @@ namespace DeWee.Controllers
                     response = new JsonResponseData
                     {
                         StatusType = eAlertType.success.ToString(),
-                        Message = model.BeneficiaryId != Guid.Empty
+                        Message = model.BeneficiaryId_pk != Guid.Empty
                             ? "Beneficiary updated successfully!"
                             : "Beneficiary have been successfully registered!",
                         Data = null
@@ -199,7 +200,31 @@ namespace DeWee.Controllers
             }
             return View(model);
         }
-        private const string GoogleApiKey = "AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U";
+        public ActionResult BeneficiaryList()
+        {
+            return View();
+        }
+        public ActionResult GetBeneficiaryList()
+        {
+            DataTable tbllist = SPManager.SP_BeneficiaryList();
+            try
+            {
+                if (tbllist.Rows.Count > 0)
+                {
+                    var html = ConvertViewToString("_BeneficiaryData", tbllist);
+                    return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpGet]
         public async Task<JsonResult> GetAddress(double lat, double lng)
         {
@@ -217,6 +242,18 @@ namespace DeWee.Controllers
                 {
                     return Json(new { error = "Failed to fetch geocode data." }, JsonRequestBehavior.AllowGet);
                 }
+            }
+        }
+
+        private string ConvertViewToString(string viewName, object model)
+        {
+            ViewData.Model = model;
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+                return sw.GetStringBuilder().ToString();
             }
         }
     }

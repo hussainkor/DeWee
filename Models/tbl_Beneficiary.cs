@@ -21,9 +21,9 @@ namespace DeWee.Models
         public Nullable<int> DistrictId { get; set; }
         public Nullable<int> BlockId { get; set; }
         public Nullable<int> GPId { get; set; }
-        public Nullable<int> Village { get; set; }
-        public Nullable<int> CLF { get; set; }
-        public Nullable<int> VO { get; set; }
+        public string Village { get; set; }
+        public string CLF { get; set; }
+        public string VO { get; set; }
         public string NameofSHG { get; set; }
         public Nullable<int> YearOfSHG { get; set; }
         public string NameofEnterprise { get; set; }

@@ -353,6 +353,17 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_NatureSpace' does not have a prim
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="OrderBy" Type="int" />
         </EntityType>
+        <EntityType Name="mst_Relative">
+          <Key>
+            <PropertyRef Name="TypeOfRelativeId_pk" />
+          </Key>
+          <Property Name="TypeOfRelativeId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfRelative" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="OrderBy" Type="int" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DeWee_DB.dbo.mst_SolarInstallation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_SolarInstallation">
@@ -486,8 +497,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
           <Property Name="CreatedOn" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tbl_Beneficiary">
           <Key>
             <PropertyRef Name="BeneficiaryId_pk" />
@@ -499,9 +508,9 @@ warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a prim
           <Property Name="DistrictId" Type="int" />
           <Property Name="BlockId" Type="int" />
           <Property Name="GPId" Type="int" />
-          <Property Name="Village" Type="int" />
-          <Property Name="CLF" Type="int" />
-          <Property Name="VO" Type="int" />
+          <Property Name="Village" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLF" Type="nvarchar" MaxLength="500" />
+          <Property Name="VO" Type="nvarchar" MaxLength="500" />
           <Property Name="NameofSHG" Type="nvarchar" MaxLength="500" />
           <Property Name="YearOfSHG" Type="int" />
           <Property Name="NameofEnterprise" Type="nvarchar" MaxLength="255" />
@@ -708,6 +717,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a prim
           <EntitySet Name="mst_Month" EntityType="Self.mst_Month" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_MonthlyExpenseEB" EntityType="Self.mst_MonthlyExpenseEB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_PowerConnection" EntityType="Self.mst_PowerConnection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst_Relative" EntityType="Self.mst_Relative" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_Solarkilowatt" EntityType="Self.mst_Solarkilowatt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_SourceEnergy" EntityType="Self.mst_SourceEnergy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_State" EntityType="Self.mst_State" Schema="dbo" store:Type="Tables" />
@@ -716,6 +726,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a prim
           <EntitySet Name="mst_Village" EntityType="Self.mst_Village" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_VO" EntityType="Self.mst_VO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_Year" EntityType="Self.mst_Year" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Beneficiary" EntityType="Self.tbl_Beneficiary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_IndtSolarization" EntityType="Self.tbl_IndtSolarization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_BusinessInstallation" EntityType="Self.mst_BusinessInstallation" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -827,67 +838,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a prim
     [mst_SpaceAvailable].[OrderBy] AS [OrderBy]
     FROM [dbo].[mst_SpaceAvailable] AS [mst_SpaceAvailable]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tbl_Beneficiary" EntityType="Self.tbl_Beneficiary" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tbl_Beneficiary].[BeneficiaryId_pk] AS [BeneficiaryId_pk], 
-    [tbl_Beneficiary].[Temp_RegCode] AS [Temp_RegCode], 
-    [tbl_Beneficiary].[Selection_RegCode] AS [Selection_RegCode], 
-    [tbl_Beneficiary].[StateId] AS [StateId], 
-    [tbl_Beneficiary].[DistrictId] AS [DistrictId], 
-    [tbl_Beneficiary].[BlockId] AS [BlockId], 
-    [tbl_Beneficiary].[GPId] AS [GPId], 
-    [tbl_Beneficiary].[Village] AS [Village], 
-    [tbl_Beneficiary].[CLF] AS [CLF], 
-    [tbl_Beneficiary].[VO] AS [VO], 
-    [tbl_Beneficiary].[NameofSHG] AS [NameofSHG], 
-    [tbl_Beneficiary].[YearOfSHG] AS [YearOfSHG], 
-    [tbl_Beneficiary].[NameofEnterprise] AS [NameofEnterprise], 
-    [tbl_Beneficiary].[TypeofEnterpriseBusinId] AS [TypeofEnterpriseBusinId], 
-    [tbl_Beneficiary].[NameofSHGMember] AS [NameofSHGMember], 
-    [tbl_Beneficiary].[NameofEnterpriseOwner] AS [NameofEnterpriseOwner], 
-    [tbl_Beneficiary].[EnterpriseOwner_Gender] AS [EnterpriseOwner_Gender], 
-    [tbl_Beneficiary].[DOB] AS [DOB], 
-    [tbl_Beneficiary].[Age] AS [Age], 
-    [tbl_Beneficiary].[TypeofRelative] AS [TypeofRelative], 
-    [tbl_Beneficiary].[NameofGuardian] AS [NameofGuardian], 
-    [tbl_Beneficiary].[Guardian_Gender] AS [Guardian_Gender], 
-    [tbl_Beneficiary].[PrimaryMobileNo] AS [PrimaryMobileNo], 
-    [tbl_Beneficiary].[AlternateMobileNo] AS [AlternateMobileNo], 
-    [tbl_Beneficiary].[IsSamePrimayMobileNo] AS [IsSamePrimayMobileNo], 
-    [tbl_Beneficiary].[WhatsAppMobileNo] AS [WhatsAppMobileNo], 
-    [tbl_Beneficiary].[SiteAddress1stId] AS [SiteAddress1stId], 
-    [tbl_Beneficiary].[SiteAddress1st] AS [SiteAddress1st], 
-    [tbl_Beneficiary].[SiteAddress2ndId] AS [SiteAddress2ndId], 
-    [tbl_Beneficiary].[SiteAddress2nd] AS [SiteAddress2nd], 
-    [tbl_Beneficiary].[Pincode] AS [Pincode], 
-    [tbl_Beneficiary].[CategoryBusinessInstallationId] AS [CategoryBusinessInstallationId], 
-    [tbl_Beneficiary].[SpaceAvailableId] AS [SpaceAvailableId], 
-    [tbl_Beneficiary].[SpaceAvailable_Area] AS [SpaceAvailable_Area], 
-    [tbl_Beneficiary].[NatureofSpaceId] AS [NatureofSpaceId], 
-    [tbl_Beneficiary].[NatureofSpace_other] AS [NatureofSpace_other], 
-    [tbl_Beneficiary].[YNGridconnection] AS [YNGridconnection], 
-    [tbl_Beneficiary].[YNDieselGenerator] AS [YNDieselGenerator], 
-    [tbl_Beneficiary].[YNMotorAppliances] AS [YNMotorAppliances], 
-    [tbl_Beneficiary].[OtherSourceEnergyMachineId] AS [OtherSourceEnergyMachineId], 
-    [tbl_Beneficiary].[YNGovtSchemessubsidy] AS [YNGovtSchemessubsidy], 
-    [tbl_Beneficiary].[SolarInstallationId] AS [SolarInstallationId], 
-    [tbl_Beneficiary].[YNFinancialSupport] AS [YNFinancialSupport], 
-    [tbl_Beneficiary].[EnterprisePhotoPath] AS [EnterprisePhotoPath], 
-    [tbl_Beneficiary].[Latitude] AS [Latitude], 
-    [tbl_Beneficiary].[Longitude] AS [Longitude], 
-    [tbl_Beneficiary].[Location] AS [Location], 
-    [tbl_Beneficiary].[Accuracy] AS [Accuracy], 
-    [tbl_Beneficiary].[IsActive] AS [IsActive], 
-    [tbl_Beneficiary].[CreatedBy] AS [CreatedBy], 
-    [tbl_Beneficiary].[CreatedOn] AS [CreatedOn], 
-    [tbl_Beneficiary].[UpdatedBy] AS [UpdatedBy], 
-    [tbl_Beneficiary].[UpdatedOn] AS [UpdatedOn], 
-    [tbl_Beneficiary].[IsDeleted] AS [IsDeleted], 
-    [tbl_Beneficiary].[IsDeletedOn] AS [IsDeletedOn], 
-    [tbl_Beneficiary].[OrderBy] AS [OrderBy], 
-    [tbl_Beneficiary].[EnterpriseBusinId_other] AS [EnterpriseBusinId_other]
-    FROM [dbo].[tbl_Beneficiary] AS [tbl_Beneficiary]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -960,6 +910,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a prim
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
           <EntitySet Name="tbl_IndtSolarization" EntityType="DeWee_DBModel.tbl_IndtSolarization" />
+          <EntitySet Name="mst_Relative" EntityType="DeWee_DBModel.mst_Relative" />
           <EntitySet Name="tbl_Beneficiary" EntityType="DeWee_DBModel.tbl_Beneficiary" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
@@ -1534,6 +1485,17 @@ warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a prim
           <Property Name="ParticipantPicPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SolarEnterprisePicPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="mst_Relative">
+          <Key>
+            <PropertyRef Name="TypeOfRelativeId_pk" />
+          </Key>
+          <Property Name="TypeOfRelativeId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfRelative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrderBy" Type="Int32" />
+        </EntityType>
         <EntityType Name="tbl_Beneficiary">
           <Key>
             <PropertyRef Name="BeneficiaryId_pk" />
@@ -1545,9 +1507,9 @@ warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a prim
           <Property Name="DistrictId" Type="Int32" />
           <Property Name="BlockId" Type="Int32" />
           <Property Name="GPId" Type="Int32" />
-          <Property Name="Village" Type="Int32" />
-          <Property Name="CLF" Type="Int32" />
-          <Property Name="VO" Type="Int32" />
+          <Property Name="Village" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLF" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="NameofSHG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="YearOfSHG" Type="Int32" />
           <Property Name="NameofEnterprise" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2177,6 +2139,18 @@ warning 6002: The table/view 'DeWee_DB.dbo.tbl_Beneficiary' does not have a prim
                 <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
                 <ScalarProperty Name="StateId" ColumnName="StateId" />
                 <ScalarProperty Name="Indt_Id" ColumnName="Indt_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst_Relative">
+            <EntityTypeMapping TypeName="DeWee_DBModel.mst_Relative">
+              <MappingFragment StoreEntitySet="mst_Relative">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TypeOfRelative" ColumnName="TypeOfRelative" />
+                <ScalarProperty Name="TypeOfRelativeId_pk" ColumnName="TypeOfRelativeId_pk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
