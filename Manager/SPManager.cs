@@ -39,5 +39,11 @@ namespace DeWee.Manager
             DataSet ds = sp.ExecuteDataSet();
             return ds;
         }
+        public static DataSet USP_PartQAList()
+        {
+            StoredProcedure sp = new StoredProcedure("USP_PartQAList");
+            DataSet ds = sp.ExecuteDataSet();
+            return ds;
+        }
     }
 }

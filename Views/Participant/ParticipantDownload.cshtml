@@ -1,0 +1,72 @@
+﻿@using System.Data
+@model System.Data.DataTable
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Participant Download";
+}
+
+<div class="page-bread page-titles">
+    <div class="bread-flex">
+        <h1>@ViewBag.Title</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if (Model != null && Model.Rows.Count > 0)
+                    {
+                        <div class="table-header mb-3">
+                            <!-- Updated download link to match controller parameter -->
+                            <a href="@Url.Action(" ParticipantDownload", "Participant" , new { Participant="true" })" class="btn btn-primary float-right">Download Excel</a>
+                        </div>
+                        <table class="table table-bordered table-striped" id="participantTable">
+                            <thead class="thead-dark">
+                                <tr>
+                                    @foreach (DataColumn column in Model.Columns)
+                                    {
+                                        <th>@column.ColumnName</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (DataRow row in Model.Rows)
+                                {
+                                    <tr>
+                                        @foreach (var item in row.ItemArray)
+                                        {
+                                            <td>@item</td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            No records found.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTable if needed
+            $('#participantTable').DataTable(); // Ensure you have included DataTables library
+        });
+    </script>
+}

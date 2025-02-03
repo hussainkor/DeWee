@@ -12,7 +12,7 @@ namespace DeWee.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_IndtSolarization
+    public partial class tbl_IndtSolarization
     {
         public System.Guid Indt_Id { get; set; }
         public Nullable<int> StateId { get; set; }

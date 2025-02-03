@@ -5,40 +5,48 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f4b879c0e4714029947c5d3b6ab6d5aa" Name="Diagram1" ZoomLevel="66">
-        <EntityTypeShape EntityType="DeWee_DBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_BusinessInvestmentM" Width="1.5" PointX="2.125" PointY="4.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_BusinessOwnedM" Width="1.5" PointX="3.875" PointY="4.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_BusinessTypeM" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_CasteM" Width="1.5" PointX="7" PointY="3.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_ElectricityConsumptionM" Width="1.5" PointX="1.75" PointY="5.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_ElectricityUsedM" Width="1.5" PointX="3.75" PointY="5.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_MachineryPowerM" Width="1.5" PointX="8.75" PointY="3.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_MoneySavedSEM" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_MonthlyExpenseEBM" Width="1.5" PointX="7.875" PointY="4.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_PowerConnectionM" Width="1.5" PointX="10.5" PointY="3.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_SolarkilowattM" Width="1.5" PointX="7.625" PointY="5.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_SourceEnergyM" Width="1.5" PointX="9.625" PointY="4.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_SubisdyM" Width="1.5" PointX="9.5" PointY="5.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_TypeYesNoM" Width="1.5" PointX="11.25" PointY="5.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Educational_QualificationM" Width="1.5" PointX="1.5" PointY="6.125" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Enterprise_EstablishedM" Width="1.5" PointX="12.25" PointY="3.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_EnterpriseM" Width="1.5" PointX="11.375" PointY="4.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_EnterpriseMachineM" Width="1.5" PointX="7" PointY="6.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_LoanDescribeSourceM" Width="1.5" PointX="5.25" PointY="6" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="DeWee_DBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="DeWee_DBModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="DeWee_DBModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Block" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_BusinessInvestment" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_BusinessOwned" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_BusinessType" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Caste" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_CLF" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_District" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_ElectricityConsumption" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_ElectricityUsed" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_GP" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_MachineryPower" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_MoneySavedSE" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Month" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_MonthlyExpenseEB" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_PowerConnection" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Solarkilowatt" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_SourceEnergy" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_State" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Subisdy" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_TypeYesNo" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Village" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_VO" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Year" Width="1.5" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_BusinessInstallation" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Educational_Qualification" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Enterprise" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Enterprise_Established" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_EnterpriseMachine" Width="1.5" PointX="16.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_LoanDescribeSource" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_MachineSource" Width="1.5" PointX="16.75" PointY="16.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_NatureSpace" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_SolarInstallation" Width="1.5" PointX="4.75" PointY="17.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_SpaceAvailable" Width="1.5" PointX="18.75" PointY="4.75" />
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <EntityTypeShape EntityType="DeWee_DBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="false" />
         <AssociationConnector Association="DeWee_DBModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Panchayat_Master" Width="1.5" PointX="12.5" PointY="6.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Block_Master" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_CLF_Master" Width="1.5" PointX="3.5" PointY="6" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_District_Master" Width="1.5" PointX="5.75" PointY="4.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_State_Master" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_Village_Master" Width="1.5" PointX="9.625" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_VO_Master" Width="1.5" PointX="8.875" PointY="6.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.Tbl_IndtSolarization" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_IndtSolarization" Width="1.5" PointX="13.375" PointY="15.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_Beneficiary" Width="1.5" PointX="0.75" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

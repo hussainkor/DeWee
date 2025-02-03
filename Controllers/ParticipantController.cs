@@ -9,7 +9,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+//using OfficeOpenXml;
 using static DeWee.Manager.Enums;
+using ClosedXML.Excel;
 
 namespace DeWee.Controllers
 {
@@ -28,7 +30,7 @@ namespace DeWee.Controllers
             Participant model = new Participant();
             if (Indt_Id != Guid.Empty && Indt_Id != null)
             {
-                var tbl = db.Tbl_IndtSolarization.Find(Indt_Id);
+                var tbl = db.tbl_IndtSolarization.Find(Indt_Id);
                 if (tbl != null)
                 {
                     //model.Indt_Id = tbl.Indt_Id;
@@ -104,7 +106,7 @@ namespace DeWee.Controllers
                 //    };
                 //    return Json(response, JsonRequestBehavior.AllowGet);
                 //}
-                var tbl = model.Indt_Id != Guid.Empty ? db.Tbl_IndtSolarization.Find(model.Indt_Id) : new Tbl_IndtSolarization();
+                var tbl = model.Indt_Id != Guid.Empty ? db.tbl_IndtSolarization.Find(model.Indt_Id) : new tbl_IndtSolarization();
 
                 if (tbl != null)
                 {
@@ -188,7 +190,7 @@ namespace DeWee.Controllers
                     {
                         tbl.CreatedBy = User.Identity.Name;
                         tbl.CreatedOn = DateTime.Now;
-                        db.Tbl_IndtSolarization.Add(tbl);
+                        db.tbl_IndtSolarization.Add(tbl);
                     }
                     else
                     {
@@ -235,6 +237,7 @@ namespace DeWee.Controllers
             }
             return View(model);
         }
+
         public ActionResult ParticipantList()
         {
             return View();
@@ -259,7 +262,51 @@ namespace DeWee.Controllers
                 return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
             }
         }
+        public ActionResult ParticipantDownload(string Participant = null)
+        {
+            DataSet participantData = SPManager.USP_PartQAList();
+            DataTable dt = participantData.Tables[0];
 
+            if (!string.IsNullOrEmpty(Participant) && Participant.Equals("true", StringComparison.OrdinalIgnoreCase))
+            {
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    return new HttpStatusCodeResult(404, "No data available for download.");
+                }
+
+                using (XLWorkbook QA = new XLWorkbook())
+                {
+                    QA.Worksheets.Add(dt);
+                    QA.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    QA.Style.Font.Bold = true;
+
+                    var DTDAY = DateTime.Now.Date.ToString("dd-MMM-yyyy");
+                    HttpContext.Response.Clear();
+                    HttpContext.Response.Buffer = true;
+                    HttpContext.Response.Charset = "";
+                    HttpContext.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    HttpContext.Response.AddHeader("content-disposition", "attachment;filename=ParticipantQAList_" + DTDAY + ".xlsx");
+
+                    try
+                    {
+                        using (MemoryStream QueAnsDataList = new MemoryStream())
+                        {
+                            QA.SaveAs(QueAnsDataList);
+                            QueAnsDataList.WriteTo(HttpContext.Response.OutputStream);
+                            HttpContext.Response.Flush();
+                            HttpContext.Response.SuppressContent = true;
+                            return new EmptyResult();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Error generating Excel file: " + ex.Message);
+                        return new HttpStatusCodeResult(500, "Error generating Excel file.");
+                    }
+                }
+            }
+            return View(dt);
+        }
         private string ConvertViewToString(string viewName, object model)
         {
             ViewData.Model = model;
