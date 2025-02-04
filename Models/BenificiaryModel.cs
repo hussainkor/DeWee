@@ -13,39 +13,39 @@ namespace DeWee.Models
         public Guid BeneficiaryId_pk { get; set; }
 
         [Display(Name = DisplayName.StateId)]
-        //[Required]
+        [Required]
         public int StateId { get; set; }
 
         [Display(Name = DisplayName.DistrictId)]
-        //[Required]
+        [Required]
         public int DistrictId { get; set; }
 
         [Display(Name = DisplayName.BlockId)]
-        //[Required]
+        [Required]
         public int BlockId { get; set; }
 
         [Display(Name = DisplayName.GPId)]
-        //[Required]
+        [Required]
         public int GPId { get; set; }
 
         [Display(Name = DisplayName.Village)]
-        //[Required]
+        [Required]
         public string Village { get; set; }
 
         [Display(Name = DisplayName.CLF)]
-        //[Required]
+        [Required]
         public string CLF { get; set; }
 
         [Display(Name = DisplayName.VO)]
-        //[Required]
+        [Required]
         public string VO { get; set; }
 
         [Display(Name = DisplayName.NameofSHG)]
-        //[Required]
+        [Required]
         public string NameofSHG { get; set; }
 
         [Display(Name = DisplayName.YearOfSHG)]
-        //[Required]
+        [Required]
         public int YearOfSHG { get; set; }
 
         [Display(Name = DisplayName.NameofEnterprise)]
@@ -53,51 +53,52 @@ namespace DeWee.Models
         public string NameofEnterprise { get; set; }
 
         [Display(Name = DisplayName.TypeofEnterpriseBusinId)]
-        //[Required]
+        [Required]
         public int TypeofEnterpriseBusinId { get; set; }
 
         [Display(Name = DisplayName.EnterpriseBusinId_other)]
-        //[Required]
+       // [Required]
         public string EnterpriseBusinId_other { get; set; }
 
         [Display(Name = DisplayName.NameofSHGMember)]
-        //[Required]
+        [Required]
         public string NameofSHGMember { get; set; }
 
         [Display(Name = DisplayName.NameofEnterpriseOwner)]
-        //[Required]
+        [Required]
         public string NameofEnterpriseOwner { get; set; }
 
         [Display(Name = DisplayName.EnterpriseOwner_Gender)]
-        //[Required]
+        [Required]
         public string EnterpriseOwner_Gender { get; set; }
 
         [Display(Name = DisplayName.DOB)]
-        //[Required]
+        [Required]
         public DateTime? DOB { get; set; }
 
         [Display(Name = DisplayName.NameofGuardian)]
-        //[Required]
+        [Required]
         public string NameofGuardian { get; set; }
 
         [Display(Name = "Age")]
         public int Age { get; set; }
+        [Required]
 
         [Display(Name = "Type of Relative")]
         public int TypeofRelative { get; set; }
 
         [Display(Name = DisplayName.Guardian_Gender)]
-        //[Required]
+        [Required]
         public string Guardian_Gender { get; set; }
 
         [Display(Name = DisplayName.PrimaryMobileNo)]
-        //[Required]
+        [Required]
         public string PrimaryMobileNo { get; set; }
 
         [Display(Name = DisplayName.AlternateMobileNo)]
         //[Required]
         public string AlternateMobileNo { get; set; }
-
+        [Display(Name =DisplayName.IsSamePrimayMobileNo)]
         public bool IsSamePrimayMobileNo { get; set; }
 
         [Display(Name = DisplayName.WhatsAppMobileNo)]
@@ -108,34 +109,34 @@ namespace DeWee.Models
 
 
         [Display(Name = DisplayName.SiteAddress1st)]
-        //[Required]
+        [Required]
         public string SiteAddress1st { get; set; }
 
         public int SiteAddress2ndId { get; set; }
 
 
         [Display(Name = DisplayName.SiteAddress2nd)]
-        //[Required]
+        [Required]
         public string SiteAddress2nd { get; set; }
 
         [Display(Name = DisplayName.Pincode)]
-        //[Required]
+        [Required]
         public int Pincode { get; set; }
 
         [Display(Name = DisplayName.CategoryBusinessInstallationId)]
-        //[Required]
+        [Required]
         public int CategoryBusinessInstallationId { get; set; }
 
         [Display(Name = DisplayName.SpaceAvailableId)]
-        //[Required]
+        [Required]
         public int SpaceAvailableId { get; set; }
 
         [Display(Name = DisplayName.SpaceAvailable_Area)]
-        //[Required]
+        [Required]
         public string SpaceAvailable_Area { get; set; }
 
         [Display(Name = DisplayName.NatureofSpaceId)]
-        //[Required]
+        [Required]
         public int NatureofSpaceId { get; set; }
 
         [Display(Name = DisplayName.NatureofSpace_other)]
@@ -143,15 +144,15 @@ namespace DeWee.Models
         public string NatureofSpace_other { get; set; }
 
         [Display(Name = DisplayName.YNGridconnection)]
-        //[Required]
+        [Required]
         public string YNGridconnection { get; set; }
 
         [Display(Name = DisplayName.YNDieselGenerator)]
-        //[Required]
+        [Required]
         public string YNDieselGenerator { get; set; }
 
         [Display(Name = DisplayName.YNMotorAppliances)]
-        //[Required]
+        [Required]
         public string YNMotorAppliances { get; set; }
 
         [Display(Name = DisplayName.OtherSourceEnergyMachineId)]
@@ -159,22 +160,20 @@ namespace DeWee.Models
         public int OtherSourceEnergyMachineId { get; set; }
 
         [Display(Name = DisplayName.YNGovtSchemessubsidy)]
-        //[Required]
+        [Required]
         public string YNGovtSchemessubsidy { get; set; }
 
         [Display(Name = DisplayName.SolarInstallationId)]
-        //[Required]
+        [Required]
         public int SolarInstallationId { get; set; }
 
         [Display(Name = DisplayName.YNFinancialSupport)]
-        //[Required]
+        [Required]
         public string YNFinancialSupport { get; set; }
-
 
         [Display(Name = DisplayName.EnterprisePhotoPath)]
         //[Required]
         public string EnterprisePhotoPath { get; set; }
-
         public string BeneficiaryPicHd { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
@@ -183,20 +182,20 @@ namespace DeWee.Models
     }
     public class DisplayName
     {
-        public const string Section1st = "Level 1: Geographical Background";
+        public const string Section1st = "Geographical Background";
         public const string StateId = "A. राज्य/STATE";
         public const string DistrictId = "B. जनपद/DISTRICT";
         public const string BlockId = "C. ब्लॉक/Block";
-        public const string GPId = "D. ग्राम पंचायत/GPName ";
+        public const string GPId = "D. ग्राम पंचायत/GP Name ";
         public const string Village = "E. ग्राम/Village Name";
 
-        public const string Section2nd = "Level 2: SHG Network";
+        public const string Section2nd = "SHG Network";
         public const string CLF = "A. सामान्य जीविका महासंघ/CLF Name";
         public const string VO = "B. ग्राम संगठन/VO Name";
         public const string NameofSHG = "C. एसएचजी का नाम/SHG Name";
         public const string YearOfSHG = "D. एसएचजी का स्थापना वर्ष/Establishment Year of SHG";
 
-        public const string Section3rd = "Level 3: Basic Information";
+        public const string Section3rd = "Basic Information";
         public const string NameofEnterprise = "A. उद्यम का नाम / Name of Enterprise";
         public const string TypeofEnterpriseBusinId = "B. उद्यम का प्रकार / Type of Enterprise";
         public const string EnterpriseBusinId_other = "B(a).Type of Enterprise (Other)";
@@ -209,7 +208,7 @@ namespace DeWee.Models
         public const string Guardian_Gender = "F(b). लिंग / Gender";
         public const string PrimaryMobileNo = "G. मुख्य मोबाइल नंबर / Primary Mobile Number";
         public const string AlternateMobileNo = "H. वैकल्पिक मोबाइल नंबर / Alternate Mobile Number";
-        public const string IsSamePrimayMobileNo = "G(a).Same as Primary Number";
+        public const string IsSamePrimayMobileNo = "G(a). Is same as Primary Mobile Number? ";
         public const string WhatsAppMobileNo = "I. व्हाट्सएप मोबाइल नंबर / WhatsApp Mobile Number";
         public const string SiteAddress1stId = "";
         public const string SiteAddress1st = "J. साइट का पता लाइन 1 / Site Address (Line 1)";

@@ -12,6 +12,7 @@ using System.Web.Mvc;
 //using OfficeOpenXml;
 using static DeWee.Manager.Enums;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.EMMA;
 
 namespace DeWee.Controllers
 {
@@ -93,100 +94,101 @@ namespace DeWee.Controllers
             try
             {
                 var tbl = model.BeneficiaryId_pk != Guid.Empty ? db.tbl_Beneficiary.Find(model.BeneficiaryId_pk) : new tbl_Beneficiary();
-
-                if (tbl != null)
+                if (ModelState.IsValid)
                 {
-                    if (model.BeneficiaryId_pk == Guid.Empty)
+                    if (tbl != null)
                     {
-                        tbl.BeneficiaryId_pk = Guid.NewGuid();
-                    }
-                    tbl.StateId = model.StateId;
-                    tbl.DistrictId = model.DistrictId;
-                    tbl.BlockId = model.BlockId;
-                    tbl.GPId = model.GPId;
-                    tbl.Village = model.Village;
-                    tbl.CLF = model.CLF;
-                    tbl.VO = model.VO;
-                    tbl.NameofSHG = model.NameofSHG;
-                    tbl.YearOfSHG = model.YearOfSHG;
-                    tbl.NameofEnterprise = model.NameofEnterprise;
-                    tbl.TypeofEnterpriseBusinId = model.TypeofEnterpriseBusinId;
-                    tbl.EnterpriseBusinId_other = model.EnterpriseBusinId_other;
-                    tbl.NameofSHGMember = model.NameofSHGMember;
-                    tbl.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
-                    tbl.EnterpriseOwner_Gender = model.EnterpriseOwner_Gender;
-                    tbl.DOB = model.DOB;
-                    tbl.TypeofRelative = model.TypeofRelative;
-                    tbl.NameofGuardian = model.NameofGuardian;
-                    tbl.Guardian_Gender = model.Guardian_Gender;
-                    tbl.PrimaryMobileNo = model.PrimaryMobileNo;
-                    tbl.AlternateMobileNo = model.AlternateMobileNo;
-                    tbl.WhatsAppMobileNo = model.WhatsAppMobileNo;
-                    tbl.IsSamePrimayMobileNo = model.IsSamePrimayMobileNo;
-                    tbl.SiteAddress1st = model.SiteAddress1st;
-                    tbl.SiteAddress2nd = model.SiteAddress2nd;
-                    tbl.Pincode = model.Pincode;
-                    tbl.CategoryBusinessInstallationId = model.CategoryBusinessInstallationId;
-                    tbl.SpaceAvailableId = model.SpaceAvailableId;
-                    tbl.SpaceAvailable_Area = model.SpaceAvailable_Area;
-                    tbl.NatureofSpaceId = model.NatureofSpaceId;
-                    tbl.NatureofSpace_other = model.NatureofSpace_other;
-                    tbl.YNGridconnection = model.YNGridconnection;
-                    tbl.YNDieselGenerator = model.YNDieselGenerator;
-                    tbl.YNMotorAppliances = model.YNMotorAppliances;
-                    tbl.OtherSourceEnergyMachineId = model.OtherSourceEnergyMachineId;
-                    tbl.YNGovtSchemessubsidy = model.YNGovtSchemessubsidy;
-                    tbl.SolarInstallationId = model.SolarInstallationId;
-                    tbl.YNFinancialSupport = model.YNFinancialSupport;
-                    tbl.Latitude = model.Latitude;
-                    tbl.Longitude = model.Longitude;
-                    tbl.Location = model.Location;
-                    //image
-                    if (!string.IsNullOrWhiteSpace(model.BeneficiaryPicHd))
-                    {
-                        var picexterpries = CommonModel.SaveSingleFileBase64string(model.BeneficiaryPicHd, "Enterprises", tbl.BeneficiaryId_pk.ToString());
-                        tbl.EnterprisePhotoPath = picexterpries;
+                        if (model.BeneficiaryId_pk == Guid.Empty)
+                        {
+                            tbl.BeneficiaryId_pk = Guid.NewGuid();
+                        }
+                        tbl.StateId = model.StateId;
+                        tbl.DistrictId = model.DistrictId;
+                        tbl.BlockId = model.BlockId;
+                        tbl.GPId = model.GPId;
+                        tbl.Village = model.Village;
+                        tbl.CLF = model.CLF;
+                        tbl.VO = model.VO;
+                        tbl.NameofSHG = model.NameofSHG;
+                        tbl.YearOfSHG = model.YearOfSHG;
+                        tbl.NameofEnterprise = model.NameofEnterprise;
+                        tbl.TypeofEnterpriseBusinId = model.TypeofEnterpriseBusinId;
+                        tbl.EnterpriseBusinId_other = model.EnterpriseBusinId_other;
+                        tbl.NameofSHGMember = model.NameofSHGMember;
+                        tbl.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
+                        tbl.EnterpriseOwner_Gender = model.EnterpriseOwner_Gender;
+                        tbl.DOB = model.DOB;
+                        tbl.TypeofRelative = model.TypeofRelative;
+                        tbl.NameofGuardian = model.NameofGuardian;
+                        tbl.Guardian_Gender = model.Guardian_Gender;
+                        tbl.PrimaryMobileNo = model.PrimaryMobileNo;
+                        tbl.AlternateMobileNo = model.AlternateMobileNo;
+                        tbl.WhatsAppMobileNo = model.WhatsAppMobileNo;
+                        tbl.IsSamePrimayMobileNo = model.IsSamePrimayMobileNo;
+                        tbl.SiteAddress1st = model.SiteAddress1st;
+                        tbl.SiteAddress2nd = model.SiteAddress2nd;
+                        tbl.Pincode = model.Pincode;
+                        tbl.CategoryBusinessInstallationId = model.CategoryBusinessInstallationId;
+                        tbl.SpaceAvailableId = model.SpaceAvailableId;
+                        tbl.SpaceAvailable_Area = model.SpaceAvailable_Area;
+                        tbl.NatureofSpaceId = model.NatureofSpaceId;
+                        tbl.NatureofSpace_other = model.NatureofSpace_other;
+                        tbl.YNGridconnection = model.YNGridconnection;
+                        tbl.YNDieselGenerator = model.YNDieselGenerator;
+                        tbl.YNMotorAppliances = model.YNMotorAppliances;
+                        tbl.OtherSourceEnergyMachineId = model.OtherSourceEnergyMachineId;
+                        tbl.YNGovtSchemessubsidy = model.YNGovtSchemessubsidy;
+                        tbl.SolarInstallationId = model.SolarInstallationId;
+                        tbl.YNFinancialSupport = model.YNFinancialSupport;
+                        tbl.Latitude = model.Latitude;
+                        tbl.Longitude = model.Longitude;
+                        tbl.Location = model.Location;
+                        //image
+                        if (!string.IsNullOrWhiteSpace(model.BeneficiaryPicHd))
+                        {
+                            var picexterpries = CommonModel.SaveSingleFileBase64string(model.BeneficiaryPicHd, "Enterprises", tbl.BeneficiaryId_pk.ToString());
+                            tbl.EnterprisePhotoPath = picexterpries;
+                        }
+
+                        tbl.IsActive = true;
+                        if (model.BeneficiaryId_pk == Guid.Empty)
+                        {
+                            tbl.CreatedBy = User.Identity.Name;
+                            tbl.CreatedOn = DateTime.Now;
+                            db.tbl_Beneficiary.Add(tbl);
+                        }
+                        else
+                        {
+                            tbl.UpdatedBy = User.Identity.Name;
+                            tbl.UpdatedOn = DateTime.Now;
+                        }
+
+                        results = db.SaveChanges();
                     }
 
-                    tbl.IsActive = true;
-                    if (model.BeneficiaryId_pk == Guid.Empty)
+                    if (results > 0)
                     {
-                        tbl.CreatedBy = User.Identity.Name;
-                        tbl.CreatedOn = DateTime.Now;
-                        db.tbl_Beneficiary.Add(tbl);
+                        response = new JsonResponseData
+                        {
+                            StatusType = eAlertType.success.ToString(),
+                            Message = model.BeneficiaryId_pk != Guid.Empty
+                                ? "Beneficiary updated successfully!"
+                                : "Beneficiary have been successfully registered!",
+                            Data = null
+                        };
+                        return Json(response, JsonRequestBehavior.AllowGet);
                     }
-                    else
-                    {
-                        tbl.UpdatedBy = User.Identity.Name;
-                        tbl.UpdatedOn = DateTime.Now;
-                    }
-
-                    results = db.SaveChanges();
                 }
-
-                if (results > 0)
+                else
                 {
                     response = new JsonResponseData
                     {
-                        StatusType = eAlertType.success.ToString(),
-                        Message = model.BeneficiaryId_pk != Guid.Empty
-                            ? "Beneficiary updated successfully!"
-                            : "Beneficiary have been successfully registered!",
+                        StatusType = eAlertType.error.ToString(),
+                        Message = "All Record Required !!",
                         Data = null
                     };
                     return Json(response, JsonRequestBehavior.AllowGet);
                 }
-                //}
-                //else
-                //{
-                //    response = new JsonResponseData
-                //    {
-                //        StatusType = eAlertType.error.ToString(),
-                //        Message = "All Record Required !!",
-                //        Data = null
-                //    };
-                //    return Json(response, JsonRequestBehavior.AllowGet);
-                //}
             }
             catch (Exception ex)
             {
