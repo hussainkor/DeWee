@@ -52,6 +52,8 @@ namespace DeWee.Models
         public string NatureofSpace_other { get; set; }
         public string YNGridconnection { get; set; }
         public string YNDieselGenerator { get; set; }
+        public Nullable<decimal> DGYesAverageDailyHours { get; set; }
+        public Nullable<int> DGCapacity { get; set; }
         public string YNMotorAppliances { get; set; }
         public Nullable<int> OtherSourceEnergyMachineId { get; set; }
         public string YNGovtSchemessubsidy { get; set; }

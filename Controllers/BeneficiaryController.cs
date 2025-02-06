@@ -135,8 +135,14 @@ namespace DeWee.Controllers
                         tbl.NatureofSpace_other = model.NatureofSpace_other;
                         tbl.YNGridconnection = model.YNGridconnection;
                         tbl.YNDieselGenerator = model.YNDieselGenerator;
+                        if (model.YNGridconnection.ToLower() == "yes")
+                        {
+                            tbl.DGYesAverageDailyHours = model.DGYesAverageDailyHours;
+                            tbl.DGCapacity = model.DGCapacity;
+                        }
+
                         tbl.YNMotorAppliances = model.YNMotorAppliances;
-                        tbl.OtherSourceEnergyMachineId = model.OtherSourceEnergyMachineId;
+                        //tbl.OtherSourceEnergyMachineId = model.OtherSourceEnergyMachineId;
                         tbl.YNGovtSchemessubsidy = model.YNGovtSchemessubsidy;
                         tbl.SolarInstallationId = model.SolarInstallationId;
                         tbl.YNFinancialSupport = model.YNFinancialSupport;

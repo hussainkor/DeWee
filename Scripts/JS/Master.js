@@ -899,3 +899,13 @@ function InputAllowcharacter(intput) {
         }
     });
 }
+function validateDecimal(input) {
+    // Replace any non-decimal characters (including multiple decimal points) with an empty string
+    input.value = input.value.replace(/[^0-9.]/g, '');
+
+    // Ensure only one decimal point is allowed
+    let decimalCount = (input.value.match(/\./g) || []).length;
+    if (decimalCount > 1) {
+        input.value = input.value.slice(0, -1); // Remove the last invalid character
+    }
+}

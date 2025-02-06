@@ -283,7 +283,7 @@
                                         @Html.LabelFor(model => model.NameofEnterprise, htmlAttributes: new { @class = "control-label" })
                                         @*<span style="color:red;">*</span>*@
                                         <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.NameofEnterprise, new { @class = "form-control inputcharallow"})
+                                            @Html.TextBoxFor(model => model.NameofEnterprise, new { @class = "form-control inputcharallow" })
                                             @Html.ValidationMessageFor(model => model.NameofEnterprise, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -371,10 +371,10 @@
                                         <span style="color:red;">*</span>
                                         <div class="manage-radio">
                                             <label>
-                                                @Html.RadioButtonFor(model => model.Guardian_Gender, "Male", new { @id = "GuardianGenderYes" }) Male
+                                                @Html.RadioButtonFor(model => model.Guardian_Gender, "Male", new { @id = "GuardianGender" }) Male
                                             </label>
                                             <label>
-                                                @Html.RadioButtonFor(model => model.Guardian_Gender, "Female", new { @id = "GuardianGenderNo" }) Female
+                                                @Html.RadioButtonFor(model => model.Guardian_Gender, "Female", new { @id = "GuardianGender" }) Female
                                             </label>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.Guardian_Gender, "", new { @class = "text-danger" })
@@ -402,7 +402,7 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         @Html.LabelFor(model => model.IsSamePrimayMobileNo, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
+                                        @*<span style="color:red;">*</span>*@
                                         @*<div class="col-md-10s">
                                                 @Html.CheckBoxFor(model => model.IsSamePrimayMobileNo)
                                                 @Html.ValidationMessageFor(model => model.IsSamePrimayMobileNo, "", new { @class = "text-danger" })
@@ -488,7 +488,7 @@
                                         @Html.LabelFor(model => model.SpaceAvailable_Area, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.SpaceAvailable_Area, new { @class = "form-control inputcharallow", @required = "required" })
+                                            @Html.TextBoxFor(model => model.SpaceAvailable_Area, new { @class = "form-control", @required = "required", @minlength = "0", @maxlength = "5", @oninput = "validateDecimal(this)" })
                                             @Html.ValidationMessageFor(model => model.SpaceAvailable_Area, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -517,10 +517,10 @@
                                         <span style="color:red;">*</span>
                                         <div class="manage-radio">
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNGridconnection, "1", new { @id = "GridconnectionYes" }) Yes
+                                                @Html.RadioButtonFor(model => model.YNGridconnection, "Yes", new { @id = "GridconnectionYes" }) Yes
                                             </label>
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNGridconnection, "2", new { @id = "GridconnectionNo" }) No
+                                                @Html.RadioButtonFor(model => model.YNGridconnection, "No", new { @id = "GridconnectionNo" }) No
                                             </label>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.YNGridconnection, "", new { @class = "text-danger" })
@@ -531,48 +531,66 @@
                                         <span style="color:red;">*</span>
                                         <div class="manage-radio">
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNDieselGenerator, "1", new { @id = "DieselGeneratorYes" }) Yes
+                                                @Html.RadioButtonFor(model => model.YNDieselGenerator, "Yes", new { @id = "DieselGeneratorYes" }) Yes
                                             </label>
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNDieselGenerator, "2", new { @id = "DieselGeneratorNo" }) No
+                                                @Html.RadioButtonFor(model => model.YNDieselGenerator, "No", new { @id = "DieselGeneratorNo" }) No
                                             </label>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.YNDieselGenerator, "", new { @class = "text-danger" })
                                     </div>
+                                    <div class="form-group col-md-4 div-DG" style="display:none;">
+                                        @Html.LabelFor(model => model.DGYesAverageDailyHours, htmlAttributes: new { @class = "control-label " })
+                                        <span style="color:red;">*</span>
+                                        <div class="col-md-10s">
+                                            @Html.TextBoxFor(model => model.DGYesAverageDailyHours, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateDecimal(this)" })
+                                            @Html.ValidationMessageFor(model => model.DGYesAverageDailyHours, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 div-DG" style="display:none;" ss>
+                                        @Html.LabelFor(model => model.DGCapacity, htmlAttributes: new { @class = "control-label " })
+                                        <span style="color:red;">*</span>
+                                        <div class="col-md-10s">
+                                            @Html.TextBoxFor(model => model.DGCapacity, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
+                                            @Html.ValidationMessageFor(model => model.DGCapacity, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-row">
+                                    @*<div class="form-group col-md-6">
+                                            @Html.LabelFor(model => model.OtherSourceEnergyMachineId, htmlAttributes: new { @class = "control-label" })
+                                            <span style="color:red;">*</span>
+                                            <div class="col-md-10s">
+                                                @Html.DropDownListFor(model => model.OtherSourceEnergyMachineId, CommonModel.GetALLMSM(), null, new { @class = "form-control", @required = "required" })
+                                                @Html.ValidationMessageFor(model => model.OtherSourceEnergyMachineId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>*@
                                     <div class="form-group col-md-4">
                                         @Html.LabelFor(model => model.YNMotorAppliances, htmlAttributes: new { @class = "control-label " })
                                         <span style="color:red;">*</span>
                                         <div class="manage-radio">
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNMotorAppliances, "1", new { @id = "MotorAppliancesYes" }) Yes
+                                                @Html.RadioButtonFor(model => model.YNMotorAppliances, "Yes", new { @id = "MotorAppliancesYes" }) Yes
                                             </label>
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNMotorAppliances, "2", new { @id = "MotorAppliancesNo" }) No
+                                                @Html.RadioButtonFor(model => model.YNMotorAppliances, "No", new { @id = "MotorAppliancesNo" }) No
                                             </label>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.YNMotorAppliances, "", new { @class = "text-danger" })
                                     </div>
-                                </div>
-
-                                <div class="form-row">
-                                    @*<div class="form-group col-md-6">
-                                        @Html.LabelFor(model => model.OtherSourceEnergyMachineId, htmlAttributes: new { @class = "control-label" })
-                                        <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.DropDownListFor(model => model.OtherSourceEnergyMachineId, CommonModel.GetALLMSM(), null, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.OtherSourceEnergyMachineId, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>*@
 
                                     <div class="form-group col-md-6">
                                         @Html.LabelFor(model => model.YNGovtSchemessubsidy, htmlAttributes: new { @class = "control-label " })
                                         <span style="color:red;">*</span>
                                         <div class="manage-radio">
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNGovtSchemessubsidy, "1", new { @id = "GovtSchemessubsidyYes" }) Yes
+                                                @Html.RadioButtonFor(model => model.YNGovtSchemessubsidy, "Yes", new { @id = "GovtSchemessubsidyYes" }) Yes
                                             </label>
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNGovtSchemessubsidy, "2", new { @id = "GovtSchemessubsidyNo" }) No
+                                                @Html.RadioButtonFor(model => model.YNGovtSchemessubsidy, "No", new { @id = "GovtSchemessubsidyNo" }) No
                                             </label>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.YNGovtSchemessubsidy, "", new { @class = "text-danger" })
@@ -594,10 +612,10 @@
                                         <span style="color:red;">*</span>
                                         <div class="manage-radio">
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNFinancialSupport, "1", new { @id = "FinancialSupportYes" }) Yes
+                                                @Html.RadioButtonFor(model => model.YNFinancialSupport, "Yes", new { @id = "FinancialSupportYes" }) Yes
                                             </label>
                                             <label>
-                                                @Html.RadioButtonFor(model => model.YNFinancialSupport, "2", new { @id = "FinancialSupportNo" }) No
+                                                @Html.RadioButtonFor(model => model.YNFinancialSupport, "No", new { @id = "FinancialSupportNo" }) No
                                             </label>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.YNFinancialSupport, "", new { @class = "text-danger" })
@@ -703,8 +721,10 @@
                     BindPanchayatList("GPId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val());
                 });
                 $('#TypeofEnterpriseBusinId').change(function () {
+                    $("#EnterpriseBusinId_other").removeAttr('required');
                     if ($(this).val() == '25') { // Assuming '25' is the value for "Others"
                         $('#EnterpriseBusinId_other_div').show();
+                        $("#EnterpriseBusinId_other_div").attr('required', 'required');
                     } else {
                         $('#EnterpriseBusinId_other_div').hide();
                         $('#EnterpriseBusinId_other').val(''); // Clear the input if hidden
@@ -713,8 +733,10 @@
 
                 // Show/Hide for Nature of Space
                 $('#NatureofSpaceId').change(function () {
+                    $("#NatureofSpace_other").removeAttr('required');
                     if ($(this).val() == '4') { // Assuming '4' is the value for "Others"
                         $('#NatureofSpace_other_div').show();
+                        $("#NatureofSpace_other").attr('required', 'required');
                     } else {
                         $('#NatureofSpace_other_div').hide();
                         $('#NatureofSpace_other').val(''); // Clear the input if hidden
@@ -727,14 +749,23 @@
                 $('#PrimaryMobileNo').change(function () {
                     SamePryMobileNoOnchg();
                 })
+                $('input[type=radio][name=YNDieselGenerator]').change(function () {
+                    $('.div-DG').hide(); $('#DGYesAverageDailyHours').val(''); $('#DGCapacity').val('');
+                    $('#DGYesAverageDailyHours').removeAttr('required'); $('#DGCapacity').removeAttr('required');
+                    if ($(this).val() == 'Yes') {
+                        $('.div-DG').show(); $("#DGYesAverageDailyHours").attr('required', 'required'); $("#DGCapacity").attr('required', 'required');
+                    }
+                })
 
 
             });
         function SamePryMobileNoOnchg() {
             $('#WhatsAppMobileNo').val(''); $('#WhatsAppMobileNo').removeAttr('readonly');
+            $('#WhatsAppMobileNo').removeAttr('required');
             if ($("#IsSamePrimayMobileNo").prop('checked') == true) {
                 $('#WhatsAppMobileNo').attr('readonly', 'readonly');
                 $('#WhatsAppMobileNo').val($('#PrimaryMobileNo').val());
+                $('#WhatsAppMobileNo').attr('required', 'required');
             }
         }
         //Submit Data
@@ -826,6 +857,7 @@
             toastr.error("Error", '@(Enums.eReturnReg.LatLong)');
             return false;
         }
+
         function showPosition(position) {
             var lat = position.coords.latitude;
             var lang = position.coords.longitude;

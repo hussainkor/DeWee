@@ -539,6 +539,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="NatureofSpace_other" Type="nvarchar" MaxLength="500" />
           <Property Name="YNGridconnection" Type="varchar" MaxLength="10" />
           <Property Name="YNDieselGenerator" Type="varchar" MaxLength="10" />
+          <Property Name="DGYesAverageDailyHours" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="DGCapacity" Type="int" />
           <Property Name="YNMotorAppliances" Type="varchar" MaxLength="10" />
           <Property Name="OtherSourceEnergyMachineId" Type="int" />
           <Property Name="YNGovtSchemessubsidy" Type="varchar" MaxLength="10" />
@@ -1538,6 +1540,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="NatureofSpace_other" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="YNGridconnection" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="YNDieselGenerator" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DGYesAverageDailyHours" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="DGCapacity" Type="Int32" />
           <Property Name="YNMotorAppliances" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="OtherSourceEnergyMachineId" Type="Int32" />
           <Property Name="YNGovtSchemessubsidy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -2176,6 +2180,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
                 <ScalarProperty Name="YNGovtSchemessubsidy" ColumnName="YNGovtSchemessubsidy" />
                 <ScalarProperty Name="OtherSourceEnergyMachineId" ColumnName="OtherSourceEnergyMachineId" />
                 <ScalarProperty Name="YNMotorAppliances" ColumnName="YNMotorAppliances" />
+                <ScalarProperty Name="DGCapacity" ColumnName="DGCapacity" />
+                <ScalarProperty Name="DGYesAverageDailyHours" ColumnName="DGYesAverageDailyHours" />
                 <ScalarProperty Name="YNDieselGenerator" ColumnName="YNDieselGenerator" />
                 <ScalarProperty Name="YNGridconnection" ColumnName="YNGridconnection" />
                 <ScalarProperty Name="NatureofSpace_other" ColumnName="NatureofSpace_other" />
