@@ -1,15 +1,5 @@
-lang-lat@charset "UTF-8";
-/*
-0 - 600: Phone
-600 - 900: Tablet portrait
-900 - 1200: Tablet landscape
-1200 - 1800: Normal styles
-1800+ : Big Desktop
-1em = 16px
-The smaller device rules always should write below the bigger device rules
-Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
-*/
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+/*@import url('../icons/font-awesome/css/font-awesome.min.css');*/
 @import url(../icons/font-awesome/css/font-awesome.min.css);
 @import url(../icons/simple-line-icons/css/simple-line-icons.css);
 @import url(../icons/weather-icons/css/weather-icons.min.css);
@@ -25,7 +15,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 @import url(../plugins/metismenu/css/metisMenu.min.css);
 @import url(../plugins/bootstrap-select/dist/css/bootstrap-select.min.css);
 .gradient-1, .dropdown-mega-menu .ext-link.link-1 a, .morris-hover, .datamaps-hoverover {
-  background-image: linear-gradient(230deg, #759bff, #843cf6); }
+    background-image: linear-gradient(230deg, #759bff, #843cf6);
+}
 
 .gradient-2, .dropdown-mega-menu .ext-link.link-3 a {
   background-image: linear-gradient(230deg, #fc5286, #fbaaa2); }
@@ -7616,7 +7607,7 @@ sub {
     left: 1.4375rem;
     text-align: center;
     top: 46%;
-    background-color: #272797 !important;
+    /*background-color: #272797 !important;*/
     transform: translateY(-50%);
 }
   @media (max-width: 575.98px) {
@@ -14724,8 +14715,8 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
     float: right;
     /*  margin: 20px;
         padding: 20px;*/
-    border: 1px solid;
-    background: #ccc;
+    /*border: 1px solid;
+    background: #ccc;*/
 }
 
 .lang-lat {
@@ -14879,7 +14870,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 .cam-text {
     padding: 10px;
-    background: #F4F4F4;
+    /*background: #F4F4F4;*/
     color: #000000;
     border: none
 }
@@ -14925,4 +14916,16 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
     z-index: 5;
     cursor: pointer;
     border-radius: 20px
+}
+.photo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: 1px solid #333333;*/
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 768px) {
+    .page-bread {
+        margin: -25px 0px -10px !important;
+    }
 }
