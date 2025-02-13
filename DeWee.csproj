@@ -1002,6 +1002,7 @@
     <Content Include="Views\Beneficiary\AddBeneficiary.cshtml" />
     <Content Include="Views\Beneficiary\BeneficiaryList.cshtml" />
     <Content Include="Views\Beneficiary\_BeneficiaryData.cshtml" />
+    <Content Include="Views\Beneficiary\AddBeneficiaryform.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

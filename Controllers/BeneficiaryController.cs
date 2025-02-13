@@ -16,6 +16,7 @@ using DocumentFormat.OpenXml.EMMA;
 
 namespace DeWee.Controllers
 {
+    [Authorize]
     public class BeneficiaryController : Controller
     {
         DeWee_DBEntities db = new DeWee_DBEntities();
@@ -263,6 +264,11 @@ namespace DeWee.Controllers
                 viewResult.View.Render(viewContext, sw);
                 return sw.GetStringBuilder().ToString();
             }
+        }
+
+        public ActionResult AddBeneficiaryform()
+        {
+            return View();
         }
     }
 }

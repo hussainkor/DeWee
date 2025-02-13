@@ -1,4 +1,4 @@
-@charset "UTF-8";
+lang-lat@charset "UTF-8";
 /*
 0 - 600: Phone
 600 - 900: Tablet portrait
@@ -14856,10 +14856,20 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 .cam-btn {
     position: absolute;
-    left: 25%;
+    left: 45%;
     bottom: 10px;
     padding: 10px 20px;
     background: #6aa40b;
+    color: #fff;
+    border-radius: 7px;
+    border: none
+}
+.camswit-btn {
+    position: absolute;
+    left: 1%;
+    bottom: 10px;
+    padding: 10px 20px;
+    background: #f29d56;
     color: #fff;
     border-radius: 7px;
     border: none
