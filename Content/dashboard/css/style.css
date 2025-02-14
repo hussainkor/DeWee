@@ -14929,3 +14929,13 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
         margin: -25px 0px -10px !important;
     }
 }
+@media screen and (max-width: 450px) {
+    .cam-btn {
+        right: 1%;
+        left: unset !important;
+    }
+    .cam-btn, .camswit-btn {
+        padding: 7px 12px;
+    }
+
+}
