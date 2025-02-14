@@ -21,10 +21,26 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.css" rel="stylesheet" />
-
+    <style>
+        .scroll-up-icon, .scroll-down-icon {
+            position: fixed;
+            right: 5px;            
+            width: 36px;
+            z-index: 10;
+            cursor: pointer
+        }
+        .scroll-up-icon {
+            bottom: 12%;
+        }
+        .scroll-down-icon {
+            bottom: 5%;
+        }
+    </style>
 
 </head>
 <body>
+    <img src="~/Content/dashboard/images/scroll-up.png" alt="move up" class="scroll-up-icon" onClick="scrollSmoothToTop()"/>
+    <img src="~/Content/dashboard/images/scroll-down.png" alt="move down" class="scroll-down-icon" onClick="scrollSmoothToBottom()" />
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -48,8 +64,8 @@
     @*@Scripts.Render("~/bundles/bootstrap")*@
     <script src="~/Content/dashboard/plugins/common/common.min.js"></script>
     @RenderSection("scripts", required: false)
- 
-    
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
     <script src="~/Content/dashboard/js/custom.min.js"></script>
@@ -82,6 +98,20 @@
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.dataTables.js"></script>
+    <script>
+        const scrollingElement = (document.scrollingElement || document.body);
 
+        const scrollSmoothToBottom = () => {
+            $(scrollingElement).animate({
+                scrollTop: document.body.scrollHeight,
+            }, 500);
+        }
+
+        const scrollSmoothToTop = () => {
+            $(scrollingElement).animate({
+                scrollTop: 0,
+            }, 500);
+        }
+    </script>
 </body>
 </html>
