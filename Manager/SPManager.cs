@@ -39,6 +39,12 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }
+        public static DataTable Get_Usp_BeneficiaryDetails()
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_BeneficiaryDetails");
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
         public static DataSet USP_GetDashboardLegend()
         {
             StoredProcedure sp = new StoredProcedure("USP_GetDashboardLegend");

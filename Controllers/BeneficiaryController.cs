@@ -233,7 +233,7 @@ namespace DeWee.Controllers
                 return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
             }
         }
-
+        
         [HttpGet]
         public async Task<JsonResult> GetAddress(double lat, double lng)
         {

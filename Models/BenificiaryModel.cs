@@ -185,6 +185,9 @@ namespace DeWee.Models
         public string Location { get; set; }
         public string Accuracy { get; set; }
 
+        [Display(Name = "Created On")]
+        public DateTime CreatedOn { get; set; }
+
     }
     public class DisplayName
     {
