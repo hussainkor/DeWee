@@ -253,7 +253,17 @@ namespace DeWee.Controllers
                 }
             }
         }
+        public ActionResult LoadBeneficiaryView(string BfyId)
+        {
+            DataTable dt = new DataTable();
+            dt = SPManager.Get_Usp_BeneficiaryDetails(BfyId);
+            return PartialView("_BeneficiaryView", dt); // Return the partial view
+        }
 
+        //public ActionResult AddBeneficiaryform()
+        //{
+        //    return View();
+        //}
         private string ConvertViewToString(string viewName, object model)
         {
             ViewData.Model = model;
@@ -264,11 +274,6 @@ namespace DeWee.Controllers
                 viewResult.View.Render(viewContext, sw);
                 return sw.GetStringBuilder().ToString();
             }
-        }
-
-        public ActionResult AddBeneficiaryform()
-        {
-            return View();
         }
     }
 }

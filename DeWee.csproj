@@ -996,13 +996,15 @@
     <Content Include="Views\Participant\AddParticipant.cshtml" />
     <Content Include="Views\Participant\ParticipantList.cshtml" />
     <Content Include="Views\Participant\_PData.cshtml" />
-    <Content Include="Scripts\JS\UPMap.js" />
+    <Content Include="Scripts\JS\UPMap_OLd.js" />
     <Content Include="Views\Home\ImageLoad.cshtml" />
     <Content Include="Views\Participant\ParticipantDownload.cshtml" />
     <Content Include="Views\Beneficiary\AddBeneficiary.cshtml" />
     <Content Include="Views\Beneficiary\BeneficiaryList.cshtml" />
     <Content Include="Views\Beneficiary\_BeneficiaryData.cshtml" />
-    <Content Include="Views\Beneficiary\AddBeneficiaryform.cshtml" />
+    <Content Include="Views\Beneficiary\AddBeneficiaryform_old.cshtml" />
+    <Content Include="Scripts\JS\UPMap.js" />
+    <Content Include="Views\Beneficiary\_BeneficiaryView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

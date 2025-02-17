@@ -5,6 +5,7 @@
     <thead>
         <tr>
             <th>Solar Enterprise</th>
+            <th>View</th>
             <th>State</th>
             <th>District</th>
             <th>Block</th>
@@ -26,7 +27,8 @@
                 foreach (DataRow row in Model.Rows)
                 {
                     <tr>
-                        <td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /></td>
+                        <td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /> </td>
+                        <td><button class="modal-btn btn-warning" data-id="@row["BeneficiaryId"]">View</button></td>
                         <td>@row["StateName"]</td>
                         <td>@row["DistrictName"]</td>
                         <td>@row["BlockName"]</td>

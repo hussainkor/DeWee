@@ -433,9 +433,9 @@
                                             <label>
                                                 @Html.RadioButtonFor(model => model.YNGovtSchemessubsidy, "Yes", new { @id = "GovtSchemessubsidyYes" }) Yes
                                             </label>
-                                            @*<label>
+                                            <label>
                                                 @Html.RadioButtonFor(model => model.YNGovtSchemessubsidy, "No", new { @id = "GovtSchemessubsidyNo" }) No
-                                            </label>*@
+                                            </label>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.YNGovtSchemessubsidy, "", new { @class = "text-danger" })
                                     </div>
@@ -603,8 +603,13 @@
                 $("#DOB").datepicker({
                     changeMonth: true,
                     changeYear: true,
-                    //showButtonPanel: true,
+                   // showButtonPanel: true,
                     dateFormat: 'dd-M-yy',
+                 //   defaultDate: new Date(1990, 0, 1) // Sets the default date to January 1, 1990
+                    // yearRange: '1964:1991',
+                    yearRange: '1900:-15', // Year range: 1900 to 18 years ago
+                    maxDate: '-15Y', // Maximum date: 18 years ago from today
+                    defaultDate: '-15Y', // Default date: 18 years ago from today
                 });
                 $('#DOB').change(function () {
                     var agecla = getAge($(this).val());
