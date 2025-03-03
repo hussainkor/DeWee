@@ -57,6 +57,8 @@ namespace DeWee.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            Session.Clear();
+            Session.Abandon();
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -68,6 +70,8 @@ namespace DeWee.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            Session.Clear();
+            Session.Abandon();
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -80,6 +84,7 @@ namespace DeWee.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -391,6 +396,8 @@ namespace DeWee.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            Session.Clear();
+            Session.Abandon();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

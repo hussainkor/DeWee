@@ -10,6 +10,7 @@ using System.Web.Mvc;
 namespace DeWee.Controllers
 {
     [Authorize]
+    [SessionCheck]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -23,6 +24,7 @@ namespace DeWee.Controllers
             {
                 if (ds.Tables.Count > 0)
                 {
+                    //ViewBag.Markers = JsonConvert.SerializeObject(ds);
                     var dsdata = JsonConvert.SerializeObject(ds);
                     return Json(new { IsSuccess = true, Data = dsdata }, JsonRequestBehavior.AllowGet);
                 }

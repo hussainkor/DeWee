@@ -28,7 +28,6 @@ namespace DeWee.Models
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<mst_Block> mst_Block { get; set; }
         public virtual DbSet<mst_BusinessInvestment> mst_BusinessInvestment { get; set; }
         public virtual DbSet<mst_BusinessOwned> mst_BusinessOwned { get; set; }
@@ -65,5 +64,6 @@ namespace DeWee.Models
         public virtual DbSet<tbl_IndtSolarization> tbl_IndtSolarization { get; set; }
         public virtual DbSet<mst_Relative> mst_Relative { get; set; }
         public virtual DbSet<tbl_Beneficiary> tbl_Beneficiary { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     }
 }

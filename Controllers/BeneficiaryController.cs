@@ -16,7 +16,9 @@ using DocumentFormat.OpenXml.EMMA;
 
 namespace DeWee.Controllers
 {
+
     [Authorize]
+    [SessionCheck]
     public class BeneficiaryController : Controller
     {
         DeWee_DBEntities db = new DeWee_DBEntities();
@@ -89,6 +91,7 @@ namespace DeWee.Controllers
             return View(model);
         }
         [HttpPost]
+        [SessionCheck]
         public ActionResult AddBeneficiary(BeneficiaryModel model)
         {
             JsonResponseData response = new JsonResponseData();
@@ -160,13 +163,13 @@ namespace DeWee.Controllers
                         tbl.IsActive = true;
                         if (model.BeneficiaryId_pk == Guid.Empty)
                         {
-                            tbl.CreatedBy = User.Identity.Name;
+                            tbl.CreatedBy = MvcApplication.CUser.UserId;
                             tbl.CreatedOn = DateTime.Now;
                             db.tbl_Beneficiary.Add(tbl);
                         }
                         else
                         {
-                            tbl.UpdatedBy = User.Identity.Name;
+                            tbl.UpdatedBy = MvcApplication.CUser.UserId;
                             tbl.UpdatedOn = DateTime.Now;
                         }
 

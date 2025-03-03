@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.625" />
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="DeWee_DBModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_Block" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_BusinessInvestment" Width="1.5" PointX="2.75" PointY="6.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_BusinessOwned" Width="1.5" PointX="4.75" PointY="6.75" />
@@ -42,12 +41,13 @@
         <EntityTypeShape EntityType="DeWee_DBModel.mst_NatureSpace" Width="1.5" PointX="17.75" PointY="0.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_SolarInstallation" Width="1.5" PointX="4.75" PointY="17.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_SpaceAvailable" Width="1.5" PointX="18.75" PointY="4.75" />
-        <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="DeWee_DBModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_IndtSolarization" Width="1.5" PointX="13.375" PointY="15.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_Relative" Width="1.5" PointX="0.75" PointY="19.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_Beneficiary" Width="1.5" PointX="13.375" PointY="17.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.AspNetUser" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DeWee_DBModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

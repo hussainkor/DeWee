@@ -101,6 +101,26 @@ namespace DeWee.Models
 
         public string Code { get; set; }
     }
+    public class UserViewModel
+    {
+        [Display(Name = "User Id")]
+        public string UserId { get; set; }
+        [Display(Name = "Role Id")]
+        public int RoleId { get; set; }
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+        [Display(Name = "Phone No")]
+        public string PhoneNumber { get; set; }
+        [Display(Name = "Location")]
+        public string Location { get; set; }
+        [Display(Name = "Role Name")]
+        public string RoleName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+        public string LockoutEnabled { get; set; }
+    }
 
     public class ForgotPasswordViewModel
     {
