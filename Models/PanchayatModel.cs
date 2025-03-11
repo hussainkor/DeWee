@@ -14,6 +14,9 @@ namespace DeWee.Models
         }
         public int GPId_pk { get; set; }
 
+        [Display(Name = "State")]
+        public int StateId { get; set; }
+
         [Display(Name = "District")]
         public int DistrictId_fk { get; set; }
 
@@ -33,5 +36,11 @@ namespace DeWee.Models
 
         [Display(Name = "")]
         public int CLFId_fk { get; set; }
+
+        [Display(Name = "Created By")]
+        public string CreatedBy { get; set; }
+
+        [Display(Name = "Created On")]
+        public DateTime CreatedOn { get; set; }
     }
 }

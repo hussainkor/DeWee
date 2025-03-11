@@ -22,11 +22,12 @@ namespace DeWee.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult AddPanchayat(PanchayatModel model)
         {
-            DeWee_DBEntities dbe = new DeWee_DBEntities();
-            var tbl = model.GPId_pk > 0 ? dbe.mst_GP.Find(model.GPId_pk) : new mst_GP();
+            DeWee_DBEntities db = new DeWee_DBEntities();
+            var tbl = model.GPId_pk > 0 ? db.mst_GP.Find(model.GPId_pk) : new mst_GP();
             int res = 0;
             try
             {
@@ -34,7 +35,7 @@ namespace DeWee.Controllers
                 {
                     return Json(new { success = false, message = Enums.GetEnumDescription(Enums.eReturnReg.AllFieldsRequired) });
                 }
-                bool isExist = dbe.mst_GP.Any(x => x.GPName == model.GPName.Trim() && x.DistrictId_fk == model.DistrictId_fk && x.BlockId_fk == model.BlockId_fk&& x.GPId_pk != model.GPId_pk); 
+                bool isExist = dbe.mst_GP.Any(x => x.GPName == model.GPName.Trim() && x.DistrictId_fk == model.DistrictId_fk && x.BlockId_fk == model.BlockId_fk && x.GPId_pk != model.GPId_pk);
 
                 if (isExist)
                 {
@@ -48,6 +49,8 @@ namespace DeWee.Controllers
                     tbl.GPName = model.GPName.Trim();
                     tbl.IsActive = true;
                     tbl.OrderBy = maxOrderBy + 1;
+                    tbl.CreatedBy = MvcApplication.CUser.UserId;
+                    tbl.CreatedOn = DateTime.Now;
                     db.mst_GP.Add(tbl);
                     res = db.SaveChanges();
                 }
@@ -56,7 +59,7 @@ namespace DeWee.Controllers
                     tbl.GPId_pk = model.GPId_pk;
                     tbl.GPName = model.GPName.Trim();
                     tbl.IsActive = true;
-                    res = dbe.SaveChanges();
+                    res = db.SaveChanges();
                 }
 
                 if (res > 0)
@@ -70,10 +73,10 @@ namespace DeWee.Controllers
             }
         }
 
-        public ActionResult GetPanchayatList()
+        public ActionResult GetRawPanchayatList()
         {
-            DeWee_DBEntities dbe = new DeWee_DBEntities();
-            var tbl = dbe.mst_GP.ToList();
+            DeWee_DBEntities db = new DeWee_DBEntities();
+            var tbl = db.mst_GP.ToList();
             try
             {
                 if (tbl.Count > 0)
@@ -127,7 +130,7 @@ namespace DeWee.Controllers
                 return Json(new { IsSuccess = false, res = "There was a communication error." }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult GetDistrictList(int SelectAll, int SId=1)
+        public ActionResult GetDistrictList(int SelectAll, int SId = 1)
         {
             try
             {
@@ -231,7 +234,7 @@ namespace DeWee.Controllers
         {
             try
             {
-                var items = CommonModel.GetALLVO(SelectAll, SId, DId, BId, PId, CId,VId);
+                var items = CommonModel.GetALLVO(SelectAll, SId, DId, BId, PId, CId, VId);
                 if (items != null)
                 {
                     if (items.Count > 0)

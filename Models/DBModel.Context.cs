@@ -37,7 +37,6 @@ namespace DeWee.Models
         public virtual DbSet<mst_District> mst_District { get; set; }
         public virtual DbSet<mst_ElectricityConsumption> mst_ElectricityConsumption { get; set; }
         public virtual DbSet<mst_ElectricityUsed> mst_ElectricityUsed { get; set; }
-        public virtual DbSet<mst_GP> mst_GP { get; set; }
         public virtual DbSet<mst_MachineryPower> mst_MachineryPower { get; set; }
         public virtual DbSet<mst_MoneySavedSE> mst_MoneySavedSE { get; set; }
         public virtual DbSet<mst_Month> mst_Month { get; set; }
@@ -65,5 +64,6 @@ namespace DeWee.Models
         public virtual DbSet<mst_Relative> mst_Relative { get; set; }
         public virtual DbSet<tbl_Beneficiary> tbl_Beneficiary { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<mst_GP> mst_GP { get; set; }
     }
 }

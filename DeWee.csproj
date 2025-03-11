@@ -1007,8 +1007,8 @@
     <Content Include="Views\Beneficiary\AddBeneficiaryform_old.cshtml" />
     <Content Include="Scripts\JS\UPMap.js" />
     <Content Include="Views\Beneficiary\_BeneficiaryView.cshtml" />
-    <Content Include="Views\Master\AddPanchayat.cshtml" />
     <Content Include="Views\Master\_PanchayatData.cshtml" />
+    <Content Include="Views\Master\AddPanchayat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

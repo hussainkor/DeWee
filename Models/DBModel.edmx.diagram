@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="DeWee_DBModel.mst_District" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_ElectricityConsumption" Width="1.5" PointX="8.75" PointY="9.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_ElectricityUsed" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="DeWee_DBModel.mst_GP" Width="1.5" PointX="2.75" PointY="10.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_MachineryPower" Width="1.5" PointX="10.75" PointY="4.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_MoneySavedSE" Width="1.5" PointX="4.75" PointY="10.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_Month" Width="1.5" PointX="10.75" PointY="8.75" />
@@ -48,6 +47,7 @@
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DeWee_DBModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_GP" Width="1.5" PointX="7.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

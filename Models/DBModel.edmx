@@ -261,6 +261,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_EnterpriseMachine' does not have 
           <Property Name="IsActive" Type="bit" />
           <Property Name="OrderBy" Type="int" />
           <Property Name="CLFId_fk" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="130" />
+          <Property Name="CreatedOn" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DeWee_DB.dbo.mst_LoanDescribeSource' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -881,7 +883,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySet Name="mst_District" EntityType="DeWee_DBModel.mst_District" />
           <EntitySet Name="mst_ElectricityConsumption" EntityType="DeWee_DBModel.mst_ElectricityConsumption" />
           <EntitySet Name="mst_ElectricityUsed" EntityType="DeWee_DBModel.mst_ElectricityUsed" />
-          <EntitySet Name="mst_GP" EntityType="DeWee_DBModel.mst_GP" />
           <EntitySet Name="mst_MachineryPower" EntityType="DeWee_DBModel.mst_MachineryPower" />
           <EntitySet Name="mst_MoneySavedSE" EntityType="DeWee_DBModel.mst_MoneySavedSE" />
           <EntitySet Name="mst_Month" EntityType="DeWee_DBModel.mst_Month" />
@@ -921,6 +922,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="mst_GP" EntityType="DeWee_DBModel.mst_GP" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -1066,19 +1068,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="mst_GP">
-          <Key>
-            <PropertyRef Name="GPId_pk" />
-          </Key>
-          <Property Name="GPId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DistrictId_fk" Type="Int32" />
-          <Property Name="BlockId_fk" Type="Int32" />
-          <Property Name="GPCode" Type="Int32" />
-          <Property Name="GPName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="OrderBy" Type="Int32" />
-          <Property Name="CLFId_fk" Type="Int32" />
         </EntityType>
         <EntityType Name="mst_MachineryPower">
           <Key>
@@ -1576,6 +1565,21 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <End Type="DeWee_DBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
+        <EntityType Name="mst_GP">
+          <Key>
+            <PropertyRef Name="GPId_pk" />
+          </Key>
+          <Property Name="GPId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId_fk" Type="Int32" />
+          <Property Name="BlockId_fk" Type="Int32" />
+          <Property Name="GPCode" Type="Int32" />
+          <Property Name="GPName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OrderBy" Type="Int32" />
+          <Property Name="CLFId_fk" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1731,20 +1735,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
                 <ScalarProperty Name="ElectricityUsedInHindi" ColumnName="ElectricityUsedInHindi" />
                 <ScalarProperty Name="ElectricityUsedInEng" ColumnName="ElectricityUsedInEng" />
                 <ScalarProperty Name="ElectricityUsed_Id" ColumnName="ElectricityUsed_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="mst_GP">
-            <EntityTypeMapping TypeName="DeWee_DBModel.mst_GP">
-              <MappingFragment StoreEntitySet="mst_GP">
-                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="GPName" ColumnName="GPName" />
-                <ScalarProperty Name="GPCode" ColumnName="GPCode" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="GPId_pk" ColumnName="GPId_pk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2244,6 +2234,22 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="mst_GP">
+            <EntityTypeMapping TypeName="DeWee_DBModel.mst_GP">
+              <MappingFragment StoreEntitySet="mst_GP">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="GPName" ColumnName="GPName" />
+                <ScalarProperty Name="GPCode" ColumnName="GPCode" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="GPId_pk" ColumnName="GPId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
