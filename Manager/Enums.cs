@@ -91,7 +91,9 @@ namespace DeWee.Manager
             [Description("All fields are mandatory !!.")]
             AllFieldsRequired = 7,
             [Description("Please Enable Geolocation Latitude and Longitude !!.")]
-            LatLong = 8
+            LatLong = 8,
+            [Description("Record Not Inserted.")]
+            NotInsert = 7,
         }
 
         public enum eIsStatus
