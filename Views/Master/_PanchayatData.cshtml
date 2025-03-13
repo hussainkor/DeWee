@@ -20,7 +20,13 @@
                             <td>@(sno++)</td>
                             <td>@row.GPName</td>
                             <td>
-                                <button class="btn btn-primary btn-sm edit-btn" data-id="@row.GPId_pk" data-name="@row.GPName" data-districtid="@row.DistrictId_fk" data-blockid="@row.BlockId_fk">Edit</button>
+                                <button class="btn btn-primary btn-sm edit-btn"
+                                        data-id="@row.GPId_pk"
+                                        data-name="@row.GPName"
+                                        data-districtid="@row.DistrictId_fk"
+                                        data-blockid="@row.BlockId_fk">
+                                    Edit
+                                </button>
                             </td>
                         </tr>
                     }

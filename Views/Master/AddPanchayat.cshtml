@@ -66,52 +66,111 @@
         </div>
     </div>
 </div>
+
+<div class="rows">
+    <div class="col-lg-12">
+        <div class="card">
+            <div id="subdata"></div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
-@Scripts.Render("~/bundles/jqueryval")
- <script src="~/Scripts/JS/Master.js"></script>
-        <script>
-            $(document).ready(function () {
-                debugger;
-                $(".select2").select2();
-                BindStateList("StateId", "", 0);
-                $('#StateId').prop('selectedIndex', 1);
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JS/Master.js"></script>
+    <script>
+        $(document).ready(function () {
+            debugger;
+            $(".select2").select2();
+            BindStateList("StateId", "", 0);
+            $('#StateId').prop('selectedIndex', 1);
+            BindDistrictList("DistrictId_fk", "", 0, $('#StateId').val());
+
+            $('#StateId').change(function () {
                 BindDistrictList("DistrictId_fk", "", 0, $('#StateId').val());
-                $('#StateId').change(function () {
-                    BindDistrictList("DistrictId", "", 0, $('#StateId').val());
-                });
-                $('#DistrictId_fk').change(function () {
-                    BindBlockList("BlockId_fk", "", 0, $('#StateId').val(), $('#DistrictId_fk').val());
-                });
+                $('#BlockId_fk').val(null).trigger('change');
+                $('#subdata').empty(); 
+            });
 
+            $('#DistrictId_fk').change(function () {
+                BindBlockList("BlockId_fk", "", 0, $('#StateId').val(), $('#DistrictId_fk').val());
+                $('#BlockId_fk').val(null).trigger('change'); 
+                $('#subdata').empty(); 
+            });
 
-                $("#formid").on("submit", function (event) {
-                    event.preventDefault();
+            $('#BlockId_fk').change(function () {
+                LoadData(); 
+            });
 
-                    var formData = new FormData(this);
-                    debugger;
-                    if (confirm('Are you sure you want to submit the form?')) {
-                        $.ajax({
-                            type: "POST",
-                            url: "/Master/AddPanchayat/",
-                            data: formData,
-                            processData: false,
-                            contentType: false,
-                            success: function (resp) {
-                                if (resp.success) {
-                                    toastr.success("Success", resp.message);
-                                    $("#formid")[0].reset();
-                                } else {
-                                    toastr.error("Error", resp.message);
-                                }
-                            },
-                            error: function (req, error) {
-                                var errorMsg = req.statusText ? req.statusText : error;
-                                toastr.error("Error", `There was a communication error: ${errorMsg}`);
+            $(document).on("click", ".edit-btn", function () {
+                let GPId = $(this).data("id");
+                let GPName = $(this).data("name");
+                let DistrictId = $(this).data("districtid");
+                let BlockId = $(this).data("blockid");
+
+                $("#GPId_pk").val(GPId);
+                $("#GPName").val(GPName);
+                $("#DistrictId_fk").val(DistrictId).trigger('change'); 
+                $("#BlockId_fk").val(BlockId).trigger('change'); 
+            });
+
+            $("#formid").on("submit", function (event) {
+                event.preventDefault();
+
+                var formData = new FormData(this);
+                debugger;
+                if (confirm('Are you sure you want to submit the form?')) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Master/AddPanchayat/",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (resp) {
+                            if (resp.success) {
+                                toastr.success("Success", resp.message);
+                                $("#formid")[0].reset();
+                                $('#subdata').empty(); 
+                            } else {
+                                toastr.error("Error", resp.message);
                             }
-                        });
+                        },
+                        error: function (req, error) {
+                            var errorMsg = req.statusText ? req.statusText : error;
+                            toastr.error("Error", `There was a communication error: ${errorMsg}`);
+                        }
+                    });
+                }
+            });
+        });
+
+        function LoadData() {
+            let districtId = $('#DistrictId_fk').val();
+            let blockId = $('#BlockId_fk').val();
+
+            if (districtId && blockId) { 
+                $.ajax({
+                    type: "GET",
+                    url: "/Master/GetRawPanchayatList/",
+                    data: { SelectAll: 0, SId: $('#StateId').val(), DId: districtId, BId: blockId },
+                    success: function (resp) {
+                        if (resp.IsSuccess) {
+                            debugger;
+                            $('#subdata').html(resp.Data);
+                            $('#tbl').DataTable();
+                            toastr.success("Data loaded successfully.");
+                        } else {
+                            $('#subdata').html('<p>No Panchayat data available.</p>');
+                            toastr.error(resp.Data);
+                        }
+                    },
+                    error: function (req, error) {
+                        toastr.error("Communication error: " + (error === 'error' ? req.statusText : error));
                     }
                 });
-            });
-        </script>
+            } else {
+                $('#subdata').html('<p>Please select both District and Block to load Panchayat data.</p>');
+            }
+        }
+    </script>
 }
-
