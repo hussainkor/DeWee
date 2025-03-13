@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
 
 namespace DeWee.Controllers
 {
@@ -22,50 +23,72 @@ namespace DeWee.Controllers
         {
             return View();
         }
+        //[HttpPost]
+        //public JsonResult AddPanchayat(PanchayatModel model)
+        //{
+        //    try
+        //    {
+        //        if (model == null)
+        //            return Json(new { success = false, message = "Model is null." });
+
+        //        if (!ModelState.IsValid)
+        //        {
+        //            var errors = string.Join("; ", ModelState.Values
+        //                .SelectMany(v => v.Errors)
+        //                .Select(e => e.ErrorMessage));
+
+        //            return Json(new { success = false, message = "Validation failed: " + errors });
+        //        }
+
+        //        var tbl = new mst_GP
+        //        {
+        //            DistrictId_fk = model.DistrictId_fk,
+        //            BlockId_fk = model.BlockId_fk,
+        //            GPName = model.GPName.Trim(),
+        //            //GPCode = model.GPCode,
+        //            IsActive = model.IsActive,
+        //            //CreatedBy = MvcApplication.CUser.UserId,
+        //            //CreatedOn = DateTime.Now
+        //        };
+
+        //        db.mst_GP.Add(tbl);
+        //        db.SaveChanges();
+
+        //        return Json(new { success = true, message = Enums.GetEnumDescription(Enums.eReturnReg.Insert) });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { success = false, message = $"Error: {ex.Message}" });
+        //    }
+        //}
 
         [HttpPost]
-        public ActionResult AddPanchayat(PanchayatModel model)
+        public JsonResult AddPanchayat(PanchayatModel model)
         {
-            DeWee_DBEntities db = new DeWee_DBEntities();
-            var tbl = model.GPId_pk > 0 ? db.mst_GP.Find(model.GPId_pk) : new mst_GP();
-            int res = 0;
             try
             {
-                if (string.IsNullOrEmpty(model.GPName))
-                {
-                    return Json(new { success = false, message = Enums.GetEnumDescription(Enums.eReturnReg.AllFieldsRequired) });
-                }
-                bool isExist = dbe.mst_GP.Any(x => x.GPName == model.GPName.Trim() && x.DistrictId_fk == model.DistrictId_fk && x.BlockId_fk == model.BlockId_fk && x.GPId_pk != model.GPId_pk);
+                bool isExist = db.mst_GP.Any(x => x.GPName == model.GPName.Trim() && x.DistrictId_fk == model.DistrictId_fk && x.BlockId_fk == model.BlockId_fk && x.GPId_pk != model.GPId_pk);
 
                 if (isExist)
                 {
                     return Json(new { success = false, message = Enums.GetEnumDescription(Enums.eReturnReg.Already) });
                 }
-                int maxOrderBy = db.mst_GP.Select(j => (int?)j.OrderBy).DefaultIfEmpty(0).Max() ?? 0;
-                if (model.GPId_pk == 0)
+                //int maxOrderBy = db.mst_GP.Select(j => (int?)j.OrderBy).DefaultIfEmpty(0).Max() ?? 0;
+                var tbl = new mst_GP
                 {
-                    tbl.DistrictId_fk = model.DistrictId_fk;
-                    tbl.BlockId_fk = model.BlockId_fk;
-                    tbl.GPName = model.GPName.Trim();
-                    tbl.IsActive = true;
-                    tbl.OrderBy = maxOrderBy + 1;
-                    tbl.CreatedBy = MvcApplication.CUser.UserId;
-                    tbl.CreatedOn = DateTime.Now;
-                    db.mst_GP.Add(tbl);
-                    res = db.SaveChanges();
-                }
-                else if (model.GPId_pk > 0)
-                {
-                    tbl.GPId_pk = model.GPId_pk;
-                    tbl.GPName = model.GPName.Trim();
-                    tbl.IsActive = true;
-                    res = db.SaveChanges();
-                }
+                    DistrictId_fk = model.DistrictId_fk,
+                    BlockId_fk = model.BlockId_fk,
+                    GPName = model.GPName.Trim(),
+                    IsActive = true,
+                    CreatedBy = MvcApplication.CUser.UserId, 
+                    CreatedOn = DateTime.Now,
+                    //OrderBy = maxOrderBy + 1
+                };
 
-                if (res > 0)
-                    return Json(new { success = true, message = Enums.GetEnumDescription(Enums.eReturnReg.Insert) });
-                else
-                    return Json(new { success = true, message = Enums.GetEnumDescription(Enums.eReturnReg.NotInsert) });
+                db.mst_GP.Add(tbl);
+                db.SaveChanges();
+
+                return Json(new { success = true, message = Enums.GetEnumDescription(Enums.eReturnReg.Insert) });
             }
             catch (Exception ex)
             {
@@ -73,28 +96,6 @@ namespace DeWee.Controllers
             }
         }
 
-        public ActionResult GetRawPanchayatList()
-        {
-            DeWee_DBEntities db = new DeWee_DBEntities();
-            var tbl = db.mst_GP.ToList();
-            try
-            {
-                if (tbl.Count > 0)
-                {
-                    var tbldata = JsonConvert.SerializeObject(tbl);
-                    var html = ConvertViewToString("_PanchayatData", tbl);
-                    return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    return Json(new { IsSuccess = false, Data = "No records found." }, JsonRequestBehavior.AllowGet);
-                }
-            }
-            catch (Exception ex)
-            {
-                return Json(new { IsSuccess = false, Data = "An error occurred: " + ex.Message }, JsonRequestBehavior.AllowGet);
-            }
-        }
 
         private string ConvertViewToString(string viewName, object model)
         {
