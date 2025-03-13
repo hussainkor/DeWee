@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DeWee.Models.mst_GP>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover dt-responsive display tbl small" id="tbl" width="100%">
+        <thead>
+            <tr>
+                <th>Srno.</th>
+                <th>GP Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var sno = 1;
+                if (Model.Count() > 0)
+                {
+                    foreach (var row in Model.ToList())
+                    {
+                        <tr>
+                            <td>@(sno++)</td>
+                            <td>@row.GPName</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm edit-btn"
+                                        data-id="@row.GPId_pk"
+                                        data-name="@row.GPName"
+                                        data-districtid="@row.DistrictId_fk"
+                                        data-blockid="@row.BlockId_fk">
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">No data available</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

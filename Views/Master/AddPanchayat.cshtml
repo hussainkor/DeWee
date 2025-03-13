@@ -1,0 +1,176 @@
+﻿@model DeWee.Models.PanchayatModel
+@using DeWee.Manager
+@{
+    ViewBag.Title = "Add Panchayat Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-bread page-titles">
+    <div class="bread-flex">
+        <h1>@ViewBag.title</h1>
+        <ol class="breadcrumb"></ol>
+    </div>
+</div>
+
+<div class="rows">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("AddPanchayat", "Master", FormMethod.Post, new { @id = "formid", @class = "", role = "form", autocomplete = "off", enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(m => m.GPId_pk)
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
+                            <span style="color:red;">*</span>
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.DistrictId_fk, htmlAttributes: new { @class = "control-label" })
+                            <span style="color:red;">*</span>
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.DistrictId_fk, new List<SelectListItem>(), null, new { @class = "form-control select2", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.DistrictId_fk, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.BlockId_fk, htmlAttributes: new { @class = "control-label" })
+                            <span style="color:red;">*</span>
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.BlockId_fk, new List<SelectListItem>(), null, new { @class = "form-control select2", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.BlockId_fk, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.GPName, htmlAttributes: new { @class = "control-label" })
+                            <span style="color:red;">*</span>
+                            <div class="col-md-10s">
+                                @Html.TextBoxFor(model => model.GPName, new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.GPName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <div class="form-group col-md-4">
+                                <input type="submit" name="btnsubmit" id="btnsubmit" class="btn btn-primary" value="Submit" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="rows">
+    <div class="col-lg-12">
+        <div class="card">
+            <div id="subdata"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JS/Master.js"></script>
+    <script>
+        $(document).ready(function () {
+            debugger;
+            $(".select2").select2();
+            BindStateList("StateId", "", 0);
+            $('#StateId').prop('selectedIndex', 1);
+            BindDistrictList("DistrictId_fk", "", 0, $('#StateId').val());
+
+            $('#StateId').change(function () {
+                BindDistrictList("DistrictId_fk", "", 0, $('#StateId').val());
+                $('#BlockId_fk').val(null).trigger('change');
+                $('#subdata').empty(); 
+            });
+
+            $('#DistrictId_fk').change(function () {
+                BindBlockList("BlockId_fk", "", 0, $('#StateId').val(), $('#DistrictId_fk').val());
+                $('#BlockId_fk').val(null).trigger('change'); 
+                $('#subdata').empty(); 
+            });
+
+            $('#BlockId_fk').change(function () {
+                LoadData(); 
+            });
+
+            $(document).on("click", ".edit-btn", function () {
+                let GPId = $(this).data("id");
+                let GPName = $(this).data("name");
+                let DistrictId = $(this).data("districtid");
+                let BlockId = $(this).data("blockid");
+
+                $("#GPId_pk").val(GPId);
+                $("#GPName").val(GPName);
+                $("#DistrictId_fk").val(DistrictId).trigger('change'); 
+                $("#BlockId_fk").val(BlockId).trigger('change'); 
+            });
+
+            $("#formid").on("submit", function (event) {
+                event.preventDefault();
+
+                var formData = new FormData(this);
+                debugger;
+                if (confirm('Are you sure you want to submit the form?')) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Master/AddPanchayat/",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (resp) {
+                            if (resp.success) {
+                                toastr.success("Success", resp.message);
+                                $("#formid")[0].reset();
+                                $('#subdata').empty(); 
+                            } else {
+                                toastr.error("Error", resp.message);
+                            }
+                        },
+                        error: function (req, error) {
+                            var errorMsg = req.statusText ? req.statusText : error;
+                            toastr.error("Error", `There was a communication error: ${errorMsg}`);
+                        }
+                    });
+                }
+            });
+        });
+
+        function LoadData() {
+            let districtId = $('#DistrictId_fk').val();
+            let blockId = $('#BlockId_fk').val();
+
+            if (districtId && blockId) { 
+                $.ajax({
+                    type: "GET",
+                    url: "/Master/GetRawPanchayatList/",
+                    data: { SelectAll: 0, SId: $('#StateId').val(), DId: districtId, BId: blockId },
+                    success: function (resp) {
+                        if (resp.IsSuccess) {
+                            debugger;
+                            $('#subdata').html(resp.Data);
+                            $('#tbl').DataTable();
+                            toastr.success("Data loaded successfully.");
+                        } else {
+                            $('#subdata').html('<p>No Panchayat data available.</p>');
+                            toastr.error(resp.Data);
+                        }
+                    },
+                    error: function (req, error) {
+                        toastr.error("Communication error: " + (error === 'error' ? req.statusText : error));
+                    }
+                });
+            } else {
+                $('#subdata').html('<p>Please select both District and Block to load Panchayat data.</p>');
+            }
+        }
+    </script>
+}

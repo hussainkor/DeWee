@@ -22,5 +22,7 @@ namespace DeWee.Models
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> OrderBy { get; set; }
         public Nullable<int> CLFId_fk { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
     }
 }

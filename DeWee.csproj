@@ -307,6 +307,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PanchayatModel.cs" />
     <Compile Include="Models\FilterModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -1006,11 +1007,12 @@
     <Content Include="Views\Beneficiary\AddBeneficiaryform_old.cshtml" />
     <Content Include="Scripts\JS\UPMap.js" />
     <Content Include="Views\Beneficiary\_BeneficiaryView.cshtml" />
+    <Content Include="Views\Master\_PanchayatData.cshtml" />
+    <Content Include="Views\Master\AddPanchayat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Master\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
