@@ -1,7 +1,7 @@
 ﻿@model DeWee.Models.PanchayatModel
 @using DeWee.Manager
 @{
-    ViewBag.Title = "Add Panchayat Master";
+    ViewBag.Title = "GP";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="page-bread page-titles">
@@ -129,8 +129,10 @@
                         success: function (resp) {
                             if (resp.success) {
                                 toastr.success("Success", resp.message);
-                                $("#formid")[0].reset();
-                                $('#subdata').empty(); 
+                                LoadData();
+                               // $("#formid")[0].reset();
+                                $("#GPId_pk").val(0);
+                                $("#GPName").val('');
                             } else {
                                 toastr.error("Error", resp.message);
                             }
@@ -145,9 +147,9 @@
         });
 
         function LoadData() {
+            $('#subdata').empty(); 
             let districtId = $('#DistrictId_fk').val();
             let blockId = $('#BlockId_fk').val();
-
             if (districtId && blockId) { 
                 $.ajax({
                     type: "GET",
@@ -158,9 +160,8 @@
                             debugger;
                             $('#subdata').html(resp.Data);
                             $('#tbl').DataTable();
-                            toastr.success("Data loaded successfully.");
                         } else {
-                            $('#subdata').html('<p>No Panchayat data available.</p>');
+                            $('#subdata').html('<p class="text-danger">No Panchayat data available.</p>');
                             toastr.error(resp.Data);
                         }
                     },
@@ -169,7 +170,7 @@
                     }
                 });
             } else {
-                $('#subdata').html('<p>Please select both District and Block to load Panchayat data.</p>');
+                $('#subdata').html('<p class="text-danger">Please select both District and Block to load Panchayat data.</p>');
             }
         }
     </script>

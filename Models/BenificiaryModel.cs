@@ -212,7 +212,7 @@ namespace DeWee.Models
         public const string NameofEnterpriseOwner = "4. मालिक का नाम / Name of Owner";
         public const string EnterpriseOwner_Gender = "4.(a) लिंग / Gender";
         public const string DOB = "5. मालिक की जन्म तिथि / DOB";
-        public const string TypeofRelative = "5(a). रिश्तेदार का प्रकार / Type Of Relative";
+        public const string TypeofRelative = "5(a). संबंध के प्रकार / Type Of Relation";
         public const string NameofGuardian = "6(a). अभिभावक का नाम / Name of Guardian";
         public const string Guardian_Gender = "6(b). लिंग / Gender";
         public const string PrimaryMobileNo = "7. मुख्य मोबाइल नंबर / Primary Mobile Number";
