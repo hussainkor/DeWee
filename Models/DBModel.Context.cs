@@ -44,7 +44,6 @@ namespace DeWee.Models
         public virtual DbSet<mst_PowerConnection> mst_PowerConnection { get; set; }
         public virtual DbSet<mst_Solarkilowatt> mst_Solarkilowatt { get; set; }
         public virtual DbSet<mst_SourceEnergy> mst_SourceEnergy { get; set; }
-        public virtual DbSet<mst_State> mst_State { get; set; }
         public virtual DbSet<mst_Subisdy> mst_Subisdy { get; set; }
         public virtual DbSet<mst_TypeYesNo> mst_TypeYesNo { get; set; }
         public virtual DbSet<mst_Village> mst_Village { get; set; }
@@ -65,5 +64,8 @@ namespace DeWee.Models
         public virtual DbSet<tbl_Beneficiary> tbl_Beneficiary { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<mst_GP> mst_GP { get; set; }
+        public virtual DbSet<mst_Country> mst_Country { get; set; }
+        public virtual DbSet<mst_State> mst_State { get; set; }
+        public virtual DbSet<tbl_THR> tbl_THR { get; set; }
     }
 }

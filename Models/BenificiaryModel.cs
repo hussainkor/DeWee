@@ -192,6 +192,13 @@ namespace DeWee.Models
     public class DisplayName
     {
         public const string Section1st = "Geographical Background";
+        public const string Country_Id = "Country";
+        public const string State_Id = "STATE";
+        public const string District_Id = "DISTRICT";
+        public const string Block_Id = "Block";
+        public const string GP_Id = "GP Name";
+        public const string TypeOfEnterprise_Id = "Type of Enterprise";
+
         public const string StateId = "1. राज्य / STATE";
         public const string DistrictId = "2. जनपद / DISTRICT";
         public const string BlockId = "3. ब्लॉक / Block";

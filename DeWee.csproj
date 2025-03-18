@@ -307,6 +307,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\mst_Country.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PanchayatModel.cs" />
     <Compile Include="Models\FilterModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -418,6 +421,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_IndtSolarization.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_THR.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

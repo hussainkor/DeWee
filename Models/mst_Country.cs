@@ -12,16 +12,13 @@ namespace DeWee.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class mst_GP
+    public partial class mst_Country
     {
-        public int GPId_pk { get; set; }
-        public Nullable<int> DistrictId_fk { get; set; }
-        public Nullable<int> BlockId_fk { get; set; }
-        public Nullable<int> GPCode { get; set; }
-        public string GPName { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public int CountryId_pk { get; set; }
+        public Nullable<int> CountryCode { get; set; }
+        public string CountryName { get; set; }
         public Nullable<int> OrderBy { get; set; }
-        public Nullable<int> CLFId_fk { get; set; }
+        public Nullable<bool> IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }

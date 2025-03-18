@@ -12,16 +12,26 @@ namespace DeWee.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class mst_GP
+    public partial class tbl_THR
     {
-        public int GPId_pk { get; set; }
+        public int THRId_pk { get; set; }
+        public Nullable<int> StateId_fk { get; set; }
         public Nullable<int> DistrictId_fk { get; set; }
         public Nullable<int> BlockId_fk { get; set; }
-        public Nullable<int> GPCode { get; set; }
-        public string GPName { get; set; }
+        public Nullable<int> GPId_fk { get; set; }
+        public string TypeTHR { get; set; }
+        public Nullable<int> TypeofEnterpriseId { get; set; }
+        public string THR_NutriEnterprise { get; set; }
+        public string TypeofRoof { get; set; }
+        public string TRoofandshedareaavailable_sqfeet { get; set; }
+        public string AreaAvailableSolarization_sqfeet { get; set; }
+        public string PersonName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Location { get; set; }
+        public Nullable<bool> IsSolarized { get; set; }
         public Nullable<bool> IsActive { get; set; }
-        public Nullable<int> OrderBy { get; set; }
-        public Nullable<int> CLFId_fk { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }

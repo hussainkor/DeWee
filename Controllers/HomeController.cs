@@ -17,9 +17,9 @@ namespace DeWee.Controllers
         {
             return View();
         }
-        public JsonResult GetDashboadLegend()
+        public JsonResult GetDashboadLegend(int CId, int SId, int DId, int BId, int TypeOfEnterpriseId, int TypeofIndicator)
         {
-            DataSet ds = SPManager.USP_GetDashboardLegend();
+            DataSet ds = SPManager.USP_GetDashboardLegend(CId, SId,DId,BId,TypeOfEnterpriseId,TypeofIndicator);
             try
             {
                 if (ds.Tables.Count > 0)

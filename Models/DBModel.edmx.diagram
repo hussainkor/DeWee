@@ -24,7 +24,6 @@
         <EntityTypeShape EntityType="DeWee_DBModel.mst_PowerConnection" Width="1.5" PointX="10.75" PointY="11.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_Solarkilowatt" Width="1.5" PointX="12.75" PointY="4.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_SourceEnergy" Width="1.5" PointX="12.75" PointY="8.75" />
-        <EntityTypeShape EntityType="DeWee_DBModel.mst_State" Width="1.5" PointX="12.75" PointY="12.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_Subisdy" Width="1.5" PointX="13.75" PointY="0.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_TypeYesNo" Width="1.5" PointX="6.75" PointY="13.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_Village" Width="1.5" PointX="0.75" PointY="14.75" />
@@ -48,6 +47,9 @@
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DeWee_DBModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_GP" Width="1.5" PointX="7.375" PointY="19.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_Country" Width="1.5" PointX="19.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_State" Width="1.5" PointX="13.375" PointY="12.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_THR" Width="1.5" PointX="9.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

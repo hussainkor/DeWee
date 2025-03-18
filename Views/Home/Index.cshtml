@@ -1,4 +1,6 @@
-﻿@{
+﻿@model DeWee.Models.FilterModel
+@using DeWee.Manager
+@{
     ViewBag.Title = "Home Page";
 }
 <style>
@@ -657,8 +659,8 @@
     .leaflet-oldie .leaflet-popup-tip {
         width: 24px;
         margin: 0 auto;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
-        filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+        --ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+        /*filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);*/
     }
 
     .leaflet-oldie .leaflet-popup-tip-container {
@@ -769,11 +771,11 @@
         margin-left: -12px;
         border-right-color: #fff;
     }
+
     ul {
         /* Icon by Smashicons */
         /*list-style-image: url('https://ivan-lim.com/wp-content/uploads/icons/croissant-15x15.png');*/
         list-style-image: url('../Content/dashboard/images/MarkerRedTriangle.png');
-
     }
 
 
@@ -798,23 +800,26 @@
                 top: 2px; /* Adjust for best image placement relative to text */
                 width: 17px; /* Adjust based on image width */
             }
-            .clrIndv::before {
-                /* Icon by Smashicons */
-                background-image: url('../Content/dashboard/images/MarkerRedSingle.png');
-            }
-            .clgIndv::before {
-                /* Icon by Smashicons */
-                background-image: url('../Content/dashboard/images/MarkerGreenSingle.png');
-            }
-            .clrThr::before {
-                /* Icon by Smashicons */
-                background-image: url('../Content/dashboard/images/MarkerRedTriangle.png');
-            }
 
-             .clgThr::before {
-                /* Icon by Smashicons */
-                background-image: url('../Content/dashboard/images/MarkerGreenTriangle.png');
-            }
+    .clrIndv::before {
+        /* Icon by Smashicons */
+        background-image: url('../Content/dashboard/images/MarkerRedSingle.png');
+    }
+
+    .clgIndv::before {
+        /* Icon by Smashicons */
+        background-image: url('../Content/dashboard/images/MarkerGreenSingle.png');
+    }
+
+    .clrThr::before {
+        /* Icon by Smashicons */
+        background-image: url('../Content/dashboard/images/RoundedR.png');
+    }
+
+    .clgThr::before {
+        /* Icon by Smashicons */
+        background-image: url('../Content/dashboard/images/RoundedG.png');
+    }
 </style>
 
 <div class="row">
@@ -879,7 +884,57 @@
             <div class="col-12" id="googlemaplaclong">
                 <div class="clearfix"></div>
                 <div class="row">
-                   
+                    <div class="col-md-3" style="display:none;">
+                        @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label" })
+                        <span style="color:red;">*</span>
+                        <div class="col-md-12s">
+                            @Html.DropDownListFor(model => model.CountryId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
+                        <span style="color:red;">*</span>
+                        <div class="col-md-12s">
+                            @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.DistrictId, htmlAttributes: new { @class = "control-label" })
+                        <span style="color:red;">*</span>
+                        <div class="col-md-12s">
+                            @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control select2", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.BlockId, htmlAttributes: new { @class = "control-label" })
+                        <span style="color:red;">*</span>
+                        <div class="col-md-12s">
+                            @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.BlockId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.TypeofEnterpriseBusinId, htmlAttributes: new { @class = "control-label" })
+                        <span style="color:red;">*</span>
+                        <div class="col-md-12s">
+                            @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(1), null, new { @class = "form-control select2", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusinId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.TypeofIndicator, htmlAttributes: new { @class = "control-label" })
+                        <span style="color:red;">*</span>
+                        <div class="col-md-12s">
+                            @Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.TypeofIndicator, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
                     <div class="col-md-9 CARD SHADOW">
                         <h3><span id="msg" class="text-danger text-center"></span></h3>
                         @*<div id="dvMap" style="width:100%; height:450px; border:3px solid #0094ff" class="border-bottom-primary"> </div>*@
@@ -1455,18 +1510,68 @@
     @*<script src="~/Scripts/Map/india_st.js"></script>*@
     <script src="~/Scripts/JS/UPMap.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U" async></script>
-
+    <script src="~/Scripts/JS/Master.js"></script>
+    @*<script src="https://unpkg.com/googlemaps/markerclusterer/dist/index.min.js"></script>*@
+    @*<script src="~/Scripts/JS/index.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js"></script>
 
     <script>
         var dislist = [], MonthParts = [], AllDataBFY = [], BFYFilterDis, tblTHR = [];
         $(document).ready(function () {
+           // $('.select2').select2();
+            BindStateList("StateId", "", 0);
+            $('#StateId').prop('selectedIndex', 1);
+            BindDistrictList("DistrictId", "", 1, $('#StateId').val());
             Load_Databox();//chartpart
+            $('#StateId').change(function () {
+                BindDistrictList("DistrictId", "", 1, $('#StateId').val());
+               // document.getElementById('DistrictId').selectedIndex = 0;
+                $('#DistrictId').val('0').trigger('change');
+                Load_Databox();
+            });
+            $('#DistrictId').change(function () {
+                BindBlockList("BlockId", "", 1, $('#StateId').val(), $('#DistrictId').val());
+                $('#BlockId').val('0').trigger('change');
+                Load_Databox();
+            });
+            $('#BlockId').change(function () {
+                Load_Databox();
+            });
+            $('#TypeofEnterpriseBusinId').change(function () {
+                Load_Databox();
+            });
+            $('#TypeofIndicator').change(function () {
+                Load_Databox();
+            });
+
+         new MarkerClusterer(map, allMarkers, {
+                imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+                minimumClusterSize: 0,
+                styles: [{
+                    url: "path/to/cluster-icon-1.png",
+                    height: 50,
+                    width: 50,
+                    textColor: "#FFFFFF",
+                    textSize: 12
+                }]
+            });
+
         });
         function Load_Databox() {
+            debugger;
+            var SId = $('#StateId').val() == '' || $('#StateId').val() == null ? 0 : $('#StateId').val();
+            var DId = $('#DistrictId').val() == '' || $('#DistrictId').val() == null ? 0 : $('#DistrictId').val();
+            var BId = $('#BlockId').val() == '' || $('#BlockId').val() == null ? 0 : $('#BlockId').val();
+            var TypeofEnterpriseBusinId = $('#TypeofEnterpriseBusinId').val() == '' || $('#TypeofEnterpriseBusinId').val() == null ? 0 : $('#TypeofEnterpriseBusinId').val();
+            var TypeofIndicator = $('#TypeofIndicator').val() == '' || $('#TypeofIndicator').val() == null ? 0 : $('#TypeofIndicator').val();
              $.ajax({
                  url: document.baseURI + "/Home/GetDashboadLegend/",
                  type: 'GET',
                  dataType: 'json',
+                 data: {
+                     CId: '1', SId: SId, DId: DId, BId: BId,
+                     TypeOfEnterpriseId: TypeofEnterpriseBusinId, TypeofIndicator: TypeofIndicator
+                 },
                  success: function (resp) {
                      var resD = JSON.parse(resp.Data);
                      $('#TotalParticipant').text(resD.Table[0].TotalParticipant);
@@ -1482,10 +1587,10 @@
                      if ((AllDataBFY != null && AllDataBFY != undefined) || (tblTHR != null && tblTHR != undefined))
                          LoadGoogleMap(AllDataBFY, tblTHR);
                      else
-                     toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)' + error);
+                     toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)');
                  },
                  error: function (xhr, status, error) {
-                     toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)' + error);
+                     toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.ExceptionError)' + error);
                  }
              });
         }
@@ -1786,7 +1891,7 @@
                         zoom: 5,//8
                         mapTypeId: google.maps.MapTypeId.ROADMAP,
                         minZoom: 5, // Minimum zoom level
-                        maxZoom: 15 // Maximum zoom level
+                       // maxZoom: 15 // Maximum zoom level
                     };
 
                     var infoWindow = new google.maps.InfoWindow();
@@ -1805,6 +1910,7 @@
                         var currentZoom = map.getZoom();
                         map.setZoom(currentZoom - 1); // Decrease zoom level by 1
                     });
+                    var allMarkers = [];
 
                     // Custom icons for different types of markers
                     var icon1 = {
@@ -1878,17 +1984,19 @@
                                 $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
                             });
                         })(marker, data);
+                        // Add marker to the array
+                        allMarkers.push(marker);
                     }
 
                     // THR Markers with a different icon
-
+                   
                     for (var i = 0; i < tblTHR.length; i++) {
                         var data = tblTHR[i];
                         var myLatlng = new google.maps.LatLng(data.Latitude, data.Longitude);
                         if (data.SolarizedStatus==1)
-                            icon2 = "/Content/dashboard/images/MarkerGreenTriangle.png";
+                            icon2 = "/Content/dashboard/images/RoundedG.png";
                         else
-                            icon2 = "/Content/dashboard/images/MarkerRedTriangle.png";
+                            icon2 = "/Content/dashboard/images/RoundedR.png";
                         var marker = new google.maps.Marker({
                             position: myLatlng,
                             map: map,
@@ -1911,6 +2019,20 @@
                                 $("#EnterprisesSolarized").html(data.SolarizedYes);
                             });
                         })(marker, data);
+                        // Add marker to the array
+                        allMarkers.push(marker);
+                    }
+                    // Initialize MarkerClusterer
+                    if (typeof MarkerClusterer !== 'undefined') {
+                        new MarkerClusterer(map, allMarkers, {
+                            imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m", // Path to cluster icons
+                            gridSize: 60, // Adjust grid size for clustering
+                           // maxZoom: 15, // Maximum zoom level for clustering
+                            minimumClusterSize: 0, // Minimum number of markers to form a cluster
+                            zoomOnClick: true // Zoom in when a cluster is clicked
+                        });
+                    } else {
+                        console.error("MarkerClusterer is not defined. Ensure the library is loaded.");
                     }
 
 
@@ -1926,6 +2048,9 @@
                 ClearDataShow();
             }
         }
+
+
+
 
         //function LoadGoogleMap(tblData, tblTHR) {
         //    var markers = tblData; // Assuming tblData is already in the correct format

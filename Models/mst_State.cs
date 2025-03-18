@@ -15,6 +15,7 @@ namespace DeWee.Models
     public partial class mst_State
     {
         public int StateId_pk { get; set; }
+        public Nullable<int> CountryId_fk { get; set; }
         public int StateCode { get; set; }
         public string StateName { get; set; }
         public Nullable<int> OrderBy { get; set; }

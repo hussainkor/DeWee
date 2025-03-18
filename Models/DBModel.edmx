@@ -156,6 +156,20 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_BusinessInstallation' does not ha
           <Property Name="UpdatedOn" Type="datetime" />
           <Property Name="OrderBy" Type="int" />
         </EntityType>
+        <EntityType Name="mst_Country">
+          <Key>
+            <PropertyRef Name="CountryId_pk" />
+          </Key>
+          <Property Name="CountryId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCode" Type="int" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="255" />
+          <Property Name="OrderBy" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="mst_District">
           <Key>
             <PropertyRef Name="DistrictId_pk" />
@@ -263,6 +277,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_EnterpriseMachine' does not have 
           <Property Name="CLFId_fk" Type="int" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="130" />
           <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="30" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DeWee_DB.dbo.mst_LoanDescribeSource' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -430,6 +446,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
             <PropertyRef Name="StateId_pk" />
           </Key>
           <Property Name="StateId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId_fk" Type="int" />
           <Property Name="StateCode" Type="int" Nullable="false" />
           <Property Name="StateName" Type="nvarchar" MaxLength="255" />
           <Property Name="OrderBy" Type="int" />
@@ -651,6 +668,33 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="ParticipantPicPath" Type="nvarchar(max)" />
           <Property Name="SolarEnterprisePicPath" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="tbl_THR">
+          <Key>
+            <PropertyRef Name="THRId_pk" />
+          </Key>
+          <Property Name="THRId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId_fk" Type="int" />
+          <Property Name="DistrictId_fk" Type="int" />
+          <Property Name="BlockId_fk" Type="int" />
+          <Property Name="GPId_fk" Type="int" />
+          <Property Name="TypeTHR" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeofEnterpriseId" Type="int" />
+          <Property Name="THR_NutriEnterprise" Type="nvarchar" MaxLength="200" />
+          <Property Name="TypeofRoof" Type="nvarchar" MaxLength="500" />
+          <Property Name="TRoofandshedareaavailable_sqfeet" Type="nvarchar" MaxLength="50" />
+          <Property Name="AreaAvailableSolarization_sqfeet" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="300" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar(max)" />
+          <Property Name="IsSolarized" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="230" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="230" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -719,6 +763,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySet Name="mst_BusinessType" EntityType="Self.mst_BusinessType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_Caste" EntityType="Self.mst_Caste" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_CLF" EntityType="Self.mst_CLF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst_Country" EntityType="Self.mst_Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_District" EntityType="Self.mst_District" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_ElectricityConsumption" EntityType="Self.mst_ElectricityConsumption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_ElectricityUsed" EntityType="Self.mst_ElectricityUsed" Schema="dbo" store:Type="Tables" />
@@ -739,6 +784,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySet Name="mst_Year" EntityType="Self.mst_Year" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Beneficiary" EntityType="Self.tbl_Beneficiary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_IndtSolarization" EntityType="Self.tbl_IndtSolarization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_THR" EntityType="Self.tbl_THR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_BusinessInstallation" EntityType="Self.mst_BusinessInstallation" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [mst_BusinessInstallation].[BusinessInstallation_Id] AS [BusinessInstallation_Id], 
@@ -890,7 +936,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySet Name="mst_PowerConnection" EntityType="DeWee_DBModel.mst_PowerConnection" />
           <EntitySet Name="mst_Solarkilowatt" EntityType="DeWee_DBModel.mst_Solarkilowatt" />
           <EntitySet Name="mst_SourceEnergy" EntityType="DeWee_DBModel.mst_SourceEnergy" />
-          <EntitySet Name="mst_State" EntityType="DeWee_DBModel.mst_State" />
           <EntitySet Name="mst_Subisdy" EntityType="DeWee_DBModel.mst_Subisdy" />
           <EntitySet Name="mst_TypeYesNo" EntityType="DeWee_DBModel.mst_TypeYesNo" />
           <EntitySet Name="mst_Village" EntityType="DeWee_DBModel.mst_Village" />
@@ -923,6 +968,9 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
           <EntitySet Name="mst_GP" EntityType="DeWee_DBModel.mst_GP" />
+          <EntitySet Name="mst_Country" EntityType="DeWee_DBModel.mst_Country" />
+          <EntitySet Name="mst_State" EntityType="DeWee_DBModel.mst_State" />
+          <EntitySet Name="tbl_THR" EntityType="DeWee_DBModel.tbl_THR" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -1148,16 +1196,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="OrderBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="mst_State">
-          <Key>
-            <PropertyRef Name="StateId_pk" />
-          </Key>
-          <Property Name="StateId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StateCode" Type="Int32" Nullable="false" />
-          <Property Name="StateName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="OrderBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="mst_Subisdy">
           <Key>
@@ -1579,6 +1617,60 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CLFId_fk" Type="Int32" />
           <Property Name="CreatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mst_Country">
+          <Key>
+            <PropertyRef Name="CountryId_pk" />
+          </Key>
+          <Property Name="CountryId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCode" Type="Int32" />
+          <Property Name="CountryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OrderBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mst_State">
+          <Key>
+            <PropertyRef Name="StateId_pk" />
+          </Key>
+          <Property Name="StateId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId_fk" Type="Int32" />
+          <Property Name="StateCode" Type="Int32" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OrderBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_THR">
+          <Key>
+            <PropertyRef Name="THRId_pk" />
+          </Key>
+          <Property Name="THRId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId_fk" Type="Int32" />
+          <Property Name="DistrictId_fk" Type="Int32" />
+          <Property Name="BlockId_fk" Type="Int32" />
+          <Property Name="GPId_fk" Type="Int32" />
+          <Property Name="TypeTHR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeofEnterpriseId" Type="Int32" />
+          <Property Name="THR_NutriEnterprise" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TypeofRoof" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TRoofandshedareaavailable_sqfeet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaAvailableSolarization_sqfeet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsSolarized" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="230" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="230" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1822,17 +1914,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
                 <ScalarProperty Name="SourceEnergyInHindi" ColumnName="SourceEnergyInHindi" />
                 <ScalarProperty Name="SourceEnergyInEng" ColumnName="SourceEnergyInEng" />
                 <ScalarProperty Name="SourceEnergy_Id" ColumnName="SourceEnergy_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="mst_State">
-            <EntityTypeMapping TypeName="DeWee_DBModel.mst_State">
-              <MappingFragment StoreEntitySet="mst_State">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
-                <ScalarProperty Name="StateId_pk" ColumnName="StateId_pk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2237,6 +2318,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySetMapping Name="mst_GP">
             <EntityTypeMapping TypeName="DeWee_DBModel.mst_GP">
               <MappingFragment StoreEntitySet="mst_GP">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
@@ -2247,6 +2330,61 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
                 <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
                 <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
                 <ScalarProperty Name="GPId_pk" ColumnName="GPId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst_Country">
+            <EntityTypeMapping TypeName="DeWee_DBModel.mst_Country">
+              <MappingFragment StoreEntitySet="mst_Country">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryId_pk" ColumnName="CountryId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst_State">
+            <EntityTypeMapping TypeName="DeWee_DBModel.mst_State">
+              <MappingFragment StoreEntitySet="mst_State">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="CountryId_fk" ColumnName="CountryId_fk" />
+                <ScalarProperty Name="StateId_pk" ColumnName="StateId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_THR">
+            <EntityTypeMapping TypeName="DeWee_DBModel.tbl_THR">
+              <MappingFragment StoreEntitySet="tbl_THR">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsSolarized" ColumnName="IsSolarized" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="AreaAvailableSolarization_sqfeet" ColumnName="AreaAvailableSolarization_sqfeet" />
+                <ScalarProperty Name="TRoofandshedareaavailable_sqfeet" ColumnName="TRoofandshedareaavailable_sqfeet" />
+                <ScalarProperty Name="TypeofRoof" ColumnName="TypeofRoof" />
+                <ScalarProperty Name="THR_NutriEnterprise" ColumnName="THR_NutriEnterprise" />
+                <ScalarProperty Name="TypeofEnterpriseId" ColumnName="TypeofEnterpriseId" />
+                <ScalarProperty Name="TypeTHR" ColumnName="TypeTHR" />
+                <ScalarProperty Name="GPId_fk" ColumnName="GPId_fk" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
+                <ScalarProperty Name="THRId_pk" ColumnName="THRId_pk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

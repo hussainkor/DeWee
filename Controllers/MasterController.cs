@@ -54,10 +54,13 @@ namespace DeWee.Controllers
                 }
                 else if (model.GPId_pk > 0)
                 {
+                    tbl.GPId_pk = model.GPId_pk;
                     tbl.GPName = model.GPName.Trim();
                     tbl.DistrictId_fk = model.DistrictId_fk;
                     tbl.BlockId_fk = model.BlockId_fk;
-                    tbl.IsActive = model.IsActive;
+                    tbl.IsActive = true;
+                    tbl.UpdatedBy = MvcApplication.CUser.UserId;
+                    tbl.UpdatedOn = DateTime.Now;
                     res = db.SaveChanges();
                 }
                 
@@ -136,6 +139,26 @@ namespace DeWee.Controllers
 
 
         #region Master List
+        public ActionResult GetCountryList(int SelectAll)
+        {
+            try
+            {
+                var items = CommonModel.GetALLCountryM(SelectAll);
+                if (items != null)
+                {
+                    if (items.Count > 0)
+                    {
+                        var data = JsonConvert.SerializeObject(items);
+                        return Json(new { IsSuccess = true, res = data }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                return Json(new { IsSuccess = false, res = "" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { IsSuccess = false, res = "There was a communication error." }, JsonRequestBehavior.AllowGet);
+            }
+        }
         public ActionResult GetStateList(int SelectAll)
         {
             try

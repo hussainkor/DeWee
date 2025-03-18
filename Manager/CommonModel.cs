@@ -158,7 +158,38 @@ namespace DeWee.Manager
         #endregion
 
         #region Master
+        public static List<SelectListItem> GetIndicator(int IsSelect = 0)
+        {
+            DeWee_DBEntities _db = new DeWee_DBEntities();
+            List<SelectListItem> list = new List<SelectListItem>();
+            if (IsSelect == 0)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
+            }
+            else if (IsSelect == 1)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
+            }
+            list.Add(new SelectListItem { Value = "1", Text = "Individual" });
+            list.Add(new SelectListItem { Value = "2", Text = "Collective" });
+            return list;
+        }
+        public static List<SelectListItem> GetALLCountryM(int IsSelect = 0)
+        {
+            DeWee_DBEntities _db = new DeWee_DBEntities();
+            List<SelectListItem> list = new List<SelectListItem>();
+            list = _db.mst_Country.OrderBy(a => a.OrderBy).Select(a => new SelectListItem { Value = a.CountryId_pk.ToString(), Text = a.CountryName }).ToList();
+            if (IsSelect == 0)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "Select" });
+            }
+            else if (IsSelect == 1)
+            {
+                list.Insert(0, new SelectListItem { Value = "", Text = "All" });
+            }
 
+            return list;
+        }
         public static List<SelectListItem> GetALLStateM(int IsSelect = 0)
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
@@ -205,7 +236,7 @@ namespace DeWee.Manager
                 list.Insert(0, new SelectListItem { Value = "", Text = "All" });
             }
 
-            return list.OrderBy(x=>x.Text).ToList();
+            return list.OrderBy(x => x.Text).ToList();
         }
         public static List<SelectListItem> GetALLPanchayatM(int IsSelect = 0, int StateId = 0, int DistrictId = 0, int BlockId = 0)
         {
@@ -285,7 +316,7 @@ namespace DeWee.Manager
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "All" });
             }
-            return list.OrderBy(x=>x.Text).ToList();
+            return list.OrderBy(x => x.Text).ToList();
         }
         public static List<SelectListItem> GetALLCaste(int IsSelect = 0)
         {
@@ -816,7 +847,7 @@ namespace DeWee.Manager
         {
             string URL = "";
             string filepath = string.Empty;
-           // byte[] base64String = Convert.FromBase64String(files);//Convert.FromBase64String(base64);
+            // byte[] base64String = Convert.FromBase64String(files);//Convert.FromBase64String(base64);
             if (!string.IsNullOrWhiteSpace(base64Stringfiles) && base64Stringfiles.Length > 0)
             {
                 // Remove the data URI scheme prefix (if it exists), e.g., "data:image/png;base64,"
@@ -1075,7 +1106,7 @@ namespace DeWee.Manager
             return ext;
         }
         #endregion
-       
+
 
     }
 }

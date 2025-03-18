@@ -2,6 +2,7 @@
 using SubSonic.Schema;
 using System;
 using System.Data;
+using System.EnterpriseServices;
 using System.Web;
 using System.Web.Security;
 
@@ -46,9 +47,15 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }
-        public static DataSet USP_GetDashboardLegend()
+        public static DataSet USP_GetDashboardLegend(int CId, int SId, int DId, int BId, int TypeOfEnterpriseId, int TypeofIndicator)
         {
-            StoredProcedure sp = new StoredProcedure("USP_GetDashboardLegend");
+            StoredProcedure sp = new StoredProcedure("SP_GetDashboardMain");
+            sp.Command.AddParameter("@CId", CId, DbType.Int32);
+            sp.Command.AddParameter("@SId", SId, DbType.Int32);
+            sp.Command.AddParameter("@DId", DId, DbType.Int32);
+            sp.Command.AddParameter("@BId", BId, DbType.Int64);
+            sp.Command.AddParameter("@TypeOfEnterpriseId", TypeOfEnterpriseId, DbType.Int64);
+            sp.Command.AddParameter("@TypeofIndicator", TypeofIndicator, DbType.Int32);
             DataSet ds = sp.ExecuteDataSet();
             return ds;
         }
