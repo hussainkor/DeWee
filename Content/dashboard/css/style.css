@@ -7407,7 +7407,8 @@ sub {
   border-radius: 100%; }
 
 .content-body .container-fluid {
-  padding: 15px 30px 0; }
+  /*padding: 15px 30px 0;*/
+}
 
 @media (max-width: 767px) {
   .content-body .container-fluid {
@@ -7546,17 +7547,19 @@ sub {
   color: #abafb3; }
 
 .footer {
-  padding-left: 15.1875rem;
-  background-color: #fff; }
+    padding-left: 15.1875rem;
+    background-color: #2D3E50;
+}
   .footer .copyright {
     padding: 0.9375rem;
-    background: white; }
+  }
     .footer .copyright p {
       text-align: center;
       margin: 0;
-      color: #898989; }
+      color: #fff; }
     .footer .copyright a {
-      color: #7571f9; }
+        color: #19BD9B;
+    }
 
 [data-sidebar-style="mini"] .nav-control, [data-layout="horizontal"] .nav-control {
   display: none; }
@@ -7571,16 +7574,17 @@ sub {
   left: auto; }
 
 .nav-header {
-  height: 5rem;
-  width: 15.1875rem;
-  display: inline-block;
-  text-align: left;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #111B27;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
-  transition: all .2s ease; }
+    height: 3.5rem;
+    width: 15.1875rem;
+    display: inline-block;
+    text-align: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #2D3E50;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+    transition: all .2s ease;
+}
   .nav-header .logo-abbr {
     display: none; }
   .nav-header .logo-compact {
@@ -7591,7 +7595,7 @@ sub {
   .nav-header .brand-logo {
     z-index: 999; }
     .nav-header .brand-logo a {
-        padding: 0.7rem 1.8125rem 1.607rem;
+        padding: 0.5rem 1.8125rem 1.607rem;
         display: block;
     }
       .nav-header .brand-logo a i {
@@ -7631,7 +7635,7 @@ sub {
   .hamburger .toggle-icon {
     font-size: 1.4rem;
     line-height: 2rem;
-    color: #494949; }
+    color: #fff; }
 
 .hamburger:hover {
   cursor: pointer; }
@@ -7667,15 +7671,21 @@ sub {
   display: block; }
 
 .header {
-  height: 5rem;
-  z-index: 1;
-  position: relative;
-  padding: 0 0.9375rem;
-  background: #fff;
-  margin-left: 15.1875rem;
-  transition: all .2s ease; }
+    height: 3.5rem;
+    z-index: 1;
+    position: relative;
+    padding: 0 0.9375rem;
+    background: #2D3E50 !important;
+    margin-left: 15.1875rem;
+    transition: all .2s ease;
+}
   .header .header-content {
-    height: 100%; }
+    height: 100%; 
+    /*width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center*/
+  }
 
 @media (max-width: 767px) {
   .nav-header {
@@ -7726,13 +7736,20 @@ sub {
 
 .header-left {
   float: left;
-  margin-left: 50px;
-  height: 100%; }
-  .header-left .icons {
-    float: left;
-    margin: 0;
-    padding: 0 0.3125rem;
-    position: relative; }
+  width: 50%;
+  text-align: right;
+  margin-top: 13px;
+  height: 100%;
+}
+    .header-left h3 {
+        color: #fff !important;
+    }
+    .header-left .icons {
+        float: left;
+        margin: 0;
+        padding: 0 0.3125rem;
+        position: relative;
+    }
     .header-left .icons > a {
       padding: 0 0.3125rem;
       color: #464a53; }
@@ -8032,7 +8049,7 @@ svg.pulse-svg {
       top: 2px; }
     .header-right .icons .user-img {
       position: relative;
-      top: -7px; }
+      top: -2px; }
       .header-right .icons .user-img img {
         height: 40px;
         width: 40px;
@@ -8112,7 +8129,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
         padding: 0 0.3125rem; }
 
 .nav-label {
-  padding: 0.8125rem 1.5625rem;
+    /*margin-right: 10px;
+    margin-left: 10px;*/
+  padding: 0.8125rem 0;
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.05rem;
@@ -8131,15 +8150,16 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
       margin-left: 14.375rem; } }
 
 .nk-sidebar {
-  width: 15.1875rem;
-  padding-bottom: 112px;
-  height: 100%;
-  position: absolute;
-  top: 5rem;
-  padding-top: 0;
-  z-index: 99;
-  background: #fff;
-  transition: all .2s ease; }
+    width: 15.1875rem;
+    padding-bottom: 112px;
+    height: 100%;
+    position: absolute;
+    top: 3.5rem;
+    padding-top: 0;
+    z-index: 99;
+    background: #34495E;
+    transition: all .2s ease;
+}
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     .nk-sidebar {
       width: 14.375rem; } }
@@ -8147,8 +8167,10 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     padding: 0;
     margin: 0;
     list-style: none;
-    background: #fafafa; }
+    /*background: #fafafa; */
+  }
   .nk-sidebar .metismenu {
+      margin: 0 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -8156,7 +8178,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    background: #fff; }
+    /*background: #fff; */
+
+  }
     .nk-sidebar .metismenu > li {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -8170,15 +8194,17 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
       .nk-sidebar .metismenu > li > a {
         transition: none; }
       .nk-sidebar .metismenu > li:hover i, .nk-sidebar .metismenu > li:focus i, .nk-sidebar .metismenu > li.active i {
-        color: #464a53 !important; }
+        color: #fff !important; }
       .nk-sidebar .metismenu > li:hover span, .nk-sidebar .metismenu > li:focus span, .nk-sidebar .metismenu > li.active span {
-        color: #464a53; }
-      .nk-sidebar .metismenu > li:hover > a {
-        background: #F3F1FA;
-        color: #7571f9; }
-      .nk-sidebar .metismenu > li.active > a {
-        background: #F3F1FA;
-        color: #464a53; }
+        color: #fff; }
+        .nk-sidebar .metismenu > li:hover > a {
+            background: #19BD9B;
+            color: #fff;
+        }
+        .nk-sidebar .metismenu > li.active > a {
+            background: #19BD9B;
+            color: #fff;
+        }
       .nk-sidebar .metismenu > li.active ul a {
         color: #464a53; }
       .nk-sidebar .metismenu > li a > i {
@@ -8186,14 +8212,16 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
         display: inline-block;
         vertical-align: middle;
         padding: 0 0.4375rem 0 0;
-        color: #464a53; }
+        /*color: #464a53; */
+
+      }
     .nk-sidebar .metismenu a {
       position: relative;
       display: block;
       padding: 0.8125rem 1.25rem;
       outline-width: 0;
       transition: all .3s ease-out;
-      color: #464a53; }
+      color: #fff; }
     .nk-sidebar .metismenu ul a {
       padding: 0.625rem 0.9375rem 0.625rem 2.8125rem; }
     .nk-sidebar .metismenu ul ul a {
@@ -8287,7 +8315,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
       padding: 1.607rem 1.0625rem;
       text-align: center; }
       [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .nav-header .brand-logo a b img {
-        margin-top: 0.4375rem; }
+        margin-top: 0rem; 
+
+      }
   [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .nav-header .nav-control .hamburger .line {
     background-color: #464a53 !important; }
 
@@ -11313,7 +11343,7 @@ table.dataTable thead .sorting::after {
   border-radius: 0.625rem;
   box-shadow: 6px 11px 41px -28px #a99de7; }
   .card-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 18px; }
   .card-header {
@@ -11322,7 +11352,7 @@ table.dataTable thead .sorting::after {
     .card-header:first-child {
       border-radius: 0; }
   .card .card-body {
-    padding: 1.88rem 1.81rem; }
+    padding: 1rem; }
   .card-action a {
     display: inline-block;
     color: #fff;
@@ -14005,7 +14035,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   padding-right: 15rem; }
 
 [data-nav-headerbg="color_1"] .nav-header {
-    background-color: #F3987A;
+    background-color: #2D3E50;
 }
 
 [data-nav-headerbg="color_2"] .nav-header {
@@ -14116,11 +14146,12 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   color: #fff; }
 
 [data-sibebarbg="color_1"] .nk-sidebar .metismenu {
-  background-color: #fff; }
+  /*background-color: #fff;*/
+}
   [data-sibebarbg="color_1"] .nk-sidebar .metismenu > li {
     color: #27394F; }
     [data-sibebarbg="color_1"] .nk-sidebar .metismenu > li ul a {
-      color: #76838f; }
+      color: #fff; }
 
 [data-sibebarbg="color_2"] .nk-sidebar {
   background-color: #27394F !important; }
