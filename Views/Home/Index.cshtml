@@ -789,17 +789,17 @@
         position: relative;
     }
 
-            ul li::before {
-                /* Icon by Smashicons */
-                /*background-image: url('../Content/dashboard/images/MarkerRedTriangle.png');*/
-                background-size: cover;
-                content: "";
-                height: 17px; /* Adjust based on image height */
-                left: 0;
-                position: absolute;
-                top: 2px; /* Adjust for best image placement relative to text */
-                width: 17px; /* Adjust based on image width */
-            }
+    ul li::before {
+        /* Icon by Smashicons */
+        /*background-image: url('../Content/dashboard/images/MarkerRedTriangle.png');*/
+        background-size: cover;
+        content: "";
+        height: 17px; /* Adjust based on image height */
+        left: 0;
+        position: absolute;
+        top: 2px; /* Adjust for best image placement relative to text */
+        width: 17px; /* Adjust based on image width */
+    }
 
     .clrIndv::before {
         /* Icon by Smashicons */
@@ -881,116 +881,122 @@
             @*<div class="col-4" id="containermap">
                 </div>*@
             @*<div class="col-6" id="chartpart">*@
-            <div class="col-12" id="googlemaplaclong">
-                <div class="clearfix"></div>
-                <div class="row">
-                    <div class="col-md-3" style="display:none;">
-                        @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label" })
-                        <span style="color:red;">*</span>
-                        <div class="col-md-12s">
-                            @Html.DropDownListFor(model => model.CountryId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
-                            @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
-                        <span style="color:red;">*</span>
-                        <div class="col-md-12s">
-                            @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
-                            @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        @Html.LabelFor(model => model.DistrictId, htmlAttributes: new { @class = "control-label" })
-                        <span style="color:red;">*</span>
-                        <div class="col-md-12s">
-                            @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control select2", @required = "required" })
-                            @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        @Html.LabelFor(model => model.BlockId, htmlAttributes: new { @class = "control-label" })
-                        <span style="color:red;">*</span>
-                        <div class="col-md-12s">
-                            @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
-                            @Html.ValidationMessageFor(model => model.BlockId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        @Html.LabelFor(model => model.TypeofEnterpriseBusinId, htmlAttributes: new { @class = "control-label" })
-                        <span style="color:red;">*</span>
-                        <div class="col-md-12s">
-                            @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(1), null, new { @class = "form-control select2", @required = "required" })
-                            @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusinId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        @Html.LabelFor(model => model.TypeofIndicator, htmlAttributes: new { @class = "control-label" })
-                        <span style="color:red;">*</span>
-                        <div class="col-md-12s">
-                            @Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control", @required = "required" })
-                            @Html.ValidationMessageFor(model => model.TypeofIndicator, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+            <div class="card">
+                <div class="col-12" id="googlemaplaclong">
+                    <div class="clearfix"></div>
 
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-9 CARD SHADOW">
-                        <h3><span id="msg" class="text-danger text-center"></span></h3>
-                        @*<div id="dvMap" style="width:100%; height:450px; border:3px solid #0094ff" class="border-bottom-primary"> </div>*@
-                        <div id="dvMap" style="width: 100%; height: 500px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
-                        @*<a id="zoomIn"><i class="fa fa-plus"></i></a>
-                            <a id="zoomOut"><i class="fa fa-minus"></i></a>*@
-                    </div>
-                    <div class="col-md-3">
-                        <div class="col-md-12 card coller" style="margin-bottom: 5px !important;">
-                            <ul>
-                                <li class="clrIndv">Individual Enterprises</li>
-                                <li class="clgIndv">Individual Solarized</li>
-                                <li class="clrThr">THR Enterprises</li>
-                                <li class="clgThr">THR Solarized</li>
-                            </ul>
-                        </div>
-                        <div class="card shadow" id="Detail">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Beneficiary Details</h6>
+                    <div class="row">
+                        <div class="col-md-3" style="display:none;">
+                            @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label" })
+                            @*<span style="color:red;">*</span>*@
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.CountryId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
                             </div>
-                            <b class="m-md-2 text-gray-800">
-                                @*<div><b>Traget Data  : @dt.Rows[0]["SubmissionStatus"].ToString()</b></div>
-                                    <div><b>Submission Datat : @dt.Rows[1]["SubmissionStatus"].ToString() </b></div>
-                                    <div><b>Precentage : @TotalPreceRD (%)</b></div>
-                                    <div><b>Pending : @restdata</b></div>*@
-                                @*<hr />*@
-
-                                <div class="Detail">StateName : <span id="StateName"></span></div>
-                                <div class="Detail">District : <span id="DistrictName"></span></div>
-                                <div class="Detail">Block : <span id="BlockName"></span></div>
-
-                                <div class="Detail divbfy">GP : <span id="GPName"></span></div>
-                                <div class="Detail divbfy">VO : <span id="VO"></span></div>
-                                <div class="Detail divbfy">Type of Enterprise : <span id="TypeofEnterpriseBusinText"></span></div>
-                                <div class="Detail divbfy">Name of Owner : <span id="NameofEnterpriseOwner"></span></div>
-                                <div class="Detail divbfy">SHG Name : <span id="NameofSHG"></span></div>
-                                <div class="Detail divbfy">Space Available : <span id="SpaceAvailableText"></span></div>
-                                <div class="Detail divbfy">Space Available Area(sq.ft) : <span id="SpaceAvailable_Area"></span></div>
-
-                                <div class="Detail divthr">Take-Home Ration Nutri Enterprise : <span id="THR_NutriEnterprise"></span></div>
-                                <div class="Detail divthr">Type of Roof : <span id="TypeofRoof"></span></div>
-                                <div class="Detail divthr">Total Roof and shed area available (sq feet) : <span id="TRoofandshedareaavailable_sqfeet"></span></div>
-                                <div class="Detail divthr">Shadow free Area available for Solarization(sq feet) : <span id="AreaAvailableSolarization_sqfeet"></span></div>
-                                <div class="Detail divthr">Contact Person : <span id="PersonName"></span></div>
-                                <div class="Detail divthr">Contact Number : <span id="PhoneNumber"></span></div>
-
-                                <div class="Detail">Enterprises Onboarded : <span id="EnterprisesOnboarded"></span></div>
-                                <div class="Detail">Enterprises Solarized : <span id="EnterprisesSolarized"></span></div>
-                                <div class="Detail">Capacity of installation (kW) : <span id="CapacityofinstallationkW"></span></div>
-
-                            </b>
-                            <div class="row text-gray-800" style="width:100%;">
-
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
+                            @*<span style="color:red;">*</span>*@
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.DistrictId, htmlAttributes: new { @class = "control-label" })
+                            @*<span style="color:red;">*</span>*@
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control select2", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.BlockId, htmlAttributes: new { @class = "control-label" })
+                            @*<span style="color:red;">*</span>*@
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.BlockId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.TypeofEnterpriseBusinId, htmlAttributes: new { @class = "control-label" })
+                            @*<span style="color:red;">*</span>*@
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(1), null, new { @class = "form-control select2", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusinId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.TypeofIndicator, htmlAttributes: new { @class = "control-label" })
+                            @*<span style="color:red;">*</span>*@
+                            <div class="col-md-12s">
+                                @Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.TypeofIndicator, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9 CARD SHADOW">
+                            <h3><span id="msg" class="text-danger text-center"></span></h3>
+                            @*<div id="dvMap" style="width:100%; height:450px; border:3px solid #0094ff" class="border-bottom-primary"> </div>*@
+                            <div id="dvMap" style="width: 100%; height: 550px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
+                            @*<a id="zoomIn"><i class="fa fa-plus"></i></a>
+                                <a id="zoomOut"><i class="fa fa-minus"></i></a>*@
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="clearfix"></div>
+                            <div class="col-md-12 card coller" style="margin-bottom: 5px !important;">
+                                <ul>
+                                    <li class="clgIndv" style="word-wrap:break-word !important;">Solar Powered Individual Enterprises</li>
+                                    <li class="clrIndv" style="word-wrap:break-word !important;">Non-Solar Powered Individual Enterprises</li>
+                                    <li class="clgThr" style="word-wrap:break-word !important;">Solar Powered Collective Enterprises</li>
+                                    <li class="clrThr" style="word-wrap:break-word !important;">Non-Solar Powered Collective Enterprises</li>
+                                </ul>
+                            </div>
+                            <div class="card shadow" id="Detail">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Beneficiary Details</h6>
+                                </div>
+                                <div class="m-md-2 text-gray-800">
+                                    @*<div><b>Traget Data  : @dt.Rows[0]["SubmissionStatus"].ToString()</b></div>
+                                        <div><b>Submission Datat : @dt.Rows[1]["SubmissionStatus"].ToString() </b></div>
+                                        <div><b>Precentage : @TotalPreceRD (%)</b></div>
+                                        <div><b>Pending : @restdata</b></div>*@
+                                    @*<hr />*@
+
+                                    <div class="Detail">State : <strong id="StateName"></strong></div>
+                                    <div class="Detail">District : <strong id="DistrictName"></strong></div>
+                                    <div class="Detail">Block : <strong id="BlockName"></strong></div>
+
+                                    <div class="Detail divbfy">GP : <strong id="GPName"></strong></div>
+                                    <div class="Detail divbfy">VO : <strong id="VO"></strong></div>
+                                    <div class="Detail divbfy">Type of Enterprise : <strong id="TypeofEnterpriseBusinText"></strong></div>
+                                    <div class="Detail divbfy">Name of Owner : <strong id="NameofEnterpriseOwner"></strong></div>
+                                    <div class="Detail divbfy">SHG Name : <strong id="NameofSHG"></strong></div>
+                                    <div class="Detail divbfy">Space Available : <strong id="SpaceAvailableText"></strong></div>
+                                    <div class="Detail divbfy">Space Available Area(sq.ft) : <strong id="SpaceAvailable_Area"></strong></div>
+
+                                    <div class="Detail divthr">Take-Home Ration Nutri Enterprise : <strong id="THR_NutriEnterprise"></strong></div>
+                                    <div class="Detail divthr">Type of Roof : <strong id="TypeofRoof"></strong></div>
+                                    <div class="Detail divthr">Total Roof and shed area available (sq feet) : <strong id="TRoofandshedareaavailable_sqfeet"></strong></div>
+                                    <div class="Detail divthr">Shadow free Area available for Solarization(sq feet) : <strong id="AreaAvailableSolarization_sqfeet"></strong></div>
+                                    <div class="Detail divthr">Contact Person : <strong id="PersonName" class="text-bg-primary"></strong></div>
+                                    <div class="Detail divthr">Contact Number : <strong id="PhoneNumber" class="text-bg-primary"></strong></div>
+                                    <p><hr /></p>
+                                    <div class="Detail">Enterprises Onboarded : <strong id="EnterprisesOnboarded"></strong></div>
+                                    <div class="Detail">Enterprises Solarized : <strong id="EnterprisesSolarized"></strong></div>
+                                    <div class="Detail">Capacity of installation (kW) : <strong id="CapacityofinstallationkW"></strong></div>
+
+                                    <div class="Detail divbfy">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" width="200" height="200" /> </div>
+
+                                </div>
+                                <div class="row text-gray-800" style="width:100%;">
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1514,6 +1520,8 @@
     @*<script src="https://unpkg.com/googlemaps/markerclusterer/dist/index.min.js"></script>*@
     @*<script src="~/Scripts/JS/index.min.js"></script>*@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js"></script>
+    <script src="https://cdn.rawgit.com/jawj/OverlappingMarkerSpiderfier/gh-pages/oms.min.js"></script>
+
 
     <script>
         var dislist = [], MonthParts = [], AllDataBFY = [], BFYFilterDis, tblTHR = [];
@@ -1553,7 +1561,8 @@
                     width: 50,
                     textColor: "#FFFFFF",
                     textSize: 12
-                }]
+             }]
+
             });
 
         });
@@ -1886,6 +1895,7 @@
 
                 // Ensure the Google Maps API is loaded before proceeding
                 if (typeof google === 'object' && typeof google.maps === 'object') {
+                 
                     var mapOptions = {
                         center: new google.maps.LatLng('28.6139','77.2090'),//markers[0].Latitude, markers[0].Longitude
                         zoom: 5,//8
@@ -1896,6 +1906,7 @@
 
                     var infoWindow = new google.maps.InfoWindow();
                     var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                    
                     //
                     $('#dvMap').append('<div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a id="zoomIn" class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" >+</a><a id="zoomOut" class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div>');
 
@@ -1927,14 +1938,7 @@
                         anchor: new google.maps.Point(20, 40) // Anchor point
                     };
                     icon1 = "/Content/dashboard/images/MarkerRedSingle.png";
-                    //var terrainIcon = {
-                    //    path: google.maps.SymbolPath.CIRCLE, // Use a circle as the base path
-                    //    fillColor: '#FF0000', // Fill color of the icon
-                    //    fillOpacity: 1, // Opacity of the fill
-                    //    strokeWeight: 0, // No stroke
-                    //    scale: 8, // Size of the icon
-                    //    labelOrigin: new google.maps.Point(0, 0) // Origin of the label
-                    //};
+
 
                     for (var i = 0; i < markers.length; i++) {
 
@@ -1951,8 +1955,9 @@
                             //    fontSize: '24px', // Size of the icon
                             //    color: '#FFFFFF' // Color of the icon
                             //}
-                        });
 
+                        });
+                        
                         (function (marker, data) {
                             if (i==0) {
                                 $(".Detail").show(); $(".divbfy").show(); $(".divthr").hide();
@@ -1967,9 +1972,14 @@
                                 $("#SpaceAvailableText").html(data.SpaceAvailableText);
                                 $("#SpaceAvailable_Area").html(data.SpaceAvailable_Area);
                                 $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
+                                 if (data.EnterpriseImage)
+                                     $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
                             }
                             google.maps.event.addListener(marker, "click", function (e) {
                                 ClearDataShow();
+                                debugger;
+                                infoWindow.setContent('District: ' + data.DistrictName + ' / Block: ' + data.BlockName + ' / GP: ' + data.GPName);
+                                   infoWindow.open(map, marker);
                                 $(".Detail").show(); $(".divbfy").show(); $(".divthr").hide();
                                 $("#StateName").html(data.StateName);
                                 $("#DistrictName").html(data.DistrictName);
@@ -1982,6 +1992,9 @@
                                 $("#SpaceAvailableText").html(data.SpaceAvailableText);
                                 $("#SpaceAvailable_Area").html(data.SpaceAvailable_Area);
                                 $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
+                                if (data.EnterpriseImage)
+                                    $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
+
                             });
                         })(marker, data);
                         // Add marker to the array
@@ -1989,7 +2002,7 @@
                     }
 
                     // THR Markers with a different icon
-                   
+
                     for (var i = 0; i < tblTHR.length; i++) {
                         var data = tblTHR[i];
                         var myLatlng = new google.maps.LatLng(data.Latitude, data.Longitude);
@@ -2015,7 +2028,9 @@
                                 $("#TRoofandshedareaavailable_sqfeet").html(data.TRoofandshedareaavailable_sqfeet);
                                 $("#AreaAvailableSolarization_sqfeet").html(data.AreaAvailableSolarization_sqfeet);
                                 $("#PersonName").html(data.PersonName);
-                                $("#PhoneNumber").html(data.PhoneNumber);
+                                if (data.MobileNo) {
+                                    $("#PhoneNumber").html(data.MobileNo);
+                                }
                                 $("#EnterprisesSolarized").html(data.SolarizedYes);
                             });
                         })(marker, data);
@@ -2029,7 +2044,7 @@
                             gridSize: 60, // Adjust grid size for clustering
                            // maxZoom: 15, // Maximum zoom level for clustering
                             minimumClusterSize: 0, // Minimum number of markers to form a cluster
-                            zoomOnClick: true // Zoom in when a cluster is clicked
+                            //zoomOnClick: true // Zoom in when a cluster is clicked
                         });
                     } else {
                         console.error("MarkerClusterer is not defined. Ensure the library is loaded.");

@@ -46,10 +46,10 @@
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DeWee_DBModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="DeWee_DBModel.mst_GP" Width="1.5" PointX="7.375" PointY="19.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_Country" Width="1.5" PointX="19.375" PointY="8.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_State" Width="1.5" PointX="13.375" PointY="12.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_THR" Width="1.5" PointX="9.375" PointY="19.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.mst_GP" Width="1.5" PointX="11.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

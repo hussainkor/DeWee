@@ -1,10 +1,12 @@
 ﻿using DeWee.Models;
+using DocumentFormat.OpenXml.EMMA;
 using SubSonic.Schema;
 using System;
 using System.Data;
 using System.EnterpriseServices;
 using System.Web;
 using System.Web.Security;
+using static DeWee.Manager.CommonModel;
 
 namespace DeWee.Manager
 {
@@ -64,6 +66,41 @@ namespace DeWee.Manager
             StoredProcedure sp = new StoredProcedure("USP_PartQAList");
             DataSet ds = sp.ExecuteDataSet();
             return ds;
+        }
+        public static DataSet Usp_GetMasterDataInJson(LoginModel model)
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_GetMasterDataInJson");
+            sp.Command.AddParameter("@UserName", model.UserName, DbType.String);
+            DataSet ds = sp.ExecuteDataSet();
+            return ds;
+        }
+        public static DataTable SP_BeneficiaryJsonPostData(LoginModel model)
+        {
+            StoredProcedure sp = new StoredProcedure("SP_BeneficiaryJsonPostData");
+            sp.Command.AddParameter("@UserName", model.UserName, DbType.String);
+            sp.Command.AddParameter("@Password", model.Password, DbType.String);
+            sp.Command.AddParameter("@Version",model.Version, DbType.String);
+            sp.Command.AddParameter("@JsonData", model.JsonData, DbType.String);
+            sp.Command.AddParameter("@RowAfected", model.RowAfected, DbType.Int32);
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
+        public static DataTable Usp_PostEnterpriseImage(string imguuid = "",string filepath="",string type = "", string Version = "")
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_SaveApiEnterpriseImage");
+            sp.Command.AddParameter("@imguuid", imguuid, DbType.String);
+            sp.Command.AddParameter("@filepath", filepath, DbType.String);
+            sp.Command.AddParameter("@filetype", type, DbType.String);
+            sp.Command.AddParameter("@Version", Version, DbType.String);
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
+        public static DataTable SP_GetBFYId(string uuid = "")
+        {
+            StoredProcedure sp = new StoredProcedure("SP_GetBFYId");
+            sp.Command.AddParameter("@uuid", uuid, DbType.String);
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
         }
     }
 }

@@ -271,13 +271,13 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_EnterpriseMachine' does not have 
           <Property Name="DistrictId_fk" Type="int" />
           <Property Name="BlockId_fk" Type="int" />
           <Property Name="GPCode" Type="int" />
-          <Property Name="GPName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GPName" Type="nvarchar" MaxLength="500" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="OrderBy" Type="int" />
           <Property Name="CLFId_fk" Type="int" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="130" />
           <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="30" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="130" />
           <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -967,10 +967,10 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="mst_GP" EntityType="DeWee_DBModel.mst_GP" />
           <EntitySet Name="mst_Country" EntityType="DeWee_DBModel.mst_Country" />
           <EntitySet Name="mst_State" EntityType="DeWee_DBModel.mst_State" />
           <EntitySet Name="tbl_THR" EntityType="DeWee_DBModel.tbl_THR" />
+          <EntitySet Name="mst_GP" EntityType="DeWee_DBModel.mst_GP" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -1603,23 +1603,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <End Type="DeWee_DBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="DeWee_DBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityType Name="mst_GP">
-          <Key>
-            <PropertyRef Name="GPId_pk" />
-          </Key>
-          <Property Name="GPId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DistrictId_fk" Type="Int32" />
-          <Property Name="BlockId_fk" Type="Int32" />
-          <Property Name="GPCode" Type="Int32" />
-          <Property Name="GPName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="OrderBy" Type="Int32" />
-          <Property Name="CLFId_fk" Type="Int32" />
-          <Property Name="CreatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="mst_Country">
           <Key>
             <PropertyRef Name="CountryId_pk" />
@@ -1670,6 +1653,23 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CreatedBy" Type="String" MaxLength="230" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="230" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mst_GP">
+          <Key>
+            <PropertyRef Name="GPId_pk" />
+          </Key>
+          <Property Name="GPId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId_fk" Type="Int32" />
+          <Property Name="BlockId_fk" Type="Int32" />
+          <Property Name="GPCode" Type="Int32" />
+          <Property Name="GPName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OrderBy" Type="Int32" />
+          <Property Name="CLFId_fk" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
         </EntityType>
         </Schema>
@@ -2315,24 +2315,6 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="mst_GP">
-            <EntityTypeMapping TypeName="DeWee_DBModel.mst_GP">
-              <MappingFragment StoreEntitySet="mst_GP">
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
-                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="GPName" ColumnName="GPName" />
-                <ScalarProperty Name="GPCode" ColumnName="GPCode" />
-                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
-                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
-                <ScalarProperty Name="GPId_pk" ColumnName="GPId_pk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="mst_Country">
             <EntityTypeMapping TypeName="DeWee_DBModel.mst_Country">
               <MappingFragment StoreEntitySet="mst_Country">
@@ -2385,6 +2367,24 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
                 <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
                 <ScalarProperty Name="StateId_fk" ColumnName="StateId_fk" />
                 <ScalarProperty Name="THRId_pk" ColumnName="THRId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst_GP">
+            <EntityTypeMapping TypeName="DeWee_DBModel.mst_GP">
+              <MappingFragment StoreEntitySet="mst_GP">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CLFId_fk" ColumnName="CLFId_fk" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="GPName" ColumnName="GPName" />
+                <ScalarProperty Name="GPCode" ColumnName="GPCode" />
+                <ScalarProperty Name="BlockId_fk" ColumnName="BlockId_fk" />
+                <ScalarProperty Name="DistrictId_fk" ColumnName="DistrictId_fk" />
+                <ScalarProperty Name="GPId_pk" ColumnName="GPId_pk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -94,6 +95,10 @@ namespace DeWee.Manager
             LatLong = 8,
             [Description("Record Not Inserted.")]
             NotInsert = 7,
+            [Display(Name = "Security Token key not match.")]
+            SecurityToken = 9,
+            [Display(Name = "Security Token key not null.")]
+            SecurityTokenNot = 10,
         }
 
         public enum eIsStatus

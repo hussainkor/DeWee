@@ -14036,7 +14036,11 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 [data-nav-headerbg="color_1"] .nav-header {
     background-color: #2D3E50;
+
     border-right: 1px solid #34495E
+
+    border-right: 1px solid #fff !important;
+
 }
 
 [data-nav-headerbg="color_2"] .nav-header {
@@ -14152,7 +14156,9 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   [data-sibebarbg="color_1"] .nk-sidebar .metismenu > li {
     color: #27394F; }
     [data-sibebarbg="color_1"] .nk-sidebar .metismenu > li ul a {
-      color: #fff; }
+      color: #000 !important; 
+
+    }
 
 [data-sibebarbg="color_2"] .nk-sidebar {
   background-color: #27394F !important; }

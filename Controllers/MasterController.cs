@@ -27,9 +27,10 @@ namespace DeWee.Controllers
         public JsonResult AddPanchayat(PanchayatModel model)
         {
             int res = 0;
+            DeWee_DBEntities db_=new DeWee_DBEntities();
             try
             {
-                if (string.IsNullOrEmpty(model.GPName))
+                if (string.IsNullOrEmpty(model.GPName) || string.IsNullOrWhiteSpace(model.GPName))
                 {
                     return Json(new { success = false, message = Enums.GetEnumDescription(Enums.eReturnReg.AllFieldsRequired) });
                 }
@@ -38,7 +39,7 @@ namespace DeWee.Controllers
                 {
                     return Json(new { success = false, message = Enums.GetEnumDescription(Enums.eReturnReg.Already) });
                 }
-                var tbl = model.GPId_pk > 0 ? db.mst_GP.Find(model.GPId_pk) : new mst_GP();
+                var tbl = model.GPId_pk > 0 ? db_.mst_GP.Find(model.GPId_pk) : new mst_GP();
 
                 if (model.GPId_pk == 0)
                 {
@@ -56,12 +57,11 @@ namespace DeWee.Controllers
                 {
                     tbl.GPId_pk = model.GPId_pk;
                     tbl.GPName = model.GPName.Trim();
-                    tbl.DistrictId_fk = model.DistrictId_fk;
-                    tbl.BlockId_fk = model.BlockId_fk;
-                    tbl.IsActive = true;
+                    //tbl.DistrictId_fk = model.DistrictId_fk;
+                    //tbl.BlockId_fk = model.BlockId_fk;
                     tbl.UpdatedBy = MvcApplication.CUser.UserId;
                     tbl.UpdatedOn = DateTime.Now;
-                    res = db.SaveChanges();
+                    res = db_.SaveChanges();
                 }
                 
                 if (res > 0)
@@ -121,9 +121,6 @@ namespace DeWee.Controllers
         //        return Json(new { IsSuccess = false, Data = "An error occurred: " + ex.Message }, JsonRequestBehavior.AllowGet);
         //    }
         //}
-
-
-
 
         private string ConvertViewToString(string viewName, object model)
         {
