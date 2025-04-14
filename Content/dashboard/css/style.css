@@ -515,7 +515,7 @@ pre {
 
 .container-fluid {
   width: 100%;
-  padding-right: 15px;
+  padding-right: 10px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto; }
@@ -7591,7 +7591,7 @@ sub {
     display: none; }
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     .nav-header {
-      width: 14.375rem; } }
+      width: 11.375rem; } }
   .nav-header .brand-logo {
     z-index: 999; }
     .nav-header .brand-logo a {
@@ -7709,8 +7709,8 @@ sub {
   width: calc(100% - 15.1875rem); }
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     [data-sidebar-style="full"] .header, [data-sidebar-style="overlay"] .header {
-      width: calc(100% - 14.375rem);
-      margin-left: 14.375rem; } }
+      width: calc(100% - 11.375rem);
+      margin-left: 11.375rem; } }
   @media only screen and (max-width: 767px) {
     [data-sidebar-style="full"] .header, [data-sidebar-style="overlay"] .header {
       width: calc(100% - 3.75rem);
@@ -8150,7 +8150,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   z-index: 0; }
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     .content-body {
-      margin-left: 14.375rem; } }
+      margin-left: 11.375rem; } }
 
 .nk-sidebar {
     width: 15.1875rem;
@@ -8166,7 +8166,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     .nk-sidebar {
-      width: 14.375rem; } }
+      width: 11.375rem; } }
   .nk-sidebar ul {
     padding: 0;
     margin: 0;

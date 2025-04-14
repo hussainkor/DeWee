@@ -36,9 +36,12 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }
-        public static DataTable SP_BeneficiaryList()
+        public static DataTable SP_BeneficiaryList(string SId = "", string DId = "", string BId = "")
         {
             StoredProcedure sp = new StoredProcedure("SP_BeneficiaryList");
+            sp.Command.AddParameter("@SId", SId, DbType.String);
+            sp.Command.AddParameter("@DId", DId, DbType.String);
+            sp.Command.AddParameter("@BId", BId, DbType.String);
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }

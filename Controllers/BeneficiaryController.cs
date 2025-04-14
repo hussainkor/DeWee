@@ -216,9 +216,9 @@ namespace DeWee.Controllers
         {
             return View();
         }
-        public ActionResult GetBeneficiaryList()
+        public ActionResult GetBeneficiaryList(string SId="",string DId="",string BId = "")
         {
-            DataTable tbllist = SPManager.SP_BeneficiaryList();
+            DataTable tbllist = SPManager.SP_BeneficiaryList(SId,DId,BId);
             try
             {
                 if (tbllist.Rows.Count > 0)

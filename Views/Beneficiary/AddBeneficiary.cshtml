@@ -488,7 +488,7 @@
 
                                 <div class="form-row pt-1">
                                     <div class="form-group col-md-4 offset-4">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary" id="btnsubmit">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -689,7 +689,7 @@
                         formData.append("BeneficiaryPicHd", $('#BeneficiaryPicHd').val());
                         if (isvalid) {
                             if (confirm('Are you sure you want to Submit form?')) {
-
+                                $('#btnsubmit').css("pointer-events", "none");
                                  $.ajax({
                                     type: "POST",
                                      url: document.baseURI + "/Beneficiary/AddBeneficiary/",
@@ -702,6 +702,7 @@
                                         if (resp.StatusType == "success") {
                                             toastr.success("Success", resp.Message);
                                             $("#formid")[0].reset();
+                                            $('#btnsubmit').css("pointer-events", "");
                                         } else {
                                             toastr.error("Error", resp.Message);
                                         }

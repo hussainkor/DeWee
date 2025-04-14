@@ -15,19 +15,20 @@
     <link href="~/Content/dashboard/css/login.css" rel="stylesheet" />
 </head>
 
-<div class="login-page">    
+<div class="login-page">
     <div class="login-form">
+
         <img src="~/Content/dashboard/images/pci-color-logo.png" alt="PCI logo" class="login-logo" />
         <h2>Enter your credentials to access your account</h2>
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                
+
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="input-box">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-form-label" })
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder="Enter User Name" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter User Name" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
                 <div class="input-box">
@@ -36,17 +37,18 @@
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
                 @*<div class="input-box">
-                    <div class="check-box">
-                        @Html.CheckBoxFor(m => m.RememberMe)
-                        @Html.LabelFor(m => m.RememberMe)
-                    </div>
-                </div>*@
+                        <div class="check-box">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>*@
                 <div class="input-box">
                     <input type="submit" value="Log in" class="login-btn" />
                 </div>
+                <a href="~/Uploads/privacyPolicydewee.html" target="_blank"><h6>PRIVACY POLICY DEWEE</h6></a>
                 @*<p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>*@
+                        @Html.ActionLink("Register as a new user", "Register")
+                    </p>*@
             }
         </section>
     </div>

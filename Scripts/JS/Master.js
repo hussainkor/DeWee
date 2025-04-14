@@ -943,3 +943,34 @@ function validateDecimal(input) {
         input.value = input.value.slice(0, -1); // Remove the last invalid character
     }
 }
+
+function DataTableSet(ElementId, HeaderName, FileName,DownLoadId) {
+    debugger;
+    if ($.fn.dataTable.isDataTable('#' + ElementId)) {
+        $("#" + ElementId).dataTable().fnDestroy();
+    }
+    table = $('#tbl').DataTable({
+        //scrollY: "400px",
+        //scrollX: true,
+        //scrollCollapse: true,
+        //paging: false,
+        "dom": '<"pull-left"f><"pull-right"l>tip',
+        pageLength: 100,
+        fixedColumns: {
+            leftColumns: 1,
+            rightColumns: 1
+        },
+        order: [[0, 'asc']],
+        buttons: [{
+            extend: 'excel', text: '<span><i class="fa fa-download"></i> Excel Export</span>', title: HeaderName,//$('#IDDistrict option:selected').text() +
+            className: 'btn btn-primary button-icon mr-3 mt-1 mb-1',
+            filename: FileName,
+            exportOptions: { modifier: { page: 'all' } }
+        }],
+    });
+    $('#dt-search-0').css(
+        { 'width': '300px', 'display': 'inline-block' }
+    );
+    $('#div-download').empty();
+    table.buttons().container().appendTo($('#div-download'));
+}

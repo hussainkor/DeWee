@@ -4,1501 +4,374 @@
     ViewBag.Title = "Home Page";
 }
 <style>
-    a[href^="http://maps.google.com/maps"],
-    a[href^="https://maps.google.com/maps"],
-    a[href^="https://www.google.com/maps"] {
-        display: none !important;
-    }
-
-    .gm-bundled-control .gmnoprint {
-        display: block;
-    }
-
-    .gmnoprint:not(.gm-bundled-control) {
-        display: none;
-    }
-    /*   #zoomIn, #zoomOut {
+    .de-map-box {
         padding: 10px;
-        font-size: 16px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-        margin: 5px;
+        background-image: url("../Content/dashboard/images/damapbg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+
     }
 
-        #zoomIn:hover, #zoomOut:hover {
-            background-color: #45a049;
-        }*/
-    /* required styles */
-
-    .leaflet-pane,
-    .leaflet-tile,
-    .leaflet-marker-icon,
-    .leaflet-marker-shadow,
-    .leaflet-tile-container,
-    .leaflet-pane > svg,
-    .leaflet-pane > canvas,
-    .leaflet-zoom-box,
-    .leaflet-image-layer,
-    .leaflet-layer {
-        position: absolute;
-        left: 0;
-        top: 0;
+    .filter-section {
+        border: 2px solid #2d396d;
+        background-color: #2BBFCE;
     }
 
-    .leaflet-container {
-        overflow: hidden;
+    .form-box-section {
+        padding: 15px;
+        background-color: #fff;
     }
 
-    .leaflet-tile,
-    .leaflet-marker-icon,
-    .leaflet-marker-shadow {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-        -webkit-user-drag: none;
-    }
-    /* Safari renders non-retina tile on retina better with this, but Chrome is worse */
-    .leaflet-safari .leaflet-tile {
-        image-rendering: -webkit-optimize-contrast;
-    }
-    /* hack that prevents hw layers "stretching" when loading new tiles */
-    .leaflet-safari .leaflet-tile-container {
-        width: 1600px;
-        height: 1600px;
-        -webkit-transform-origin: 0 0;
-    }
-
-    .leaflet-marker-icon,
-    .leaflet-marker-shadow {
-        display: block;
-    }
-    /* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */
-    /* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */
-    .leaflet-container .leaflet-overlay-pane svg,
-    .leaflet-container .leaflet-marker-pane img,
-    .leaflet-container .leaflet-shadow-pane img,
-    .leaflet-container .leaflet-tile-pane img,
-    .leaflet-container img.leaflet-image-layer {
-        max-width: none !important;
-        max-height: none !important;
-    }
-
-    .leaflet-container.leaflet-touch-zoom {
-        -ms-touch-action: pan-x pan-y;
-        touch-action: pan-x pan-y;
-    }
-
-    .leaflet-container.leaflet-touch-drag {
-        -ms-touch-action: pinch-zoom;
-        /* Fallback for FF which doesn't support pinch-zoom */
-        touch-action: none;
-        touch-action: pinch-zoom;
-    }
-
-        .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
-            -ms-touch-action: none;
-            touch-action: none;
+        .form-box-section .form-group {
+            margin-bottom: 10px;
         }
 
-    .leaflet-container {
-        -webkit-tap-highlight-color: transparent;
-    }
-
-        .leaflet-container a {
-            -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+        .form-box-section .form-control {
+            box-shadow: none;
+            margin-top: 0px;
+            height: 32px;
+            background: #2BBFCE;
+            min-height: 32px !important;
+            box-shadow: 1px 2px 2px 0px #2BBFCE;
+            border-color: #2BBFCE !important;
+            border-radius: 4px;
         }
 
-    .leaflet-tile {
-        filter: inherit;
-        visibility: hidden;
-    }
-
-    .leaflet-tile-loaded {
-        visibility: inherit;
-    }
-
-    .leaflet-zoom-box {
-        width: 0;
-        height: 0;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        z-index: 800;
-    }
-    /* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
-    .leaflet-overlay-pane svg {
-        -moz-user-select: none;
-    }
-
-    .leaflet-pane {
-        z-index: 400;
-    }
-
-    .leaflet-tile-pane {
-        z-index: 200;
-    }
-
-    .leaflet-overlay-pane {
-        z-index: 400;
-    }
-
-    .leaflet-shadow-pane {
-        z-index: 500;
-    }
-
-    .leaflet-marker-pane {
-        z-index: 600;
-    }
-
-    .leaflet-tooltip-pane {
-        z-index: 650;
-    }
-
-    .leaflet-popup-pane {
-        z-index: 700;
-    }
-
-    .leaflet-map-pane canvas {
-        z-index: 100;
-    }
-
-    .leaflet-map-pane svg {
-        z-index: 200;
-    }
-
-    .leaflet-vml-shape {
-        width: 1px;
-        height: 1px;
-    }
-
-    .lvml {
-        behavior: url(#default#VML);
-        display: inline-block;
-        position: absolute;
-    }
-
-
-    /* control positioning */
-
-    .leaflet-control {
-        position: relative;
-        z-index: 800;
-        pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
-        pointer-events: auto;
-    }
-
-    .leaflet-top,
-    .leaflet-bottom {
-        position: absolute;
-        z-index: 1000;
-        pointer-events: none;
-    }
-
-    .leaflet-top {
-        top: 0;
-    }
-
-    .leaflet-right {
-        right: 0;
-    }
-
-    .leaflet-bottom {
-        bottom: 0;
-    }
-
-    .leaflet-left {
-        left: 0;
-    }
-
-    .leaflet-control {
-        float: left;
-        clear: both;
-    }
-
-    .leaflet-right .leaflet-control {
-        float: right;
-    }
-
-    .leaflet-top .leaflet-control {
-        margin-top: 10px;
-    }
-
-    .leaflet-bottom .leaflet-control {
-        margin-bottom: 10px;
-    }
-
-    .leaflet-left .leaflet-control {
-        margin-left: 10px;
-    }
-
-    .leaflet-right .leaflet-control {
-        margin-right: 10px;
-    }
-
-
-    /* zoom and fade animations */
-
-    .leaflet-fade-anim .leaflet-tile {
-        will-change: opacity;
-    }
-
-    .leaflet-fade-anim .leaflet-popup {
-        opacity: 0;
-        -webkit-transition: opacity 0.2s linear;
-        -moz-transition: opacity 0.2s linear;
-        -o-transition: opacity 0.2s linear;
-        transition: opacity 0.2s linear;
-    }
-
-    .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
-        opacity: 1;
-    }
-
-    .leaflet-zoom-animated {
-        -webkit-transform-origin: 0 0;
-        -ms-transform-origin: 0 0;
-        transform-origin: 0 0;
-    }
-
-    .leaflet-zoom-anim .leaflet-zoom-animated {
-        will-change: transform;
-    }
-
-    .leaflet-zoom-anim .leaflet-zoom-animated {
-        -webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
-        -moz-transition: -moz-transform 0.25s cubic-bezier(0,0,0.25,1);
-        -o-transition: -o-transform 0.25s cubic-bezier(0,0,0.25,1);
-        transition: transform 0.25s cubic-bezier(0,0,0.25,1);
-    }
-
-    .leaflet-zoom-anim .leaflet-tile,
-    .leaflet-pan-anim .leaflet-tile {
-        -webkit-transition: none;
-        -moz-transition: none;
-        -o-transition: none;
-        transition: none;
-    }
-
-    .leaflet-zoom-anim .leaflet-zoom-hide {
-        visibility: hidden;
-    }
-
-
-    /* cursors */
-
-    .leaflet-interactive {
-        cursor: pointer;
-    }
-
-    .leaflet-grab {
-        cursor: -webkit-grab;
-        cursor: -moz-grab;
-    }
-
-    .leaflet-crosshair,
-    .leaflet-crosshair .leaflet-interactive {
-        cursor: crosshair;
-    }
-
-    .leaflet-popup-pane,
-    .leaflet-control {
-        cursor: auto;
-    }
-
-    .leaflet-dragging .leaflet-grab,
-    .leaflet-dragging .leaflet-grab .leaflet-interactive,
-    .leaflet-dragging .leaflet-marker-draggable {
-        cursor: move;
-        cursor: -webkit-grabbing;
-        cursor: -moz-grabbing;
-    }
-
-    /* marker & overlays interactivity */
-    .leaflet-marker-icon,
-    .leaflet-marker-shadow,
-    .leaflet-image-layer,
-    .leaflet-pane > svg path,
-    .leaflet-tile-container {
-        pointer-events: none;
-    }
-
-        .leaflet-marker-icon.leaflet-interactive,
-        .leaflet-image-layer.leaflet-interactive,
-        .leaflet-pane > svg path.leaflet-interactive {
-            pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
-            pointer-events: auto;
+        .form-box-section .col-form-label {
+            padding-top: calc(0.375rem + 1px);
+            padding-bottom: calc(0.375rem + 1px);
+            margin-bottom: 0;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #000;
+            font-weight: 500;
         }
 
-    /* visual tweaks */
-
-    .leaflet-container {
-        background: #ddd;
-        outline: 0;
+    .beneficiary-box-section {
+        background-color: #2BBFCE;
     }
 
-        .leaflet-container a {
-            color: #0078A8;
+        .beneficiary-box-section ul li {
+            list-style: none;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #fff;
+            font-weight: 500;
+            padding-left: 20px;
+            margin-bottom: 1px;
         }
 
-            .leaflet-container a.leaflet-active {
-                outline: 2px solid orange;
-            }
-
-    .leaflet-zoom-box {
-        border: 2px dotted #38f;
-        background: rgba(255,255,255,0.5);
-    }
-
-
-    /* general typography */
-    .leaflet-container {
-        font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
-    }
-
-
-    /* general toolbar styles */
-
-    .leaflet-bar {
-        box-shadow: 0 1px 5px rgba(0,0,0,0.65);
-        border-radius: 4px;
-    }
-
-        .leaflet-bar a,
-        .leaflet-bar a:hover {
-            background-color: #fff;
-            border-bottom: 1px solid #ccc;
-            width: 26px;
-            height: 26px;
-            line-height: 26px;
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            color: black;
-        }
-
-        .leaflet-bar a,
-        .leaflet-control-layers-toggle {
-            background-position: 50% 50%;
-            background-repeat: no-repeat;
-            display: block;
-        }
-
-            .leaflet-bar a:hover {
-                background-color: #f4f4f4;
-            }
-
-            .leaflet-bar a:first-child {
-                border-top-left-radius: 4px;
-                border-top-right-radius: 4px;
-            }
-
-            .leaflet-bar a:last-child {
-                border-bottom-left-radius: 4px;
-                border-bottom-right-radius: 4px;
-                border-bottom: none;
-            }
-
-            .leaflet-bar a.leaflet-disabled {
-                cursor: default;
-                background-color: #f4f4f4;
-                color: #bbb;
-            }
-
-    .leaflet-touch .leaflet-bar a {
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-    }
-
-        .leaflet-touch .leaflet-bar a:first-child {
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
-        }
-
-        .leaflet-touch .leaflet-bar a:last-child {
-            border-bottom-left-radius: 2px;
-            border-bottom-right-radius: 2px;
-        }
-
-    /* zoom control */
-
-    .leaflet-control-zoom-in,
-    .leaflet-control-zoom-out {
-        font: bold 18px 'Lucida Console', Monaco, monospace;
-        text-indent: 1px;
-    }
-
-    .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out {
-        font-size: 22px;
-    }
-
-
-    /* layers control */
-
-    .leaflet-control-layers {
-        box-shadow: 0 1px 5px rgba(0,0,0,0.4);
-        background: #fff;
-        border-radius: 5px;
-    }
-
-    .leaflet-control-layers-toggle {
-        background-image: url(images/layers.png);
-        width: 36px;
-        height: 36px;
-    }
-
-    .leaflet-retina .leaflet-control-layers-toggle {
-        background-image: url(images/layers-2x.png);
-        background-size: 26px 26px;
-    }
-
-    .leaflet-touch .leaflet-control-layers-toggle {
-        width: 44px;
-        height: 44px;
-    }
-
-    .leaflet-control-layers .leaflet-control-layers-list,
-    .leaflet-control-layers-expanded .leaflet-control-layers-toggle {
-        display: none;
-    }
-
-    .leaflet-control-layers-expanded .leaflet-control-layers-list {
-        display: block;
-        position: relative;
-    }
-
-    .leaflet-control-layers-expanded {
-        padding: 6px 10px 6px 6px;
-        color: #333;
-        background: #fff;
-    }
-
-    .leaflet-control-layers-scrollbar {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        padding-right: 5px;
-    }
-
-    .leaflet-control-layers-selector {
-        margin-top: 2px;
-        position: relative;
-        top: 1px;
-    }
-
-    .leaflet-control-layers label {
-        display: block;
-    }
-
-    .leaflet-control-layers-separator {
-        height: 0;
-        border-top: 1px solid #ddd;
-        margin: 5px -10px 5px -6px;
-    }
-
-    /* Default icon URLs */
-    .leaflet-default-icon-path {
-        background-image: url(images/marker-icon.png);
-    }
-
-
-    /* attribution and scale controls */
-
-    .leaflet-container .leaflet-control-attribution {
-        background: #fff;
-        background: rgba(255, 255, 255, 0.7);
-        margin: 0;
-    }
-
-    .leaflet-control-attribution,
-    .leaflet-control-scale-line {
-        padding: 0 5px;
-        color: #333;
-    }
-
-        .leaflet-control-attribution a {
-            text-decoration: none;
-        }
-
-            .leaflet-control-attribution a:hover {
-                text-decoration: underline;
-            }
-
-    .leaflet-container .leaflet-control-attribution,
-    .leaflet-container .leaflet-control-scale {
-        font-size: 11px;
-    }
-
-    .leaflet-left .leaflet-control-scale {
-        margin-left: 5px;
-    }
-
-    .leaflet-bottom .leaflet-control-scale {
+    .beneficiary-box-section ul li:nth-child(10) {
+        border-bottom: 2px dotted #000;
+        margin-top: 5px;
         margin-bottom: 5px;
     }
 
-    .leaflet-control-scale-line {
-        border: 2px solid #777;
-        border-top: none;
-        line-height: 1.1;
-        padding: 2px 5px 1px;
-        font-size: 11px;
-        white-space: nowrap;
-        overflow: hidden;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        background: #fff;
-        background: rgba(255, 255, 255, 0.5);
+    .map-box-img {
+        padding: 15px;
+        background-color: #f4ed72;
     }
 
-        .leaflet-control-scale-line:not(:first-child) {
-            border-top: 2px solid #777;
-            border-bottom: none;
-            margin-top: -2px;
+        .map-box-img .mapImg {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #2d396d;
         }
 
-            .leaflet-control-scale-line:not(:first-child):not(:last-child) {
-                border-bottom: 2px solid #777;
+    .map-details-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 4px;
+    }
+
+        .map-details-list li {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .map-details-list li .txt p {
+                font-size: 12px;
+                color: #000;
+                margin: 0px;
+                font-weight: 500;
             }
 
-    .leaflet-touch .leaflet-control-attribution,
-    .leaflet-touch .leaflet-control-layers,
-    .leaflet-touch .leaflet-bar {
-        box-shadow: none;
-    }
-
-    .leaflet-touch .leaflet-control-layers,
-    .leaflet-touch .leaflet-bar {
-        border: 2px solid rgba(0,0,0,0.2);
-        background-clip: padding-box;
-    }
-
-
-    /* popup */
-
-    .leaflet-popup {
-        position: absolute;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .leaflet-popup-content-wrapper {
-        padding: 1px;
-        text-align: left;
-        border-radius: 12px;
-    }
-
-    .leaflet-popup-content {
-        margin: 13px 19px;
-        line-height: 1.4;
-    }
-
-        .leaflet-popup-content p {
-            margin: 18px 0;
-        }
-
-    .leaflet-popup-tip-container {
-        width: 40px;
-        height: 20px;
-        position: absolute;
-        left: 50%;
-        margin-left: -20px;
-        overflow: hidden;
-        pointer-events: none;
-    }
-
-    .leaflet-popup-tip {
-        width: 17px;
-        height: 17px;
-        padding: 1px;
-        margin: -10px auto 0;
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg);
-    }
-
-    .leaflet-popup-content-wrapper,
-    .leaflet-popup-tip {
-        background: white;
-        color: #333;
-        box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-    }
-
-    .leaflet-container a.leaflet-popup-close-button {
-        position: absolute;
+    .overlay-map {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
         top: 0;
         right: 0;
-        padding: 4px 4px 0 0;
-        border: none;
-        text-align: center;
-        width: 18px;
-        height: 14px;
-        font: 16px/14px Tahoma, Verdana, sans-serif;
-        color: #c3c3c3;
-        text-decoration: none;
-        font-weight: bold;
-        background: transparent;
-    }
-
-        .leaflet-container a.leaflet-popup-close-button:hover {
-            color: #999;
-        }
-
-    .leaflet-popup-scrolled {
-        overflow: auto;
-        border-bottom: 1px solid #ddd;
-        border-top: 1px solid #ddd;
-    }
-
-    .leaflet-oldie .leaflet-popup-content-wrapper {
-        zoom: 1;
-    }
-
-    .leaflet-oldie .leaflet-popup-tip {
-        width: 24px;
-        margin: 0 auto;
-        --ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
-        /*filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);*/
-    }
-
-    .leaflet-oldie .leaflet-popup-tip-container {
-        margin-top: -1px;
-    }
-
-    .leaflet-oldie .leaflet-control-zoom,
-    .leaflet-oldie .leaflet-control-layers,
-    .leaflet-oldie .leaflet-popup-content-wrapper,
-    .leaflet-oldie .leaflet-popup-tip {
-        border: 1px solid #999;
-    }
-
-
-    /* div icon */
-
-    .leaflet-div-icon {
-        background: #fff;
-        border: 1px solid #666;
-    }
-
-
-    /* Tooltip */
-    /* Base styles for the element that has a tooltip */
-    .leaflet-tooltip {
-        position: absolute;
-        padding: 6px;
         background-color: #fff;
-        border: 1px solid #fff;
-        border-radius: 3px;
-        color: #222;
-        white-space: nowrap;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        pointer-events: none;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        box-shadow: 0 0.5rem 1rem 7px rgba(0, 0, 0, 0.15) !important;
+        overflow-x: hidden;
+        transition: 0.5s;
     }
 
-        .leaflet-tooltip.leaflet-clickable {
-            cursor: pointer;
-            pointer-events: auto;
-        }
-
-    .leaflet-tooltip-top:before,
-    .leaflet-tooltip-bottom:before,
-    .leaflet-tooltip-left:before,
-    .leaflet-tooltip-right:before {
-        position: absolute;
-        pointer-events: none;
-        border: 6px solid transparent;
-        background: transparent;
-        content: "";
-    }
-
-    /* Directions */
-
-    .leaflet-tooltip-bottom {
-        margin-top: 6px;
-    }
-
-    .leaflet-tooltip-top {
-        margin-top: -6px;
-    }
-
-        .leaflet-tooltip-bottom:before,
-        .leaflet-tooltip-top:before {
-            left: 50%;
-            margin-left: -6px;
-        }
-
-        .leaflet-tooltip-top:before {
-            bottom: 0;
-            margin-bottom: -12px;
-            border-top-color: #fff;
-        }
-
-    .leaflet-tooltip-bottom:before {
-        top: 0;
-        margin-top: -12px;
-        margin-left: -6px;
-        border-bottom-color: #fff;
-    }
-
-    .leaflet-tooltip-left {
-        margin-left: -6px;
-    }
-
-    .leaflet-tooltip-right {
-        margin-left: 6px;
-    }
-
-        .leaflet-tooltip-left:before,
-        .leaflet-tooltip-right:before {
-            top: 50%;
-            margin-top: -6px;
-        }
-
-    .leaflet-tooltip-left:before {
-        right: 0;
-        margin-right: -12px;
-        border-left-color: #fff;
-    }
-
-    .leaflet-tooltip-right:before {
-        left: 0;
-        margin-left: -12px;
-        border-right-color: #fff;
-    }
-
-    ul {
-        /* Icon by Smashicons */
-        /*list-style-image: url('https://ivan-lim.com/wp-content/uploads/icons/croissant-15x15.png');*/
-        list-style-image: url('../Content/dashboard/images/MarkerRedTriangle.png');
-    }
-
-
-    ul {
-        list-style: none;
-    }
-
-    .coller ul li {
-        margin-bottom: 10px;
-        padding-left: 25px;
+    .overlay-content {
         position: relative;
     }
 
-    ul li::before {
+        .overlay-content ul.list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+            .overlay-content ul.list li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+                .overlay-content ul.list li .value-box {
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+    .map-card {
+        box-shadow: -8px 20px 25px 0 rgb(25 42 70 / 30%);
+        background: #fff;
+        padding: 10px;
+        border-radius: 0px;
+    }
+    /*.clrIndv .menu-icon {*/
         /* Icon by Smashicons */
-        /*background-image: url('../Content/dashboard/images/MarkerRedTriangle.png');*/
-        background-size: cover;
-        content: "";
-        height: 17px; /* Adjust based on image height */
-        left: 0;
-        position: absolute;
-        top: 2px; /* Adjust for best image placement relative to text */
-        width: 17px; /* Adjust based on image width */
+        /*background-image: url(../Content/dashboard/images/MarkerRedSingle.png);
+        background-repeat: no-repeat;
+        width: 90px;
+        height: 49px;
     }
 
-    .clrIndv::before {
+    .clgIndv::before {*/
         /* Icon by Smashicons */
-        background-image: url('../Content/dashboard/images/MarkerRedSingle.png');
+        /*background-image: url('../Content/dashboard/images/MarkerGreenSingle.png');
     }
 
-    .clgIndv::before {
+    .clrThr::before {*/
         /* Icon by Smashicons */
-        background-image: url('../Content/dashboard/images/MarkerGreenSingle.png');
+        /*background-image: url('../Content/dashboard/images/RoundedR.png');
     }
 
-    .clrThr::before {
+    .clgThr::before {*/
         /* Icon by Smashicons */
-        background-image: url('../Content/dashboard/images/RoundedR.png');
-    }
-
-    .clgThr::before {
-        /* Icon by Smashicons */
-        background-image: url('../Content/dashboard/images/RoundedG.png');
-    }
+        /*background-image: url('../Content/dashboard/images/RoundedG.png');
+    }*/
 </style>
-
 <div class="row">
-    <div class="col-lg-3 col-sm-6">
-        <div class="card gradient-1">
-            <div class="card-body">
-                <h3 class="card-title text-white">Enterprises Onboarded</h3>
-                <div class="d-inline-block">
-                    <h2 class="text-white" id="TotalParticipant"></h2>
-                    @*<p class="text-white mb-0">Jan - March 2019</p>*@
+    <div class="col-xs-12 col-md-12">
+        <div class="card map-card">
+            <div class="de-map-box">
+                <div id="myNav" class="overlay-map">
+                    <a href="javascript:void(0)" class="closebtn" id="closeNav" style="font-size: 36px;line-height: 24px;">&times;</a>
+                    <div class="overlay-content">
+                        <ul class="list">
+                            <li>
+                                <div class="value-box">
+                                    <span>Enterprises Onboarded</span>
+                                    <img src="~/Content/dashboard/images/handshake.png" class="img-fluid">
+                                    <div id="TotalParticipant"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="value-box">
+                                    <span>Enterprises Solarized</span>
+                                    <img src="~/Content/dashboard/images/solareng.png" class="img-fluid">
+                                    <div id="TotalSolarized"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="value-box">
+                                    <span>GHG Emissions Mitigated</span>
+                                    <img src="~/Content/dashboard/images/battery.png" class="img-fluid">
+                                    <div id="">0</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="value-box">
+                                    <span>Capacity of installation (kW)</span>
+                                    <img src="~/Content/dashboard/images/sgssky.png" class="img-fluid">
+                                    <div id="">0</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <span class="float-right display-5 opacity-5">
-                    <i class="fa fa-handshake-o"></i>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <div class="card gradient-2">
-            <div class="card-body">
-                <h3 class="card-title text-white">Enterprises Solarized</h3>
-                <div class="d-inline-block">
-                    <h2 class="text-white" id="TotalSolarized"></h2>
-                    @*<p class="text-white mb-0">Jan - March 2019</p>*@
+                <div class="filter-section">
+                    <div class="row no-gutters">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-box-section">
+                                <div class="row">
+
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="form-group row" style="display:none;">
+                                            <label for="State" class="col-sm-5 col-form-label">State</label>
+                                            <div class="col-sm-7">
+                                                @Html.DropDownListFor(model => model.CountryId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="District" class="col-sm-5 col-form-label">State</label>
+                                            <div class="col-sm-7">
+                                                @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="District" class="col-sm-5 col-form-label">District</label>
+                                            <div class="col-sm-7">
+                                                @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Block" class="col-sm-5 col-form-label">Block</label>
+                                            <div class="col-sm-7">
+                                                @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Type of enterprise" class="col-sm-5 col-form-label">Type of enterprise</label>
+                                            <div class="col-sm-7">
+                                                @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(1), null, new { @class = "form-control select2", @required = "required" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="form-group row">
+                                            <label for="Type of Indicator" class="col-sm-5 col-form-label">Type of Indicator</label>
+                                            <div class="col-sm-7">
+                                                @Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control select2", @required = "required" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="DPE Installation Capacity" class="col-sm-5 col-form-label">DPE Installation Capacity</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control">
+                                                    <option>Select</option>
+                                                </select>
+                                                @*@Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control", @required = "required" })*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Change in Income" class="col-sm-5 col-form-label">Change in Income</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control">
+                                                    <option>Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="beneficiary-box-section">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <h6 style="text-align: center;font-size: 16px;font-weight: 600;padding-top: 10px;">Beneficiary details</h6>
+                                        <ul>
+                                            <li class="divbfy">State:<strong id="StateName"></strong></li>
+                                            <li class="divbfy">District : <strong id="DistrictName"></strong></li>
+                                            <li class="divbfy">Block: <strong id="BlockName"></strong></li>
+                                            <li class="divbfy">GP:<strong id="GPName"></strong></li>
+                                            <li class="divbfy">VO: <strong id="VO"></strong></li>
+                                            <li class="divbfy">Type of enterprise:<strong id="TypeofEnterpriseBusinText"></strong></li>
+                                            <li class="divbfy">Name of owner: <strong id="NameofEnterpriseOwner"></strong></li>
+                                            <li class="divbfy">SHG name: <strong id="NameofSHG"></strong></li>
+                                            <li class="divbfy">Space available: <strong id="SpaceAvailableText"></strong></li>
+                                            <li class="divbfy">Space available area: <strong id="SpaceAvailable_Area"></strong></li>
+
+
+                                            <li class="divthr">Take-Home Ration Nutri Enterprise : <strong id="THR_NutriEnterprise"></strong></li>
+                                            <li class="divthr">Type of Roof : <strong id="TypeofRoof"></strong></li>
+                                            <li class="divthr">Total Roof and shed area available (sq feet) : <strong id="TRoofandshedareaavailable_sqfeet"></strong></li>
+                                            <li class="divthr">Shadow free Area available for Solarization(sq feet) : <strong id="AreaAvailableSolarization_sqfeet"></strong></li>
+                                            <li class="divthr">Contact Person : <strong id="PersonName" class="text-bg-primary"></strong></li>
+                                            <li class="divthr">Contact Number : <strong id="PhoneNumber" class="text-bg-primary"></strong></li>
+                                            <li></li>
+                                            <li>Enterprises Onboarded:</li>
+                                            <li>Enterprises Solarized:</li>
+                                            <li>Capacity of Installation (kW):</li>
+
+                                            <li class="divbfy">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" height="200" /> </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="img-child-box" style="
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 100%;
+">
+                                            <img src="~/Content/dashboard/images/childImg.jpg" class="img-fluid mapImg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="map-box-img" id="openNav">
+                                <div>
+                                    <a href="javascript:void(0);" id="dvMapToggle" class="btn-sm btn-primary" style="position:absolute; top:32px; left:200px;z-index:9;">Total View</a>
+                                    <div id="dvMap" style="width: 100%; height: 550px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
+                                    @*<img src="img/mapIcon.jpg" class="img-fluid mapImg">*@
+                                </div>
+                                <ul class="map-details-list">
+                                    <li class="clgIndv">
+                                        <i class=" menu-icon ">
+                                            <img src="../Content/dashboard/images/MarkerGreenSingle.png" style="width:30px;" />
+                                        </i>
+                                        <div class="txt">
+                                            <p>Solar Powered Individual Enterprises</p>
+                                        </div>
+                                    <li>
+                                    <li class="clrIndv">
+                                        @*<img src="~/Content/dashboard/images/MarkerRedSingle.png" alt="Alternate Text" />*@
+                                        <i class=" menu-icon ">
+                                            <img src="../Content/dashboard/images/MarkerRedSingle.png" style="width:30px;" />
+                                        </i>
+                                        <div class="txt">
+                                            <p>Non-Solar Powered Individual Enterprises</p>
+                                        </div>
+                                    <li>
+                                    <li class="clgThr">
+                                        <i class=" menu-icon ">
+                                            <img src="../Content/dashboard/images/RoundedG.png" style="width:30px;" />
+                                        </i>
+                                        <div class="txt">
+                                            <p>Solar Powered Collective Enterprises</p>
+                                        </div>
+                                    <li>
+                                    <li class="clrThr">
+                                        <i class=" menu-icon ">
+                                            <img src="../Content/dashboard/images/RoundedR.png" style="width:30px;" />
+                                        </i>
+                                        <!--icon-map-->
+                                        <div class="txt">
+                                            <p>Non-Solar Powered Collective Enterprises</p>
+                                        </div>
+                                    <li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <span class="float-right display-5 opacity-5"><i class="fa fa-list-alt"></i></span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <div class="card gradient-3">
-            <div class="card-body">
-                <h3 class="card-title text-white">Capacity of installation (kW)</h3>
-                <div class="d-inline-block">
-                    <h2 class="text-white">0</h2>
-                    @*<p class="text-white mb-0">Jan - March 2019</p>*@
-                </div>
-                <span class="float-right display-5 opacity-5"><i class="fa fa-battery-half"></i></span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <div class="card gradient-7">
-            <div class="card-body">
-                <h3 class="card-title text-white">GHG Emissions Mitigated</h3>
-                <div class="d-inline-block">
-                    <h2 class="text-white">0</h2>
-                    @*<p class="text-white mb-0">Jan - March 2019</p>*@
-                </div>
-                <span class="float-right display-5 opacity-5"><i class="fa fa-soundcloud"></i></span>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-12 mb-1">
-        <div class="row">
-            @*<div class="col-4" id="containermap">
-                </div>*@
-            @*<div class="col-6" id="chartpart">*@
-            <div class="card">
-                <div class="col-12" id="googlemaplaclong">
-                    <div class="clearfix"></div>
 
-                    <div class="row">
-                        <div class="col-md-3" style="display:none;">
-                            @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label" })
-                            @*<span style="color:red;">*</span>*@
-                            <div class="col-md-12s">
-                                @Html.DropDownListFor(model => model.CountryId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
-                                @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label" })
-                            @*<span style="color:red;">*</span>*@
-                            <div class="col-md-12s">
-                                @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
-                                @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            @Html.LabelFor(model => model.DistrictId, htmlAttributes: new { @class = "control-label" })
-                            @*<span style="color:red;">*</span>*@
-                            <div class="col-md-12s">
-                                @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control select2", @required = "required" })
-                                @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            @Html.LabelFor(model => model.BlockId, htmlAttributes: new { @class = "control-label" })
-                            @*<span style="color:red;">*</span>*@
-                            <div class="col-md-12s">
-                                @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
-                                @Html.ValidationMessageFor(model => model.BlockId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            @Html.LabelFor(model => model.TypeofEnterpriseBusinId, htmlAttributes: new { @class = "control-label" })
-                            @*<span style="color:red;">*</span>*@
-                            <div class="col-md-12s">
-                                @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(1), null, new { @class = "form-control select2", @required = "required" })
-                                @Html.ValidationMessageFor(model => model.TypeofEnterpriseBusinId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            @Html.LabelFor(model => model.TypeofIndicator, htmlAttributes: new { @class = "control-label" })
-                            @*<span style="color:red;">*</span>*@
-                            <div class="col-md-12s">
-                                @Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control", @required = "required" })
-                                @Html.ValidationMessageFor(model => model.TypeofIndicator, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="col-md-3"></div>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-9 CARD SHADOW">
-                            <h3><span id="msg" class="text-danger text-center"></span></h3>
-                            @*<div id="dvMap" style="width:100%; height:450px; border:3px solid #0094ff" class="border-bottom-primary"> </div>*@
-                            <div id="dvMap" style="width: 100%; height: 550px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
-                            @*<a id="zoomIn"><i class="fa fa-plus"></i></a>
-                                <a id="zoomOut"><i class="fa fa-minus"></i></a>*@
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="clearfix"></div>
-                            <div class="col-md-12 card coller" style="margin-bottom: 5px !important;">
-                                <ul>
-                                    <li class="clgIndv" style="word-wrap:break-word !important;">Solar Powered Individual Enterprises</li>
-                                    <li class="clrIndv" style="word-wrap:break-word !important;">Non-Solar Powered Individual Enterprises</li>
-                                    <li class="clgThr" style="word-wrap:break-word !important;">Solar Powered Collective Enterprises</li>
-                                    <li class="clrThr" style="word-wrap:break-word !important;">Non-Solar Powered Collective Enterprises</li>
-                                </ul>
-                            </div>
-                            <div class="card shadow" id="Detail">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Beneficiary Details</h6>
-                                </div>
-                                <div class="m-md-2 text-gray-800">
-                                    @*<div><b>Traget Data  : @dt.Rows[0]["SubmissionStatus"].ToString()</b></div>
-                                        <div><b>Submission Datat : @dt.Rows[1]["SubmissionStatus"].ToString() </b></div>
-                                        <div><b>Precentage : @TotalPreceRD (%)</b></div>
-                                        <div><b>Pending : @restdata</b></div>*@
-                                    @*<hr />*@
-
-                                    <div class="Detail">State : <strong id="StateName"></strong></div>
-                                    <div class="Detail">District : <strong id="DistrictName"></strong></div>
-                                    <div class="Detail">Block : <strong id="BlockName"></strong></div>
-
-                                    <div class="Detail divbfy">GP : <strong id="GPName"></strong></div>
-                                    <div class="Detail divbfy">VO : <strong id="VO"></strong></div>
-                                    <div class="Detail divbfy">Type of Enterprise : <strong id="TypeofEnterpriseBusinText"></strong></div>
-                                    <div class="Detail divbfy">Name of Owner : <strong id="NameofEnterpriseOwner"></strong></div>
-                                    <div class="Detail divbfy">SHG Name : <strong id="NameofSHG"></strong></div>
-                                    <div class="Detail divbfy">Space Available : <strong id="SpaceAvailableText"></strong></div>
-                                    <div class="Detail divbfy">Space Available Area(sq.ft) : <strong id="SpaceAvailable_Area"></strong></div>
-
-                                    <div class="Detail divthr">Take-Home Ration Nutri Enterprise : <strong id="THR_NutriEnterprise"></strong></div>
-                                    <div class="Detail divthr">Type of Roof : <strong id="TypeofRoof"></strong></div>
-                                    <div class="Detail divthr">Total Roof and shed area available (sq feet) : <strong id="TRoofandshedareaavailable_sqfeet"></strong></div>
-                                    <div class="Detail divthr">Shadow free Area available for Solarization(sq feet) : <strong id="AreaAvailableSolarization_sqfeet"></strong></div>
-                                    <div class="Detail divthr">Contact Person : <strong id="PersonName" class="text-bg-primary"></strong></div>
-                                    <div class="Detail divthr">Contact Number : <strong id="PhoneNumber" class="text-bg-primary"></strong></div>
-                                    <p><hr /></p>
-                                    <div class="Detail">Enterprises Onboarded : <strong id="EnterprisesOnboarded"></strong></div>
-                                    <div class="Detail">Enterprises Solarized : <strong id="EnterprisesSolarized"></strong></div>
-                                    <div class="Detail">Capacity of installation (kW) : <strong id="CapacityofinstallationkW"></strong></div>
-
-                                    <div class="Detail divbfy">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" width="200" height="200" /> </div>
-
-                                </div>
-                                <div class="row text-gray-800" style="width:100%;">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@*<div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body pb-0 d-flex justify-content-between">
-                            <div>
-                                <h4 class="mb-1">Product Sales</h4>
-                                <p>Total Earnings of the Month</p>
-                                <h3 class="m-0">$ 12,555</h3>
-                            </div>
-                            <div>
-                                <ul>
-                                    <li class="d-inline-block mr-3"><a class="text-dark" href="#">Day</a></li>
-                                    <li class="d-inline-block mr-3"><a class="text-dark" href="#">Week</a></li>
-                                    <li class="d-inline-block"><a class="text-dark" href="#">Month</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="chart-wrapper">
-                            <canvas id="chart_widget_2"></canvas>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="w-100 mr-2">
-                                    <h6>Pixel 2</h6>
-                                    <div class="progress" style="height: 6px">
-                                        <div class="progress-bar bg-danger" style="width: 40%"></div>
-                                    </div>
-                                </div>
-                                <div class="ml-2 w-100">
-                                    <h6>iPhone X</h6>
-                                    <div class="progress" style="height: 6px">
-                                        <div class="progress-bar bg-primary" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="row">
-        <div class="col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Order Summary</h4>
-                    <div id="morris-bar-chart"></div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card card-widget">
-                <div class="card-body">
-                    <h5 class="text-muted">Order Overview </h5>
-                    <h2 class="mt-4">5680</h2>
-                    <span>Total Revenue</span>
-                    <div class="mt-4">
-                        <h4>30</h4>
-                        <h6>Online Order <span class="pull-right">30%</span></h6>
-                        <div class="progress mb-3" style="height: 7px">
-                            <div class="progress-bar bg-primary" style="width: 30%;" role="progressbar">
-                                <span class="sr-only">30% Order</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <h4>50</h4>
-                        <h6 class="m-t-10 text-muted">Offline Order <span class="pull-right">50%</span></h6>
-                        <div class="progress mb-3" style="height: 7px">
-                            <div class="progress-bar bg-success" style="width: 50%;" role="progressbar">
-                                <span class="sr-only">50% Order</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <h4>20</h4>
-                        <h6 class="m-t-10 text-muted">Cash On Develery <span class="pull-right">20%</span></h6>
-                        <div class="progress mb-3" style="height: 7px">
-                            <div class="progress-bar bg-warning" style="width: 20%;" role="progressbar">
-                                <span class="sr-only">20% Order</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="card-body px-0">
-                    <h4 class="card-title px-4 mb-3">Todo</h4>
-                    <div class="todo-list">
-                        <div class="tdl-holder">
-                            <div class="tdl-content">
-                                <ul id="todo_list">
-                                    <li><label><input type="checkbox"><i></i><span>Get up</span><a href='#' class="ti-trash"></a></label></li>
-                                    <li><label><input type="checkbox" checked><i></i><span>Stand up</span><a href='#' class="ti-trash"></a></label></li>
-                                    <li><label><input type="checkbox"><i></i><span>Don't give up the fight.</span><a href='#' class="ti-trash"></a></label></li>
-                                    <li><label><input type="checkbox" checked><i></i><span>Do something else</span><a href='#' class="ti-trash"></a></label></li>
-                                </ul>
-                            </div>
-                            <div class="px-4">
-                                <input type="text" class="tdl-new form-control" placeholder="Write new item and hit 'Enter'...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="~/Content/dashboard/images/users/8.jpg" class="rounded-circle" alt="">
-                        <h5 class="mt-3 mb-1">Ana Liem</h5>
-                        <p class="m-0">Senior Manager</p>
-                        <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="~/Content/dashboard/images/users/5.jpg" class="rounded-circle" alt="">
-                        <h5 class="mt-3 mb-1">John Abraham</h5>
-                        <p class="m-0">Store Manager</p>
-                        <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="~/Content/dashboard/images/users/7.jpg" class="rounded-circle" alt="">
-                        <h5 class="mt-3 mb-1">John Doe</h5>
-                        <p class="m-0">Sales Man</p>
-                        <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="~/Content/dashboard/images/users/1.jpg" class="rounded-circle" alt="">
-                        <h5 class="mt-3 mb-1">Mehedi Titas</h5>
-                        <p class="m-0">Online Marketer</p>
-                        <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="active-member">
-                        <div class="table-responsive">
-                            <table class="table table-xs mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Customers</th>
-                                        <th>Product</th>
-                                        <th>Country</th>
-                                        <th>Status</th>
-                                        <th>Payment Method</th>
-                                        <th>Activity</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><img src="~/Content/dashboard/images/avatar/1.jpg" class=" rounded-circle mr-3" alt="">Sarah Smith</td>
-                                        <td>iPhone X</td>
-                                        <td>
-                                            <span>United States</span>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 50%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="~/Content/dashboard/images/avatar/2.jpg" class=" rounded-circle mr-3" alt="">Walter R.</td>
-                                        <td>Pixel 2</td>
-                                        <td><span>Canada</span></td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 50%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">50 sec ago</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="~/Content/dashboard/images/avatar/3.jpg" class=" rounded-circle mr-3" alt="">Andrew D.</td>
-                                        <td>OnePlus</td>
-                                        <td><span>Germany</span></td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-warning" style="width: 50%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="~/Content/dashboard/images/avatar/6.jpg" class=" rounded-circle mr-3" alt=""> Megan S.</td>
-                                        <td>Galaxy</td>
-                                        <td><span>Japan</span></td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 50%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="~/Content/dashboard/images/avatar/4.jpg" class=" rounded-circle mr-3" alt=""> Doris R.</td>
-                                        <td>Moto Z2</td>
-                                        <td><span>England</span></td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 50%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="~/Content/dashboard/images/avatar/5.jpg" class=" rounded-circle mr-3" alt="">Elizabeth W.</td>
-                                        <td>Notebook Asus</td>
-                                        <td><span>China</span></td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-warning" style="width: 50%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xl-3 col-lg-6 col-sm-6 col-xxl-6">
-
-            <div class="card">
-                <div class="chart-wrapper mb-4">
-                    <div class="px-4 pt-4 d-flex justify-content-between">
-                        <div>
-                            <h4>Sales Activities</h4>
-                            <p>Last 6 Month</p>
-                        </div>
-                        <div>
-                            <span><i class="fa fa-caret-up text-success"></i></span>
-                            <h4 class="d-inline-block text-success">720</h4>
-                            <p class=" text-danger">+120.5(5.0%)</p>
-                        </div>
-                    </div>
-                    <div>
-                        <canvas id="chart_widget_3"></canvas>
-                    </div>
-                </div>
-                <div class="card-body border-top pt-4">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul>
-                                <li>5% Negative Feedback</li>
-                                <li>95% Positive Feedback</li>
-                            </ul>
-                            <div>
-                                <h5>Customer Feedback</h5>
-                                <h3>385749</h3>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div id="chart_widget_3_1"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-sm-6 col-xxl-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Activity</h4>
-                    <div id="activity">
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="~/Content/dashboard/images/avatar/1.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>Received New Order</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="~/Content/dashboard/images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>iPhone develered</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="~/Content/dashboard/images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>3 Order Pending</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="~/Content/dashboard/images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>Join new Manager</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="~/Content/dashboard/images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>Branch open 5 min Late</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="~/Content/dashboard/images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>New support ticket received</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media pt-3 pb-3">
-                            <img width="35" src="~/Content/dashboard/images/avatar/3.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>Facebook Post 30 Comments</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 col-lg-12 col-sm-12 col-xxl-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-0">Store Location</h4>
-                    <div id="world-map" style="height: 470px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="row">
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-facebook">
-                    <span class="s-icon"><i class="fa fa-facebook"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-linkedin">
-                    <span class="s-icon"><i class="fa fa-linkedin"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-googleplus">
-                    <span class="s-icon"><i class="fa fa-google-plus"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-twitter">
-                    <span class="s-icon"><i class="fa fa-twitter"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -1521,7 +394,6 @@
     @*<script src="~/Scripts/JS/index.min.js"></script>*@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js"></script>
     <script src="https://cdn.rawgit.com/jawj/OverlappingMarkerSpiderfier/gh-pages/oms.min.js"></script>
-
 
     <script>
         var dislist = [], MonthParts = [], AllDataBFY = [], BFYFilterDis, tblTHR = [];
@@ -1895,7 +767,7 @@
 
                 // Ensure the Google Maps API is loaded before proceeding
                 if (typeof google === 'object' && typeof google.maps === 'object') {
-                 
+
                     var mapOptions = {
                         center: new google.maps.LatLng('28.6139','77.2090'),//markers[0].Latitude, markers[0].Longitude
                         zoom: 5,//8
@@ -1906,7 +778,7 @@
 
                     var infoWindow = new google.maps.InfoWindow();
                     var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
-                    
+
                     //
                     $('#dvMap').append('<div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a id="zoomIn" class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" >+</a><a id="zoomOut" class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div>');
 
@@ -1957,7 +829,7 @@
                             //}
 
                         });
-                        
+
                         (function (marker, data) {
                             if (i==0) {
                                 $(".Detail").show(); $(".divbfy").show(); $(".divthr").hide();
@@ -2063,9 +935,6 @@
                 ClearDataShow();
             }
         }
-
-
-
 
         //function LoadGoogleMap(tblData, tblTHR) {
         //    var markers = tblData; // Assuming tblData is already in the correct format
@@ -2222,5 +1091,27 @@
         //    }
         //}
 
+    </script>
+    <style>
+        .myNav {
+            width:150px;
+        }
+    </style>
+    <script>
+        //$('#dvMapToggle').toggle(function () {
+        //    $("#myNav").css({ width: "0%" });
+        //}, function () {
+        //    $("#myNav").css({ width: "150px" });
+        //});
+        $("#dvMapToggle").click(function () {
+            //$("#myNav").css("width", "150px");
+            $("#myNav").toggleClass("myNav");
+            //$('#myNav').addClass('myNav');
+            
+        });
+        $("#closeNav").click(function () {
+            //$("#myNav").css("width", "0%");
+            $("#myNav").toggleClass("myNav");
+        });
     </script>
 }

@@ -764,12 +764,16 @@
     <Content Include="Content\dashboard\images\blog\2.html" />
     <Content Include="Content\dashboard\images\blog\3.html" />
     <Content Include="Content\dashboard\images\blog\4.html" />
+    <Content Include="Content\dashboard\images\childImg.jpg" />
+    <Content Include="Content\dashboard\images\damapbg.jpg" />
     <Content Include="Content\dashboard\images\favicon.png" />
     <Content Include="Content\dashboard\images\icon.png" />
+    <Content Include="Content\dashboard\images\iconIMg.png" />
     <Content Include="Content\dashboard\images\login-bg.jpg" />
     <Content Include="Content\dashboard\images\logo-compact.png" />
     <Content Include="Content\dashboard\images\logo-text.png" />
     <Content Include="Content\dashboard\images\logo.png" />
+    <Content Include="Content\dashboard\images\mapIcon.jpg" />
     <Content Include="Content\dashboard\images\pci-color-logo.png" />
     <Content Include="Content\dashboard\images\pci-logo.png" />
     <Content Include="Content\dashboard\images\users\1.jpg" />
@@ -868,6 +872,9 @@
     <Content Include="Content\dashboard\plugins\validation\jquery.validate-init.js" />
     <Content Include="Content\dashboard\plugins\validation\jquery.validate.min.js" />
     <Content Include="Content\dashboard\plugins\wnumb\wNumb.js" />
+    <Content Include="Content\DataTablecss\bootstrap.css" />
+    <Content Include="Content\DataTablecss\buttons.dataTables.css" />
+    <Content Include="Content\DataTablecss\dataTables.dataTables.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -887,6 +894,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTable\buttons.dataTables.js" />
+    <Content Include="Scripts\DataTable\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTable\dataTables.js" />
+    <Content Include="Scripts\DataTable\jszip.min.js" />
+    <Content Include="Scripts\DataTable\vfs_fonts.js" />
     <Content Include="Scripts\highchart\pciPayrolesalaryslip\IN Payee Advice_79423c3cc95d4be29deee12c487cc5e4.pdf" />
     <Content Include="Scripts\highchart\pciPayrolesalaryslip\Payslip%28112024%29.pdf" />
     <Content Include="Scripts\highchart\accessibility.js" />
@@ -984,6 +997,7 @@
     <Content Include="Scripts\JS\jquery.multi-select.min.js" />
     <Content Include="Scripts\JS\Master.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\privacyPolicydewee.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -997,7 +1011,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index_13apr.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -1031,12 +1045,14 @@
     <Content Include="Views\Participant\ParticipantDownload.cshtml" />
     <Content Include="Views\Beneficiary\AddBeneficiary.cshtml" />
     <Content Include="Views\Beneficiary\BeneficiaryList.cshtml" />
-    <Content Include="Views\Beneficiary\_BeneficiaryData.cshtml" />
+    <Content Include="Views\Beneficiary\_BeneficiaryData_old.cshtml" />
     <Content Include="Views\Beneficiary\AddBeneficiaryform_old.cshtml" />
     <Content Include="Scripts\JS\UPMap.js" />
     <Content Include="Views\Beneficiary\_BeneficiaryView.cshtml" />
     <Content Include="Views\Master\_PanchayatData.cshtml" />
     <Content Include="Views\Master\AddPanchayat.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Beneficiary\_BeneficiaryData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,9 +19,12 @@
     <base href="@DeWee.Manager.CommonModel.GetBaseUrl()" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/DataTablecss/dataTables.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/DataTablecss/buttons.dataTables.css" rel="stylesheet" />
+    @*<link href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.css" rel="stylesheet" />*@
     @*<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">*@
+    
     <style>
         .scroll {
             position: fixed;
@@ -124,12 +127,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
-    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+    @*<script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.dataTables.js"></script>*@
+    <script src="~/Scripts/DataTable/dataTables.js"></script>
+    <script src="~/Scripts/DataTable/buttons.dataTables.js"></script>
+    <script src="~/Scripts/DataTable/dataTables.buttons.js"></script>
+    <script src="~/Scripts/DataTable/vfs_fonts.js"></script>
+    <script src="~/Scripts/DataTable/jszip.min.js"></script>
+    <script src="~/Scripts/DataTable/buttons.html5.min.js"></script>
+
     <script>
         const scrollingElement = (document.scrollingElement || document.body);
-
         const scrollSmoothToBottom = () => {
             $(scrollingElement).animate({
                 scrollTop: document.body.scrollHeight,

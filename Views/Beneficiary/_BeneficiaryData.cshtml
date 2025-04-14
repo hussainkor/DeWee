@@ -1,7 +1,8 @@
 ﻿@model DataTable
 @using System.Data
 
-<table class="table table-bordered table-hover dt-responsive display tbl" id="tbl" width="100%">
+
+<table class="table table-bordered table-hover display tbl small" id="tbl" width="100%">
     <thead>
         <tr>
             <th>Solar Enterprise</th>
@@ -15,8 +16,35 @@
             <th>VO</th>
             <th>Name of SHG</th>
             <th>Year Of SHG</th>
-            <th>Phone Number</th>
-            <th>Date</th>
+            <th>Name of Enterprise</th>
+            <th>Type of Enterprise</th>
+            <th>Name of SHG Member</th>
+            <th>Name of Owner</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Type Of Relation</th>
+            <th>Name of Guardian</th>
+            <th>Gender</th>
+            <th>Primary Mobile Number</th>
+            <th>Alternate Mobile Number</th>
+            <th>WhatsApp Mobile Number</th>
+            <th>Site Address (Line 1)</th>
+            <th>Site Address (Line 2)</th>
+            <th>Pincode</th>
+            <th>Category of Business Installation</th>
+            <th>Space Available</th>
+            <th>Space Available Area(sq.ft)</th>
+            <th>Nature of Space</th>
+            <th>Do you have a grid connection?</th>
+            <th>Do you use DG (diesel generator) set? </th>
+            <th>Average daily hours of operation of DG set? </th>
+            <th>Capacity of DG set? (kW) </th>
+            <th>Do you use any motor appliances?</th>
+            <th> Are you aware of any govt. schemes / subsidy related to solar energy?</th>
+            <th>Do you want a solar installation?</th>
+            <th>Do you need financial support?</th>
+            <th>Reported Name</th>
+            <th>Reported Date</th>
             @*<th>Actions</th>*@
         </tr>
     </thead>
@@ -38,7 +66,35 @@
                         <td>@row["VOName"]</td>
                         <td>@row["NameofSHG"]</td>
                         <td>@row["YearOfSHG"]</td>
+                        <td>@row["NameofEnterprise"]</td>
+                        <td>@row["BusinessTypeInEng"]</td>
+                        <td>@row["NameofSHGMember"]</td>
+                        <td>@row["NameofEnterpriseOwner"]</td>
+                        <td>@row["EnterpriseOwner_Gender"]</td>
+                        <td>@row["DOB"]</td>
+                        <td>@row["TypeOfRelative"]</td>
+                        <td>@row["NameofGuardian"]</td>
+                        <td>@row["Guardian_Gender"]</td>
+                        @*<td>@row["Guardian_Gender"]</td>*@
                         <td>@row["PhoneNumber"]</td>
+                        <td>@row["AlternateMobileNo"]</td>
+                        <td>@row["WhatsAppMobileNo"]</td>
+                        <td>@row["SiteAddress1st"]</td>
+                        <td>@row["SiteAddress2nd"]</td>
+                        <td>@row["Pincode"]</td>
+                        <td>@row["BusinessInstallationInEng"]</td>
+                        <td>@row["SpaceAvailableInEng"]</td>
+                        <td>@row["SpaceAvailable_Area"]</td>
+                        <td>@row["NatureSpaceInEng"]</td>
+                        <td>@row["YNGridconnection"]</td>
+                        <td>@row["YNDieselGenerator"]</td>
+                        <td>@row["DGYesAverageDailyHours"]</td>
+                        <td>@row["DGCapacity"]</td>
+                        <td>@row["YNMotorAppliances"]</td>
+                        <td>@row["YNGovtSchemessubsidy"]</td>
+                        <td>@row["SolarInstallationInEng"]</td>
+                        <td>@row["YNFinancialSupport"]</td>
+                        <td>@row["ReportedBy"]</td>
                         <td>@row["CreatedOn"]</td>
                     </tr>
                 }
