@@ -964,7 +964,7 @@ function DataTableSet(ElementId, HeaderName, FileName,DownLoadId) {
         order: [[0, 'asc']],
         buttons: [{
             extend: 'excel', text: '<span><i class="fa fa-download"></i> Excel Export</span>', title: HeaderName,//$('#IDDistrict option:selected').text() +
-            className: 'btn btn-primary button-icon mr-3 mt-1 mb-1',
+            className: 'btn btn-primary button-icon mr-3 mt-1 mb-1 btn-export',
             filename: FileName,
             exportOptions: { modifier: { page: 'all' } }
         }],

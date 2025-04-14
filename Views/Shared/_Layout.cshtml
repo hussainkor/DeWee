@@ -24,8 +24,15 @@
     @*<link href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.css" rel="stylesheet" />*@
     @*<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">*@
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.dataTables.min.css">
     
     <style>
+        .btn-export {
+            background: #256b78 !important;
+            color: #fff !important;
+            border-radius: 7px !important;
+            font-weight: 800 !important;
+        }
         .scroll {
             position: fixed;
             right: 5px;
@@ -73,7 +80,7 @@
     <span class="scroll scroll-up-icon" onClick="scrollSmoothToTop()"><i class="fa fa-chevron-up"></i></span>
     <span class="scroll scroll-down-icon" onClick="scrollSmoothToBottom()"><i class="fa fa-chevron-down"></i></span>
     @*<img src="~/Content/dashboard/images/scroll-up.png" alt="move up" class="scroll-up-icon" onClick="scrollSmoothToTop()" />
-    <img src="~/Content/dashboard/images/scroll-down.png" alt="move down" class="scroll-down-icon" onClick="scrollSmoothToBottom()" />*@
+        <img src="~/Content/dashboard/images/scroll-down.png" alt="move down" class="scroll-down-icon" onClick="scrollSmoothToBottom()" />*@
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -128,14 +135,15 @@
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
     @*<script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.dataTables.js"></script>*@
+        <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.js"></script>
+        <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.dataTables.js"></script>*@
     <script src="~/Scripts/DataTable/dataTables.js"></script>
     <script src="~/Scripts/DataTable/buttons.dataTables.js"></script>
     <script src="~/Scripts/DataTable/dataTables.buttons.js"></script>
     <script src="~/Scripts/DataTable/vfs_fonts.js"></script>
     <script src="~/Scripts/DataTable/jszip.min.js"></script>
     <script src="~/Scripts/DataTable/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
 
     <script>
         const scrollingElement = (document.scrollingElement || document.body);
