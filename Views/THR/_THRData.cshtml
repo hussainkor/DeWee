@@ -1,0 +1,59 @@
+﻿@model DataTable
+@using System.Data
+
+
+<table class="table table-bordered table-hover display tbl small" id="tbl" width="100%">
+    <thead>
+        <tr>
+            @*<th>Solar Enterprise</th>
+            <th>View</th>*@
+            <th>State</th>
+            <th>District</th>
+            <th>Block</th>
+            <th>THR Type</th>
+            <th>Business Type</th>
+            <th>THR NutriEnterprise</th>
+            <th>Type of Roof</th>
+            <th>T Roof and shed are available_sqfeet</th>
+            <th>Area Available Solarization_sqfeet</th>
+            <th>Person Name</th>
+            <th>Phone Number</th>
+            <th>Reported On</th>
+           
+            @*<th>Actions</th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.Rows.Count > 0)
+            {
+                foreach (DataRow row in Model.Rows)
+                {
+                    <tr>
+                        @*<td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /> </td>
+                        <td><button class="modal-btn btn-warning" data-id="@row["BeneficiaryId"]">View</button></td>*@
+                        <td>@row["StateName"]</td>
+                        <td>@row["DistrictName"]</td>
+                        <td>@row["BlockName"]</td>
+                        <td>@row["TypeTHR"]</td>
+                        <td>@row["BusinessTypeInEng"]</td>
+                        <td>@row["THR_NutriEnterprise"]</td>
+                        <td>@row["TypeofRoof"]</td>
+                        <td>@row["TRoofandshedareaavailable_sqfeet"]</td>
+                        <td>@row["AreaAvailableSolarization_sqfeet"]</td>
+                        <td>@row["PersonName"]</td>
+                        <td>@row["PhoneNumber"]</td>
+                        <td>@row["ReportedOn"]</td>
+                        
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="11" class="text-center">No data available</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

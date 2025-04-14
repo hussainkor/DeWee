@@ -105,5 +105,15 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }
+
+        public static DataTable Usp_GetTHRList(string SId = "", string DId = "", string BId = "")
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_GetTHRList");
+            sp.Command.AddParameter("@SId", SId, DbType.String);
+            sp.Command.AddParameter("@DId", DId, DbType.String);
+            sp.Command.AddParameter("@BId", BId, DbType.String);
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
     }
 }

@@ -282,6 +282,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\THRController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1053,6 +1054,8 @@
     <Content Include="Views\Master\AddPanchayat.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Beneficiary\_BeneficiaryData.cshtml" />
+    <Content Include="Views\THR\_THRData.cshtml" />
+    <Content Include="Views\THR\THRList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
