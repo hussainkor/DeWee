@@ -956,6 +956,7 @@ function DataTableSet(ElementId, HeaderName, FileName,DownLoadId) {
         //paging: false,
         "dom": '<"pull-left"f><"pull-right"l>tip',
         pageLength: 100,
+        fixedHeader: true,
         fixedColumns: {
             leftColumns: 1,
             rightColumns: 1

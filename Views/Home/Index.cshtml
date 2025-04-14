@@ -137,7 +137,7 @@
 
                 .overlay-content ul.list li .value-box {
                     text-align: center;
-                    font-size: 14px;
+                    font-size: 10px;
                     font-weight: 600;
                 }
     .map-card {
@@ -146,28 +146,12 @@
         padding: 10px;
         border-radius: 0px;
     }
-    /*.clrIndv .menu-icon {*/
-        /* Icon by Smashicons */
-        /*background-image: url(../Content/dashboard/images/MarkerRedSingle.png);
-        background-repeat: no-repeat;
-        width: 90px;
-        height: 49px;
+    .divbfy strong {
+        color: #555555 !important;
     }
-
-    .clgIndv::before {*/
-        /* Icon by Smashicons */
-        /*background-image: url('../Content/dashboard/images/MarkerGreenSingle.png');
+    .divthr strong {
+        color: #555555 !important;
     }
-
-    .clrThr::before {*/
-        /* Icon by Smashicons */
-        /*background-image: url('../Content/dashboard/images/RoundedR.png');
-    }
-
-    .clgThr::before {*/
-        /* Icon by Smashicons */
-        /*background-image: url('../Content/dashboard/images/RoundedG.png');
-    }*/
 </style>
 <div class="row">
     <div class="col-xs-12 col-md-12">
@@ -180,28 +164,28 @@
                             <li>
                                 <div class="value-box">
                                     <span>Enterprises Onboarded</span>
-                                    <img src="~/Content/dashboard/images/handshake.png" class="img-fluid">
+                                    <img src="~/Content/dashboard/images/handshake.png" class="img-fluid" style="width: 75px !important;">
                                     <div id="TotalParticipant"></div>
                                 </div>
                             </li>
                             <li>
                                 <div class="value-box">
                                     <span>Enterprises Solarized</span>
-                                    <img src="~/Content/dashboard/images/solareng.png" class="img-fluid">
+                                    <img src="~/Content/dashboard/images/solareng.png" class="img-fluid" style="width: 75px !important;">
                                     <div id="TotalSolarized"></div>
                                 </div>
                             </li>
                             <li>
                                 <div class="value-box">
                                     <span>GHG Emissions Mitigated</span>
-                                    <img src="~/Content/dashboard/images/battery.png" class="img-fluid">
+                                    <img src="~/Content/dashboard/images/battery.png" class="img-fluid" style="width: 75px !important;">
                                     <div id="">0</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="value-box">
-                                    <span>Capacity of installation (kW)</span>
-                                    <img src="~/Content/dashboard/images/sgssky.png" class="img-fluid">
+                                    <span>Capacity of Installation (kW)</span>
+                                    <img src="~/Content/dashboard/images/sgssky.png" class="img-fluid" style="width: 75px !important;">
                                     <div id="">0</div>
                                 </div>
                             </li>
@@ -280,24 +264,24 @@
                                     <div class="col-xs-12 col-md-6">
                                         <h6 style="text-align: center;font-size: 16px;font-weight: 600;padding-top: 10px;">Beneficiary details</h6>
                                         <ul>
-                                            <li class="divbfy">State:<strong id="StateName"></strong></li>
-                                            <li class="divbfy">District : <strong id="DistrictName"></strong></li>
+                                            <li class="divbfy">State: <strong id="StateName"></strong></li>
+                                            <li class="divbfy">District: <strong id="DistrictName"></strong></li>
                                             <li class="divbfy">Block: <strong id="BlockName"></strong></li>
                                             <li class="divbfy">GP:<strong id="GPName"></strong></li>
                                             <li class="divbfy">VO: <strong id="VO"></strong></li>
-                                            <li class="divbfy">Type of enterprise:<strong id="TypeofEnterpriseBusinText"></strong></li>
+                                            <li class="divbfy">Type of enterprise: <strong id="TypeofEnterpriseBusinText"></strong></li>
                                             <li class="divbfy">Name of owner: <strong id="NameofEnterpriseOwner"></strong></li>
                                             <li class="divbfy">SHG name: <strong id="NameofSHG"></strong></li>
                                             <li class="divbfy">Space available: <strong id="SpaceAvailableText"></strong></li>
                                             <li class="divbfy">Space available area: <strong id="SpaceAvailable_Area"></strong></li>
 
 
-                                            <li class="divthr">Take-Home Ration Nutri Enterprise : <strong id="THR_NutriEnterprise"></strong></li>
-                                            <li class="divthr">Type of Roof : <strong id="TypeofRoof"></strong></li>
-                                            <li class="divthr">Total Roof and shed area available (sq feet) : <strong id="TRoofandshedareaavailable_sqfeet"></strong></li>
-                                            <li class="divthr">Shadow free Area available for Solarization(sq feet) : <strong id="AreaAvailableSolarization_sqfeet"></strong></li>
-                                            <li class="divthr">Contact Person : <strong id="PersonName" class="text-bg-primary"></strong></li>
-                                            <li class="divthr">Contact Number : <strong id="PhoneNumber" class="text-bg-primary"></strong></li>
+                                            <li class="divthr">Take-Home Ration Nutri Enterprise: <strong id="THR_NutriEnterprise"></strong></li>
+                                            <li class="divthr">Type of Roof: <strong id="TypeofRoof"></strong></li>
+                                            <li class="divthr">Total Roof and shed area available (sq feet): <strong id="TRoofandshedareaavailable_sqfeet"></strong></li>
+                                            <li class="divthr">Shadow free Area available for Solarization(sq feet): <strong id="AreaAvailableSolarization_sqfeet"></strong></li>
+                                            <li class="divthr">Contact Person: <strong id="PersonName" class="text-bg-primary"></strong></li>
+                                            <li class="divthr">Contact Number: <strong id="PhoneNumber" class="text-bg-primary"></strong></li>
                                             <li></li>
                                             <li>Enterprises Onboarded:</li>
                                             <li>Enterprises Solarized:</li>
@@ -307,12 +291,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
-                                        <div class="img-child-box" style="
-    display: flex;
-    justify-content: end;
-    align-items: end;
-    height: 100%;
-">
+                                        <div class="img-child-box" style=" display: flex;justify-content: end; align-items: end;height: 100%;">
                                             <img src="~/Content/dashboard/images/childImg.jpg" class="img-fluid mapImg">
                                         </div>
                                     </div>
@@ -327,15 +306,15 @@
                                     @*<img src="img/mapIcon.jpg" class="img-fluid mapImg">*@
                                 </div>
                                 <ul class="map-details-list">
-                                    <li class="clgIndv">
-                                        <i class=" menu-icon ">
+                                    <li>
+                                        <i class="menu-icon">
                                             <img src="../Content/dashboard/images/MarkerGreenSingle.png" style="width:30px;" />
                                         </i>
                                         <div class="txt">
                                             <p>Solar Powered Individual Enterprises</p>
                                         </div>
                                     <li>
-                                    <li class="clrIndv">
+                                    <li>
                                         @*<img src="~/Content/dashboard/images/MarkerRedSingle.png" alt="Alternate Text" />*@
                                         <i class=" menu-icon ">
                                             <img src="../Content/dashboard/images/MarkerRedSingle.png" style="width:30px;" />
@@ -344,16 +323,16 @@
                                             <p>Non-Solar Powered Individual Enterprises</p>
                                         </div>
                                     <li>
-                                    <li class="clgThr">
-                                        <i class=" menu-icon ">
+                                    <li>
+                                        <i class="menu-icon">
                                             <img src="../Content/dashboard/images/RoundedG.png" style="width:30px;" />
                                         </i>
                                         <div class="txt">
                                             <p>Solar Powered Collective Enterprises</p>
                                         </div>
                                     <li>
-                                    <li class="clrThr">
-                                        <i class=" menu-icon ">
+                                    <li>
+                                        <i class="menu-icon">
                                             <img src="../Content/dashboard/images/RoundedR.png" style="width:30px;" />
                                         </i>
                                         <!--icon-map-->

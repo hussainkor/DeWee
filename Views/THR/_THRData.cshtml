@@ -6,20 +6,19 @@
     <thead>
         <tr>
             @*<th>Solar Enterprise</th>
-            <th>View</th>*@
+                <th>View</th>*@
             <th>State</th>
             <th>District</th>
             <th>Block</th>
-            <th>THR Type</th>
-            <th>Business Type</th>
-            <th>THR NutriEnterprise</th>
+            @*<th>THR Type</th>*@
+            <th>Type of Enterprise</th>
+            <th>Take-Home Ration<br /> Nutri Enterprise</th>
             <th>Type of Roof</th>
-            <th>T Roof and shed are available_sqfeet</th>
-            <th>Area Available Solarization_sqfeet</th>
+            <th>Total Roof and shed<br /> area available (sq feet) </th>
+            <th>Shadow free Area available<br /> for Solarization(sq feet) </th>
             <th>Person Name</th>
             <th>Phone Number</th>
-            <th>Reported On</th>
-           
+            <th>Reported Date</th>
             @*<th>Actions</th>*@
         </tr>
     </thead>
@@ -31,11 +30,11 @@
                 {
                     <tr>
                         @*<td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /> </td>
-                        <td><button class="modal-btn btn-warning" data-id="@row["BeneficiaryId"]">View</button></td>*@
+                            <td><button class="modal-btn btn-warning" data-id="@row["BeneficiaryId"]">View</button></td>*@
                         <td>@row["StateName"]</td>
                         <td>@row["DistrictName"]</td>
                         <td>@row["BlockName"]</td>
-                        <td>@row["TypeTHR"]</td>
+                        @*<td>@row["TypeTHR"]</td>*@
                         <td>@row["BusinessTypeInEng"]</td>
                         <td>@row["THR_NutriEnterprise"]</td>
                         <td>@row["TypeofRoof"]</td>
@@ -44,7 +43,6 @@
                         <td>@row["PersonName"]</td>
                         <td>@row["PhoneNumber"]</td>
                         <td>@row["ReportedOn"]</td>
-                        
                     </tr>
                 }
             }
