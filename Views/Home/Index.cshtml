@@ -5,7 +5,7 @@
 }
 <style>
     .de-map-box {
-        padding: 10px;
+        padding: 5px;
         background-image: url("../Content/dashboard/images/damapbg.jpg");
         background-repeat: no-repeat;
         background-size: cover;
@@ -22,6 +22,7 @@
     .form-box-section {
         padding: 15px;
         background-color: #fff;
+        padding-bottom:10px;
     }
 
         .form-box-section .form-group {
@@ -70,7 +71,7 @@
     }
 
     .map-box-img {
-        padding: 15px;
+        padding: 5px;
         background-color: #f4ed72;
     }
 
@@ -84,7 +85,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 4px;
+        margin: 6px 0px 0px 0px;
     }
 
         .map-details-list li {
@@ -143,8 +144,9 @@
     .map-card {
         box-shadow: -8px 20px 25px 0 rgb(25 42 70 / 30%);
         background: #fff;
-        padding: 10px;
+        padding: 0px;
         border-radius: 0px;
+        margin-bottom:10px;
     }
     .divbfy strong {
         color: #555555 !important;
@@ -152,6 +154,7 @@
     .divthr strong {
         color: #555555 !important;
     }
+    .content-body{min-height:auto !important;}
 </style>
 <div class="row">
     <div class="col-xs-12 col-md-12">
@@ -262,8 +265,8 @@
                             <div class="beneficiary-box-section">
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">
-                                        <h6 style="text-align: center;font-size: 16px;font-weight: 600;padding-top: 10px;">Beneficiary details</h6>
-                                        <ul>
+                                        <h6 style="font-size: 16px; font-weight: 600; padding-top: 10px; padding-left: 20px;">Beneficiary details</h6>
+                                        <ul style="height: 248px; overflow: hidden;">
                                             <li class="divbfy">State: <strong id="StateName"></strong></li>
                                             <li class="divbfy">District: <strong id="DistrictName"></strong></li>
                                             <li class="divbfy">Block: <strong id="BlockName"></strong></li>
@@ -291,8 +294,11 @@
                                         </ul>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
-                                        <div class="img-child-box" style=" display: flex;justify-content: end; align-items: end;height: 100%;">
+                                        <div class="img-child-box" style="align-items: end;">
                                             <img src="~/Content/dashboard/images/childImg.jpg" class="img-fluid mapImg">
+                                        </div>
+                                        <div style="margin-top:10px;text-align:left;">
+                                            <a id="RDMore" href="javascript:void(0);" style="color:#Ad4481;">Read More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -302,7 +308,7 @@
                             <div class="map-box-img" id="openNav">
                                 <div>
                                     <a href="javascript:void(0);" id="dvMapToggle" class="btn-sm btn-primary" style="position:absolute; top:32px; left:200px;z-index:9;">Summary</a>
-                                    <div id="dvMap" style="width: 100%; height: 550px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
+                                    <div id="dvMap" style="width: 100%; height: 450px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
                                     @*<img src="img/mapIcon.jpg" class="img-fluid mapImg">*@
                                 </div>
                                 <ul class="map-details-list">

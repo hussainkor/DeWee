@@ -7575,8 +7575,8 @@ sub {
   left: auto; }
 
 .nav-header {
-    height: 4.2rem;
-    width: 15.1875rem;
+    height: 3rem;
+    width: 13rem;
     display: inline-block;
     text-align: left;
     position: absolute;
@@ -7599,7 +7599,7 @@ sub {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 4.2rem;
+        height: 3rem;
     }
       .nav-header .brand-logo a i {
         font-size: 1.375rem; }
@@ -7611,7 +7611,7 @@ sub {
 .nav-control {
     cursor: pointer;
     position: absolute;
-    left: 1.4375rem;
+    left: 0.4375rem;
     text-align: center;
     top: 46%;
     /*background-color: #272797 !important;*/
@@ -7674,12 +7674,12 @@ sub {
   display: block; }
 
 .header {
-    height: 4.2rem;
+    height: 3rem;
     z-index: 1;
     position: relative;
     padding: 0 0.9375rem;
     background: #2BBFCE !important;
-    margin-left: 15.1875rem;
+    margin-left: 13rem;
     transition: all .2s ease;
     box-shadow: 0 10px 6px -6px #abafb3;
 }
@@ -7707,7 +7707,7 @@ sub {
       margin-left: 0; } }
 
 [data-sidebar-style="full"] .header, [data-sidebar-style="overlay"] .header {
-  width: calc(100% - 15.1875rem); }
+  width: calc(100% - 13rem); }
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     [data-sidebar-style="full"] .header, [data-sidebar-style="overlay"] .header {
       width: calc(100% - 11.375rem);
@@ -7740,9 +7740,9 @@ sub {
 
 .header-left {
     float: left;
-    width: 50%;
+    width: 53.5%;
     text-align: right;
-    padding-top: 20px;
+    padding-top: 14px;
     height: 100%;
 }
     .header-left h3 {
@@ -7796,7 +7796,7 @@ sub {
   display: none;
   z-index: 9999;
   width: 20rem;
-  top: 0rem !important;
+  top: -1.5rem !important;
   position: absolute;
   right: 0 !important;
   left: auto !important;
@@ -8053,7 +8053,7 @@ svg.pulse-svg {
       top: 2px; }
     .header-right .icons .user-img {
       position: relative;
-      top: -2px; }
+      top: 0px; }
       .header-right .icons .user-img img {
         height: 40px;
         width: 40px;
@@ -8147,18 +8147,18 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   top: 0.625rem; }
 
 .content-body {
-  margin-left: 15.1875rem;
+  margin-left: 13rem;
   z-index: 0; }
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     .content-body {
       margin-left: 11.375rem; } }
 
 .nk-sidebar {
-    width: 15.1875rem;
+    width: 13rem;
     padding-bottom: 112px;
     height: 100%;
     position: absolute;
-    top: 4.2rem;
+    top: 3rem;
     padding-top: 0;
     z-index: 99;
     background: #2BBFCE !important;
