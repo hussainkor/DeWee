@@ -117,7 +117,7 @@
 
         });
         function LoadData() {
-            debugger;
+            $('#participantTableContainer').empty(); $('#div-download').empty();
             var sid = $('#StateId').val() == "" ? "0" : $('#StateId').val()
             var did = $('#DistrictId').val() == "" ? "0" : $('#DistrictId').val()
             var bid = $('#BlockId').val() == "" ? "0" : $('#BlockId').val()
@@ -131,6 +131,7 @@
                         $('#participantTableContainer').html(resp.Data);
                         DataTableSet("tbl", "Beneficiary Details List", "Beneficiary List " + '@DateTime.Now.ToDateTimeDDMMYYYY()',"div-download");
                     } else {
+                        $('#participantTableContainer').html('<h4 class="text-danger">Record Not Found!!<h4>');
                         toastr.error("Error", resp.Data);
                     }
                 },

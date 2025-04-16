@@ -4,7 +4,6 @@
     ViewBag.Title = "Beneficiary Form";
 }
 <style>
-    
 </style>
 <div class="page-bread page-titles">
     <div class="bread-flex">
@@ -396,8 +395,16 @@
                                         @Html.LabelFor(model => model.DGCapacity, htmlAttributes: new { @class = "control-label " })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.DGCapacity, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(event)" })
+                                            @Html.TextBoxFor(model => model.DGCapacity, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateDecimal(this)" })
                                             @Html.ValidationMessageFor(model => model.DGCapacity, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 div-DG" style="display:none;">
+                                        @Html.LabelFor(model => model.DGAverageExpense, htmlAttributes: new { @class = "control-label " })
+                                        <span style="color:red;">*</span>
+                                        <div class="col-md-10s">
+                                            @Html.TextBoxFor(model => model.DGAverageExpense, new { @class = "form-control", @minlength = "0", @maxlength = "10", @oninput = "validateNumber(event)" })
+                                            @Html.ValidationMessageFor(model => model.DGAverageExpense, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
@@ -424,6 +431,14 @@
                                             </label>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.YNMotorAppliances, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group col-md-4 div_IfYesTypeofMotor" style="display:none;">
+                                        @Html.LabelFor(model => model.IfYesTypeofMotor, htmlAttributes: new { @class = "control-label " })
+                                        <span style="color:red;">*</span>
+                                        <div class="col-md-10s">
+                                            @Html.TextBoxFor(model => model.IfYesTypeofMotor, new { @class = "form-control", @maxlength = "800"})
+                                            @Html.ValidationMessageFor(model => model.IfYesTypeofMotor, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
 
                                     <div class="form-group col-md-6">
@@ -473,7 +488,7 @@
                                         &nbsp;&nbsp;
                                         <input type="button" id="takeshot" class="cam-btn" value="Take Snapshot">
                                     </div>
-                                   
+
                                     <div class="form-group col-md-6 photo-section">
                                         <canvas id="canvas" height="240" style="display: none;"></canvas>
                                         <div id="results" class="cam-text">Your captured image will appear here...</div>
@@ -507,39 +522,39 @@
     <script src="~/Scripts/JS/Master.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2rgDsJqTKA8ern_oI6heqv-xgSLuu1U" async></script>
     @*<script language="JavaScript">
-        var strfilepic;
+            var strfilepic;
 
-        const video = document.getElementById('my_camera');
-        const canvas = document.getElementById('canvas');
-        const captureBtn = document.getElementById('takeshot');
-        const context = canvas.getContext('2d');
+            const video = document.getElementById('my_camera');
+            const canvas = document.getElementById('canvas');
+            const captureBtn = document.getElementById('takeshot');
+            const context = canvas.getContext('2d');
 
-        // Request access to the user's camera
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then((stream) => {
-                video.srcObject = stream;
-            })
-            .catch((error) => {
-                console.error("Error accessing the camera: ", error);
+            // Request access to the user's camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then((stream) => {
+                    video.srcObject = stream;
+                })
+                .catch((error) => {
+                    console.error("Error accessing the camera: ", error);
+                });
+
+            // Capture photo on button click
+            captureBtn.addEventListener('click', () => {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                // Get the image data from the canvas
+                const imageData = canvas.toDataURL('image/jpeg');
+
+                // Display the captured image
+                //capturedImage.src = imageData;
+
+                document.getElementById('results').innerHTML = '<img id="base64image" height="240" src="' + imageData + '"/>' + '<h6>Here is your image:</h2>';
+                $('#BeneficiaryPicHd').val(imageData);
+                strfilepic = imageData;
             });
-
-        // Capture photo on button click
-        captureBtn.addEventListener('click', () => {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-            // Get the image data from the canvas
-            const imageData = canvas.toDataURL('image/jpeg');
-
-            // Display the captured image
-            //capturedImage.src = imageData;
-
-            document.getElementById('results').innerHTML = '<img id="base64image" height="240" src="' + imageData + '"/>' + '<h6>Here is your image:</h2>';
-            $('#BeneficiaryPicHd').val(imageData);
-            strfilepic = imageData;
-        });
-    </script>*@
+        </script>*@
     <script>
         var strfilepic;
         var currentFacingMode = 'user'; // Default to front camera
@@ -657,13 +672,19 @@
                     SamePryMobileNoOnchg();
                 })
                 $('input[type=radio][name=YNDieselGenerator]').change(function () {
-                    $('.div-DG').hide(); $('#DGYesAverageDailyHours').val(''); $('#DGCapacity').val('');
-                    $('#DGYesAverageDailyHours').removeAttr('required'); $('#DGCapacity').removeAttr('required');
+                    $('.div-DG').hide(); $('#DGYesAverageDailyHours').val(''); $('#DGCapacity').val(''); $('#DGAverageExpense').val('');
+                    $('#DGYesAverageDailyHours').removeAttr('required'); $('#DGCapacity').removeAttr('required'); $('#DGAverageExpense').removeAttr('required');
                     if ($(this).val() == 'Yes') {
-                        $('.div-DG').show(); $("#DGYesAverageDailyHours").attr('required', 'required'); $("#DGCapacity").attr('required', 'required');
+                        $('.div-DG').show(); $("#DGYesAverageDailyHours").attr('required', 'required'); $("#DGCapacity").attr('required', 'required'); $("#DGAverageExpense").attr('required', 'required');
                     }
                 })
-
+                $('input[type=radio][name=YNMotorAppliances]').change(function () {
+                    $('.div_IfYesTypeofMotor').hide(); $('#IfYesTypeofMotor').val('');
+                    $('#IfYesTypeofMotor').removeAttr('required');
+                    if ($(this).val() == 'Yes') {
+                        $('.div_IfYesTypeofMotor').show(); $("#IfYesTypeofMotor").attr('required', 'required');
+                    }
+                })
 
             });
         function SamePryMobileNoOnchg() {

@@ -41,7 +41,6 @@
         <EntityTypeShape EntityType="DeWee_DBModel.mst_SpaceAvailable" Width="1.5" PointX="18.75" PointY="4.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_IndtSolarization" Width="1.5" PointX="13.375" PointY="15.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_Relative" Width="1.5" PointX="0.75" PointY="19.75" />
-        <EntityTypeShape EntityType="DeWee_DBModel.tbl_Beneficiary" Width="1.5" PointX="13.375" PointY="17.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.AspNetUser" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DeWee_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
@@ -50,6 +49,7 @@
         <EntityTypeShape EntityType="DeWee_DBModel.mst_State" Width="1.5" PointX="13.375" PointY="12.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_THR" Width="1.5" PointX="9.375" PointY="19.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_GP" Width="1.5" PointX="11.375" PointY="19.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_Beneficiary" Width="1.5" PointX="13.375" PointY="17.75" IsExpanded="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -11,7 +11,6 @@
         background-size: cover;
         width: 100%;
         height: 100%;
-
     }
 
     .filter-section {
@@ -22,7 +21,7 @@
     .form-box-section {
         padding: 15px;
         background-color: #fff;
-        padding-bottom:10px;
+        padding-bottom: 10px;
     }
 
         .form-box-section .form-group {
@@ -64,11 +63,11 @@
             margin-bottom: 1px;
         }
 
-    .beneficiary-box-section ul li:nth-child(10) {
-        border-bottom: 2px dotted #000;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
+            .beneficiary-box-section ul li:nth-child(10) {
+                border-bottom: 2px dotted #000;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
 
     .map-box-img {
         padding: 5px;
@@ -141,20 +140,26 @@
                     font-size: 10px;
                     font-weight: 600;
                 }
+
     .map-card {
         box-shadow: -8px 20px 25px 0 rgb(25 42 70 / 30%);
         background: #fff;
         padding: 0px;
         border-radius: 0px;
-        margin-bottom:10px;
+        margin-bottom: 10px;
     }
+
     .divbfy strong {
         color: #555555 !important;
     }
+
     .divthr strong {
         color: #555555 !important;
     }
-    .content-body{min-height:auto !important;}
+
+    .content-body {
+        min-height: auto !important;
+    }
 </style>
 <div class="row">
     <div class="col-xs-12 col-md-12">
@@ -199,69 +204,72 @@
                     <div class="row no-gutters">
                         <div class="col-xs-12 col-md-6">
                             <div class="form-box-section">
-                                <div class="row">
+                                @using (Html.BeginForm("GetIndex", "Home", FormMethod.Post, new { @id = "formid", @class = "", role = "form", autocomplete = "off", enctype = "multipart/form-data" }))
+                                {
+                                    <div class="row">
 
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group row" style="display:none;">
-                                            <label for="State" class="col-sm-5 col-form-label">State</label>
-                                            <div class="col-sm-7">
-                                                @Html.DropDownListFor(model => model.CountryId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                        <div class="col-xs-12 col-md-6">
+                                            <div class="form-group row" style="display:none;">
+                                                <label for="State" class="col-sm-5 col-form-label">State</label>
+                                                <div class="col-sm-7">
+                                                    @Html.DropDownListFor(model => model.CountryId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="District" class="col-sm-5 col-form-label">State</label>
-                                            <div class="col-sm-7">
-                                                @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            <div class="form-group row">
+                                                <label for="District" class="col-sm-5 col-form-label">State</label>
+                                                <div class="col-sm-7">
+                                                    @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="District" class="col-sm-5 col-form-label">District</label>
-                                            <div class="col-sm-7">
-                                                @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                            <div class="form-group row">
+                                                <label for="District" class="col-sm-5 col-form-label">District</label>
+                                                <div class="col-sm-7">
+                                                    @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), null, new { @class = "form-control", @required = "required" })
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="Block" class="col-sm-5 col-form-label">Block</label>
-                                            <div class="col-sm-7">
-                                                @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
+                                            <div class="form-group row">
+                                                <label for="Block" class="col-sm-5 col-form-label">Block</label>
+                                                <div class="col-sm-7">
+                                                    @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="Type of enterprise" class="col-sm-5 col-form-label">Type of enterprise</label>
-                                            <div class="col-sm-7">
-                                                @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(1), null, new { @class = "form-control select2", @required = "required" })
+                                            <div class="form-group row">
+                                                <label for="Type of enterprise" class="col-sm-5 col-form-label">Type of enterprise</label>
+                                                <div class="col-sm-7">
+                                                    @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(1), null, new { @class = "form-control select2", @required = "required" })
+                                                </div>
                                             </div>
-                                        </div>
 
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <div class="form-group row">
+                                                <label for="Type of Indicator" class="col-sm-5 col-form-label">Type of Indicator</label>
+                                                <div class="col-sm-7">
+                                                    @Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control select2", @required = "required" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="DPE Installation Capacity" class="col-sm-5 col-form-label">DPE Installation Capacity</label>
+                                                <div class="col-sm-7">
+                                                    <select class="form-control">
+                                                        <option>Select</option>
+                                                    </select>
+                                                    @*@Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control", @required = "required" })*@
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="Change in Income" class="col-sm-5 col-form-label">Change in Income</label>
+                                                <div class="col-sm-7">
+                                                    <select class="form-control">
+                                                        <option>Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group row">
-                                            <label for="Type of Indicator" class="col-sm-5 col-form-label">Type of Indicator</label>
-                                            <div class="col-sm-7">
-                                                @Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control select2", @required = "required" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="DPE Installation Capacity" class="col-sm-5 col-form-label">DPE Installation Capacity</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control">
-                                                    <option>Select</option>
-                                                </select>
-                                                @*@Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control", @required = "required" })*@
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="Change in Income" class="col-sm-5 col-form-label">Change in Income</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control">
-                                                    <option>Select</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                }
                                 </div>
-                            </div>
                             <div class="beneficiary-box-section">
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">
@@ -278,7 +286,6 @@
                                             <li class="divbfy">Space available: <strong id="SpaceAvailableText"></strong></li>
                                             <li class="divbfy">Space available area: <strong id="SpaceAvailable_Area"></strong></li>
 
-
                                             <li class="divthr">Take-Home Ration Nutri Enterprise: <strong id="THR_NutriEnterprise"></strong></li>
                                             <li class="divthr">Type of Roof: <strong id="TypeofRoof"></strong></li>
                                             <li class="divthr">Total Roof and shed area available (sq feet): <strong id="TRoofandshedareaavailable_sqfeet"></strong></li>
@@ -286,9 +293,9 @@
                                             <li class="divthr">Contact Person: <strong id="PersonName" class="text-bg-primary"></strong></li>
                                             <li class="divthr">Contact Number: <strong id="PhoneNumber" class="text-bg-primary"></strong></li>
                                             <li></li>
-                                            <li>Enterprises Onboarded:</li>
-                                            <li>Enterprises Solarized:</li>
-                                            <li>Capacity of Installation (kW):</li>
+                                            <li class="readmore">Enterprises Onboarded:</li>
+                                            <li class="readmore">Enterprises Solarized:</li>
+                                            <li class="readmore">Capacity of Installation (kW):</li>
 
                                             <li class="divbfy">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" height="200" /> </li>
                                         </ul>
@@ -308,7 +315,7 @@
                             <div class="map-box-img" id="openNav">
                                 <div>
                                     <a href="javascript:void(0);" id="dvMapToggle" class="btn-sm btn-primary" style="position:absolute; top:32px; left:200px;z-index:9;">Summary</a>
-                                    <div id="dvMap" style="width: 100%; height: 450px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
+                                    <div id="dvMap" style="width: 100%; height: 420px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
                                     @*<img src="img/mapIcon.jpg" class="img-fluid mapImg">*@
                                 </div>
                                 <ul class="map-details-list">
@@ -355,7 +362,6 @@
         </div>
     </div>
 </div>
-
 
 
 @section Scripts {
@@ -1079,7 +1085,7 @@
     </script>
     <style>
         .myNav {
-            width:150px;
+            width: 150px;
         }
     </style>
     <script>
@@ -1092,11 +1098,24 @@
             //$("#myNav").css("width", "150px");
             $("#myNav").toggleClass("myNav");
             //$('#myNav').addClass('myNav');
-            
+
         });
         $("#closeNav").click(function () {
             //$("#myNav").css("width", "0%");
             $("#myNav").toggleClass("myNav");
         });
+        //document.querySelector('#RDMore').addEventListener('click', function () {
+        //    const moreContent = document.querySelector('.readmore');
+           
+        //    const btn = this;
+        //    if (moreContent.style.display === 'none') {
+        //        moreContent.style.display = 'block';
+        //        btn.textContent = 'Read Less';
+        //        $('#dvMap').css('height', '480px');
+        //    } else {
+        //        moreContent.style.display = 'none';
+        //        btn.textContent = 'Read More';
+        //    }
+        //});
     </script>
 }

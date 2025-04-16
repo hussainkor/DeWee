@@ -139,13 +139,13 @@ namespace DeWee.Controllers
                         tbl.NatureofSpace_other = model.NatureofSpace_other;
                         tbl.YNGridconnection = model.YNGridconnection;
                         tbl.YNDieselGenerator = model.YNDieselGenerator;
-                        if (model.YNGridconnection.ToLower() == "yes")
-                        {
-                            tbl.DGYesAverageDailyHours = model.DGYesAverageDailyHours;
-                            tbl.DGCapacity = model.DGCapacity;
-                        }
+
+                        tbl.DGYesAverageDailyHours = model.YNGridconnection.ToLower() == "Yes" ? model.DGYesAverageDailyHours.ToString() : null;
+                        tbl.DGCapacity = model.YNGridconnection.ToLower() == "Yes" ? model.DGCapacity.ToString() : null;
+                        tbl.DGAverageExpense = model.YNGridconnection.ToLower() == "Yes" ? model.DGAverageExpense.ToString() : null;
 
                         tbl.YNMotorAppliances = model.YNMotorAppliances;
+                        tbl.IfYesTypeofMotor = model.YNMotorAppliances == "Yes" ? tbl.IfYesTypeofMotor : null;
                         //tbl.OtherSourceEnergyMachineId = model.OtherSourceEnergyMachineId;
                         tbl.YNGovtSchemessubsidy = model.YNGovtSchemessubsidy;
                         tbl.SolarInstallationId = model.SolarInstallationId;
@@ -172,10 +172,8 @@ namespace DeWee.Controllers
                             tbl.UpdatedBy = MvcApplication.CUser.UserId;
                             tbl.UpdatedOn = DateTime.Now;
                         }
-
                         results = db.SaveChanges();
                     }
-
                     if (results > 0)
                     {
                         response = new JsonResponseData
@@ -216,9 +214,9 @@ namespace DeWee.Controllers
         {
             return View();
         }
-        public ActionResult GetBeneficiaryList(string SId="",string DId="",string BId = "")
+        public ActionResult GetBeneficiaryList(string SId = "", string DId = "", string BId = "")
         {
-            DataTable tbllist = SPManager.SP_BeneficiaryList(SId,DId,BId);
+            DataTable tbllist = SPManager.SP_BeneficiaryList(SId, DId, BId);
             try
             {
                 if (tbllist.Rows.Count > 0)
@@ -236,7 +234,7 @@ namespace DeWee.Controllers
                 return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
             }
         }
-        
+
         [HttpGet]
         public async Task<JsonResult> GetAddress(double lat, double lng)
         {

@@ -52,14 +52,18 @@ namespace DeWee.Models
         public string NatureofSpace_other { get; set; }
         public string YNGridconnection { get; set; }
         public string YNDieselGenerator { get; set; }
-        public Nullable<decimal> DGYesAverageDailyHours { get; set; }
-        public Nullable<int> DGCapacity { get; set; }
+        public string DGYesAverageDailyHours { get; set; }
+        public string DGCapacity { get; set; }
+        public string DGAverageExpense { get; set; }
         public string YNMotorAppliances { get; set; }
+        public string IfYesTypeofMotor { get; set; }
         public Nullable<int> OtherSourceEnergyMachineId { get; set; }
         public string YNGovtSchemessubsidy { get; set; }
         public Nullable<int> SolarInstallationId { get; set; }
+        public Nullable<int> ReminderAlert { get; set; }
         public string YNFinancialSupport { get; set; }
         public string EnterprisePhotoPath { get; set; }
+        public string FilePathExtension { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Location { get; set; }
@@ -73,5 +77,11 @@ namespace DeWee.Models
         public Nullable<System.DateTime> IsDeletedOn { get; set; }
         public Nullable<int> OrderBy { get; set; }
         public string EnterpriseBusinId_other { get; set; }
+        public Nullable<bool> ISMobile { get; set; }
+        public string Version { get; set; }
+        public Nullable<System.DateTime> SynDate { get; set; }
+        public Nullable<System.DateTime> CaptureDate { get; set; }
+        public string uuid { get; set; }
+        public string Comment { get; set; }
     }
 }

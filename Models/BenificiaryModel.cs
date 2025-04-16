@@ -154,14 +154,20 @@ namespace DeWee.Models
         public Nullable<decimal> DGYesAverageDailyHours { get; set; }
         [Display(Name = DisplayName.DGCapacity)]
         public Nullable<int> DGCapacity { get; set; }
+        [Display(Name = DisplayName.DGAverageExpense)]
+        //[Required]
+        public Nullable<decimal> DGAverageExpense { get; set; }
 
         [Display(Name = DisplayName.YNMotorAppliances)]
         [Required]
         public string YNMotorAppliances { get; set; }
+        [Display(Name = DisplayName.IfYesTypeofMotor)]
+        //[Required]
+        public string IfYesTypeofMotor { get; set; }
 
         //[Display(Name = DisplayName.OtherSourceEnergyMachineId)]
         //[Required]
-       // public int OtherSourceEnergyMachineId { get; set; }
+        // public int OtherSourceEnergyMachineId { get; set; }
 
         [Display(Name = DisplayName.YNGovtSchemessubsidy)]
         [Required]
@@ -178,7 +184,8 @@ namespace DeWee.Models
         [Display(Name = DisplayName.EnterprisePhotoPath)]
         //[Required]
         public string EnterprisePhotoPath { get; set; }
-     
+        public Nullable<int> ReminderAlert { get; set; }
+
         public string BeneficiaryPicHd { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
@@ -240,8 +247,10 @@ namespace DeWee.Models
         public const string YNDieselGenerator = "17. क्या आप डीजल जनरेटर का उपयोग करते हैं? / Do you use DG (diesel generator) set?";
         public const string DGYesAverageDailyHours = "17(a). डीजी सेट कितने घंटे चलता है?(औसत) / Average daily hours of operation of DG set?";
         public const string DGCapacity = "17(b). डीजी सेट क्षमता कितनी है? Capacity of DG set? (kW)";
+        public const string DGAverageExpense = "17(c). एक साल में औसत डीजल ख़र्च (रूपए में) / Average diesel expense in a year.";
 
         public const string YNMotorAppliances = "18. क्या आप किसी मोटर उपकरण का उपयोग करते हैं? / Do you use any motor appliances?";
+        public const string IfYesTypeofMotor = "18(a). मोटर का प्रकार / Type of Motor";
        // public const string OtherSourceEnergyMachineId = "19. क्या आप मशीन के लिए किसी अन्य ऊर्जा स्रोत का उपयोग करते हैं? / Do you use any other source of energy for the machine?";//s.drop 
 
         public const string YNGovtSchemessubsidy = "19. क्या आप सौर ऊर्जा से संबंधित किसी सरकारी योजना/सब्सिडी के बारे में जानते हैं? / Are you aware of any govt. schemes / subsidy related to solar energy?";
