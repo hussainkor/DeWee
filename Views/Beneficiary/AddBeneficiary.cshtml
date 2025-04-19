@@ -387,7 +387,7 @@
                                         @Html.LabelFor(model => model.DGYesAverageDailyHours, htmlAttributes: new { @class = "control-label " })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.DGYesAverageDailyHours, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateDecimal(this)" })
+                                            @Html.TextBoxFor(model => model.DGYesAverageDailyHours, new { @class = "form-control", @minlength = "0", @maxlength = "6", @oninput = "validateDecimal(this)" })
                                             @Html.ValidationMessageFor(model => model.DGYesAverageDailyHours, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -395,7 +395,7 @@
                                         @Html.LabelFor(model => model.DGCapacity, htmlAttributes: new { @class = "control-label " })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.DGCapacity, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateDecimal(this)" })
+                                            @Html.TextBoxFor(model => model.DGCapacity, new { @class = "form-control", @minlength = "0", @maxlength = "5", @oninput = "validateNumber(this)" })
                                             @Html.ValidationMessageFor(model => model.DGCapacity, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -403,7 +403,7 @@
                                         @Html.LabelFor(model => model.DGAverageExpense, htmlAttributes: new { @class = "control-label " })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.DGAverageExpense, new { @class = "form-control", @minlength = "0", @maxlength = "10", @oninput = "validateNumber(event)" })
+                                            @Html.TextBoxFor(model => model.DGAverageExpense, new { @class = "form-control", @minlength = "0", @maxlength = "10", @oninput = "validateDecimal(this)" })
                                             @Html.ValidationMessageFor(model => model.DGAverageExpense, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
