@@ -50,6 +50,8 @@
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_THR" Width="1.5" PointX="9.375" PointY="19.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.mst_GP" Width="1.5" PointX="11.375" PointY="19.75" />
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_Beneficiary" Width="1.5" PointX="13.375" PointY="17.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_Referral" Width="1.5" PointX="19.375" PointY="12.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_SolarShop" Width="1.5" PointX="13.375" PointY="19.75" IsExpanded="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

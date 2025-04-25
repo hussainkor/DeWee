@@ -78,7 +78,7 @@
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_BusinessInstallation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_BusinessInstallation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_BusinessInstallation">
           <Key>
             <PropertyRef Name="BusinessInstallation_Id" />
@@ -184,7 +184,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_BusinessInstallation' does n
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_Educational_Qualification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_Educational_Qualification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_Educational_Qualification">
           <Key>
             <PropertyRef Name="Qualification_Id" />
@@ -222,7 +222,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_Educational_Qualification' d
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_Enterprise' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_Enterprise' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_Enterprise">
           <Key>
             <PropertyRef Name="Enterprise_Id" />
@@ -236,7 +236,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_Enterprise' does not have a 
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_Enterprise_Established' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_Enterprise_Established' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_Enterprise_Established">
           <Key>
             <PropertyRef Name="Enterprise_Established_Id" />
@@ -250,7 +250,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_Enterprise_Established' does
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_EnterpriseMachine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_EnterpriseMachine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_EnterpriseMachine">
           <Key>
             <PropertyRef Name="EnterpriseMachine_Id" />
@@ -281,7 +281,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_EnterpriseMachine' does not 
           <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_LoanDescribeSource' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_LoanDescribeSource' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_LoanDescribeSource">
           <Key>
             <PropertyRef Name="LoanDescribeSource_Id" />
@@ -307,7 +307,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_LoanDescribeSource' does not
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_MachineSource' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_MachineSource' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_MachineSource">
           <Key>
             <PropertyRef Name="MachineSource_Id" />
@@ -353,7 +353,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_MachineSource' does not have
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_NatureSpace' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_NatureSpace' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_NatureSpace">
           <Key>
             <PropertyRef Name="NatureSpace_Id" />
@@ -390,7 +390,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_NatureSpace' does not have a
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SolarInstallation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_SolarInstallation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_SolarInstallation">
           <Key>
             <PropertyRef Name="SolarInstallation_Id" />
@@ -428,7 +428,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SolarInstallation' does not 
           <Property Name="OrderBy" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SpaceAvailable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mst_SpaceAvailable">
           <Key>
             <PropertyRef Name="SpaceAvailable_Id" />
@@ -596,6 +596,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SpaceAvailable' does not hav
           <Property Name="CaptureDate" Type="datetime" />
           <Property Name="uuid" Type="varchar" MaxLength="100" />
           <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="ReferralId" Type="int" />
         </EntityType>
         <EntityType Name="tbl_IndtSolarization">
           <Key>
@@ -677,6 +678,54 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SpaceAvailable' does not hav
           <Property Name="Accuracy" Type="nvarchar" MaxLength="50" />
           <Property Name="ParticipantPicPath" Type="nvarchar(max)" />
           <Property Name="SolarEnterprisePicPath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Referral">
+          <Key>
+            <PropertyRef Name="ReferralId_pk" />
+          </Key>
+          <Property Name="ReferralId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameofOwner" Type="nvarchar" MaxLength="500" />
+          <Property Name="TypeofEnterprise" Type="int" />
+          <Property Name="Other_TypeofEnterprise" Type="nvarchar" MaxLength="500" />
+          <Property Name="PrimaryMobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="BlockId" Type="int" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Version" Type="nvarchar" MaxLength="6" />
+          <Property Name="uuid" Type="nvarchar" MaxLength="130" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="130" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="IsBeneficiaryProcessed" Type="bit" />
+          <Property Name="BeneficiaryId_fk" Type="int" />
+          <Property Name="SynDate" Type="datetime" />
+          <Property Name="IsMobile" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_SolarShop">
+          <Key>
+            <PropertyRef Name="SolarShopId_pk" />
+          </Key>
+          <Property Name="SolarShopId_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameofEnterprise" Type="nvarchar" MaxLength="1200" />
+          <Property Name="NameofOwner" Type="nvarchar" MaxLength="500" />
+          <Property Name="TypeofEnterprise" Type="int" />
+          <Property Name="Other_TypeofEnterprise" Type="nvarchar" MaxLength="500" />
+          <Property Name="PrimaryMobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="BlockId" Type="int" />
+          <Property Name="SiteAddress" Type="nvarchar(max)" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="nvarchar(max)" />
+          <Property Name="Iflinked" Type="nvarchar" MaxLength="50" />
+          <Property Name="uuid" Type="nvarchar" MaxLength="130" />
+          <Property Name="Version" Type="nvarchar" MaxLength="6" />
+          <Property Name="SynDate" Type="datetime" />
+          <Property Name="IsMobile" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="130" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="SolarShopEnterprisePicPath" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_THR">
           <Key>
@@ -794,6 +843,8 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SpaceAvailable' does not hav
           <EntitySet Name="mst_Year" EntityType="Self.mst_Year" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Beneficiary" EntityType="Self.tbl_Beneficiary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_IndtSolarization" EntityType="Self.tbl_IndtSolarization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Referral" EntityType="Self.tbl_Referral" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SolarShop" EntityType="Self.tbl_SolarShop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_THR" EntityType="Self.tbl_THR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_BusinessInstallation" EntityType="Self.mst_BusinessInstallation" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -981,6 +1032,8 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SpaceAvailable' does not hav
           <EntitySet Name="tbl_THR" EntityType="DeWee_DBModel.tbl_THR" />
           <EntitySet Name="mst_GP" EntityType="DeWee_DBModel.mst_GP" />
           <EntitySet Name="tbl_Beneficiary" EntityType="DeWee_DBModel.tbl_Beneficiary" />
+          <EntitySet Name="tbl_Referral" EntityType="DeWee_DBModel.tbl_Referral" />
+          <EntitySet Name="tbl_SolarShop" EntityType="DeWee_DBModel.tbl_SolarShop" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -1691,6 +1744,55 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SpaceAvailable' does not hav
           <Property Name="CaptureDate" Type="DateTime" Precision="3" />
           <Property Name="uuid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReferralId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Referral">
+          <Key>
+            <PropertyRef Name="ReferralId_pk" />
+          </Key>
+          <Property Name="ReferralId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameofOwner" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TypeofEnterprise" Type="Int32" />
+          <Property Name="Other_TypeofEnterprise" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryMobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="BlockId" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="uuid" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsBeneficiaryProcessed" Type="Boolean" />
+          <Property Name="BeneficiaryId_fk" Type="Int32" />
+          <Property Name="SynDate" Type="DateTime" Precision="3" />
+          <Property Name="IsMobile" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_SolarShop">
+          <Key>
+            <PropertyRef Name="SolarShopId_pk" />
+          </Key>
+          <Property Name="SolarShopId_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameofEnterprise" Type="String" MaxLength="1200" FixedLength="false" Unicode="true" />
+          <Property Name="NameofOwner" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TypeofEnterprise" Type="Int32" />
+          <Property Name="Other_TypeofEnterprise" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryMobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="BlockId" Type="Int32" />
+          <Property Name="SiteAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Iflinked" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="uuid" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="SynDate" Type="DateTime" Precision="3" />
+          <Property Name="IsMobile" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="SolarShopEnterprisePicPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2346,6 +2448,7 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SpaceAvailable' does not hav
           <EntitySetMapping Name="tbl_Beneficiary">
             <EntityTypeMapping TypeName="DeWee_DBModel.tbl_Beneficiary">
               <MappingFragment StoreEntitySet="tbl_Beneficiary">
+                <ScalarProperty Name="ReferralId" ColumnName="ReferralId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="uuid" ColumnName="uuid" />
                 <ScalarProperty Name="CaptureDate" ColumnName="CaptureDate" />
@@ -2415,6 +2518,56 @@ warning 6002: The table/view 'DeWee_DB_Test.dbo.mst_SpaceAvailable' does not hav
                 <ScalarProperty Name="Selection_RegCode" ColumnName="Selection_RegCode" />
                 <ScalarProperty Name="Temp_RegCode" ColumnName="Temp_RegCode" />
                 <ScalarProperty Name="BeneficiaryId_pk" ColumnName="BeneficiaryId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Referral">
+            <EntityTypeMapping TypeName="DeWee_DBModel.tbl_Referral">
+              <MappingFragment StoreEntitySet="tbl_Referral">
+                <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+                <ScalarProperty Name="SynDate" ColumnName="SynDate" />
+                <ScalarProperty Name="BeneficiaryId_fk" ColumnName="BeneficiaryId_fk" />
+                <ScalarProperty Name="IsBeneficiaryProcessed" ColumnName="IsBeneficiaryProcessed" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="PrimaryMobileNo" ColumnName="PrimaryMobileNo" />
+                <ScalarProperty Name="Other_TypeofEnterprise" ColumnName="Other_TypeofEnterprise" />
+                <ScalarProperty Name="TypeofEnterprise" ColumnName="TypeofEnterprise" />
+                <ScalarProperty Name="NameofOwner" ColumnName="NameofOwner" />
+                <ScalarProperty Name="ReferralId_pk" ColumnName="ReferralId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SolarShop">
+            <EntityTypeMapping TypeName="DeWee_DBModel.tbl_SolarShop">
+              <MappingFragment StoreEntitySet="tbl_SolarShop">
+                <ScalarProperty Name="SolarShopEnterprisePicPath" ColumnName="SolarShopEnterprisePicPath" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+                <ScalarProperty Name="SynDate" ColumnName="SynDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="Iflinked" ColumnName="Iflinked" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="SiteAddress" ColumnName="SiteAddress" />
+                <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="PrimaryMobileNo" ColumnName="PrimaryMobileNo" />
+                <ScalarProperty Name="Other_TypeofEnterprise" ColumnName="Other_TypeofEnterprise" />
+                <ScalarProperty Name="TypeofEnterprise" ColumnName="TypeofEnterprise" />
+                <ScalarProperty Name="NameofOwner" ColumnName="NameofOwner" />
+                <ScalarProperty Name="NameofEnterprise" ColumnName="NameofEnterprise" />
+                <ScalarProperty Name="SolarShopId_pk" ColumnName="SolarShopId_pk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

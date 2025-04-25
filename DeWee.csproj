@@ -440,10 +440,18 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Participant.cs" />
+    <Compile Include="Models\ReferralModel.cs" />
+    <Compile Include="Models\SolarShopModel.cs" />
     <Compile Include="Models\tbl_Beneficiary.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_IndtSolarization.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Referral.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_SolarShop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_THR.cs">
@@ -1059,6 +1067,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\EnterprisesSolarShop\" />
     <Folder Include="Uploads\JsonDataLog\ArchiveBeneficiaryDataPost\" />
     <Folder Include="Uploads\JsonDataLog\ErrorBeneficiaryDataPost\" />
     <Folder Include="Uploads\JsonDataLog\ImageUploads\EnterpriseImag\" />

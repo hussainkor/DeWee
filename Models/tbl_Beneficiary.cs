@@ -83,5 +83,6 @@ namespace DeWee.Models
         public Nullable<System.DateTime> CaptureDate { get; set; }
         public string uuid { get; set; }
         public string Comment { get; set; }
+        public Nullable<int> ReferralId { get; set; }
     }
 }
