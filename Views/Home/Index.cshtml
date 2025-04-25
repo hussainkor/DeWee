@@ -266,15 +266,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 }
-                                </div>
+                            </div>
                             <div class="beneficiary-box-section">
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">
                                         <h6 style="font-size: 16px; font-weight: 600; padding-top: 10px; padding-left: 20px;">Beneficiary details</h6>
-                                        <ul style="height: 248px; overflow: hidden;">
+                                        <ul style="height: 228px; overflow: hidden;">
                                             <li class="divbfy">State: <strong id="StateName"></strong></li>
                                             <li class="divbfy">District: <strong id="DistrictName"></strong></li>
                                             <li class="divbfy">Block: <strong id="BlockName"></strong></li>
@@ -293,11 +293,11 @@
                                             <li class="divthr">Contact Person: <strong id="PersonName" class="text-bg-primary"></strong></li>
                                             <li class="divthr">Contact Number: <strong id="PhoneNumber" class="text-bg-primary"></strong></li>
                                             <li></li>
-                                            <li class="readmore">Enterprises Onboarded:</li>
-                                            <li class="readmore">Enterprises Solarized:</li>
-                                            <li class="readmore">Capacity of Installation (kW):</li>
+                                            <li class="readmore">Enterprises Onboarded: <strong id="EnterprisesOnboarded" class="text-bg-primary"></strong></li>
+                                            <li class="readmore">Enterprises Solarized: <strong id="EnterprisesSolarized" class="text-bg-primary"></strong></li>
+                                            <li class="readmore">Capacity of Installation (kW): <strong id="CapacityOfInstallation" class="text-bg-primary"></strong></li>
 
-                                            <li class="divbfy">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" height="200" /> </li>
+                                            <li class="readmore">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" height="200" /> </li>
                                         </ul>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
@@ -314,7 +314,7 @@
                         <div class="col-xs-12 col-md-6">
                             <div class="map-box-img" id="openNav">
                                 <div>
-                                    <a href="javascript:void(0);" id="dvMapToggle" class="btn-sm btn-primary" style="position:absolute; top:32px; left:200px;z-index:9;">Summary</a>
+                                    <a href="javascript:void(0);" id="dvMapToggle" class="btn-sm btn-primary" style="position:absolute; top:24px; left:190px;z-index:9;">Summary</a>
                                     <div id="dvMap" style="width: 100%; height: 420px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
                                     @*<img src="img/mapIcon.jpg" class="img-fluid mapImg">*@
                                 </div>
@@ -857,7 +857,9 @@
                                 $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
                                 if (data.EnterpriseImage)
                                     $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
-
+                                //$("#EnterprisesOnboarded").html(data.SolarizedYes);
+                                $("#EnterprisesSolarized").html(data.SolarizedYes);
+                                //$("#CapacityOfInstallation").html(data.SolarizedYes);
                             });
                         })(marker, data);
                         // Add marker to the array
@@ -894,7 +896,9 @@
                                 if (data.MobileNo) {
                                     $("#PhoneNumber").html(data.MobileNo);
                                 }
+                                //$("#EnterprisesOnboarded").html(data.SolarizedYes);
                                 $("#EnterprisesSolarized").html(data.SolarizedYes);
+                                //$("#CapacityOfInstallation").html(data.SolarizedYes);
                             });
                         })(marker, data);
                         // Add marker to the array
@@ -913,6 +917,7 @@
                         console.error("MarkerClusterer is not defined. Ensure the library is loaded.");
                     }
 
+                    map.data.loadGeoJson('/Scripts/JS/uttar_pradesh.json');
 
                 } else {
                     ClearDataShow();
@@ -1034,7 +1039,9 @@
             $("#AreaAvailableSolarization_sqfeet").html("");
             $("#PersonName").html("");
             $("#PhoneNumber").html("");
+            $("#EnterprisesOnboarded").html("");
             $("#EnterprisesSolarized").html("");
+            $("#CapacityOfInstallation").html("");
         }
         //function LoadGoogleMap(tblData) {
         //    debugger;
@@ -1089,33 +1096,31 @@
         }
     </style>
     <script>
-        //$('#dvMapToggle').toggle(function () {
-        //    $("#myNav").css({ width: "0%" });
-        //}, function () {
-        //    $("#myNav").css({ width: "150px" });
-        //});
         $("#dvMapToggle").click(function () {
-            //$("#myNav").css("width", "150px");
             $("#myNav").toggleClass("myNav");
-            //$('#myNav').addClass('myNav');
-
         });
         $("#closeNav").click(function () {
-            //$("#myNav").css("width", "0%");
             $("#myNav").toggleClass("myNav");
         });
-        //document.querySelector('#RDMore').addEventListener('click', function () {
-        //    const moreContent = document.querySelector('.readmore');
-           
-        //    const btn = this;
-        //    if (moreContent.style.display === 'none') {
-        //        moreContent.style.display = 'block';
-        //        btn.textContent = 'Read Less';
-        //        $('#dvMap').css('height', '480px');
-        //    } else {
-        //        moreContent.style.display = 'none';
-        //        btn.textContent = 'Read More';
-        //    }
-        //});
+
+        $('#RDMore').click(function () {
+            const moreContent = $('.readmore');
+            const btn = this;
+            if (btn.textContent == 'Read Less') {
+                btn.textContent = 'Read More';
+                $('.beneficiary-box-section ul').css('height', '228px');
+                $('#dvMap').css('height', '420px');
+                for (var i = 0; i < moreContent.length; i++) {
+                    moreContent[i].style.display = 'none';
+                }
+            } else {
+                btn.textContent = 'Read Less';
+                $('.beneficiary-box-section ul').css('height', '520px');
+                $('#dvMap').css('height', '698px');
+                for (var i = 0; i < moreContent.length; i++) {
+                    moreContent[i].style.display = 'block';
+                }
+            }
+        });
     </script>
 }
