@@ -13,6 +13,11 @@ using System.Web.Mvc;
 using static DeWee.Manager.Enums;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.EMMA;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.Drawing;
+using System.Data.Entity.Infrastructure;
+using System.Drawing.Imaging;
 
 namespace DeWee.Controllers
 {
@@ -261,10 +266,360 @@ namespace DeWee.Controllers
             return PartialView("_BeneficiaryView", dt); // Return the partial view
         }
 
+        public ActionResult AddReferral()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult AddReferral(ReferralModel model)
+        {
+            string filepath = "/Uploads/JsonDataLog/";
+            var context = new DeWee_DBEntities();
+            // Validate model
+            if (model == null)
+            {
+                return Json(new { success = false, message = "Invalid referral data" });
+            }
+
+            if (string.IsNullOrWhiteSpace(model.NameofOwner))
+            {
+                return Json(new { success = false, message = "Owner name is required" });
+            }
+
+            if (string.IsNullOrWhiteSpace(model.PrimaryMobileNo))
+            {
+                return Json(new { success = false, message = "Mobile number is required" });
+            }
+            try
+            {
+                // Check for duplicate mobile number if needed
+                if (context.tbl_Referral.Any(r => r.PrimaryMobileNo == model.PrimaryMobileNo))
+                {
+                    return Json(new { success = false, message = "Mobile number already exists" });
+                }
+
+                var newReferral = new tbl_Referral
+                {
+                    NameofOwner = model.NameofOwner,
+                    TypeofEnterprise = model.TypeofEnterprise, // Assuming 1 represents some enterprise type
+                    Other_TypeofEnterprise = model.Other_TypeofEnterprise, // Assuming 1 represents some enterprise type
+                    PrimaryMobileNo = model.PrimaryMobileNo,
+                    DistrictId = model.DistrictId,
+                    BlockId = model.BlockId,
+                    Address = model.Address,
+                    uuid = Guid.NewGuid().ToString(),
+                    CreatedBy = MvcApplication.CUser.UserId,
+                    CreatedOn = DateTime.UtcNow,
+                    IsBeneficiaryProcessed = false,
+                    IsActive = true
+                    //BeneficiaryId_fk=model.BeneficiaryId_fk
+
+                    // Other fields will use their default values
+                };
+                context.tbl_Referral.Add(newReferral);
+                context.SaveChanges();
+                filepath = filepath + "ArchiveBeneficiaryDataPost/";
+                filepath = filepath + model.PrimaryMobileNo + " Referral" + "^" + model.Version + "^" + Guid.NewGuid() + "^-" + DateTime.Now.ToString("ddMMMyyyyHHmmss") + ".txt";
+                StreamWriter sw = new System.IO.StreamWriter(Server.MapPath(filepath), false, System.Text.Encoding.UTF8);
+                sw.WriteLine(model);
+                sw.Close();
+                return Json(new
+                {
+                    success = true,
+                    message = "Referral added successfully",
+                    ReferralId_pk = newReferral.ReferralId_pk,
+                });
+            }
+            catch (Exception ex)
+            {
+                filepath = filepath + "/ErrorBeneficiaryDataPost/";
+                filepath = filepath + model.PrimaryMobileNo + " ReferralEx" + "^" + model.Version + "^" + Guid.NewGuid() + "^-" + DateTime.Now.ToString("ddMMMyyyyHHmmss") + ".txt";
+                StreamWriter sw = new System.IO.StreamWriter(Server.MapPath(filepath), false, System.Text.Encoding.UTF8);
+                sw.WriteLine(model);
+                sw.Close();
+                // Log the exception (you should implement proper logging)
+                // Logger.LogError(ex, "Error adding new referral");
+
+                return Json(new
+                {
+                    success = false,
+                    message = "An error occurred while saving the referral",
+                    error = ex.Message
+                });
+            }
+        }
+        public ActionResult ReferralList()
+        {
+            return View();
+        }
+        public ActionResult GetReferralList()
+        {
+            DataTable tbllist = SPManager.Usp_ReferralList();
+            try
+            {
+                if (tbllist.Rows.Count > 0)
+                {
+                    var html = ConvertViewToString("_ReferralData", tbllist);
+                    return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult AddSolarShop()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult AddSolarShop(SolarShopModel model)
+        {
+            int res = 0;
+            string filepath = "/Uploads/JsonDataLog/";
+            var context = new DeWee_DBEntities();
+            try
+            {
+                if (model == null)
+                {
+                    return Json(new { success = false, message = "Invalid referral data" });
+                }
+
+                if (string.IsNullOrWhiteSpace(model.NameofOwner))
+                {
+                    return Json(new { success = false, message = "Owner name is required" });
+                }
+
+                if (string.IsNullOrWhiteSpace(model.PrimaryMobileNo))
+                {
+                    return Json(new { success = false, message = "Mobile number is required" });
+                }
+
+                if (context.tbl_SolarShop.Any(r => r.PrimaryMobileNo == model.PrimaryMobileNo))
+                {
+                    return Json(new { success = false, message = "Mobile number already exists" });
+                }
+                filepath = filepath + "/ArchiveBeneficiaryDataPost/";
+                filepath = filepath + model.PrimaryMobileNo + " SolarShopWeb" + "^" + model.Version + "^" + Guid.NewGuid() + "^-" + DateTime.Now.ToString("ddMMMyyyyHHmmss") + ".txt";
+                
+                var newShop = new tbl_SolarShop
+                {
+                    NameofEnterprise = model.NameofEnterprise.Trim(),
+                    NameofOwner = model.NameofOwner,
+                    TypeofEnterprise = model.TypeofEnterprise,
+                    Other_TypeofEnterprise = model.Other_TypeofEnterprise,
+                    PrimaryMobileNo = model.PrimaryMobileNo,
+                    DistrictId = model.DistrictId,
+                    BlockId = model.BlockId,
+                    SiteAddress = model.SiteAddress,
+                    Latitude = model.Latitude,
+                    Longitude = model.Longitude,
+                    Location = model.Location,
+                    Iflinked = model.Iflinked,
+                    uuid =Guid.NewGuid().ToString(),
+                    IsActive = true,
+                    CreatedBy = MvcApplication.CUser.UserId,
+                    CreatedOn = DateTime.UtcNow
+                };
+
+                // Validate model before saving
+                var validationResults = new List<ValidationResult>();
+                var isValid = Validator.TryValidateObject(newShop, new ValidationContext(newShop), validationResults, true);
+
+                if (!isValid)
+                {
+                    var errors = validationResults.Select(vr => vr.ErrorMessage);
+                    return Json(new { success = false, message = "Validation failed", errors });
+                }
+
+                string fullOutputPath = "~/Uploads/EnterprisesSolarShop/";
+                string filetype = "png";
+                bool bsaveimg = false;
+                // byte[] bytes = System.IO.File.ReadAllBytes(@"C:/Users/BinduKumari/Downloads/AFD2 (2).pdf");//Convert.FromBase64String(base64);
+                byte[] bytes = Convert.FromBase64String(model.SolarShopEnterprisebase64);//Convert.FromBase64String(base64);
+                fullOutputPath = fullOutputPath + newShop.PrimaryMobileNo.ToString() + "_" + DateTime.Now.ToDateTimeDDMMYYYY() + ".png";
+                System.Drawing.Image image;
+                using (System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes))
+                {
+                    using (image = System.Drawing.Image.FromStream(ms))
+                    {
+                        if (ValidateImageSize(bytes))
+                        {
+                            if (image.Width <= 1390 && image.Height <= 490)
+                            {
+                                SaveImageWithTargetSize(image, Server.MapPath(fullOutputPath), 1 * 1024 * 1024); // 1 MB
+                            }
+                            else
+                            {
+                                using (Bitmap b = new Bitmap(image))
+                                {
+                                    using (System.Drawing.Image resizedImage = ResizeImage(b, new System.Drawing.Size(1390, 490)))
+                                    {
+                                        SaveImageWithTargetSize(resizedImage, Server.MapPath(fullOutputPath), 1 * 1024 * 1024); // 1 MB
+                                    }
+                                }
+                            }
+                            bsaveimg = true;
+                        }
+                        else
+                        {
+                            bsaveimg = false;
+                            return Json(new
+                            {
+                                success = false,
+                                message = "Image size exceeds 1 MB.",
+                            });
+                        }
+                    }
+                }
+                if (bsaveimg)
+                {
+                    newShop.SolarShopEnterprisePicPath = fullOutputPath;
+                    context.tbl_SolarShop.Add(newShop);
+                    res = context.SaveChanges();
+                    StreamWriter sw = new System.IO.StreamWriter(Server.MapPath(filepath), false, System.Text.Encoding.UTF8);
+                    sw.WriteLine(model);
+                    sw.Close();
+                }
+                if (res > 0)
+                {
+                    return Json(new
+                    {
+                        success = true,
+                        message = "Solar shop added successfully",
+                        SolarShopId_pk = newShop.SolarShopId_pk,
+                        data = new
+                        {
+                            newShop.NameofEnterprise,
+                            newShop.NameofOwner,
+                            newShop.PrimaryMobileNo,
+                            newShop.SiteAddress,
+                            newShop.SolarShopEnterprisePicPath
+                        }
+                    });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Record Not Submit." });
+                }
+
+            }
+            catch (DbUpdateException dbEx)
+            {
+                filepath = filepath + "/ErrorBeneficiaryDataPost/";
+                filepath = filepath + model.PrimaryMobileNo + " SolarShop_dbex" + "^" + model.Version + "^" + Guid.NewGuid() + "^-" + DateTime.Now.ToString("ddMMMyyyyHHmmss") + ".txt";
+                //----- Directory check for error folder by Harshit -----
+                string errorDirectoryPath = Path.GetDirectoryName(Server.MapPath(filepath));
+                if (!Directory.Exists(errorDirectoryPath))
+                {
+                    Directory.CreateDirectory(errorDirectoryPath);
+                }
+                //------------------------------------------------
+
+
+                StreamWriter sw = new System.IO.StreamWriter(Server.MapPath(filepath), false, System.Text.Encoding.UTF8);
+                sw.WriteLine(model);
+                sw.Close();
+                // Handle database specific exceptions
+                return Json(new
+                {
+                    success = false,
+                    message = "Database error while saving solar shop",
+                    error = dbEx.InnerException?.Message ?? dbEx.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                filepath = filepath + "/ErrorBeneficiaryDataPost/";
+                filepath = filepath + model.PrimaryMobileNo + " SolarShop_ex" + "^" + model.Version + "^" + Guid.NewGuid() + "^-" + DateTime.Now.ToString("ddMMMyyyyHHmmss") + ".txt";
+                //----- Directory check for error folder by Harshit-----
+                string errorDirectoryPath = Path.GetDirectoryName(Server.MapPath(filepath));
+                if (!Directory.Exists(errorDirectoryPath))
+                {
+                    Directory.CreateDirectory(errorDirectoryPath);
+                }
+                //------------------------------------------------
+                StreamWriter sw = new System.IO.StreamWriter(Server.MapPath(filepath), false, System.Text.Encoding.UTF8);
+                sw.WriteLine(model);
+                sw.Close();
+                // Handle other exceptions
+                return Json(new
+                {
+                    success = false,
+                    message = "An error occurred while adding solar shop",
+                    error = ex.Message
+                });
+            }
+
+        }
+        public ActionResult SolarshopList()
+        {
+            return View();
+        }
+        public ActionResult GetSolarshopList()
+        {
+            DataTable tbllist = SPManager.Usp_SolarShopList();
+            try
+            {
+                if (tbllist.Rows.Count > 0)
+                {
+                    var html = ConvertViewToString("_SolarshopData", tbllist);
+                    return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         //public ActionResult AddBeneficiaryform()
         //{
         //    return View();
         //}
+        private bool ValidateImageSize(byte[] bytes)
+        {
+            // 1 MB = 1 * 1024 * 1024 bytes
+            return bytes.Length <= (1 * 1024 * 1024);
+        }
+        private void SaveImageWithTargetSize(Image image, string path, int maxSizeInBytes)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, ImageFormat.Png);
+                if (ms.Length <= maxSizeInBytes)
+                {
+                    image.Save(path, ImageFormat.Png);
+                }
+                else
+                {
+                    throw new Exception("Image size exceeds maximum allowed size.");
+                }
+            }
+        }
+        private Image ResizeImage(Bitmap image, Size size)
+        {
+            Bitmap resizedImage = new Bitmap(size.Width, size.Height);
+            using (Graphics graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.DrawImage(image, 0, 0, size.Width, size.Height);
+            }
+            return resizedImage;
+        }
+
+
+
         private string ConvertViewToString(string viewName, object model)
         {
             ViewData.Model = model;

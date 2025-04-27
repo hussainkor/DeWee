@@ -1,0 +1,170 @@
+﻿@model DeWee.Models.ReferralModel
+@using DeWee.Manager
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Referral Form";
+}
+<div class="page-bread page-titles">
+    <div class="bread-flex">
+        <h1>@ViewBag.Title</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("AddReferral", "Beneficiary", FormMethod.Post, new { @id = "formid", role = "form", autocomplete = "off", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="basic-form">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.NameofOwner, new { @class = "control-label" }) <span class="text-danger">*</span>
+                                @Html.TextBoxFor(model => model.NameofOwner, new { @class = "form-control inputcharallow", required = "required" })
+                                @Html.ValidationMessageFor(model => model.NameofOwner, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.TypeofEnterprise, new { @class = "control-label" }) <span class="text-danger">*</span>
+                                @Html.DropDownListFor(model => model.TypeofEnterprise, CommonModel.GetALLBE(), new { @class = "form-control select2", required = "required" })
+                                @Html.ValidationMessageFor(model => model.TypeofEnterprise, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row" id="EnterpriseBusinId_other_div" style="display:none;">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.Other_TypeofEnterprise, new { @class = "control-label" }) <span class="text-danger">*</span>
+                                @Html.TextBoxFor(model => model.Other_TypeofEnterprise, new { @class = "form-control inputcharallow" })
+                                @Html.ValidationMessageFor(model => model.Other_TypeofEnterprise, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.PrimaryMobileNo, new { @class = "control-label" }) <span class="text-danger">*</span>
+                                @Html.TextBoxFor(model => model.PrimaryMobileNo, new { @class = "form-control inputcharallow", required = "required" })
+                                @Html.ValidationMessageFor(model => model.PrimaryMobileNo, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.StateId, new { @class = "control-label" }) <span class="text-danger">*</span>
+                                @Html.DropDownListFor(model => model.StateId, new List<SelectListItem>(), new { @class = "form-control", required = "required" })
+                                @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.DistrictId, new { @class = "control-label" }) <span class="text-danger">*</span>
+                                @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), new { @class = "form-control select2", required = "required" })
+                                @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.BlockId, new { @class = "control-label" }) <span class="text-danger">*</span>
+                                @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(),  new { @class = "form-control select2", required = "required" })
+                                @Html.ValidationMessageFor(model => model.BlockId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                @Html.LabelFor(model => model.Address, new { @class = "control-label" }) <span class="text-danger">*</span>
+                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", required = "required", rows = "3" })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row pt-3">
+                            <div class="form-group col-md-4 offset-md-4 text-center">
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JS/Master.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            InputAllowcharacter('inputcharallow');
+            $(".select2").select2();
+            BindStateList("StateId", "", 0);
+            $('#StateId').prop('selectedIndex', 1);
+            BindDistrictList("DistrictId", "", 0, $('#StateId').val());
+            $('#StateId').change(function () {
+                BindDistrictList("DistrictId", "", 0, $('#StateId').val());
+            });
+            $('#DistrictId').change(function () {
+                BindBlockList("BlockId", "", 0, $('#StateId').val(), $('#DistrictId').val());
+            });
+            //BindDistrictList("DistrictId", "", 0);
+            //debugger;
+            //// When District changes, bind Block
+            //$('#DistrictId').change(function () {
+            //    BindBlockList("BlockId", "", 0, $('#DistrictId').val());
+            //});
+
+
+            $('#TypeofEnterprise').change(function () {
+                if ($(this).val() == '25') { // 25 is "Other"
+                    $('#EnterpriseBusinId_other_div').show();
+                    $('#Other_TypeofEnterprise').attr('required', 'required');
+                } else {
+                    $('#EnterpriseBusinId_other_div').hide();
+                    $('#Other_TypeofEnterprise').removeAttr('required').val('');
+                }
+            });
+            if ($('#TypeofEnterprise').val() == '25') {
+                $('#EnterpriseBusinId_other_div').show();
+                $('#Other_TypeofEnterprise').attr('required', 'required');
+            } else {
+                $('#EnterpriseBusinId_other_div').hide();
+                $('#Other_TypeofEnterprise').removeAttr('required').val('');
+            }
+
+        });
+        $("#formid").on("submit", function (event) {
+            event.preventDefault();
+            var isvalid = $("#formid").valid();
+            var formData = new FormData(document.getElementById("formid"));
+
+            if (isvalid && confirm('Are you sure you want to submit the form?')) {
+                $.ajax({
+                    type: "POST",
+                    url: document.baseURI + "/Beneficiary/AddReferral/",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (resp) {
+                        if (resp.success) {
+                            toastr.success("Success", resp.message);
+                            setTimeout(function () {
+                                window.location.href = document.baseURI + "/Beneficiary/ReferralList";
+                            }, 1500); // wait for 1.5 seconds to show the toastr, then redirect
+                            //$("#formid")[0].reset(); // Uncomment if you want to reset form after success
+                        } else {
+                            toastr.error("Error", resp.message);
+                        }
+                    },
+                    error: function (req, error) {
+                        const errorMsg = req.statusText || error;
+                        toastr.error("Error", `There was a communication error: ${errorMsg}`);
+                    }
+                });
+            }
+        });
+    </script>
+}

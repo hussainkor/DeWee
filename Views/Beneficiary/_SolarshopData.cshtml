@@ -1,0 +1,56 @@
+﻿
+
+@model DataTable
+@using System.Data
+@{
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover dt-responsive display tbl small" id="tbl" width="100%">
+        <thead>
+            <tr>
+                <th>Solar Shop Enterprise Pic</th>
+                <th>Name Of Enterprise</th>
+                <th>Name of Owner</th>
+                <th>Type of Enterprise</th>
+                <th>Type of Enterprise Other</th>
+                <th>Primary Mobile No</th>
+                <th>District Name</th>
+                <th>Block Name</th>
+                <th>Site Address</th>
+                <th>Location</th>
+                <th>Reported On</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Rows.Count > 0)
+            {
+                foreach (DataRow row in Model.Rows)
+                {
+            <tr>
+                <td><img src="@row["SolarShopEnterprisePicPath"]" width="35" class="mr-3 rounded-circle" /> </td>
+                <td>@row["NameOfEnterprise"]</td>
+                <td>@row["NameofOwner"]</td>
+                <td>@row["BusinessTypeInEng"]</td>
+                <td>@row["Other_TypeofEnterprise"]</td>
+                <td>@row["PrimaryMobileNo"]</td>
+                <td>@row["DistrictName"]</td>
+                <td>@row["BlockName"]</td>
+                <td>@row["SiteAddress"]</td>
+                <td>@row["Location"]</td>
+                <td>@row["ReportedOn"]</td>
+                
+               
+            </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="11" class="text-center">No data available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

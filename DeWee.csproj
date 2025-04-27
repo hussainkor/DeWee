@@ -1007,7 +1007,9 @@
     <Content Include="Scripts\JS\Master.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Uploads\privacyPolicydewee.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1064,6 +1066,12 @@
     <Content Include="Views\Beneficiary\_BeneficiaryData.cshtml" />
     <Content Include="Views\THR\_THRData.cshtml" />
     <Content Include="Views\THR\THRList.cshtml" />
+    <Content Include="Views\Beneficiary\AddReferral.cshtml" />
+    <Content Include="Views\Beneficiary\ReferralList.cshtml" />
+    <Content Include="Views\Beneficiary\_ReferralData.cshtml" />
+    <Content Include="Views\Beneficiary\AddSolarShop.cshtml" />
+    <Content Include="Views\Beneficiary\SolarshopList.cshtml" />
+    <Content Include="Views\Beneficiary\_SolarshopData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

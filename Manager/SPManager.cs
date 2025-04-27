@@ -115,5 +115,17 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }
+        public static DataTable Usp_ReferralList()
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_ReferralList");
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
+        public static DataTable Usp_SolarShopList()
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_SolarShopList");
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
     }
 }

@@ -15,23 +15,32 @@ namespace DeWee.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Name Of Owner")]
         public string NameofOwner { get; set; }
 
+        [Display(Name = "Type of Enterprise")]
         public int? TypeofEnterprise { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Type of Enterprise Other")]
         public string Other_TypeofEnterprise { get; set; }
 
         [Required]
         [StringLength(15)]
+        [Display(Name = "Primary Mobiile Number")]
         public string PrimaryMobileNo { get; set; }
 
+        public int StateId { get; set; }
+
+        [Display(Name = "District")]
         public int? DistrictId { get; set; }
 
+        [Display(Name = "Block")]
         public int? BlockId { get; set; }
 
         [Required]
         [StringLength(200)]
+        [Display(Name = "Address")]
         public string Address { get; set; }
 
        // [Required]
