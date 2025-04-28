@@ -233,22 +233,23 @@
                                                     @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
                                                 </div>
                                             </div>
+                                            
+
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
                                             <div class="form-group row">
                                                 <label for="Type of enterprise" class="col-sm-5 col-form-label">Type of enterprise</label>
                                                 <div class="col-sm-7">
                                                     @Html.DropDownListFor(model => model.TypeofEnterpriseBusinId, CommonModel.GetALLBE(1), null, new { @class = "form-control select2", @required = "required" })
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        <div class="col-xs-12 col-md-6">
                                             <div class="form-group row">
                                                 <label for="Type of Indicator" class="col-sm-5 col-form-label">Type of Indicator</label>
                                                 <div class="col-sm-7">
                                                     @Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control select2", @required = "required" })
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            <div class="form-group row" style="display:none">
                                                 <label for="DPE Installation Capacity" class="col-sm-5 col-form-label">DPE Installation Capacity</label>
                                                 <div class="col-sm-7">
                                                     <select class="form-control">
@@ -257,7 +258,7 @@
                                                     @*@Html.DropDownListFor(model => model.TypeofIndicator, CommonModel.GetIndicator(1), null, new { @class = "form-control", @required = "required" })*@
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            <div class="form-group row" style="display:none">
                                                 <label for="Change in Income" class="col-sm-5 col-form-label">Change in Income</label>
                                                 <div class="col-sm-7">
                                                     <select class="form-control">
@@ -297,12 +298,12 @@
                                             <li class="readmore">Enterprises Solarized: <strong id="EnterprisesSolarized" class="text-bg-primary"></strong></li>
                                             <li class="readmore">Capacity of Installation (kW): <strong id="CapacityOfInstallation" class="text-bg-primary"></strong></li>
 
-                                            <li class="readmore">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" height="200" /> </li>
+                                            @*<li class="readmore">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" height="200" /> </li>*@
                                         </ul>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
                                         <div class="img-child-box" style="align-items: end;">
-                                            <img src="~/Content/dashboard/images/childImg.jpg" class="img-fluid mapImg">
+                                            <img src="~/Content/dashboard/images/childImg.jpg" id="EnterpriseImg" height="200" class="img-fluid mapImg">
                                         </div>
                                         <div style="margin-top:10px;text-align:left;">
                                             <a id="RDMore" href="javascript:void(0);" style="color:#Ad4481;">Read More</a>
@@ -821,7 +822,7 @@
 
                         });
 
-                        (function (marker, data) {
+                        @*(function (marker, data) {
                             if (i==0) {
                                 $(".Detail").show(); $(".divbfy").show(); $(".divthr").hide();
                                 $("#StateName").html(data.StateName);
@@ -861,7 +862,7 @@
                                 $("#EnterprisesSolarized").html(data.SolarizedYes);
                                 //$("#CapacityOfInstallation").html(data.SolarizedYes);
                             });
-                        })(marker, data);
+                        })(marker, data);*@
                         // Add marker to the array
                         allMarkers.push(marker);
                     }
@@ -899,6 +900,11 @@
                                 //$("#EnterprisesOnboarded").html(data.SolarizedYes);
                                 $("#EnterprisesSolarized").html(data.SolarizedYes);
                                 //$("#CapacityOfInstallation").html(data.SolarizedYes);
+                                if (data.EnterpriseImage)
+                                    $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
+                                else {
+                                    $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' );
+                                }
                             });
                         })(marker, data);
                         // Add marker to the array
@@ -912,6 +918,15 @@
                            // maxZoom: 15, // Maximum zoom level for clustering
                             minimumClusterSize: 0, // Minimum number of markers to form a cluster
                             //zoomOnClick: true // Zoom in when a cluster is clicked
+                            styles: [
+                                {
+                                    url: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m1.png",
+                                    height: 53,
+                                    width: 53,
+                                    textColor: "#ffffff",
+                                    textSize: 14
+                                }
+                            ]
                         });
                     } else {
                         console.error("MarkerClusterer is not defined. Ensure the library is loaded.");
