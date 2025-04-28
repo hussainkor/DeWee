@@ -1,6 +1,4 @@
-﻿
-
-@model DataTable
+﻿@model DataTable
 @using System.Data
 @{
 }
@@ -9,7 +7,7 @@
     <table class="table table-bordered table-hover dt-responsive display tbl small" id="tbl" width="100%">
         <thead>
             <tr>
-                <th>Solar Shop Enterprise Pic</th>
+                <th>Solar Shop Enterprise</th>
                 <th>Name Of Enterprise</th>
                 <th>Name of Owner</th>
                 <th>Type of Enterprise</th>
@@ -20,6 +18,7 @@
                 <th>Site Address</th>
                 <th>Location</th>
                 <th>Reported On</th>
+                <th>Created By</th>
                 
             </tr>
         </thead>
@@ -40,6 +39,7 @@
                 <td>@row["SiteAddress"]</td>
                 <td>@row["Location"]</td>
                 <td>@row["ReportedOn"]</td>
+                <td>@row["ReportedBy"]</td>
                 
                
             </tr>

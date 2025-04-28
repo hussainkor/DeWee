@@ -1,21 +1,49 @@
-﻿@{
+﻿@model DeWee.Models.ReferralModel
+@using DeWee.Manager
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Referral List";
 }
+
 <div class="page-bread page-titles">
     <div class="bread-flex">
         <h1>@ViewBag.Title</h1>
         <ol class="breadcrumb">
-            @*<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                <li class="breadcrumb-item active">@ViewBag.Title</li>*@
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
         </ol>
     </div>
 </div>
-<div class="rows">
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("ReferralList", "Beneficiary", FormMethod.Post, new { @id = "formid", @class = "", role = "form", autocomplete = "off", enctype = "multipart/form-data" }))
+        {
+            <div class="card">
+                <div class="form-row">
+                    <div class="form-group col-sm-3">
+                        <label for="District" class="col-form-label">District</label>
+                        @Html.DropDownListFor(model => model.DistrictId, new List<SelectListItem>(), "--Select District--", new { @class = "form-control select2", @required = "required" })
+                    </div>
+
+                    <div class="form-group col-sm-3">
+                        <label for="Block" class="col-form-label">Block</label>
+                        @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "--All Blocks--", new { @class = "form-control select2", @required = "required" })
+                    </div>
+
+                    <div class="form-group col-sm-3 mt-4">
+                        <input type="submit" name="btnsubmit" id="btnsubmit" class="btn btn-primary" value="Filter" />
+                        &nbsp; &nbsp;<strong id="div-download"></strong>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
     <div class="col-lg-12">
         <div class="card">
-            <div id="subdata">
-                <!-- The participant table will be injected here -->
+            <div id="participantTableContainer" style="overflow:scroll;">
+                <!-- Table will be injected here -->
             </div>
         </div>
     </div>
@@ -23,29 +51,48 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JS/Master.js"></script>
+
     <script>
         $(document).ready(function () {
-            LoadData();
+
+            BindDistrictList("DistrictId", "", 0, 0);
+            $('.select2').select2();
+
+            $('#DistrictId').change(function () {
+                BindBlockList("BlockId", "", 1, 0, $('#DistrictId').val());
+            });
+
+            LoadData(); // Load initially
+
+            $('#formid').on("submit", function (e) {
+                e.preventDefault();
+                LoadData();
+            });
+
         });
+
         function LoadData() {
+            $('#participantTableContainer').empty();
+            $('#div-download').empty();
+
+            var did = $('#DistrictId').val() == "" ? "0" : $('#DistrictId').val();
+            var bid = $('#BlockId').val() == "" ? "0" : $('#BlockId').val();
+
             $.ajax({
-                type: "Get",
+                type: "GET",
                 url: document.baseURI + "/Beneficiary/GetReferralList/",
-                //   dataType: 'json',
+                data: { DId: did, BId: bid },
                 success: function (resp) {
                     if (resp.IsSuccess) {
-                        $('#subdata').html(resp.Data);
-                        if ($.fn.DataTable.isDataTable("#tbl")) {
-                            $("#tbl").DataTable().destroy();
-                        }
-                        $("#tbl").DataTable();
-                        //toastr.success("Success", "Data loaded successfully.");
+                        $('#participantTableContainer').html(resp.Data);
+                        DataTableSet("tbl", "Referral Details List", "Referral List " + '@DateTime.Now.ToDateTimeDDMMYYYY()', "div-download");
                     } else {
+                        $('#participantTableContainer').html('<h4 class="text-danger">Record Not Found!!<h4>');
                         toastr.error("Error", resp.Data);
                     }
                 },
                 error: function (req, error) {
-                    debugger;
                     var errormsg = 'There was a communication error: ' + (error === 'error' ? req.statusText : error);
                     toastr.error("Error", errormsg);
                 }

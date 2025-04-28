@@ -1,6 +1,4 @@
-﻿
-
-@model DataTable
+﻿@model DataTable
 @using System.Data
 @{
 }
@@ -17,7 +15,7 @@
                 <th>Block Name</th>
                 <th>Address</th>
                 <th>Reported On</th>
-                <th>Syn Date</th>
+                <th>Created By </th>
             </tr>
         </thead>
         <tbody>
@@ -34,14 +32,14 @@
                         <td>@row["BlockName"]</td>
                         <td>@row["Address"]</td>
                         <td>@row["ReportedOn"]</td>
-                        <td>@row["SynDate"]</td>
+                        <td>@row["ReportedBy"]</td>
                     </tr>
                 }
             }
             else
             {
                 <tr>
-                    <td colspan="11" class="text-center">No data available</td>
+                    <td colspan="8" class="text-center">No data available</td>
                 </tr>
             }
         </tbody>
