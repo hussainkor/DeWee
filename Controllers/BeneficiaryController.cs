@@ -352,9 +352,10 @@ namespace DeWee.Controllers
         {
             return View();
         }
-        public ActionResult GetReferralList()
+        [HttpGet]
+        public ActionResult GetReferralList(string DId = "", string BId = "")
         {
-            DataTable tbllist = SPManager.Usp_ReferralList();
+            DataTable tbllist = SPManager.Usp_ReferralList(DId, BId);
             try
             {
                 if (tbllist.Rows.Count > 0)
@@ -372,6 +373,27 @@ namespace DeWee.Controllers
                 return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        //public ActionResult GetReferralList(string DId = "", string BId = "")
+        //{
+        //    DataTable tbllist = SPManager.Usp_ReferralList(DId,BId);
+        //    try
+        //    {
+        //        if (tbllist.Rows.Count > 0)
+        //        {
+        //            var html = ConvertViewToString("_ReferralData", tbllist);
+        //            return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
+        //        }
+        //        else
+        //        {
+        //            return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
         public ActionResult AddSolarShop()
         {
             return View();
@@ -420,7 +442,7 @@ namespace DeWee.Controllers
                     Longitude = model.Longitude,
                     Location = model.Location,
                     Iflinked = model.Iflinked,
-                    uuid =Guid.NewGuid().ToString(),
+                    uuid = Guid.NewGuid().ToString(),
                     IsActive = true,
                     CreatedBy = MvcApplication.CUser.UserId,
                     CreatedOn = DateTime.UtcNow
@@ -560,9 +582,9 @@ namespace DeWee.Controllers
         {
             return View();
         }
-        public ActionResult GetSolarshopList()
+        public ActionResult GetSolarshopList(string DId = "", string BId = "")
         {
-            DataTable tbllist = SPManager.Usp_SolarShopList();
+            DataTable tbllist = SPManager.Usp_SolarShopList(DId, BId);
             try
             {
                 if (tbllist.Rows.Count > 0)
