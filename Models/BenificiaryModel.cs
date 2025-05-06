@@ -194,6 +194,7 @@ namespace DeWee.Models
 
         [Display(Name = "Created On")]
         public DateTime CreatedOn { get; set; }
+        public int? ReferralId { get; set; }
 
     }
     public class DisplayName

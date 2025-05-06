@@ -69,5 +69,6 @@ namespace DeWee.Models
         public virtual DbSet<tbl_Beneficiary> tbl_Beneficiary { get; set; }
         public virtual DbSet<tbl_Referral> tbl_Referral { get; set; }
         public virtual DbSet<tbl_SolarShop> tbl_SolarShop { get; set; }
+        public virtual DbSet<tbl_CLF> tbl_CLF { get; set; }
     }
 }

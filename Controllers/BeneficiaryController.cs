@@ -18,6 +18,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Data.Entity.Infrastructure;
 using System.Drawing.Imaging;
+using System.Data.Entity.Core.Common.CommandTrees;
 
 namespace DeWee.Controllers
 {
@@ -34,9 +35,19 @@ namespace DeWee.Controllers
         //{
         //    return View();
         //}
-        public ActionResult AddBeneficiary(Guid? BeneficiaryId)
+        public ActionResult AddBeneficiary(Guid? BeneficiaryId,int? RId)
         {
             BeneficiaryModel model = new BeneficiaryModel();
+            if (RId>0)
+            {
+                var tblr = db.tbl_Referral.Find(RId);
+                model.ReferralId = tblr.ReferralId_pk;
+                model.DistrictId = tblr.DistrictId.Value;
+                model.BlockId = tblr.BlockId.Value;
+                model.NameofEnterpriseOwner = tblr.NameofOwner;
+                model.PrimaryMobileNo=tblr.PrimaryMobileNo;
+                model.TypeofEnterpriseBusinId = tblr.TypeofEnterprise.Value;
+            }
             if (BeneficiaryId != Guid.Empty && BeneficiaryId != null)
             {
                 var tbl = db.tbl_IndtSolarization.Find(BeneficiaryId);
@@ -170,6 +181,7 @@ namespace DeWee.Controllers
                         {
                             tbl.CreatedBy = MvcApplication.CUser.UserId;
                             tbl.CreatedOn = DateTime.Now;
+                            tbl.ReferralId = model.ReferralId;
                             db.tbl_Beneficiary.Add(tbl);
                         }
                         else
@@ -265,7 +277,6 @@ namespace DeWee.Controllers
             dt = SPManager.Get_Usp_BeneficiaryDetails(BfyId);
             return PartialView("_BeneficiaryView", dt); // Return the partial view
         }
-
         public ActionResult AddReferral()
         {
             return View();
@@ -639,8 +650,6 @@ namespace DeWee.Controllers
             }
             return resizedImage;
         }
-
-
 
         private string ConvertViewToString(string viewName, object model)
         {

@@ -11,6 +11,7 @@
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
@@ -598,6 +599,35 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="ReferralId" Type="int" />
         </EntityType>
+        <EntityType Name="tbl_CLF">
+          <Key>
+            <PropertyRef Name="CLF_Id" />
+          </Key>
+          <Property Name="CLF_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="BlockId" Type="int" />
+          <Property Name="NameofCLF" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLFAddress" Type="nvarchar(max)" />
+          <Property Name="FirstMeetingDate" Type="datetime" />
+          <Property Name="SecondMeetingDate" Type="datetime" />
+          <Property Name="NameofBMM" Type="nvarchar" MaxLength="500" />
+          <Property Name="BMMContactNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="nvarchar(max)" />
+          <Property Name="Accuracy" Type="nvarchar" MaxLength="100" />
+          <Property Name="Version" Type="nvarchar" MaxLength="6" />
+          <Property Name="SynDate" Type="datetime" />
+          <Property Name="NameofBookkeeper" Type="nvarchar" MaxLength="500" />
+          <Property Name="BookKeeperContactNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="IsCLF" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="130" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="130" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="uuid" Type="nvarchar" MaxLength="130" />
+        </EntityType>
         <EntityType Name="tbl_IndtSolarization">
           <Key>
             <PropertyRef Name="Indt_Id" />
@@ -842,6 +872,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySet Name="mst_VO" EntityType="Self.mst_VO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mst_Year" EntityType="Self.mst_Year" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Beneficiary" EntityType="Self.tbl_Beneficiary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CLF" EntityType="Self.tbl_CLF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_IndtSolarization" EntityType="Self.tbl_IndtSolarization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Referral" EntityType="Self.tbl_Referral" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SolarShop" EntityType="Self.tbl_SolarShop" Schema="dbo" store:Type="Tables" />
@@ -1034,6 +1065,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySet Name="tbl_Beneficiary" EntityType="DeWee_DBModel.tbl_Beneficiary" />
           <EntitySet Name="tbl_Referral" EntityType="DeWee_DBModel.tbl_Referral" />
           <EntitySet Name="tbl_SolarShop" EntityType="DeWee_DBModel.tbl_SolarShop" />
+          <EntitySet Name="tbl_CLF" EntityType="DeWee_DBModel.tbl_CLF" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -1042,6 +1074,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUsers" Relationship="DeWee_DBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+          <Property Name="Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
           <Key>
@@ -1794,6 +1827,35 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="SolarShopEnterprisePicPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="tbl_CLF">
+          <Key>
+            <PropertyRef Name="CLF_Id" />
+          </Key>
+          <Property Name="CLF_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="BlockId" Type="Int32" />
+          <Property Name="NameofCLF" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLFAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstMeetingDate" Type="DateTime" Precision="3" />
+          <Property Name="SecondMeetingDate" Type="DateTime" Precision="3" />
+          <Property Name="NameofBMM" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BMMContactNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Accuracy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="SynDate" Type="DateTime" Precision="3" />
+          <Property Name="NameofBookkeeper" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeperContactNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IsCLF" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="uuid" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1803,6 +1865,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="DeWee_DBModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -2568,6 +2631,36 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
                 <ScalarProperty Name="NameofOwner" ColumnName="NameofOwner" />
                 <ScalarProperty Name="NameofEnterprise" ColumnName="NameofEnterprise" />
                 <ScalarProperty Name="SolarShopId_pk" ColumnName="SolarShopId_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CLF">
+            <EntityTypeMapping TypeName="DeWee_DBModel.tbl_CLF">
+              <MappingFragment StoreEntitySet="tbl_CLF">
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCLF" ColumnName="IsCLF" />
+                <ScalarProperty Name="BookKeeperContactNo" ColumnName="BookKeeperContactNo" />
+                <ScalarProperty Name="NameofBookkeeper" ColumnName="NameofBookkeeper" />
+                <ScalarProperty Name="SynDate" ColumnName="SynDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="BMMContactNo" ColumnName="BMMContactNo" />
+                <ScalarProperty Name="NameofBMM" ColumnName="NameofBMM" />
+                <ScalarProperty Name="SecondMeetingDate" ColumnName="SecondMeetingDate" />
+                <ScalarProperty Name="FirstMeetingDate" ColumnName="FirstMeetingDate" />
+                <ScalarProperty Name="CLFAddress" ColumnName="CLFAddress" />
+                <ScalarProperty Name="NameofCLF" ColumnName="NameofCLF" />
+                <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="CLF_Id" ColumnName="CLF_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

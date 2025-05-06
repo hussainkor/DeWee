@@ -47,6 +47,19 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div id="partialViewContainer">
+
+                    <!-- The participant table will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 @section Scripts {
@@ -69,6 +82,34 @@
                 e.preventDefault();
                 LoadData();
             });
+
+            $(document).on('click', '.modal-btn', function () {
+        var beneficiaryId = $(this).data("id");
+          //  formModal.classList.add("modal-active");
+        /*    $("#loadPartialButton").click(function () {*/
+                $.ajax({
+                    url: '@Url.Action("LoadBeneficiaryView", "Beneficiary")', // URL to the action method
+                    type: 'GET',
+                    data: { BfyId: beneficiaryId }, // Pass the parameter
+                    success: function (result) {
+                        $("#partialViewContainer").html(result); // Load the partial view into the container
+                       // const modalBtn = document.querySelector('.modal-btn');
+                        const formModal = document.querySelector('.form-modal-trans');
+                        const closeBtn = document.querySelector('.close-btn');
+                        //modalBtn.addEventListener('click', function () {
+                        //    formModal.classList.remove("actv")//modal-active
+                        //})
+                        closeBtn.addEventListener('click', function () {
+                            $(formModal).css('display', 'none')
+                        })
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error loading partial view: " + error);
+                        toastr.error("Error loading Beneficiary view: " + error);
+                    }
+                });
+           // });
+        });
 
         });
 

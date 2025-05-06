@@ -315,6 +315,7 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BenificiaryModel.cs" />
+    <Compile Include="Models\CLFModel.cs" />
     <Compile Include="Models\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -443,6 +444,9 @@
     <Compile Include="Models\ReferralModel.cs" />
     <Compile Include="Models\SolarShopModel.cs" />
     <Compile Include="Models\tbl_Beneficiary.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_CLF.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_IndtSolarization.cs">
@@ -1072,6 +1076,7 @@
     <Content Include="Views\Beneficiary\AddSolarShop.cshtml" />
     <Content Include="Views\Beneficiary\SolarshopList.cshtml" />
     <Content Include="Views\Beneficiary\_SolarshopData.cshtml" />
+    <Content Include="Views\APIService\AddCLF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1081,7 +1086,6 @@
     <Folder Include="Uploads\JsonDataLog\ImageUploads\EnterpriseImag\" />
     <Folder Include="Uploads\JsonDataLog\ImageUploads\EnterpriseImgError\" />
     <Folder Include="Uploads\JsonDataLog\ImageUploads\EnterpriseImgLog\" />
-    <Folder Include="Views\APIService\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

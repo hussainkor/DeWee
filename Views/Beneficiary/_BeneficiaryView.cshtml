@@ -1,8 +1,8 @@
 ﻿@using System.Data;
 @{
     DataTable dt = new DataTable();
+    DataRow dr;
     dt = Model;
-    DataRow dr = dt.Rows[0];
 }
 
 <div class="form-modal-trans">
@@ -11,387 +11,396 @@
         <div class="card">
             <div class="card-body">
                 <div class="basic-form">
+                  
+
                     <div class="flex-form">
-                        <div class="form-devider">
-                            <h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section1st</h5>
-                            <div class="form-row">
+                        @if (dt.Rows.Count > 0)
+                        {
+                            dr = dt.Rows[0];
+                            <div class="form-devider">
+                                <h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section1st</h5>
+                                <div class="form-row">
 
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.StateId</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["StateName"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.DistrictId</label>
-                                   
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["DistrictName"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.BlockId</label>
-                                  
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["BlockName"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.GPId</label>
-                                    
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["GPName"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.Village</label>
-                                  
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["Village"]</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-devider">
-                            <h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section2nd</h5>
-                            <div class="form-row">
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.CLF</label>
-                                   
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["CLFName"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.VO</label>
-                                   
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["VOName"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.NameofSHG</label>
-                                   
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["NameofSHG"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.YearOfSHG</label>
-                                   
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["YearOfSHG"]</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-devider">
-                            <h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section3rd</h5>
-                            <div class="form-row">
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.NameofEnterprise</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["NameofEnterprise"]</label>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.TypeofEnterpriseBusinId</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["BusinessTypeInEng"] @dr["EnterpriseBusinId_other"]</label>
-                                    </div>
-                                </div>
-
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.NameofSHGMember</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["NameofSHGMember"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.NameofEnterpriseOwner</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["NameofEnterpriseOwner"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.EnterpriseOwner_Gender</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="control-label">@dr["EnterpriseOwner_Gender"]</label>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.DOB</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["DOB"]</label>
-                                        <span id="lblage"></span>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.TypeofRelative</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["TypeOfRelative"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.NameofGuardian</label>
-
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["NameofGuardian"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.Guardian_Gender</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="control-label">@dr["Guardian_Gender"]</label>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.PrimaryMobileNo</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["PrimaryMobileNo"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.AlternateMobileNo</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["AlternateMobileNo"]</label>
-                                    </div>
-                                </div>
-
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.WhatsAppMobileNo</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["WhatsAppMobileNo"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.SiteAddress1st</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["SiteAddress1st"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.SiteAddress2nd</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["SiteAddress2nd"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.Pincode</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["Pincode"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.CategoryBusinessInstallationId</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["BusinessInstallationInEng"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.SpaceAvailableId</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["SpaceAvailableInEng"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.SpaceAvailable_Area</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["SpaceAvailable_Area"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-3" id="NatureofSpaceId_div">
-                                    <label class="control-label">@DeWee.Models.DisplayName.NatureofSpaceId</label>
-                                </div>
-                                <div class="form-group col-md-9" id="NatureofSpaceId_div">
-                                    <div class="col-md-12">
-                                        <label class="control-label">@dr["NatureSpaceInEng"] @dr["NatureofSpace_other"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.YNGridconnection</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="manage-radio">
-                                        <label class="control-label">@dr["YNGridconnection"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.YNDieselGenerator</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="manage-radio">
-                                        <label class="control-label">@dr["YNDieselGenerator"]</label>
-                                    </div>
-                                </div>
-                                <!-- -->
-                                @if (@dr["YNDieselGenerator"].ToString() == "Yes")
-                                {
+                                    <!-- -->
                                     <div class="form-group col-md-8">
-                                        <label class="control-label">@DeWee.Models.DisplayName.DGYesAverageDailyHours</label>
+                                        <label class="control-label">@DeWee.Models.DisplayName.StateId</label>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="control-label">@dr["DGYesAverageDailyHours"]</label>
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["StateName"]</label>
+                                        </div>
                                     </div>
+                                    <!-- -->
                                     <div class="form-group col-md-8">
-                                        <label class="control-label">@DeWee.Models.DisplayName.DGCapacity</label>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label class="control-label">@dr["DGCapacity"]</label>
-                                    </div>
-                                    <div class="form-group col-md-8">
-                                        <label class="control-label">@DeWee.Models.DisplayName.DGAverageExpense</label>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label class="control-label">@dr["DGAverageExpense"]</label>
-                                    </div>
-                                }
+                                        <label class="control-label">@DeWee.Models.DisplayName.DistrictId</label>
 
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.YNMotorAppliances</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="control-label">@dr["YNMotorAppliances"]</label>
-                                </div>
-                                @if (dr["YNMotorAppliances"].ToString() == "Yes")
-                                {
-                                    <div class="form-group col-md-8">
-                                        <label class="control-label">@DeWee.Models.DisplayName.IfYesTypeofMotor</label>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="control-label">@dr["IfYesTypeofMotor"]</label>
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["DistrictName"]</label>
+                                        </div>
                                     </div>
-                                }
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.YNGovtSchemessubsidy</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="control-label">@dr["YNGovtSchemessubsidy"]</label>
-                                </div>
-                                <!-- -->
-                                @*<div class="form-group col-md-3">
-            <label class="control-label">@DeWee.Models.DisplayName.YNDieselGenerator</label>
-        </div>
-         <div class="form-group col-md-4">
-            <div class="col-md-12">
-                <label class="control-label">@dr["DGCapacity"]</label>
-            </div>
-        </div>*@
-                                <!-- -->
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.SolarInstallationId</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="control-label">@dr["SolarInstallationInEng"]</label>
-                                </div>
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.YNFinancialSupport</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="control-label">@dr["YNFinancialSupport"]</label>
-                                </div>
-                                <div class="form-group col-md-8">
-                                    <label class="control-label">@DeWee.Models.DisplayName.EnterprisePhotoPath</label>
-                                </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.BlockId</label>
 
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-12" style="overflow:scroll !important;">
-                                        @if (!string.IsNullOrWhiteSpace(dr["EnterpriseImgPath"].ToString()))
-                                        {
-                                            <img src="@dr["EnterpriseImgPath"]" alt="EnterpriseImgPath" />
-                                        }
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["BlockName"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.GPId</label>
+
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["GPName"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.Village</label>
+
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["Village"]</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
+                            <div class="form-devider">
+                                <h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section2nd</h5>
+                                <div class="form-row">
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.CLF</label>
 
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["CLFName"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.VO</label>
+
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["VOName"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.NameofSHG</label>
+
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["NameofSHG"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.YearOfSHG</label>
+
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["YearOfSHG"]</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-devider">
+                                <h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section3rd</h5>
+                                <div class="form-row">
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.NameofEnterprise</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["NameofEnterprise"]</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.TypeofEnterpriseBusinId</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["BusinessTypeInEng"] @dr["EnterpriseBusinId_other"]</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.NameofSHGMember</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["NameofSHGMember"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.NameofEnterpriseOwner</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["NameofEnterpriseOwner"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.EnterpriseOwner_Gender</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label">@dr["EnterpriseOwner_Gender"]</label>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.DOB</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["DOB"]</label>
+                                            <span id="lblage"></span>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.TypeofRelative</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["TypeOfRelative"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.NameofGuardian</label>
+
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["NameofGuardian"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.Guardian_Gender</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label">@dr["Guardian_Gender"]</label>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.PrimaryMobileNo</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["PrimaryMobileNo"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.AlternateMobileNo</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["AlternateMobileNo"]</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.WhatsAppMobileNo</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["WhatsAppMobileNo"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.SiteAddress1st</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["SiteAddress1st"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.SiteAddress2nd</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["SiteAddress2nd"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.Pincode</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["Pincode"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.CategoryBusinessInstallationId</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["BusinessInstallationInEng"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.SpaceAvailableId</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["SpaceAvailableInEng"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.SpaceAvailable_Area</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["SpaceAvailable_Area"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-3" id="NatureofSpaceId_div">
+                                        <label class="control-label">@DeWee.Models.DisplayName.NatureofSpaceId</label>
+                                    </div>
+                                    <div class="form-group col-md-9" id="NatureofSpaceId_div">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@dr["NatureSpaceInEng"] @dr["NatureofSpace_other"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.YNGridconnection</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="manage-radio">
+                                            <label class="control-label">@dr["YNGridconnection"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.YNDieselGenerator</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="manage-radio">
+                                            <label class="control-label">@dr["YNDieselGenerator"]</label>
+                                        </div>
+                                    </div>
+                                    <!-- -->
+                                    @if (@dr["YNDieselGenerator"].ToString() == "Yes")
+                                    {
+                                        <div class="form-group col-md-8">
+                                            <label class="control-label">@DeWee.Models.DisplayName.DGYesAverageDailyHours</label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="control-label">@dr["DGYesAverageDailyHours"]</label>
+                                        </div>
+                                        <div class="form-group col-md-8">
+                                            <label class="control-label">@DeWee.Models.DisplayName.DGCapacity</label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="control-label">@dr["DGCapacity"]</label>
+                                        </div>
+                                        <div class="form-group col-md-8">
+                                            <label class="control-label">@DeWee.Models.DisplayName.DGAverageExpense</label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="control-label">@dr["DGAverageExpense"]</label>
+                                        </div>
+                                    }
+
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.YNMotorAppliances</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label">@dr["YNMotorAppliances"]</label>
+                                    </div>
+                                    @if (dr["YNMotorAppliances"].ToString() == "Yes")
+                                    {
+                                        <div class="form-group col-md-8">
+                                            <label class="control-label">@DeWee.Models.DisplayName.IfYesTypeofMotor</label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="control-label">@dr["IfYesTypeofMotor"]</label>
+                                        </div>
+                                    }
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.YNGovtSchemessubsidy</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label">@dr["YNGovtSchemessubsidy"]</label>
+                                    </div>
+                                    <!-- -->
+                                    @*<div class="form-group col-md-3">
+                        <label class="control-label">@DeWee.Models.DisplayName.YNDieselGenerator</label>
                     </div>
+                     <div class="form-group col-md-4">
+                        <div class="col-md-12">
+                            <label class="control-label">@dr["DGCapacity"]</label>
+                        </div>
+                    </div>*@
+                                    <!-- -->
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.SolarInstallationId</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label">@dr["SolarInstallationInEng"]</label>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.YNFinancialSupport</label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label">@dr["YNFinancialSupport"]</label>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label class="control-label">@DeWee.Models.DisplayName.EnterprisePhotoPath</label>
+                                    </div>
 
+                                    <div class="form-group col-md-12">
+                                        <div class="col-md-12" style="overflow:scroll !important;">
+                                            @if (!string.IsNullOrWhiteSpace(dr["EnterpriseImgPath"].ToString()))
+                                            {
+                                                <img src="@dr["EnterpriseImgPath"]" alt="EnterpriseImgPath" />
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <h5 class="text-danger">Record not found !!</h5>
+                        }
+                    </div>
+                   
                 </div>
             </div>
         </div>

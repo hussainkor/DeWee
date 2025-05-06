@@ -233,7 +233,7 @@
                                                     @Html.DropDownListFor(model => model.BlockId, new List<SelectListItem>(), "All", new { @class = "form-control select2", @required = "required" })
                                                 </div>
                                             </div>
-                                            
+
 
                                         </div>
                                         <div class="col-xs-12 col-md-6">
@@ -275,7 +275,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">
                                         <h6 style="font-size: 16px; font-weight: 600; padding-top: 10px; padding-left: 20px;">Beneficiary details</h6>
-                                        <ul style="height: 228px; overflow: hidden;">
+                                        <ul style="height: 300px; overflow: hidden;">
                                             <li class="divbfy">State: <strong id="StateName"></strong></li>
                                             <li class="divbfy">District: <strong id="DistrictName"></strong></li>
                                             <li class="divbfy">Block: <strong id="BlockName"></strong></li>
@@ -294,18 +294,20 @@
                                             <li class="divthr">Contact Person: <strong id="PersonName" class="text-bg-primary"></strong></li>
                                             <li class="divthr">Contact Number: <strong id="PhoneNumber" class="text-bg-primary"></strong></li>
                                             <li></li>
-                                            <li class="readmore">Enterprises Onboarded: <strong id="EnterprisesOnboarded" class="text-bg-primary"></strong></li>
-                                            <li class="readmore">Enterprises Solarized: <strong id="EnterprisesSolarized" class="text-bg-primary"></strong></li>
-                                            <li class="readmore">Capacity of Installation (kW): <strong id="CapacityOfInstallation" class="text-bg-primary"></strong></li>
+                                            <li class="readmore1">Enterprises Onboarded: <strong id="EnterprisesOnboarded" class="text-bg-primary"></strong></li>
+                                            <li class="readmore1">Enterprises Solarized: <strong id="EnterprisesSolarized" class="text-bg-primary"></strong></li>
+                                            <li class="readmore1">Capacity of Installation (kW): <strong id="CapacityOfInstallation" class="text-bg-primary"></strong></li>
 
                                             @*<li class="readmore">Enterprise Image : <img src="" id="EnterpriseImg" name="EnterpriseImg" height="200" /> </li>*@
                                         </ul>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
                                         <div class="img-child-box" style="align-items: end;">
-                                            <img src="~/Content/dashboard/images/childImg.jpg" id="EnterpriseImg" height="200" class="img-fluid mapImg">
+                                            <h6 class="" id="div-img" style="font-size: medium; font-weight: 700; color: #bf4242 !important; "></h6>
+                                            @*<img src="~/Content/dashboard/images/childImg.jpg" id="EnterpriseImg" class="img-fluid mapImg">*@
+                                            <img src="#" id="EnterpriseImg" class="img-fluid mapImg " style="display:none;">
                                         </div>
-                                        <div style="margin-top:10px;text-align:left;">
+                                        <div style="margin-top:10px;text-align:left; display:none;">
                                             <a id="RDMore" href="javascript:void(0);" style="color:#Ad4481;">Read More</a>
                                         </div>
                                     </div>
@@ -315,7 +317,7 @@
                         <div class="col-xs-12 col-md-6">
                             <div class="map-box-img" id="openNav">
                                 <div>
-                                    <a href="javascript:void(0);" id="dvMapToggle" class="btn-sm btn-primary" style="position:absolute; top:24px; left:190px;z-index:9;">Summary</a>
+                                    <a href="javascript:void(0);" id="dvMapToggle" class="btn btn-primary" style="position:absolute; top:24px; left:190px;z-index:9;">Summary</a>
                                     <div id="dvMap" style="width: 100%; height: 420px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
                                     @*<img src="img/mapIcon.jpg" class="img-fluid mapImg">*@
                                 </div>
@@ -416,18 +418,18 @@
                 Load_Databox();
             });
 
-         new MarkerClusterer(map, allMarkers, {
-                imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-                minimumClusterSize: 0,
-                styles: [{
-                    url: "path/to/cluster-icon-1.png",
-                    height: 50,
-                    width: 50,
-                    textColor: "#FFFFFF",
-                    textSize: 12
-             }]
+         //new MarkerClusterer(map, allMarkers, {
+         //       imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+         //       minimumClusterSize: 0,
+         //       styles: [{
+         //           url: "path/to/cluster-icon-1.png",
+         //           height: 50,
+         //           width: 50,
+         //           textColor: "#FFFFFF",
+         //           textSize: 12
+         //    }]
 
-            });
+         //   });
 
         });
         function Load_Databox() {
@@ -805,7 +807,7 @@
 
 
                     for (var i = 0; i < markers.length; i++) {
-
+                        debugger;
                         var data = markers[i];
                         var myLatlng = new google.maps.LatLng(data.Latitude, data.Longitude);
                         var marker = new google.maps.Marker({
@@ -822,23 +824,23 @@
 
                         });
 
-                        @*(function (marker, data) {
-                            if (i==0) {
-                                $(".Detail").show(); $(".divbfy").show(); $(".divthr").hide();
-                                $("#StateName").html(data.StateName);
-                                $("#DistrictName").html(data.DistrictName);
-                                $("#BlockName").html(data.BlockName);
-                                $("#GPName").html(data.GPName);
-                                $("#VO").html(data.VO);
-                                $("#TypeofEnterpriseBusinText").html(data.TypeofEnterpriseBusinText);
-                                $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
-                                $("#NameofSHG").html(data.NameofSHG);
-                                $("#SpaceAvailableText").html(data.SpaceAvailableText);
-                                $("#SpaceAvailable_Area").html(data.SpaceAvailable_Area);
-                                $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
-                                 if (data.EnterpriseImage)
-                                     $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
-                            }
+                        (function (marker, data) {
+                           // if (i==0) {
+                               // $(".Detail").show(); $(".divbfy").show(); $(".divthr").hide();
+                               // $("#StateName").html(data.StateName);
+                               // $("#DistrictName").html(data.DistrictName);
+                               // $("#BlockName").html(data.BlockName);
+                               // $("#GPName").html(data.GPName);
+                               // $("#VO").html(data.VO);
+                               // $("#TypeofEnterpriseBusinText").html(data.TypeofEnterpriseBusinText);
+                               // $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
+                               // $("#NameofSHG").html(data.NameofSHG);
+                               // $("#SpaceAvailableText").html(data.SpaceAvailableText);
+                               // $("#SpaceAvailable_Area").html(data.SpaceAvailable_Area);
+                               // $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
+                                 //if (data.EnterpriseImage)
+                                   //  $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
+                           // }
                             google.maps.event.addListener(marker, "click", function (e) {
                                 ClearDataShow();
                                 debugger;
@@ -856,13 +858,21 @@
                                 $("#SpaceAvailableText").html(data.SpaceAvailableText);
                                 $("#SpaceAvailable_Area").html(data.SpaceAvailable_Area);
                                 $("#NameofEnterpriseOwner").html(data.NameofEnterpriseOwner);
-                                if (data.EnterpriseImage)
+                                if (data.EnterpriseImage) {
                                     $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
+                                    $("#EnterpriseImg").css("height", "330px");
+                                    $("#EnterpriseImg").css("display", "block");
+                                }
+                                else {
+                                    $('#div-img').html("Image Not Available");
+                                    //$("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + '/Content/dashboard/images/childImg.jpg');
+                                    //$("#EnterpriseImg").css("height", "auto");
+                                }
                                 //$("#EnterprisesOnboarded").html(data.SolarizedYes);
                                 $("#EnterprisesSolarized").html(data.SolarizedYes);
                                 //$("#CapacityOfInstallation").html(data.SolarizedYes);
                             });
-                        })(marker, data);*@
+                        })(marker, data);
                         // Add marker to the array
                         allMarkers.push(marker);
                     }
@@ -885,6 +895,8 @@
                         (function (marker, data) {
                             google.maps.event.addListener(marker, "click", function (e) {
                                 ClearDataShow();
+                                infoWindow.setContent('District: ' + data.DistrictName + ' / Block: ' + data.BlockName);
+                                infoWindow.open(map, marker);
                                 $(".Detail").show(); $(".divbfy").hide(); $(".divthr").show();
                                 $("#StateName").html(data.StateName);
                                 $("#DistrictName").html(data.DistrictName);
@@ -900,10 +912,15 @@
                                 //$("#EnterprisesOnboarded").html(data.SolarizedYes);
                                 $("#EnterprisesSolarized").html(data.SolarizedYes);
                                 //$("#CapacityOfInstallation").html(data.SolarizedYes);
-                                if (data.EnterpriseImage)
+                                if (data.EnterpriseImage) {
                                     $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
+                                    $("#EnterpriseImg").css("height", "330px");
+                                    $("#EnterpriseImg").css("display", "block");
+                                }
                                 else {
-                                    $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' );
+                                    $('#div-img').html("Image Not Available");
+                                    @*$("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + '/Content/dashboard/images/childImg.jpg');
+                                    $("#EnterpriseImg").css("height", "auto");*@
                                 }
                             });
                         })(marker, data);
@@ -911,28 +928,36 @@
                         allMarkers.push(marker);
                     }
                     // Initialize MarkerClusterer
-                    if (typeof MarkerClusterer !== 'undefined') {
-                        new MarkerClusterer(map, allMarkers, {
-                            imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m", // Path to cluster icons
-                            gridSize: 60, // Adjust grid size for clustering
-                           // maxZoom: 15, // Maximum zoom level for clustering
-                            minimumClusterSize: 0, // Minimum number of markers to form a cluster
-                            //zoomOnClick: true // Zoom in when a cluster is clicked
-                            styles: [
-                                {
-                                    url: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m1.png",
-                                    height: 53,
-                                    width: 53,
-                                    textColor: "#ffffff",
-                                    textSize: 14
-                                }
-                            ]
-                        });
-                    } else {
-                        console.error("MarkerClusterer is not defined. Ensure the library is loaded.");
-                    }
+                    //if (typeof MarkerClusterer !== 'undefined') {
+                    //    new MarkerClusterer(map, allMarkers, {
+                    //        imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m", // Path to cluster icons
+                    //        gridSize: 60, // Adjust grid size for clustering
+                    //       // maxZoom: 15, // Maximum zoom level for clustering
+                    //        minimumClusterSize: 0, // Minimum number of markers to form a cluster
+                    //        //zoomOnClick: true // Zoom in when a cluster is clicked
+                    //        styles: [
+                    //            {
+                    //                url: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m1.png",
+                    //                height: 53,
+                    //                width: 53,
+                    //                textColor: "#ffffff",
+                    //                textSize: 14
+                    //            }
+                    //        ]
+                    //    });
+                    //} else {
+                    //    console.error("MarkerClusterer is not defined. Ensure the library is loaded.");
+                    //}
 
                     map.data.loadGeoJson('/Scripts/JS/uttar_pradesh.json');
+                    // Set style for features
+                    map.data.setStyle({
+                        strokeColor: '#FF0000', // Border color (red here)
+                        strokeOpacity: 1.0,     // Border opacity
+                        strokeWeight: 1,        // Border thickness
+                        fillColor: '#00FF00',   // Fill color (optional)
+                        fillOpacity: 0.5        // Fill opacity (optional)
+                    });
 
                 } else {
                     ClearDataShow();
@@ -1057,6 +1082,8 @@
             $("#EnterprisesOnboarded").html("");
             $("#EnterprisesSolarized").html("");
             $("#CapacityOfInstallation").html("");
+            $('#div-img').html("");
+            $("#EnterpriseImg").css("display", "none");
         }
         //function LoadGoogleMap(tblData) {
         //    debugger;

@@ -23,6 +23,7 @@
                 {
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.BeneficiaryId_pk)
+                    @Html.HiddenFor(model => model.ReferralId)
                     @Html.HiddenFor(model => model.Latitude)
                     @Html.HiddenFor(model => model.Longitude)
                     @Html.HiddenFor(model => model.Location)
@@ -642,6 +643,23 @@
                 $('#BlockId').change(function () {
                     BindPanchayatList("GPId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val());
                 });
+                debugger;
+                if ('@Model.ReferralId' != 'null' && '@Model.ReferralId' != '0') {
+                    debugger;
+                    $('#DistrictId').val('@Model.DistrictId').trigger('change');
+                    BindBlockList("BlockId", "", 0, $('#StateId').val(), $('#DistrictId').val());
+                    $('#BlockId').val('@Model.BlockId').trigger('change');
+                    $('#TypeofEnterpriseBusinId').val('@Model.TypeofEnterpriseBusinId').trigger('change');
+                    $('#NameofOwner').val('@Model.NameofEnterpriseOwner');
+                    $('#PrimaryMobileNo').val('@Model.PrimaryMobileNo');
+                    if ($('#TypeofEnterpriseBusinId').val() == '25') { // Assuming '25' is the value for "Others"
+                        $('#EnterpriseBusinId_other_div').show();
+                        $("#EnterpriseBusinId_other_div").attr('required', 'required');
+                    } else {
+                        $('#EnterpriseBusinId_other_div').hide();
+                        $('#EnterpriseBusinId_other').val(''); // Clear the input if hidden
+                    }
+                }
                 $('#TypeofEnterpriseBusinId').change(function () {
                     $("#EnterpriseBusinId_other").removeAttr('required');
                     if ($(this).val() == '25') { // Assuming '25' is the value for "Others"
