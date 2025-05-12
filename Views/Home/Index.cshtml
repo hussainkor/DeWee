@@ -160,46 +160,114 @@
     .content-body {
         min-height: auto !important;
     }
+
+    .value-box-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+    }
+
+        .value-box-card .txt {
+            font-size: 14px;
+            font-weight: 600;
+        }
 </style>
 <div class="row">
     <div class="col-xs-12 col-md-12">
+        <div class="row form-row">
+            <div class="col-xs-12 col-md-3">
+                <div class="card mb-2">
+                    <div class="value-box-card">
+                        <div>
+                            <div class="txt">Enterprises Onboarded</div>
+                            <div id="TotalParticipant"></div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/handshake.png" class="img-fluid" style="width: 46px !important;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <div class="card mb-2">
+                    <div class="value-box-card">
+                        <div>
+                            <div class="txt">Enterprises Solarized</div>
+                            <div id="TotalSolarized"></div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/solareng.png" class="img-fluid" style="width: 46px !important;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <div class="card mb-2">
+                    <div class="value-box-card">
+                        <div>
+                            <div class="txt">GHG Emissions Mitigated</div>
+                            <div id="">0</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/battery.png" class="img-fluid" style="width: 46px !important;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <div class="card mb-2">
+                    <div class="value-box-card">
+                        <div>
+                            <div class="txt">Capacity of Installation (kW)</div>
+                            <div id="">0</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/sgssky.png" class="img-fluid" style="width: 46px !important;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card map-card">
             <div class="de-map-box">
                 <div id="myNav" class="overlay-map">
                     <a href="javascript:void(0)" class="closebtn" id="closeNav" style="font-size: 36px;line-height: 24px;">&times;</a>
                     <div class="overlay-content">
-                        <ul class="list">
-                            <li>
-                                <div class="value-box">
-                                    <span>Enterprises Onboarded</span>
-                                    <img src="~/Content/dashboard/images/handshake.png" class="img-fluid" style="width: 75px !important;">
-                                    <div id="TotalParticipant"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="value-box">
-                                    <span>Enterprises Solarized</span>
-                                    <img src="~/Content/dashboard/images/solareng.png" class="img-fluid" style="width: 75px !important;">
-                                    <div id="TotalSolarized"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="value-box">
-                                    <span>GHG Emissions Mitigated</span>
-                                    <img src="~/Content/dashboard/images/battery.png" class="img-fluid" style="width: 75px !important;">
-                                    <div id="">0</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="value-box">
-                                    <span>Capacity of Installation (kW)</span>
-                                    <img src="~/Content/dashboard/images/sgssky.png" class="img-fluid" style="width: 75px !important;">
-                                    <div id="">0</div>
-                                </div>
-                            </li>
-                        </ul>
+                        @*<ul class="list">
+                                <li>
+                                    <div class="value-box">
+                                        <span>Enterprises Onboarded</span>
+                                        <img src="~/Content/dashboard/images/handshake.png" class="img-fluid" style="width: 75px !important;">
+                                        <div id="TotalParticipant"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="value-box">
+                                        <span>Enterprises Solarized</span>
+                                        <img src="~/Content/dashboard/images/solareng.png" class="img-fluid" style="width: 75px !important;">
+                                        <div id="TotalSolarized"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="value-box">
+                                        <span>GHG Emissions Mitigated</span>
+                                        <img src="~/Content/dashboard/images/battery.png" class="img-fluid" style="width: 75px !important;">
+                                        <div id="">0</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="value-box">
+                                        <span>Capacity of Installation (kW)</span>
+                                        <img src="~/Content/dashboard/images/sgssky.png" class="img-fluid" style="width: 75px !important;">
+                                        <div id="">0</div>
+                                    </div>
+                                </li>
+                            </ul>*@
                     </div>
                 </div>
+
                 <div class="filter-section">
                     <div class="row no-gutters">
                         <div class="col-xs-12 col-md-6">
@@ -317,7 +385,7 @@
                         <div class="col-xs-12 col-md-6">
                             <div class="map-box-img" id="openNav">
                                 <div>
-                                    <a href="javascript:void(0);" id="dvMapToggle" class="btn btn-primary" style="position:absolute; top:24px; left:190px;z-index:9;">Summary</a>
+                                    <a href="javascript:void(0);" id="dvMapToggle" class="btn btn-primary" style="position:absolute; top:24px; left:190px;z-index:9;display:none;">Summary</a>
                                     <div id="dvMap" style="width: 100%; height: 420px;" border:3px solid #0094ff" class="border-bottom-primary"></div>
                                     @*<img src="img/mapIcon.jpg" class="img-fluid mapImg">*@
                                 </div>
@@ -803,7 +871,7 @@
                         origin: new google.maps.Point(0, 0), // Origin point
                         anchor: new google.maps.Point(20, 40) // Anchor point
                     };
-                    icon1 = "/Content/dashboard/images/MarkerRedSingle.png";
+                    icon1.url = "/Content/dashboard/images/MarkerRedSingle.png";
 
 
                     for (var i = 0; i < markers.length; i++) {
