@@ -662,5 +662,29 @@ namespace DeWee.Controllers
                 return sw.GetStringBuilder().ToString();
             }
         }
+        public ActionResult CLFMList()
+        {
+            return View();
+        }
+        public ActionResult GetCLFMList(string DId = "", string BId = "")
+        {
+            DataTable tbllist = SPManager.Usp_CLFList(DId, BId);
+            try
+            {
+                if (tbllist.Rows.Count > 0)
+                {
+                    var html = ConvertViewToString("_CLFMListData", tbllist);
+                    return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

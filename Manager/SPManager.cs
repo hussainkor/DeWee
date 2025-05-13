@@ -131,5 +131,13 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
             return dt;
         }
+        public static DataTable Usp_CLFList(string DId = "", string BId = "")
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_CLFList");
+            sp.Command.AddParameter("@DId", DId, DbType.String);
+            sp.Command.AddParameter("@BId", BId, DbType.String);
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
     }
 }

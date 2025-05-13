@@ -1,0 +1,60 @@
+﻿@model DataTable
+@using System.Data
+@{
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover dt-responsive display tbl small" id="tbl" width="100%">
+        <thead>
+            <tr>
+               
+                <th>District Name</th>
+                <th>Block Name</th>
+                <th>Name of CLF</th>
+                <th>CLF Address</th>
+                <th>First Meeting Date</th>
+                <th>Second Meeting Date</th>
+                <th>Name of BMM</th>
+                <th>BMM Contact No</th>
+                <th>Syn Date</th>
+                <th>Name of Bookkeeper</th>
+                <th>BookKeeper Contact No</th>
+                 <th>Reported By</th>
+                <th>Reported on</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Rows.Count > 0)
+            {
+                foreach (DataRow row in Model.Rows)
+                {
+            <tr>
+
+                <td>@row["DistrictName"]</td>
+                <td>@row["BlockName"]</td>
+                <td>@row["NameofCLF"]</td>
+                <td>@row["CLFAddress"]</td>
+                <td>@row["FirstMeetingDate"]</td>
+                <td>@row["SecondMeetingDate"]</td>
+                <td>@row["NameofBMM"]</td>
+                <td>@row["BMMContactNo"]</td>
+                <td>@row["SynDate"]</td>
+                <td>@row["NameofBookkeeper"]</td>
+                <td>@row["BookKeeperContactNo"]</td>
+                <td>@row["Name"]</td>
+                <td>@row["Reportedon"]</td>
+
+
+            </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="11" class="text-center">No data available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
