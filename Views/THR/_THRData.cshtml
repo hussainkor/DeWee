@@ -11,14 +11,15 @@
             <th>District</th>
             <th>Block</th>
             @*<th>THR Type</th>*@
-            <th>Type of Enterprise</th>
+        <th>AWCs Supported</th>
             <th>Take-Home Ration<br /> Nutri Enterprise</th>
             <th>Type of Roof</th>
             <th>Total Roof and shed<br /> area available (sq feet) </th>
             <th>Shadow free Area available<br /> for Solarization(sq feet) </th>
             <th>Person Name</th>
             <th>Phone Number</th>
-            <th>Reported Date</th>
+            <th>Capacity Installed(kW)</th>
+            <th>Women Employed</th>
             @*<th>Actions</th>*@
         </tr>
     </thead>
@@ -28,22 +29,23 @@
             {
                 foreach (DataRow row in Model.Rows)
                 {
-                    <tr>
-                        @*<td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /> </td>
-                            <td><button class="modal-btn btn-warning" data-id="@row["BeneficiaryId"]">View</button></td>*@
-                        <td>@row["StateName"]</td>
-                        <td>@row["DistrictName"]</td>
-                        <td>@row["BlockName"]</td>
-                        @*<td>@row["TypeTHR"]</td>*@
-                        <td>@row["BusinessTypeInEng"]</td>
-                        <td>@row["THR_NutriEnterprise"]</td>
-                        <td>@row["TypeofRoof"]</td>
-                        <td>@row["TRoofandshedareaavailable_sqfeet"]</td>
-                        <td>@row["AreaAvailableSolarization_sqfeet"]</td>
-                        <td>@row["PersonName"]</td>
-                        <td>@row["PhoneNumber"]</td>
-                        <td>@row["ReportedOn"]</td>
-                    </tr>
+                <tr style="background:@row["IsSolarizedbg"];color:@row["IsSolarizedColor"]">
+                    @*<td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /> </td>
+        <td><button class="modal-btn btn-warning" data-id="@row["BeneficiaryId"]">View</button></td>*@
+                    <td>@row["StateName"]</td>
+                    <td>@row["DistrictName"]</td>
+                    <td>@row["BlockName"]</td>
+                    @*<td>@row["TypeTHR"]</td>*@
+                    <td>@row["AWCsSupported"]</td>
+                    <td>@row["THR_NutriEnterprise"]</td>
+                    <td>@row["TypeofRoof"]</td>
+                    <td>@row["TRoofandshedareaavailable_sqfeet"]</td>
+                    <td>@row["AreaAvailableSolarization_sqfeet"]</td>
+                    <td>@row["PersonName"]</td>
+                    <td>@row["PhoneNumber"]</td>
+                    <td>@row["InstalledCapacity_kW"]</td>
+                    <td>@row["WomenEmployed"]</td>
+                </tr>
                 }
             }
             else
