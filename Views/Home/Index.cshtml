@@ -283,7 +283,7 @@
 
                 <div class="filter-section">
                     <div class="row no-gutters">
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-6" style="display:none">
                             <div class="form-box-section">
                                 @using (Html.BeginForm("GetIndex", "Home", FormMethod.Post, new { @id = "formid", @class = "", role = "form", autocomplete = "off", enctype = "multipart/form-data" }))
                                 {
@@ -395,7 +395,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-12">
                             <div class="map-box-img" id="openNav">
                                 <div>
                                     <a href="javascript:void(0);" id="dvMapToggle" class="btn btn-primary" style="position:absolute; top:24px; left:190px;z-index:9;display:none;">Summary</a>
@@ -925,8 +925,34 @@
                            // }
                             google.maps.event.addListener(marker, "click", function (e) {
                                 ClearDataShow();
-                                infoWindow.setContent('District: ' + data.DistrictName + ' / Block: ' + data.BlockName + ' / GP: ' + data.GPName);
-                                   infoWindow.open(map, marker);
+
+                                infoWindow.setContent(`
+                                                      <div style="position: relative; font-family: Arial, sans-serif; padding: 5px;">
+                                                        <button onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.style.display='none'"
+                                                                style="position: absolute; top: -6px; right: 0; background: none; border: none; font-size: 18px; cursor: pointer;">
+                                                          &times;
+                                                        </button>
+                                                        <strong>Name:</strong> ${data.NameofEnterpriseOwner}<br>
+                                                        <strong>District:</strong> ${data.DistrictName}<br>
+                                                        <strong>Block:</strong> ${data.BlockName}
+                                                      </div>
+                                                    `);
+                                infoWindow.open(map, marker);
+
+                                // After the DOM is loaded inside the InfoWindow
+                                google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+                                    // Hide the default close button
+                                    const defaultCloseBtn = document.querySelector('.gm-ui-hover-effect');
+                                    if (defaultCloseBtn) {
+                                        defaultCloseBtn.style.display = 'none';
+                                    }
+
+                                    // Add functionality to custom close button
+                                    document.getElementById('customCloseBtn')?.addEventListener('click', () => {
+                                        infoWindow.close();
+                                    });
+                                });
+
                                 $(".Detail").show(); $(".divbfy").show(); $(".divthr").hide();
                                 $("#StateName").html(data.StateName);
                                 $("#DistrictName").html(data.DistrictName);
@@ -976,8 +1002,33 @@
                         (function (marker, data) {
                             google.maps.event.addListener(marker, "click", function (e) {
                                 ClearDataShow();
-                                infoWindow.setContent('District: ' + data.DistrictName + ' / Block: ' + data.BlockName);
+                                infoWindow.setContent(`
+                                                      <div style="position: relative; font-family: Arial, sans-serif; padding: 5px;">
+                                                        <button onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.style.display='none'"
+                                                                style="position: absolute; top: -6px; right: 0; background: none; border: none; font-size: 18px; cursor: pointer;">
+                                                          &times;
+                                                        </button>
+                                                        <strong>Enterprise:</strong> ${data.THR_NutriEnterprise}<br>
+                                                        <strong>District:</strong> ${data.DistrictName}<br>
+                                                        <strong>Block:</strong> ${data.BlockName}<br>
+                                                        <strong>Capacity:</strong> 75kW
+                                                      </div>
+                                                    `);
                                 infoWindow.open(map, marker);
+                                // After the DOM is loaded inside the InfoWindow
+                                google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+                                    // Hide the default close button
+                                    const defaultCloseBtn = document.querySelector('.gm-ui-hover-effect');
+                                    if (defaultCloseBtn) {
+                                        defaultCloseBtn.style.display = 'none';
+                                    }
+
+                                    // Add functionality to custom close button
+                                    document.getElementById('customCloseBtn')?.addEventListener('click', () => {
+                                        infoWindow.close();
+                                    });
+                                });
+
                                 $(".Detail").show(); $(".divbfy").hide(); $(".divthr").show();
                                 $("#StateName").html(data.StateName);
                                 $("#DistrictName").html(data.DistrictName);
