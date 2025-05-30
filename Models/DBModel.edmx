@@ -606,6 +606,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CLF_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DistrictId" Type="int" />
           <Property Name="BlockId" Type="int" />
+          <Property Name="BeneficiaryId_fk" Type="nvarchar" MaxLength="50" />
           <Property Name="NameofCLF" Type="nvarchar" MaxLength="500" />
           <Property Name="CLFAddress" Type="nvarchar(max)" />
           <Property Name="FirstMeetingDate" Type="datetime" />
@@ -627,6 +628,59 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="130" />
           <Property Name="UpdatedOn" Type="datetime" />
           <Property Name="uuid" Type="nvarchar" MaxLength="130" />
+        </EntityType>
+        <EntityType Name="tbl_CreditProfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BeneficiaryId" Type="nvarchar" MaxLength="130" />
+          <Property Name="SolarSolution" Type="int" />
+          <Property Name="Getloan" Type="int" />
+          <Property Name="Getloan_Other" Type="nvarchar" MaxLength="200" />
+          <Property Name="ActiveLoan" Type="varchar" MaxLength="5" />
+          <Property Name="SHGMeetingsPresent" Type="varchar" MaxLength="5" />
+          <Property Name="LoanSHGPreviously" Type="varchar" MaxLength="5" />
+          <Property Name="SHGTaken" Type="varchar" MaxLength="50" />
+          <Property Name="SHGFold" Type="varchar" MaxLength="5" />
+          <Property Name="IdentificationId" Type="int" />
+          <Property Name="LoanAmount" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoanProcessDate" Type="date" />
+          <Property Name="LoanDisbursementDate" Type="date" />
+          <Property Name="ApplicationRejected" Type="int" />
+          <Property Name="ApplicationRejected_Other" Type="nvarchar" MaxLength="200" />
+          <Property Name="EMIDuration" Type="varchar" MaxLength="50" />
+          <Property Name="EMIAmount" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Version" Type="nvarchar" MaxLength="50" />
+          <Property Name="uuid" Type="nvarchar" MaxLength="100" />
+          <Property Name="SynDate" Type="datetime" />
+          <Property Name="IsMobile" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CeeatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_EnergyRequirement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BeneficiaryId" Type="nvarchar" MaxLength="130" />
+          <Property Name="LoadEnterprisekW" Type="nvarchar" MaxLength="50" />
+          <Property Name="TechnicalAssessment" Type="int" />
+          <Property Name="TechnicalAssessment_Other" Type="nvarchar" MaxLength="200" />
+          <Property Name="CapacityInstallation" Type="int" />
+          <Property Name="SolarPVInstalledkW" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Version" Type="nvarchar" MaxLength="50" />
+          <Property Name="uuid" Type="nvarchar" MaxLength="100" />
+          <Property Name="SynDate" Type="datetime" />
+          <Property Name="IsMobile" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CeeatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tbl_IndtSolarization">
           <Key>
@@ -709,6 +763,39 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="ParticipantPicPath" Type="nvarchar(max)" />
           <Property Name="SolarEnterprisePicPath" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="tbl_InstallationCommission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BeneficiaryId" Type="nvarchar" MaxLength="130" />
+          <Property Name="NameofVendor" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateofInstallation" Type="date" />
+          <Property Name="DateofCommissioning" Type="date" />
+          <Property Name="DateofTraining" Type="date" />
+          <Property Name="GHGEmissionYearlyKgs" Type="int" />
+          <Property Name="Numberofwomenemployed" Type="int" />
+          <Property Name="InverterWarranty" Type="int" />
+          <Property Name="AnnualMaintenanceDue" Type="int" />
+          <Property Name="ServiceContact" Type="varchar" MaxLength="15" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="InverterName" Type="nvarchar" MaxLength="200" />
+          <Property Name="BatteryName" Type="nvarchar" MaxLength="200" />
+          <Property Name="BatteryWarranty" Type="nvarchar" MaxLength="50" />
+          <Property Name="SolarName" Type="nvarchar" MaxLength="200" />
+          <Property Name="SolarWarranty" Type="nvarchar" MaxLength="50" />
+          <Property Name="VfbMotorName" Type="nvarchar" MaxLength="500" />
+          <Property Name="VfbWarranty" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Version" Type="nvarchar" MaxLength="50" />
+          <Property Name="uuid" Type="nvarchar" MaxLength="100" />
+          <Property Name="SynDate" Type="datetime" />
+          <Property Name="IsMobile" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbl_Referral">
           <Key>
             <PropertyRef Name="ReferralId_pk" />
@@ -783,6 +870,9 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="230" />
           <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="AWCsSupported" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstalledCapacity_kW" Type="nvarchar" MaxLength="50" />
+          <Property Name="WomenEmployed" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -873,7 +963,10 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySet Name="mst_Year" EntityType="Self.mst_Year" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Beneficiary" EntityType="Self.tbl_Beneficiary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CLF" EntityType="Self.tbl_CLF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CreditProfile" EntityType="Self.tbl_CreditProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_EnergyRequirement" EntityType="Self.tbl_EnergyRequirement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_IndtSolarization" EntityType="Self.tbl_IndtSolarization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_InstallationCommission" EntityType="Self.tbl_InstallationCommission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Referral" EntityType="Self.tbl_Referral" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SolarShop" EntityType="Self.tbl_SolarShop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_THR" EntityType="Self.tbl_THR" Schema="dbo" store:Type="Tables" />
@@ -1066,6 +1159,9 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySet Name="tbl_Referral" EntityType="DeWee_DBModel.tbl_Referral" />
           <EntitySet Name="tbl_SolarShop" EntityType="DeWee_DBModel.tbl_SolarShop" />
           <EntitySet Name="tbl_CLF" EntityType="DeWee_DBModel.tbl_CLF" />
+          <EntitySet Name="tbl_CreditProfile" EntityType="DeWee_DBModel.tbl_CreditProfile" />
+          <EntitySet Name="tbl_EnergyRequirement" EntityType="DeWee_DBModel.tbl_EnergyRequirement" />
+          <EntitySet Name="tbl_InstallationCommission" EntityType="DeWee_DBModel.tbl_InstallationCommission" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -1686,6 +1782,9 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="230" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="AWCsSupported" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstalledCapacity_kW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WomenEmployed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="mst_GP">
           <Key>
@@ -1855,6 +1954,93 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="UpdatedBy" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="uuid" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="BeneficiaryId_fk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_CreditProfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BeneficiaryId" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="SolarSolution" Type="Int32" />
+          <Property Name="Getloan" Type="Int32" />
+          <Property Name="Getloan_Other" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveLoan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SHGMeetingsPresent" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="LoanSHGPreviously" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SHGTaken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHGFold" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IdentificationId" Type="Int32" />
+          <Property Name="LoanAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoanProcessDate" Type="DateTime" Precision="0" />
+          <Property Name="LoanDisbursementDate" Type="DateTime" Precision="0" />
+          <Property Name="ApplicationRejected" Type="Int32" />
+          <Property Name="ApplicationRejected_Other" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EMIDuration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMIAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="uuid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SynDate" Type="DateTime" Precision="3" />
+          <Property Name="IsMobile" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CeeatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_EnergyRequirement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BeneficiaryId" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="LoadEnterprisekW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TechnicalAssessment" Type="Int32" />
+          <Property Name="TechnicalAssessment_Other" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CapacityInstallation" Type="Int32" />
+          <Property Name="SolarPVInstalledkW" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="uuid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SynDate" Type="DateTime" Precision="3" />
+          <Property Name="IsMobile" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CeeatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_InstallationCommission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BeneficiaryId" Type="String" MaxLength="130" FixedLength="false" Unicode="true" />
+          <Property Name="NameofVendor" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateofInstallation" Type="DateTime" Precision="0" />
+          <Property Name="DateofCommissioning" Type="DateTime" Precision="0" />
+          <Property Name="DateofTraining" Type="DateTime" Precision="0" />
+          <Property Name="GHGEmissionYearlyKgs" Type="Int32" />
+          <Property Name="Numberofwomenemployed" Type="Int32" />
+          <Property Name="InverterWarranty" Type="Int32" />
+          <Property Name="AnnualMaintenanceDue" Type="Int32" />
+          <Property Name="ServiceContact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="InverterName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BatteryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BatteryWarranty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SolarName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SolarWarranty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VfbMotorName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VfbWarranty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="uuid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SynDate" Type="DateTime" Precision="3" />
+          <Property Name="IsMobile" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2465,6 +2651,9 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySetMapping Name="tbl_THR">
             <EntityTypeMapping TypeName="DeWee_DBModel.tbl_THR">
               <MappingFragment StoreEntitySet="tbl_THR">
+                <ScalarProperty Name="WomenEmployed" ColumnName="WomenEmployed" />
+                <ScalarProperty Name="InstalledCapacity_kW" ColumnName="InstalledCapacity_kW" />
+                <ScalarProperty Name="AWCsSupported" ColumnName="AWCsSupported" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -2637,6 +2826,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySetMapping Name="tbl_CLF">
             <EntityTypeMapping TypeName="DeWee_DBModel.tbl_CLF">
               <MappingFragment StoreEntitySet="tbl_CLF">
+                <ScalarProperty Name="BeneficiaryId_fk" ColumnName="BeneficiaryId_fk" />
                 <ScalarProperty Name="uuid" ColumnName="uuid" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
@@ -2661,6 +2851,95 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
                 <ScalarProperty Name="BlockId" ColumnName="BlockId" />
                 <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
                 <ScalarProperty Name="CLF_Id" ColumnName="CLF_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CreditProfile">
+            <EntityTypeMapping TypeName="DeWee_DBModel.tbl_CreditProfile">
+              <MappingFragment StoreEntitySet="tbl_CreditProfile">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CeeatedOn" ColumnName="CeeatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+                <ScalarProperty Name="SynDate" ColumnName="SynDate" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EMIAmount" ColumnName="EMIAmount" />
+                <ScalarProperty Name="EMIDuration" ColumnName="EMIDuration" />
+                <ScalarProperty Name="ApplicationRejected_Other" ColumnName="ApplicationRejected_Other" />
+                <ScalarProperty Name="ApplicationRejected" ColumnName="ApplicationRejected" />
+                <ScalarProperty Name="LoanDisbursementDate" ColumnName="LoanDisbursementDate" />
+                <ScalarProperty Name="LoanProcessDate" ColumnName="LoanProcessDate" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="IdentificationId" ColumnName="IdentificationId" />
+                <ScalarProperty Name="SHGFold" ColumnName="SHGFold" />
+                <ScalarProperty Name="SHGTaken" ColumnName="SHGTaken" />
+                <ScalarProperty Name="LoanSHGPreviously" ColumnName="LoanSHGPreviously" />
+                <ScalarProperty Name="SHGMeetingsPresent" ColumnName="SHGMeetingsPresent" />
+                <ScalarProperty Name="ActiveLoan" ColumnName="ActiveLoan" />
+                <ScalarProperty Name="Getloan_Other" ColumnName="Getloan_Other" />
+                <ScalarProperty Name="Getloan" ColumnName="Getloan" />
+                <ScalarProperty Name="SolarSolution" ColumnName="SolarSolution" />
+                <ScalarProperty Name="BeneficiaryId" ColumnName="BeneficiaryId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_EnergyRequirement">
+            <EntityTypeMapping TypeName="DeWee_DBModel.tbl_EnergyRequirement">
+              <MappingFragment StoreEntitySet="tbl_EnergyRequirement">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CeeatedOn" ColumnName="CeeatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+                <ScalarProperty Name="SynDate" ColumnName="SynDate" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SolarPVInstalledkW" ColumnName="SolarPVInstalledkW" />
+                <ScalarProperty Name="CapacityInstallation" ColumnName="CapacityInstallation" />
+                <ScalarProperty Name="TechnicalAssessment_Other" ColumnName="TechnicalAssessment_Other" />
+                <ScalarProperty Name="TechnicalAssessment" ColumnName="TechnicalAssessment" />
+                <ScalarProperty Name="LoadEnterprisekW" ColumnName="LoadEnterprisekW" />
+                <ScalarProperty Name="BeneficiaryId" ColumnName="BeneficiaryId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_InstallationCommission">
+            <EntityTypeMapping TypeName="DeWee_DBModel.tbl_InstallationCommission">
+              <MappingFragment StoreEntitySet="tbl_InstallationCommission">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+                <ScalarProperty Name="SynDate" ColumnName="SynDate" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="VfbWarranty" ColumnName="VfbWarranty" />
+                <ScalarProperty Name="VfbMotorName" ColumnName="VfbMotorName" />
+                <ScalarProperty Name="SolarWarranty" ColumnName="SolarWarranty" />
+                <ScalarProperty Name="SolarName" ColumnName="SolarName" />
+                <ScalarProperty Name="BatteryWarranty" ColumnName="BatteryWarranty" />
+                <ScalarProperty Name="BatteryName" ColumnName="BatteryName" />
+                <ScalarProperty Name="InverterName" ColumnName="InverterName" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="ServiceContact" ColumnName="ServiceContact" />
+                <ScalarProperty Name="AnnualMaintenanceDue" ColumnName="AnnualMaintenanceDue" />
+                <ScalarProperty Name="InverterWarranty" ColumnName="InverterWarranty" />
+                <ScalarProperty Name="Numberofwomenemployed" ColumnName="Numberofwomenemployed" />
+                <ScalarProperty Name="GHGEmissionYearlyKgs" ColumnName="GHGEmissionYearlyKgs" />
+                <ScalarProperty Name="DateofTraining" ColumnName="DateofTraining" />
+                <ScalarProperty Name="DateofCommissioning" ColumnName="DateofCommissioning" />
+                <ScalarProperty Name="DateofInstallation" ColumnName="DateofInstallation" />
+                <ScalarProperty Name="NameofVendor" ColumnName="NameofVendor" />
+                <ScalarProperty Name="BeneficiaryId" ColumnName="BeneficiaryId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

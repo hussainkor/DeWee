@@ -38,5 +38,6 @@ namespace DeWee.Models
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
         public string uuid { get; set; }
+        public string BeneficiaryId_fk { get; set; }
     }
 }

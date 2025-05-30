@@ -170,14 +170,14 @@
     }
 
         .value-box-card .txt {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 600;
         }
 </style>
 <div class="row">
     <div class="col-xs-12 col-md-12">
         <div class="row form-row">
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
                     <div class="value-box-card">
                         <div>
@@ -190,12 +190,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
                     <div class="value-box-card">
                         <div>
                             <div class="txt">Enterprises Solarized</div>
-                            <div id="TotalSolarized"></div>
+                            <div id="TotalSolarized">30</div>
                         </div>
                         <div>
                             <img src="~/Content/dashboard/images/solareng.png" class="img-fluid" style="width: 46px !important;">
@@ -203,12 +203,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
                     <div class="value-box-card">
                         <div>
                             <div class="txt">GHG Emissions Mitigated</div>
-                            <div id="">0</div>
+                            <div id="TotalGHGEmissionsMitigated">0</div>
                         </div>
                         <div>
                             <img src="~/Content/dashboard/images/battery.png" class="img-fluid" style="width: 46px !important;">
@@ -221,7 +221,7 @@
                     <div class="value-box-card">
                         <div>
                             <div class="txt">Capacity of Installation (kW)</div>
-                            <div id="">1650</div>
+                            <div id="TotalInstalledCapacity_kW">2250</div>
                         </div>
                         <div>
                             <img src="~/Content/dashboard/images/sgssky.png" class="img-fluid" style="width: 46px !important;">
@@ -234,10 +234,10 @@
                     <div class="value-box-card">
                         <div>
                             <div class="txt">Women Entrepreneurs Reached</div>
-                            <div id="">440</div>
+                            <div id="TotalWomenEmployed">600</div>
                         </div>
                         <div>
-                            <img src="~/Content/dashboard/images/sgssky.png" class="img-fluid" style="width: 46px !important;">
+                            <img src="~/Content/dashboard/images/WomenEntrepreneursReached.png" class="img-fluid" style="width: 46px !important;">
                         </div>
                     </div>
                 </div>
@@ -514,7 +514,6 @@
 
         });
         function Load_Databox() {
-            debugger;
             var SId = $('#StateId').val() == '' || $('#StateId').val() == null ? 0 : $('#StateId').val();
             var DId = $('#DistrictId').val() == '' || $('#DistrictId').val() == null ? 0 : $('#DistrictId').val();
             var BId = $('#BlockId').val() == '' || $('#BlockId').val() == null ? 0 : $('#BlockId').val();
@@ -532,6 +531,9 @@
                      var resD = JSON.parse(resp.Data);
                      $('#TotalParticipant').text(resD.Table[0].TotalParticipant);
                      $('#TotalSolarized').text(resD.Table[0].TotalSolarized);
+                     $('#TotalInstalledCapacity_kW').text(resD.Table[0].TotalInstalledCapacity_kW);
+                     $('#TotalGHGEmissionsMitigated').text(resD.Table[0].TotalGHGEmissionsMitigated);
+                     $('#TotalWomenEmployed').text(resD.Table[0].TotalWomenEmployed);
                      dislist = resD.Table1;
                      //MonthParts = resD.Table2;
                      AllDataBFY = resD.Table2;
@@ -888,7 +890,6 @@
 
 
                     for (var i = 0; i < markers.length; i++) {
-                        debugger;
                         var data = markers[i];
                         var myLatlng = new google.maps.LatLng(data.Latitude, data.Longitude);
                         var marker = new google.maps.Marker({
@@ -924,7 +925,6 @@
                            // }
                             google.maps.event.addListener(marker, "click", function (e) {
                                 ClearDataShow();
-                                debugger;
                                 infoWindow.setContent('District: ' + data.DistrictName + ' / Block: ' + data.BlockName + ' / GP: ' + data.GPName);
                                    infoWindow.open(map, marker);
                                 $(".Detail").show(); $(".divbfy").show(); $(".divthr").hide();
@@ -993,6 +993,7 @@
                                 //$("#EnterprisesOnboarded").html(data.SolarizedYes);
                                 $("#EnterprisesSolarized").html(data.SolarizedYes);
                                 //$("#CapacityOfInstallation").html(data.SolarizedYes);
+                                $("#CapacityOfInstallation").html(data.InstalledCapacity_kW);
                                 if (data.EnterpriseImage) {
                                     $("#EnterpriseImg").attr("src", '@CommonModel.GetBaseUrl()' + data.EnterpriseImage);
                                     $("#EnterpriseImg").css("height", "330px");

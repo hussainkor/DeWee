@@ -331,6 +331,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LeadGenerationModel.cs" />
     <Compile Include="Models\mst_Country.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -449,7 +450,16 @@
     <Compile Include="Models\tbl_CLF.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_CreditProfile.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_EnergyRequirement.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_IndtSolarization.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_InstallationCommission.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_Referral.cs">

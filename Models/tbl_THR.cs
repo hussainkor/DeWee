@@ -36,5 +36,8 @@ namespace DeWee.Models
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public string AWCsSupported { get; set; }
+        public string InstalledCapacity_kW { get; set; }
+        public string WomenEmployed { get; set; }
     }
 }
