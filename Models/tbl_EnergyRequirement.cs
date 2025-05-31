@@ -17,7 +17,8 @@ namespace DeWee.Models
         public int ID { get; set; }
         public string BeneficiaryId { get; set; }
         public string LoadEnterprisekW { get; set; }
-        public Nullable<int> TechnicalAssessment { get; set; }
+        public Nullable<int> InstallationProposed { get; set; }
+        public string TechnicalAssessment { get; set; }
         public string TechnicalAssessment_Other { get; set; }
         public Nullable<int> CapacityInstallation { get; set; }
         public Nullable<int> SolarPVInstalledkW { get; set; }
@@ -27,8 +28,11 @@ namespace DeWee.Models
         public Nullable<System.DateTime> SynDate { get; set; }
         public Nullable<bool> IsMobile { get; set; }
         public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CeeatedOn { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Location { get; set; }
     }
 }

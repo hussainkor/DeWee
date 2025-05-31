@@ -53,9 +53,9 @@
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_Referral" Width="1.5" PointX="19.375" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_SolarShop" Width="1.5" PointX="13.375" PointY="19.75" IsExpanded="false" />
         <EntityTypeShape EntityType="DeWee_DBModel.tbl_CLF" Width="1.5" PointX="19.375" PointY="14.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.tbl_CreditProfile" Width="1.5" PointX="15.375" PointY="20.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="DeWee_DBModel.tbl_EnergyRequirement" Width="1.5" PointX="21.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DeWee_DBModel.tbl_InstallationCommission" Width="1.5" PointX="19.375" PointY="16.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_CreditProfile" Width="1.5" PointX="19.375" PointY="16.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_EnergyRequirement" Width="1.5" PointX="15.375" PointY="20.75" />
+        <EntityTypeShape EntityType="DeWee_DBModel.tbl_InstallationCommission" Width="1.5" PointX="21.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

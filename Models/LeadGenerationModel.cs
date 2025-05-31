@@ -18,7 +18,7 @@ namespace DeWee.Models
         public string LoanSHGPreviously { get; set; }
         public string SHGTaken { get; set; }
         public string SHGFold { get; set; }
-        public Nullable<int> IdentificationId { get; set; }
+        public string IdentificationId { get; set; }
         public string LoanAmount { get; set; }
         public Nullable<System.DateTime> LoanProcessDate { get; set; }
         public Nullable<System.DateTime> LoanDisbursementDate { get; set; }
@@ -35,14 +35,18 @@ namespace DeWee.Models
         public Nullable<System.DateTime> CeeatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public string Latitude {  get; set; } 
+        public string Longitude {  get; set; } 
+        public string Location {  get; set; } 
     }
     public class EnergyRequirementModel
     {
         public EnergyRequirementModel() { ID = 0; }
         public int ID { get; set; }
         public string BeneficiaryId { get; set; }
+        public int? InstallationProposed { get; set; }
         public string LoadEnterprisekW { get; set; }
-        public Nullable<int> TechnicalAssessment { get; set; }
+        public string TechnicalAssessment { get; set; }
         public string TechnicalAssessment_Other { get; set; }
         public Nullable<int> CapacityInstallation { get; set; }
         public Nullable<int> SolarPVInstalledkW { get; set; }
@@ -55,6 +59,9 @@ namespace DeWee.Models
         public Nullable<System.DateTime> CeeatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Location { get; set; }
     }
     public class InstallationCommissionModel
     {
@@ -68,7 +75,7 @@ namespace DeWee.Models
         public Nullable<int> GHGEmissionYearlyKgs { get; set; }
         public Nullable<int> Numberofwomenemployed { get; set; }
         public Nullable<int> InverterWarranty { get; set; }
-        public Nullable<int> AnnualMaintenanceDue { get; set; }
+        public string AnnualMaintenanceDue { get; set; }
         public string ServiceContact { get; set; }
         public Nullable<System.DateTime> CompletionDate { get; set; }
         public string InverterName { get; set; }
@@ -87,5 +94,8 @@ namespace DeWee.Models
         public Nullable<System.DateTime> CeeatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Location { get; set; }
     }
 }
