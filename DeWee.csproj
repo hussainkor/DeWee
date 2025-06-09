@@ -282,6 +282,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\THRController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1019,6 +1020,7 @@
     <Content Include="Scripts\JS\htmlson.js" />
     <Content Include="Scripts\JS\jquery.multi-select.min.js" />
     <Content Include="Scripts\JS\Master.js" />
+    <Content Include="Scripts\JS\Reports\DeWeeReports.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Uploads\privacyPolicydewee.html" />
     <Content Include="Web.config">
@@ -1089,6 +1091,7 @@
     <Content Include="Views\APIService\AddCLF.cshtml" />
     <Content Include="Views\Beneficiary\CLFMList.cshtml" />
     <Content Include="Views\Beneficiary\_CLFMListData.cshtml" />
+    <Content Include="Views\Reports\DeWeeReports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
