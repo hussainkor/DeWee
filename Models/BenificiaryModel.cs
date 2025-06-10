@@ -32,9 +32,15 @@ namespace DeWee.Models
         [Required]
         public string Village { get; set; }
 
-        [Display(Name = DisplayName.CLF)]
+		[Display(Name = DisplayName.SHGMember)]
+		[Required]
+		public string SHGMember { get; set; }
+
+		[Display(Name = DisplayName.CLF)]
         [Required]
         public string CLF { get; set; }
+
+
 
         [Display(Name = DisplayName.VO)]
         [Required]
@@ -214,7 +220,8 @@ namespace DeWee.Models
         public const string Village = "5. गांव का नाम / Village Name";
 
         public const string Section2nd = "SHG Network";
-        public const string CLF = "1. संकुल स्तरीय संघ का नाम / CLF Name";
+		public const string SHGMember = "Are You SHG Member";
+		public const string CLF = "1. संकुल स्तरीय संघ का नाम / CLF Name";
         public const string VO = "2. ग्राम संगठन का नाम / VO Name";
         public const string NameofSHG = "3. स्वयं सहायता समूह का नाम / SHG Name";
         public const string YearOfSHG = "4. SHG की स्थापना वर्ष / Establishment Year of SHG";

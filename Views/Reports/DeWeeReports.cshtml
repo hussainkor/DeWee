@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "DeWeeReports";
+    ViewBag.Title = "DeWee Reports";
 }
 
 <div class="page-bread page-titles">
@@ -14,7 +14,74 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-xs-12 col-md-12">
+        <div class="row form-row">
+            <div class="col-xs-12 col-md-3">
+                <div class="card mb-2" style="background-color: #ADE2F8;">
+                    <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+                        <div>
+                            <div style="font-weight: bold; font-size: 30px; color: #000;" id="ReferralReceived">10.00</div>
+                            <div class="txt" style="font-size: 14px; color: #000;">Referral Received(nos.)</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/referral.jpg" class="img-fluid" style="width: 55px !important; height:auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <div class="card mb-2" style="background-color: #8FD6F2;">
+                    <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+                        <div>
+                            <div style="font-weight: bold; font-size: 30px; color: #000;" id="QualifiedLeads">10.00</div>
+                            <div class="txt" style="font-size: 14px; color: #000;">Qualified Leads(nos.)</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/qualifiedLeads.png" class="img-fluid" style="width: 55px !important; height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card mb-2" style="background-color: #5BC6EB;">
+                    <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+                        <div>
+                            <div style="font-weight: bold; font-size: 30px; color: #000;" id="EnterprisesSolarized">10.00</div>
+                            <div class="txt" style="font-size: 14px; color: #000;">Enterprises Solarized(nos.)</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/enterprisesSolarized.png" class="img-fluid" style="width: 55px !important; height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <div class="card mb-2" style="background-color: #0091C9;">
+                    <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+                        <div>
+                            <div style="font-weight: bold; font-size: 30px; color: #000;" id="CreditLinked">10.00</div>
+                            <div class="txt" style="font-size: 14px; color: #000;">Credit Linked(%)</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/craditLinked.jpg" class="img-fluid" style="width: 55px !important; height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <div class="card mb-2" style="background-color: #00587C;">
+                    <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+                        <div>
+                            <div style="font-weight: bold; font-size: 30px; color: #000;" id="ConversionRate">10.00</div>
+                            <div class="txt" style="font-size: 14px; color: #000;">Conversion Rate(%)</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/dashboard/images/conversionRate.png" class="img-fluid" style="width: 55px !important; height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="card-body">
                 <div class="basic-form">
@@ -101,16 +168,24 @@
                                     margin: 0.3rem 10px;
                                 }
                             </style>
+                            <figure class="highcharts-figure">
+                                <div id="WeeklyReferral"></div>
+                            </figure>
                         </div>
 
                         <div class="form-group col-md-6">
+                            <figure class="highcharts-figure">
+                                <div id="weeklyLeads"></div>
+
+                            </figure>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <figure class="highcharts-figure">
+                                <div id="leadsCategoriesAcross"></div>
+                            </figure>
                         </div>
                     </div>
-                    @*<div class="form-row pt-3">
-                            <div class="form-group col-md-4 offset-md-4 text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                            </div>
-                        </div>*@
                 </div>
             </div>
         </div>

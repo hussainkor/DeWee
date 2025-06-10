@@ -87,6 +87,14 @@
                                 <h5 id="" class="text-capitalize">@DeWee.Models.DisplayName.Section2nd</h5>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
+                                        @Html.LabelFor(model => model.SHGMember, htmlAttributes: new { @class = "control-label" })
+                                        <span style="color:red;">*</span>
+                                        <div class="col-md-10s">
+                                            @Html.TextBoxFor(model => model.SHGMember, new { @class = "form-control", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.SHGMember, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
                                         @Html.LabelFor(model => model.CLF, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
@@ -437,7 +445,7 @@
                                         @Html.LabelFor(model => model.IfYesTypeofMotor, htmlAttributes: new { @class = "control-label " })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.IfYesTypeofMotor, new { @class = "form-control", @maxlength = "800"})
+                                            @Html.TextBoxFor(model => model.IfYesTypeofMotor, new { @class = "form-control", @maxlength = "800" })
                                             @Html.ValidationMessageFor(model => model.IfYesTypeofMotor, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
