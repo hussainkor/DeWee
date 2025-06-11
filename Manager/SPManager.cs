@@ -70,6 +70,12 @@ namespace DeWee.Manager
             DataSet ds = sp.ExecuteDataSet();
             return ds;
         }
+        public static DataSet Usp_GetSummaryBoxCount()
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_GetSummaryBoxCount");
+            DataSet ds = sp.ExecuteDataSet();
+            return ds;
+        }
         public static DataSet Usp_GetMasterDataInJson(LoginModel model)
         {
             StoredProcedure sp = new StoredProcedure("Usp_GetMasterDataInJson");

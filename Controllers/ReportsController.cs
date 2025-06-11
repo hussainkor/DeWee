@@ -43,7 +43,32 @@ namespace DeWee.Controllers
 			}
 		}
 
-		public JsonResult GetWeeklyReffreal()
+        public JsonResult GetSummaryBoxCount()
+        {
+            DataSet ds = SPManager.Usp_GetSummaryBoxCount();
+            try
+            {
+                if (ds.Tables.Count > 0)
+                {
+                    var dsdata = JsonConvert.SerializeObject(ds);
+                    return Json(new { IsSuccess = true, Data = dsdata }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+
+
+
+        public JsonResult GetWeeklyReffreal()
 		{
 			DataTable dt = SPManager.SP_GetWeeklyReffreal();
 			try

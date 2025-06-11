@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    //GetCartDate();
+    GetCartDate();
     weeklyReferral();
     weeklyLeads();
     leadsCategoriesAcross();
@@ -7,20 +7,17 @@
 });
 
 //function GetCartDate() {
-//    //var SId = $('#StateId').val() == '' || $('#StateId').val() == null ? 0 : $('#StateId').val();
-//    //var DId = $('#DistrictId').val() == '' || $('#DistrictId').val() == null ? 0 : $('#DistrictId').val();
-//    //var BId = $('#BlockId').val() == '' || $('#BlockId').val() == null ? 0 : $('#BlockId').val();
-//    //var TypeofEnterpriseBusinId = $('#TypeofEnterpriseBusinId').val() == '' || $('#TypeofEnterpriseBusinId').val() == null ? 0 : $('#TypeofEnterpriseBusinId').val();
-//    //var TypeofIndicator = $('#TypeofIndicator').val() == '' || $('#TypeofIndicator').val() == null ? 0 : $('#TypeofIndicator').val();
 //    $.ajax({
-//        url: document.baseURI + "/Reports/GetReportLegend/",
+//        url: document.baseURI + "/Reports/GetSummaryBoxCount/",
 //        type: 'GET',
 //        dataType: 'json',
-//        data: {
-//            CId: '1', SId: SId, DId: DId, BId: BId,
-//            TypeOfEnterpriseId: TypeofEnterpriseBusinId, TypeofIndicator: TypeofIndicator
-//        },
+//        //data: {
+//        //    CId: '1', SId: SId, DId: DId, BId: BId,
+//        //    TypeOfEnterpriseId: TypeofEnterpriseBusinId, TypeofIndicator: TypeofIndicator
+//        //},
+        
 //        success: function (resp) {
+//            debugger;
 //            var resD = JSON.parse(resp.Data);
 //            $('#ReferralReceived').text(resD.Table[0].ReferralReceived);
 //            $('#QualifiedLeads').text(resD.Table[0].QualifiedLeads);
@@ -40,6 +37,28 @@
 //        }
 //    });
 //}
+function GetCartDate() {
+    $.ajax({
+        url: document.baseURI + "/Reports/GetSummaryBoxCount/",
+        type: 'GET',
+        dataType: 'json',
+        success: function (resp) {
+            if (resp.IsSuccess) {
+                var resD = JSON.parse(resp.Data);
+                $('#ReferralReceived').text(resD.Table[0].Referral_Received);
+                $('#QualifiedLeads').text(resD.Table[0].Qualified_Leads);
+                $('#EnterprisesSolarized').text(resD.Table[0].Enterprises_Solarized);
+                $('#CreditLinked').text(resD.Table[0].Credit_Linked);
+                $('#ConversionRate').text(resD.Table[0].Conversion_Rate);
+            } else {
+                toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)');
+            }
+        },
+        error: function (xhr, status, error) {
+            toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.ExceptionError)' + error);
+        }
+    });
+}
 
 function weeklyReferral() {
     $.ajax({
