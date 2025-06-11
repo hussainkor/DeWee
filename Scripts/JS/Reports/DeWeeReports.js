@@ -3,40 +3,8 @@
     weeklyReferral();
     weeklyLeads();
     leadsCategoriesAcross();
-
+    GetTATReports();
 });
-
-//function GetCartDate() {
-//    $.ajax({
-//        url: document.baseURI + "/Reports/GetSummaryBoxCount/",
-//        type: 'GET',
-//        dataType: 'json',
-//        //data: {
-//        //    CId: '1', SId: SId, DId: DId, BId: BId,
-//        //    TypeOfEnterpriseId: TypeofEnterpriseBusinId, TypeofIndicator: TypeofIndicator
-//        //},
-        
-//        success: function (resp) {
-//            debugger;
-//            var resD = JSON.parse(resp.Data);
-//            $('#ReferralReceived').text(resD.Table[0].ReferralReceived);
-//            $('#QualifiedLeads').text(resD.Table[0].QualifiedLeads);
-//            $('#EnterprisesSolarized').text(resD.Table[0].EnterprisesSolarized);
-//            $('#CreditLinked').text(resD.Table[0].CreditLinked);
-//            $('#ConversionRate').text(resD.Table[0].ConversionRate);
-//            dislist = resD.Table1;
-//            AllDataBFY = resD.Table2;
-//            tblTHR = resD.Table3;
-//            if ((AllDataBFY != null && AllDataBFY != undefined) || (tblTHR != null && tblTHR != undefined))
-//                LoadGoogleMap(AllDataBFY, tblTHR);
-//            else
-//                toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.RecordNotFound)');
-//        },
-//        error: function (xhr, status, error) {
-//            toastr.error("Error", '@(DeWee.Manager.Enums.eReturnReg.ExceptionError)' + error);
-//        }
-//    });
-//}
 function GetCartDate() {
     $.ajax({
         url: document.baseURI + "/Reports/GetSummaryBoxCount/",
@@ -59,7 +27,6 @@ function GetCartDate() {
         }
     });
 }
-
 function weeklyReferral() {
     $.ajax({
         url: document.baseURI + "/Reports/GetWeeklyReffreal/",
@@ -93,7 +60,9 @@ function weeklyReferral() {
                         text: 'Total Referrals'
                     }
                 },
-                creadit: false,
+                credits: {
+                    enabled: false // 👈 This disables the Highcharts.com text
+                },
 
                 plotOptions: {
                     areaspline: {
@@ -115,7 +84,8 @@ function weeklyReferral() {
                 },
                 series: [{
                     name: 'Referrals',
-                    data: data
+                    data: data,
+                    showInLegend: false,
                 }]
             });
         },
@@ -124,7 +94,6 @@ function weeklyReferral() {
         }
     });
 }
-
 function weeklyLeads() {
     $.ajax({
         url: document.baseURI + "/Reports/GetWeeklyLeads/",
@@ -158,29 +127,13 @@ function weeklyLeads() {
                         text: 'Total Leads'
                     }
                 },
-                creadit: false,
-
-                //plotOptions: {
-                //    areaspline: {
-                //        color: '#32CD32',
-                //        fillColor: {
-                //            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-                //            stops: [
-                //                [0, '#32CD32'],
-                //                [1, '#32CD3200']
-                //            ]
-                //        },
-                //        threshold: null,
-                //        marker: {
-                //            lineWidth: 1,
-                //            lineColor: null,
-                //            fillColor: 'white'
-                //        }
-                //    }
-                //},
+                credits: {
+                    enabled: false // 👈 This disables the Highcharts.com text
+                },
                 series: [{
                     name: 'Leads',
-                    data: data
+                    data: data,
+                    showInLegend: false,
                 }]
             });
         },
@@ -189,8 +142,6 @@ function weeklyLeads() {
         }
     });
 }
-
-
 function leadsCategoriesAcross() {
     $.ajax({
         url: document.baseURI + "/Reports/GetLeadsCategoriesAcross/",
@@ -198,10 +149,6 @@ function leadsCategoriesAcross() {
         dataType: 'json',
         success: function (resp) {
             var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
-
-            // Extract x-axis labels and data values
-            //var categories = resD.map(item => item.Name);  // ['May-25', 'Jun-25']
-            //var data = resD.map(item => item.Total);       // [724, 497]
 
             var pieData = resD.map(function (item, index) {
                 return {
@@ -251,6 +198,9 @@ function leadsCategoriesAcross() {
                         showInLegend: true
                     }
                 },
+                credits: {
+                    enabled: false // 👈 This disables the Highcharts.com text
+                },
                 series: [{
                     name: 'Categories',
                     colorByPoint: true,
@@ -261,6 +211,62 @@ function leadsCategoriesAcross() {
         },
         error: function (xhr, status, error) {
             toastr.error("Error", 'Something went wrong: ' + error);
+        }
+    });
+}
+function GetTATReports() {
+    $.ajax({
+        url: document.baseURI + "/Reports/GetTATReport/",
+        type: "GET",
+        dataType: "json",
+        success: function (resp) {
+            var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
+
+            // Extract x-axis labels and data values
+            var categories = resD.map(item => item.Name);  // ['May-25', 'Jun-25']
+            var data = resD.map(item => item.Total);
+
+            Highcharts.chart('tatReports', {
+
+                title: {
+                    text: 'TAT Report (State Wise)'
+                },
+                xAxis: {
+                    categories: categories,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'TAT Count'
+                    },
+                    visible: false
+                },
+                plotOptions: {
+                    column: {
+                        // pointPadding: 0.2,
+                        //borderWidth: 0
+                        dataLabels: {
+                            enabled: true,
+                            crop: false,
+                            overflow: 'none'
+                        }
+                    }
+                },
+                credits: {
+                    enabled: false // 👈 This disables the Highcharts.com text
+                },
+                series: [{
+                    name: 'Leads',
+                    data: data,
+                    color: "#2BBFCE",
+                    showInLegend: false,
+                }]
+            });
+            
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching cost lead data:", error);
         }
     });
 }

@@ -157,7 +157,6 @@ namespace DeWee.Manager
 			DataSet ds = sp.ExecuteDataSet();
 			return ds;
 		}
-
 		public static DataTable SP_GetWeeklyReffreal()
 		{
 			StoredProcedure sp = new StoredProcedure("SP_GetWeeklyReffreal");
@@ -170,10 +169,15 @@ namespace DeWee.Manager
 			DataTable dt = sp.ExecuteDataSet().Tables[0];
 			return dt;
 		}
-
 		public static DataTable SP_GetLeadsCategoriesAcross()
 		{
 			StoredProcedure sp = new StoredProcedure("SP_GetLeadsCategoriesAcross");
+			DataTable dt = sp.ExecuteDataSet().Tables[0];
+			return dt;
+		}		
+		public static DataTable SP_GetTATReport()
+		{
+			StoredProcedure sp = new StoredProcedure("SP_GetTATReport");
 			DataTable dt = sp.ExecuteDataSet().Tables[0];
 			return dt;
 		}

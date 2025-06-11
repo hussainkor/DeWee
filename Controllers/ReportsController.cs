@@ -64,10 +64,6 @@ namespace DeWee.Controllers
             }
         }
 
-
-
-
-
         public JsonResult GetWeeklyReffreal()
 		{
 			DataTable dt = SPManager.SP_GetWeeklyReffreal();
@@ -115,6 +111,28 @@ namespace DeWee.Controllers
 		public JsonResult GetLeadsCategoriesAcross()
 		{
 			DataTable dt = SPManager.SP_GetLeadsCategoriesAcross();
+			try
+			{
+				if (dt.Rows.Count > 0)
+				{
+					//ViewBag.Markers = JsonConvert.SerializeObject(ds);
+					var dsdata = JsonConvert.SerializeObject(dt);
+					return Json(new { IsSuccess = true, Data = dsdata }, JsonRequestBehavior.AllowGet);
+				}
+				else
+				{
+					return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+				}
+			}
+			catch (Exception ex)
+			{
+				return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+			}
+		}
+
+		public JsonResult GetTATReport()
+		{
+			DataTable dt = SPManager.SP_GetTATReport();
 			try
 			{
 				if (dt.Rows.Count > 0)
