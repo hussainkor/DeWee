@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "DeWee Reports";
+    ViewBag.Title = "Summary Reports";
 }
 
 <div class="page-bread page-titles">
@@ -12,16 +12,36 @@
         </ol>
     </div>
 </div>
+@*---------By Harshit------------*@
+<style>
+    .dashboard-card {
+        min-height: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .equal-box {
+        height: 100%;
+    }
+
+    .card.mb-2 {
+        height: 100%;
+    }
+</style>
+@*---------------------------------*@
+
 
 <div class="row">
     <div class="col-xs-12 col-md-12">
         <div class="row form-row">
             <div class="col-xs-12 col-md-3">
-                <div class="card mb-2" style="background-color: #ADE2F8;">
+                <div class="card mb-2" style="background-color: #D8EFF9;">
                     <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
                         <div>
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="ReferralReceived">10.00</div>
-                            <div class="txt" style="font-size: 14px; color: #000;">Referral Received(nos.)</div>
+                            <div class="txt" style="font-size: 14px; color: #000;">Referrals Received(nos.)</div>
                         </div>
                         <div>
                             <img src="~/Content/dashboard/images/referral.jpg" class="img-fluid" style="width: 55px !important; height:auto;">
@@ -30,7 +50,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-2">
-                <div class="card mb-2" style="background-color: #8FD6F2;">
+                <div class="card mb-2" style="background-color: #BCE3F1;">
                     <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
                         <div>
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="QualifiedLeads">10.00</div>
@@ -43,7 +63,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-3">
-                <div class="card mb-2" style="background-color: #5BC6EB;">
+                <div class="card mb-2" style="background-color: #A8DFF3;">
                     <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
                         <div>
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="EnterprisesSolarized">10.00</div>
@@ -56,7 +76,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-2">
-                <div class="card mb-2" style="background-color: #0091C9;">
+                <div class="card mb-2" style="background-color: #8FD6F2;">
                     <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
                         <div>
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="CreditLinked">10.00</div>
@@ -69,7 +89,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-2">
-                <div class="card mb-2" style="background-color: #00587C;">
+                <div class="card mb-2" style="background-color: #5BC6EB;">
                     <div class="value-box-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
                         <div>
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="ConversionRate">10.00</div>
