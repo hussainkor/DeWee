@@ -181,5 +181,14 @@ namespace DeWee.Manager
 			DataTable dt = sp.ExecuteDataSet().Tables[0];
 			return dt;
 		}
+        
+        public static DataTable SP_GetTATList(string districtIds, string blockIds)
+		{
+			StoredProcedure sp = new StoredProcedure("SP_GetTATList");
+            sp.Command.AddParameter("@districtIds", districtIds, DbType.String);
+            sp.Command.AddParameter("@blockIds", blockIds, DbType.String);
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+			return dt;
+		}
 	}
 }

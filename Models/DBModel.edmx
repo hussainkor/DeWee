@@ -598,6 +598,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="uuid" Type="varchar" MaxLength="100" />
           <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="ReferralId" Type="int" />
+          <Property Name="SHGMember" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_CLF">
           <Key>
@@ -663,6 +664,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
           <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
           <Property Name="Location" Type="nvarchar(max)" />
+          <Property Name="LoanPurpose" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnpaidAmount" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_EnergyRequirement">
           <Key>
@@ -1887,6 +1890,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="uuid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReferralId" Type="Int32" />
+          <Property Name="SHGMember" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbl_Referral">
           <Key>
@@ -2000,6 +2004,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LoanPurpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnpaidAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_EnergyRequirement">
           <Key>
@@ -2720,6 +2726,7 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySetMapping Name="tbl_Beneficiary">
             <EntityTypeMapping TypeName="DeWee_DBModel.tbl_Beneficiary">
               <MappingFragment StoreEntitySet="tbl_Beneficiary">
+                <ScalarProperty Name="SHGMember" ColumnName="SHGMember" />
                 <ScalarProperty Name="ReferralId" ColumnName="ReferralId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="uuid" ColumnName="uuid" />
@@ -2877,6 +2884,8 @@ warning 6002: The table/view 'DeWee_DB.dbo.mst_SpaceAvailable' does not have a p
           <EntitySetMapping Name="tbl_CreditProfile">
             <EntityTypeMapping TypeName="DeWee_DBModel.tbl_CreditProfile">
               <MappingFragment StoreEntitySet="tbl_CreditProfile">
+                <ScalarProperty Name="UnpaidAmount" ColumnName="UnpaidAmount" />
+                <ScalarProperty Name="LoanPurpose" ColumnName="LoanPurpose" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />

@@ -89,12 +89,17 @@
                                     <div class="form-group col-md-6">
                                         @Html.LabelFor(model => model.SHGMember, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
-                                        <div class="col-md-10s">
-                                            @Html.TextBoxFor(model => model.SHGMember, new { @class = "form-control", @required = "required" })
-                                            @Html.ValidationMessageFor(model => model.SHGMember, "", new { @class = "text-danger" })
+                                        <div class="manage-radio">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.SHGMember, "true", new { @id = "SHGMember" }) Yes
+                                            </label>
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.SHGMember, "false", new { @id = "SHGMember" }) No
+                                            </label>
                                         </div>
+                                        @Html.ValidationMessageFor(model => model.SHGMember, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 shg-hide-show">
                                         @Html.LabelFor(model => model.CLF, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
@@ -102,7 +107,7 @@
                                             @Html.ValidationMessageFor(model => model.CLF, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 shg-hide-show">
                                         @Html.LabelFor(model => model.VO, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
@@ -110,7 +115,7 @@
                                             @Html.ValidationMessageFor(model => model.VO, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 shg-hide-show">
                                         @Html.LabelFor(model => model.NameofSHG, htmlAttributes: new { @class = "control-label" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
@@ -118,7 +123,7 @@
                                             @Html.ValidationMessageFor(model => model.NameofSHG, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 shg-hide-show YearOfSHG">
                                         @Html.LabelFor(model => model.YearOfSHG, htmlAttributes: new { @class = "control-label", @style = "font-size: small" })
                                         <span style="color:red;">*</span>
                                         <div class="col-md-10s">
@@ -619,100 +624,121 @@
         });
     </script>
     <script>
-            $(document).ready(function () {
-                getLocation();
-                InputAllowcharacter('inputcharallow');
-
-                $(".select2").select2();
-                $("#DOB").datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                   // showButtonPanel: true,
-                    dateFormat: 'dd-M-yy',
-                 //   defaultDate: new Date(1990, 0, 1) // Sets the default date to January 1, 1990
-                    // yearRange: '1964:1991',
-                    yearRange: '1900:-15', // Year range: 1900 to 18 years ago
-                    maxDate: '-15Y', // Maximum date: 18 years ago from today
-                    defaultDate: '-15Y', // Default date: 18 years ago from today
-                });
-                $('#DOB').change(function () {
-                    var agecla = getAge($(this).val());
-                    $('#lblage').text(agecla);
-                })
-                BindStateList("StateId", "", 0);
-                $('#StateId').prop('selectedIndex', 1);
-                BindDistrictList("DistrictId", "", 0, $('#StateId').val());
-                $('#StateId').change(function () {
-                    BindDistrictList("DistrictId", "", 0, $('#StateId').val());
-                });
-                $('#DistrictId').change(function () {
-                    BindBlockList("BlockId", "", 0, $('#StateId').val(), $('#DistrictId').val());
-                });
-                $('#BlockId').change(function () {
-                    BindPanchayatList("GPId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val());
-                });
-                debugger;
-                if ('@Model.ReferralId' != 'null' && '@Model.ReferralId' != '0') {
-                    debugger;
-                    $('#DistrictId').val('@Model.DistrictId').trigger('change');
-                    BindBlockList("BlockId", "", 0, $('#StateId').val(), $('#DistrictId').val());
-                    $('#BlockId').val('@Model.BlockId').trigger('change');
-                    $('#TypeofEnterpriseBusinId').val('@Model.TypeofEnterpriseBusinId').trigger('change');
-                    $('#NameofOwner').val('@Model.NameofEnterpriseOwner');
-                    $('#PrimaryMobileNo').val('@Model.PrimaryMobileNo');
-                    if ($('#TypeofEnterpriseBusinId').val() == '25') { // Assuming '25' is the value for "Others"
-                        $('#EnterpriseBusinId_other_div').show();
-                        $("#EnterpriseBusinId_other_div").attr('required', 'required');
-                    } else {
-                        $('#EnterpriseBusinId_other_div').hide();
-                        $('#EnterpriseBusinId_other').val(''); // Clear the input if hidden
-                    }
-                }
-                $('#TypeofEnterpriseBusinId').change(function () {
-                    $("#EnterpriseBusinId_other").removeAttr('required');
-                    if ($(this).val() == '25') { // Assuming '25' is the value for "Others"
-                        $('#EnterpriseBusinId_other_div').show();
-                        $("#EnterpriseBusinId_other_div").attr('required', 'required');
-                    } else {
-                        $('#EnterpriseBusinId_other_div').hide();
-                        $('#EnterpriseBusinId_other').val(''); // Clear the input if hidden
-                    }
-                });
-
-                // Show/Hide for Nature of Space
-                $('#NatureofSpaceId').change(function () {
-                    $("#NatureofSpace_other").removeAttr('required');
-                    if ($(this).val() == '4') { // Assuming '4' is the value for "Others"
-                        $('#NatureofSpace_other_div').show();
-                        $("#NatureofSpace_other").attr('required', 'required');
-                    } else {
-                        $('#NatureofSpace_other_div').hide();
-                        $('#NatureofSpace_other').val(''); // Clear the input if hidden
-                    }
-                });
-                //IsSamePrimayMobileNo
-                $('#IsSamePrimayMobileNo').change(function () {
-                    SamePryMobileNoOnchg();
-                })
-                $('#PrimaryMobileNo').change(function () {
-                    SamePryMobileNoOnchg();
-                })
-                $('input[type=radio][name=YNDieselGenerator]').change(function () {
-                    $('.div-DG').hide(); $('#DGYesAverageDailyHours').val(''); $('#DGCapacity').val(''); $('#DGAverageExpense').val('');
-                    $('#DGYesAverageDailyHours').removeAttr('required'); $('#DGCapacity').removeAttr('required'); $('#DGAverageExpense').removeAttr('required');
-                    if ($(this).val() == 'Yes') {
-                        $('.div-DG').show(); $("#DGYesAverageDailyHours").attr('required', 'required'); $("#DGCapacity").attr('required', 'required'); $("#DGAverageExpense").attr('required', 'required');
-                    }
-                })
-                $('input[type=radio][name=YNMotorAppliances]').change(function () {
-                    $('.div_IfYesTypeofMotor').hide(); $('#IfYesTypeofMotor').val('');
-                    $('#IfYesTypeofMotor').removeAttr('required');
-                    if ($(this).val() == 'Yes') {
-                        $('.div_IfYesTypeofMotor').show(); $("#IfYesTypeofMotor").attr('required', 'required');
-                    }
-                })
-
+        var YearOfSHG = null;//Pls don't remove
+        $(document).ready(function () {
+            getLocation();
+            InputAllowcharacter('inputcharallow');
+            shgHideShow($('input[type=radio][name=SHGMember]').val());
+            $(".select2").select2();
+            $("#DOB").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                // showButtonPanel: true,
+                dateFormat: 'dd-M-yy',
+                //   defaultDate: new Date(1990, 0, 1) // Sets the default date to January 1, 1990
+                // yearRange: '1964:1991',
+                yearRange: '1900:-15', // Year range: 1900 to 18 years ago
+                maxDate: '-15Y', // Maximum date: 18 years ago from today
+                defaultDate: '-15Y', // Default date: 18 years ago from today
             });
+            $('#DOB').change(function () {
+                var agecla = getAge($(this).val());
+                $('#lblage').text(agecla);
+            })
+            BindStateList("StateId", "", 0);
+            $('#StateId').prop('selectedIndex', 1);
+            BindDistrictList("DistrictId", "", 0, $('#StateId').val());
+            $('#StateId').change(function () {
+                BindDistrictList("DistrictId", "", 0, $('#StateId').val());
+            });
+            $('#DistrictId').change(function () {
+                BindBlockList("BlockId", "", 0, $('#StateId').val(), $('#DistrictId').val());
+            });
+            $('#BlockId').change(function () {
+                BindPanchayatList("GPId", "", 0, $('#StateId').val(), $('#DistrictId').val(), $('#BlockId').val());
+            });
+            debugger;
+            if ('@Model.ReferralId' != 'null' && '@Model.ReferralId' != '0') {
+                debugger;
+                $('#DistrictId').val('@Model.DistrictId').trigger('change');
+                BindBlockList("BlockId", "", 0, $('#StateId').val(), $('#DistrictId').val());
+                $('#BlockId').val('@Model.BlockId').trigger('change');
+                $('#TypeofEnterpriseBusinId').val('@Model.TypeofEnterpriseBusinId').trigger('change');
+                $('#NameofOwner').val('@Model.NameofEnterpriseOwner');
+                $('#PrimaryMobileNo').val('@Model.PrimaryMobileNo');
+                if ($('#TypeofEnterpriseBusinId').val() == '25') { // Assuming '25' is the value for "Others"
+                    $('#EnterpriseBusinId_other_div').show();
+                    $("#EnterpriseBusinId_other_div").attr('required', 'required');
+                } else {
+                    $('#EnterpriseBusinId_other_div').hide();
+                    $('#EnterpriseBusinId_other').val(''); // Clear the input if hidden
+                }
+            }
+            $('#TypeofEnterpriseBusinId').change(function () {
+                $("#EnterpriseBusinId_other").removeAttr('required');
+                if ($(this).val() == '25') { // Assuming '25' is the value for "Others"
+                    $('#EnterpriseBusinId_other_div').show();
+                    $("#EnterpriseBusinId_other_div").attr('required', 'required');
+                } else {
+                    $('#EnterpriseBusinId_other_div').hide();
+                    $('#EnterpriseBusinId_other').val(''); // Clear the input if hidden
+                }
+            });
+
+            // Show/Hide for Nature of Space
+            $('#NatureofSpaceId').change(function () {
+                $("#NatureofSpace_other").removeAttr('required');
+                if ($(this).val() == '4') { // Assuming '4' is the value for "Others"
+                    $('#NatureofSpace_other_div').show();
+                    $("#NatureofSpace_other").attr('required', 'required');
+                } else {
+                    $('#NatureofSpace_other_div').hide();
+                    $('#NatureofSpace_other').val(''); // Clear the input if hidden
+                }
+            });
+            //IsSamePrimayMobileNo
+            $('#IsSamePrimayMobileNo').change(function () {
+                SamePryMobileNoOnchg();
+            })
+            $('#PrimaryMobileNo').change(function () {
+                SamePryMobileNoOnchg();
+            })
+            $('input[type=radio][name=YNDieselGenerator]').change(function () {
+                $('.div-DG').hide(); $('#DGYesAverageDailyHours').val(''); $('#DGCapacity').val(''); $('#DGAverageExpense').val('');
+                $('#DGYesAverageDailyHours').removeAttr('required'); $('#DGCapacity').removeAttr('required'); $('#DGAverageExpense').removeAttr('required');
+                if ($(this).val() == 'Yes') {
+                    $('.div-DG').show(); $("#DGYesAverageDailyHours").attr('required', 'required'); $("#DGCapacity").attr('required', 'required'); $("#DGAverageExpense").attr('required', 'required');
+                }
+            })
+            $('input[type=radio][name=YNMotorAppliances]').change(function () {
+                $('.div_IfYesTypeofMotor').hide(); $('#IfYesTypeofMotor').val('');
+                $('#IfYesTypeofMotor').removeAttr('required');
+                if ($(this).val() == 'Yes') {
+                    $('.div_IfYesTypeofMotor').show(); $("#IfYesTypeofMotor").attr('required', 'required');
+                }
+            })
+
+            YearOfSHG = $(".shg-hide-show").find('#YearOfSHG');
+            $('input[type=radio][name=SHGMember]').change(function () {
+                shgHideShow($(this).val());
+            });
+        });
+        function shgHideShow(value) {
+            if (!YearOfSHG) {
+                YearOfSHG = $(".shg-hide-show").find('#YearOfSHG');
+            }
+            $(".shg-hide-show").hide();
+            $(".shg-hide-show").find('.form-control').val('');
+            $(".shg-hide-show").find('.form-control').removeAttr('required');
+            $(".shg-hide-show").find('#YearOfSHG').remove();
+            if (value == 'true') {
+                $(".shg-hide-show").show();
+                $(".shg-hide-show").find('.form-control').attr('required', 'required');
+                if (YearOfSHG) {
+                    $(YearOfSHG).insertBefore('.YearOfSHG > .col-md-10s > .field-validation-valid');
+                }               
+            }
+        }
         function SamePryMobileNoOnchg() {
             $('#WhatsAppMobileNo').val(''); $('#WhatsAppMobileNo').removeAttr('readonly');
             $('#WhatsAppMobileNo').removeAttr('required');

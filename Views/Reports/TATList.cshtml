@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "GP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-bread page-titles">
+    <div class="bread-flex">
+        <h1>@ViewBag.title</h1>
+        <ol class="breadcrumb"></ol>
+    </div>
+</div>
+
+<div class="rows">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-row">
+
+                    <div class="form-group col-md-4">
+                        <label for="District" class="col-form-label">District</label>
+                        <div class="col-md-12s">
+                            <select class="form-control" id="DistrictId">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="District" class="col-form-label">Block</label>
+                        <div class="col-md-12s">
+                            <select class="form-control" id="BlockId">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="col-form-label">&nbsp;</label><br />
+                        <button class="btn btn-primary" id="Filter" style="margin-top: 5px;">Filter</button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover dt-responsive display tbl small" id="tbl" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Srno.</th>
+                                <th>District</th>
+                                <th>Block</th>
+                                <th>Enterprise</th>
+                                <th>Referral to Lead</th>
+                                <th>Lead Completion</th>
+                                <th>Credit to Installation</th>
+                                <th>Installation to Commission</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tatTbody">
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="rows">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div id="subdata"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/JS/Master.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            BindDistrictList("DistrictId", "", 0, 0);
+
+            $('#DistrictId').change(function () {
+                BindBlockList("BlockId", "", 1, 0, $('#DistrictId').val());
+            });
+
+            LoadData(); // Load initially
+
+            $("#Filter").click(function (event) {
+                event.preventDefault();
+                LoadData();
+            });
+        });
+
+        function LoadData() {
+            $('#tatTbody').empty();
+            //$('#tbl').DataTable();
+            if ($.fn.DataTable.isDataTable('#tbl')) {
+                $('#tbl').DataTable().clear().destroy();
+            }
+            let districtId = $('#DistrictId').val();
+            let blockId = $('#BlockId').val();
+
+            $.ajax({
+                type: "GET",
+                url: "/Reports/GetTATList/",
+                data: { districtIds: districtId, blockIds: blockId },
+                success: function (resp) {
+                    if (resp.IsSuccess) {
+                        var data = JSON.parse(resp.Data);
+                        $(data).each(function (i, item) {
+                            let row = `<tr>
+                                        <td>${i + 1}</td>
+                                        <td>${item.DistrictName || ''}</td>
+                                        <td>${item.BlockName || ''}</td>
+                                        <td>${item.NameofEnterprise || ''}</td>
+                                        <td>${item.Referral_to_Lead_TAT || ''}</td>
+                                        <td>${item.Lead_Completion_TAT || ''}</td>
+                                        <td>${item.Credit_to_Installation_TAT || ''}</td>
+                                        <td>${item.Installation_to_Commission_TAT || ''}</td>
+                                    </tr>`;
+                            $('#tatTbody').append(row);                            
+                        });
+                        $('#tbl').DataTable();
+                    } else {
+                        $('#tatTbody').html('<p class="text-danger">No data available.</p>');
+                        toastr.error(resp.Data);
+                    }
+                },
+                error: function (req, error) {
+                    toastr.error("Communication error: " + (error === 'error' ? req.statusText : error));
+                }
+            });
+
+        }
+    </script>
+}

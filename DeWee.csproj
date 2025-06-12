@@ -444,6 +444,7 @@
     </Compile>
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\ReferralModel.cs" />
+    <Compile Include="Models\RequiredIfTrueAttribute.cs" />
     <Compile Include="Models\SolarShopModel.cs" />
     <Compile Include="Models\tbl_Beneficiary.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -1092,6 +1093,7 @@
     <Content Include="Views\Beneficiary\CLFMList.cshtml" />
     <Content Include="Views\Beneficiary\_CLFMListData.cshtml" />
     <Content Include="Views\Reports\DeWeeReports.cshtml" />
+    <Content Include="Views\Reports\TATList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
