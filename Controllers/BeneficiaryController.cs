@@ -38,6 +38,7 @@ namespace DeWee.Controllers
         public ActionResult AddBeneficiary(Guid? BeneficiaryId,int? RId)
         {
             BeneficiaryModel model = new BeneficiaryModel();
+            model.SHGMember = true;
             if (RId>0)
             {
                 var tblr = db.tbl_Referral.Find(RId);
@@ -134,6 +135,7 @@ namespace DeWee.Controllers
                         tbl.NameofEnterprise = model.NameofEnterprise;
                         tbl.TypeofEnterpriseBusinId = model.TypeofEnterpriseBusinId;
                         tbl.EnterpriseBusinId_other = model.EnterpriseBusinId_other;
+                        tbl.SHGMember = model.SHGMember;
                         tbl.NameofSHGMember = model.NameofSHGMember;
                         tbl.NameofEnterpriseOwner = model.NameofEnterpriseOwner;
                         tbl.EnterpriseOwner_Gender = model.EnterpriseOwner_Gender;

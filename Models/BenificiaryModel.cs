@@ -34,24 +34,22 @@ namespace DeWee.Models
 
 		[Display(Name = DisplayName.SHGMember)]
 		[Required]
-		public string SHGMember { get; set; }
+		public bool? SHGMember { get; set; }
 
 		[Display(Name = DisplayName.CLF)]
-        [Required]
+        [RequiredIfTrue(nameof(SHGMember))] // Uses nameof for safety
         public string CLF { get; set; }
 
-
-
         [Display(Name = DisplayName.VO)]
-        [Required]
+        [RequiredIfTrue(nameof(SHGMember))] // Uses nameof for safety
         public string VO { get; set; }
 
         [Display(Name = DisplayName.NameofSHG)]
-        [Required]
+        [RequiredIfTrue(nameof(SHGMember))] // Uses nameof for safety
         public string NameofSHG { get; set; }
 
         [Display(Name = DisplayName.YearOfSHG)]
-        [Required]
+        [RequiredIfTrue(nameof(SHGMember))] // Uses nameof for safety
         public int YearOfSHG { get; set; }
 
         [Display(Name = DisplayName.NameofEnterprise)]
@@ -220,7 +218,7 @@ namespace DeWee.Models
         public const string Village = "5. गांव का नाम / Village Name";
 
         public const string Section2nd = "SHG Network";
-		public const string SHGMember = "Are You SHG Member";
+		public const string SHGMember = "Are You a Member of any SHG ?  क्या आप किसी समूह के सदस्य हैं?";
 		public const string CLF = "1. संकुल स्तरीय संघ का नाम / CLF Name";
         public const string VO = "2. ग्राम संगठन का नाम / VO Name";
         public const string NameofSHG = "3. स्वयं सहायता समूह का नाम / SHG Name";

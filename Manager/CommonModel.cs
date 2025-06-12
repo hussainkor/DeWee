@@ -211,7 +211,7 @@ namespace DeWee.Manager
         {
             DeWee_DBEntities _db = new DeWee_DBEntities();
             List<SelectListItem> list = new List<SelectListItem>();
-            list = _db.mst_District.Where(x => x.IsActive == true && x.StateId_fk == StateId || 0 == StateId).OrderBy(x => x.OrderBy).Select(item => new SelectListItem { Value = item.DistrictId_pk.ToString(), Text = item.DistrictName }).ToList();
+            list = _db.mst_District.Where(x => x.IsActive == true && x.StateId_fk == StateId || 0 == StateId).OrderBy(x => x.DistrictName).Select(item => new SelectListItem { Value = item.DistrictId_pk.ToString(), Text = item.DistrictName }).ToList();
             if (IsSelect == 0)
             {
                 list.Insert(0, new SelectListItem { Value = "", Text = "Select" });

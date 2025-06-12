@@ -84,5 +84,6 @@ namespace DeWee.Models
         public string uuid { get; set; }
         public string Comment { get; set; }
         public Nullable<int> ReferralId { get; set; }
+        public Nullable<bool> SHGMember { get; set; }
     }
 }

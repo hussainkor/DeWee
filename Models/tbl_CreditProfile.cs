@@ -44,5 +44,7 @@ namespace DeWee.Models
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Location { get; set; }
+        public string LoanPurpose { get; set; }
+        public string UnpaidAmount { get; set; }
     }
 }

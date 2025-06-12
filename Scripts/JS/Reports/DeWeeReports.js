@@ -52,7 +52,7 @@ function weeklyReferral() {
                 xAxis: {
                     categories: categories,
                     title: {
-                        text: 'Month'
+                        text: ''
                     }
                 },
                 yAxis: {
@@ -119,7 +119,7 @@ function weeklyLeads() {
                 xAxis: {
                     categories: categories,
                     title: {
-                        text: 'Month'
+                        text: ''
                     }
                 },
                 yAxis: {
@@ -128,8 +128,29 @@ function weeklyLeads() {
                     }
                 },
                 credits: {
-                    enabled: false // 👈 This disables the Highcharts.com text
+                    enabled: false // This hides the "Highcharts.com" credit
                 },
+                legend: {
+                    enabled: false // Hide the legend
+                },
+                //plotOptions: {
+                //    areaspline: {
+                //        color: '#32CD32',
+                //        fillColor: {
+                //            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                //            stops: [
+                //                [0, '#32CD32'],
+                //                [1, '#32CD3200']
+                //            ]
+                //        },
+                //        threshold: null,
+                //        marker: {
+                //            lineWidth: 1,
+                //            lineColor: null,
+                //            fillColor: 'white'
+                //        }
+                //    }
+                //},
                 series: [{
                     name: 'Leads',
                     data: data,
@@ -187,7 +208,9 @@ function leadsCategoriesAcross() {
                         return this.name + ': ' + this.y;
                     }
                 },
-
+                credits: {
+                    enabled: false // This hides the "Highcharts.com" credit
+                },
                 plotOptions: {
                     pie: {
                         allowPointSelect: true,
@@ -222,47 +245,82 @@ function GetTATReports() {
         success: function (resp) {
             var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
 
-            // Extract x-axis labels and data values
-            var categories = resD.map(item => item.Name);  // ['May-25', 'Jun-25']
-            var data = resD.map(item => item.Total);
+            const chartData = Object.entries(resD[0]).map(([key, value]) => ({
+                name: key.replaceAll('_', ' '),
+                y: value !== null ? parseFloat(value) : null
+            }));
 
             Highcharts.chart('tatReports', {
-
+                chart: {
+                    type: 'column'
+                },
                 title: {
-                    text: 'TAT Report (State Wise)'
+                    text: 'TAT Metrics'
+                },
+                credits: {
+                    enabled: false
+                },
+                legend: {
+                    enabled: false
                 },
                 xAxis: {
-                    categories: categories,
-                    crosshair: true
+                    type: 'category',
+                    title: {
+                        text: ''
+                    }
                 },
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'TAT Count'
-                    },
-                    visible: false
-                },
-                plotOptions: {
-                    column: {
-                        // pointPadding: 0.2,
-                        //borderWidth: 0
-                        dataLabels: {
-                            enabled: true,
-                            crop: false,
-                            overflow: 'none'
-                        }
+                        text: 'TAT (in days)'
                     }
                 },
-                credits: {
-                    enabled: false // 👈 This disables the Highcharts.com text
-                },
                 series: [{
-                    name: 'Leads',
-                    data: data,
-                    color: "#2BBFCE",
-                    showInLegend: false,
+                    name: 'TAT',
+                    data: chartData
                 }]
             });
+            // Extract x-axis labels and data values
+            //var categories = resD.map(item => item.Name);  // ['May-25', 'Jun-25']
+            //var data = resD.map(item => item.Total);
+
+            //Highcharts.chart('tatReports', {
+
+            //    title: {
+            //        text: 'TAT Report (State Wise)'
+            //    },
+            //    xAxis: {
+            //        categories: categories,
+            //        crosshair: true
+            //    },
+            //    yAxis: {
+            //        min: 0,
+            //        title: {
+            //            text: 'TAT Count'
+            //        },
+            //        visible: false
+            //    },
+            //    plotOptions: {
+            //        column: {
+            //            // pointPadding: 0.2,
+            //            //borderWidth: 0
+            //            dataLabels: {
+            //                enabled: true,
+            //                crop: false,
+            //                overflow: 'none'
+            //            }
+            //        }
+            //    },
+            //    credits: {
+            //        enabled: false // 👈 This disables the Highcharts.com text
+            //    },
+            //    series: [{
+            //        name: 'Leads',
+            //        data: data,
+            //        color: "#2BBFCE",
+            //        showInLegend: false,
+            //    }]
+            //});
             
         },
         error: function (xhr, status, error) {
