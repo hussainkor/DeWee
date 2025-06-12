@@ -789,7 +789,10 @@
     <Content Include="Content\dashboard\images\blog\3.html" />
     <Content Include="Content\dashboard\images\blog\4.html" />
     <Content Include="Content\dashboard\images\childImg.jpg" />
+    <Content Include="Content\dashboard\images\conversionRate.png" />
+    <Content Include="Content\dashboard\images\craditLinked.jpg" />
     <Content Include="Content\dashboard\images\damapbg.jpg" />
+    <Content Include="Content\dashboard\images\enterprisesSolarized.png" />
     <Content Include="Content\dashboard\images\favicon.png" />
     <Content Include="Content\dashboard\images\icon.png" />
     <Content Include="Content\dashboard\images\iconIMg.png" />
@@ -800,6 +803,9 @@
     <Content Include="Content\dashboard\images\mapIcon.jpg" />
     <Content Include="Content\dashboard\images\pci-color-logo.png" />
     <Content Include="Content\dashboard\images\pci-logo.png" />
+    <Content Include="Content\dashboard\images\qualifiedLeads.png" />
+    <Content Include="Content\dashboard\images\referral.jpg" />
+    <Content Include="Content\dashboard\images\refralhandshake.png" />
     <Content Include="Content\dashboard\images\users\1.jpg" />
     <Content Include="Content\dashboard\images\users\4.jpg" />
     <Content Include="Content\dashboard\images\users\5.jpg" />
