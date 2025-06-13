@@ -4,6 +4,7 @@
     weeklyLeads();
     leadsCategoriesAcross();
     GetTATReports();
+    GetEnterprisesSolarized();
 });
 function GetCartDate() {
     $.ajax({
@@ -280,51 +281,122 @@ function GetTATReports() {
                     data: chartData
                 }]
             });
-            // Extract x-axis labels and data values
-            //var categories = resD.map(item => item.Name);  // ['May-25', 'Jun-25']
-            //var data = resD.map(item => item.Total);
-
-            //Highcharts.chart('tatReports', {
-
-            //    title: {
-            //        text: 'TAT Report (State Wise)'
-            //    },
-            //    xAxis: {
-            //        categories: categories,
-            //        crosshair: true
-            //    },
-            //    yAxis: {
-            //        min: 0,
-            //        title: {
-            //            text: 'TAT Count'
-            //        },
-            //        visible: false
-            //    },
-            //    plotOptions: {
-            //        column: {
-            //            // pointPadding: 0.2,
-            //            //borderWidth: 0
-            //            dataLabels: {
-            //                enabled: true,
-            //                crop: false,
-            //                overflow: 'none'
-            //            }
-            //        }
-            //    },
-            //    credits: {
-            //        enabled: false // 👈 This disables the Highcharts.com text
-            //    },
-            //    series: [{
-            //        name: 'Leads',
-            //        data: data,
-            //        color: "#2BBFCE",
-            //        showInLegend: false,
-            //    }]
-            //});
-            
         },
         error: function (xhr, status, error) {
             console.error("Error fetching cost lead data:", error);
         }
     });
 }
+function GetEnterprisesSolarized() {
+    $.ajax({
+        url: document.baseURI + "/Reports/GetEnterprisesSolarized/",
+        type: "GET",
+        dataType: "json",
+        success: function (resp) {
+            var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
+
+            const chartData = Object.entries(resD[0]).map(([key, value]) => ({
+                name: key.replaceAll('_', ' '),
+                y: value !== null ? parseFloat(value) : null
+            }));
+
+            const charts = [],
+                containers = document.querySelectorAll('#chartenterprisesSolarized td'),
+                datasets = [{
+                    name: 'Top-3 Enterprises Solarized',
+                    data: [3, 6, 1, 2, 6]
+                },
+                {
+                    name: 'Gert',
+                    data: [5, 6, 4, 2, 1]
+                },
+                {
+                    name: 'Helge',
+                    data: [2, 6, 5, 2, 3]
+                },
+                {
+                    name: 'Torstein',
+                    data: [5, 2, 7, 4, 2]
+                }
+                ];
+
+            datasets.forEach(function (dataset, i) {
+                charts.push(Highcharts.chart(containers[i], {
+
+                    chart: {
+                        type: 'bar',
+                        marginLeft: i === 0 ? 100 : 10
+                    },
+
+                    title: {
+                        text: dataset.name,
+                        align: 'left',
+                        x: i === 0 ? 90 : 0
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+
+                    xAxis: {
+                        categories: ['Apples', 'Pears', 'Oranges', 'Bananas', 'Carrots'],
+                        labels: {
+                            enabled: i === 0
+                        }
+                    },
+
+                    yAxis: {
+                        allowDecimals: false,
+                        title: {
+                            text: null
+                        },
+                        min: 0,
+                        max: 10
+                    },
+
+                    legend: {
+                        enabled: false
+                    },
+
+                    series: [dataset]
+
+                }));
+            });
+
+            //Highcharts.chart('tatReports', {
+            //    chart: {
+            //        type: 'column'
+            //    },
+            //    title: {
+            //        text: 'TAT Metrics'
+            //    },
+            //    credits: {
+            //        enabled: false
+            //    },
+            //    legend: {
+            //        enabled: false
+            //    },
+            //    xAxis: {
+            //        type: 'category',
+            //        title: {
+            //            text: ''
+            //        }
+            //    },
+            //    yAxis: {
+            //        min: 0,
+            //        title: {
+            //            text: 'TAT (in days)'
+            //        }
+            //    },
+            //    series: [{
+            //        name: 'TAT',
+            //        data: chartData
+            //    }]
+            //});
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching cost lead data:", error);
+        }
+    });
+}
+
