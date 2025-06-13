@@ -255,7 +255,7 @@ function GetTATReports() {
                     type: 'column'
                 },
                 title: {
-                    text: 'TAT Metrics'
+                    text: 'TAT Summary'
                 },
                 credits: {
                     enabled: false
