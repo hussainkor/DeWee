@@ -206,11 +206,11 @@ function leadsCategoriesAcross() {
                     itemMarginTop: 5,
                     itemMarginBottom: 5,
                     labelFormatter: function () {
-                        return this.name + ': ' + this.y;
+                        return this.name + ': ' + this.percentage.toFixed(1) + '%';
                     }
                 },
                 credits: {
-                    enabled: false // This hides the "Highcharts.com" credit
+                    enabled: false
                 },
                 plotOptions: {
                     pie: {
@@ -222,13 +222,10 @@ function leadsCategoriesAcross() {
                         showInLegend: true
                     }
                 },
-                credits: {
-                    enabled: false // 👈 This disables the Highcharts.com text
-                },
                 series: [{
                     name: 'Categories',
                     colorByPoint: true,
-                    data: pieData  // dynamically generated in the success function
+                    data: pieData
                 }]
             });
 
@@ -238,6 +235,82 @@ function leadsCategoriesAcross() {
         }
     });
 }
+
+//function leadsCategoriesAcross() {
+//    $.ajax({
+//        url: document.baseURI + "/Reports/GetLeadsCategoriesAcross/",
+//        type: 'GET',
+//        dataType: 'json',
+//        success: function (resp) {
+//            var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
+
+//            var pieData = resD.map(function (item, index) {
+//                return {
+//                    name: item.BusinessTypeInEng,
+//                    y: item.Total,
+//                    sliced: index === 0,        // First slice separated
+//                    selected: index === 0      // First slice selected
+                    
+//                };
+//            });
+
+//            Highcharts.chart('leadsCategoriesAcross', {
+//                chart: {
+//                    plotBackgroundColor: null,
+//                    plotBorderWidth: null,
+//                    plotShadow: false,
+//                    type: 'pie'
+//                },
+//                title: {
+//                    text: 'Top 5 Leads Categories Across All Enterprises'
+//                },
+//                tooltip: {
+//                    pointFormat: '<b>{point.y}</b> leads ({point.percentage:.1f}%)'
+//                },
+//                accessibility: {
+//                    point: {
+//                        valueSuffix: '%'
+//                    }
+//                },
+//                legend: {
+//                    layout: 'vertical',
+//                    align: 'right',
+//                    verticalAlign: 'middle',
+//                    itemMarginTop: 5,
+//                    itemMarginBottom: 5,
+//                    labelFormatter: function () {
+//                        return this.name + ': ' + this.y;
+//                    }
+//                },
+//                credits: {
+//                    enabled: false // This hides the "Highcharts.com" credit
+//                },
+//                plotOptions: {
+//                    pie: {
+//                        allowPointSelect: true,
+//                        cursor: 'pointer',
+//                        dataLabels: {
+//                            enabled: false
+//                        },
+//                        showInLegend: true
+//                    }
+//                },
+//                credits: {
+//                    enabled: false // 👈 This disables the Highcharts.com text
+//                },
+//                series: [{
+//                    name: 'Categories',
+//                    colorByPoint: true,
+//                    data: pieData  // dynamically generated in the success function
+//                }]
+//            });
+
+//        },
+//        error: function (xhr, status, error) {
+//            toastr.error("Error", 'Something went wrong: ' + error);
+//        }
+//    });
+//}
 function GetTATReports() {
     $.ajax({
         url: document.baseURI + "/Reports/GetTATReport/",
