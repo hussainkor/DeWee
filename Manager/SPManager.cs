@@ -190,5 +190,12 @@ namespace DeWee.Manager
             DataTable dt = sp.ExecuteDataSet().Tables[0];
 			return dt;
 		}
+
+		public static DataTable SP_GetEnterprisesSolarized()
+		{
+			StoredProcedure sp = new StoredProcedure("SP_GetEnterprisesSolarized");
+			DataTable dt = sp.ExecuteDataSet().Tables[0];
+			return dt;
+		}
 	}
 }
