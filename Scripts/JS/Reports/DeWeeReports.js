@@ -7,6 +7,7 @@
     GetEnterprisesSolarized();
     GetPerformingDistricts();
     GetDistricts_SolarShopsMapped();
+    GetDistrictsWith_CLFSMapped();
 });
 function GetCartDate() {
     $.ajax({
@@ -379,7 +380,7 @@ function GetEnterprisesSolarized() {
             // Prepare chart data
             const chartData = resD.map(item => ({
                 name: item.Name,
-                y: parseFloat(item.Total)
+                y: parseFloat(item.TotalPercentage)
             }));
 
             // Create bar chart
@@ -406,7 +407,7 @@ function GetEnterprisesSolarized() {
                     visible: false
                 },
                 tooltip: {
-                    pointFormat: 'Total: <b>{point.y}</b>'
+                    pointFormat: 'Percentage: <b>{point.y}</b>'
                 },
                 plotOptions: {
                     series: {
@@ -420,8 +421,7 @@ function GetEnterprisesSolarized() {
                     }
                 },
                 series: [{
-                    name: 'Total',
-                    //color: '#007bff',
+                    name: 'Percentage',
                     data: chartData
                 }]
             });
@@ -443,7 +443,7 @@ function GetPerformingDistricts() {
             // Prepare chart data
             const chartData = resD.map(item => ({
                 name: item.Name,
-                y: parseFloat(item.Total)
+                y: parseFloat(item.TotalPercentage)
             }));
 
             // Create bar chart
@@ -470,7 +470,7 @@ function GetPerformingDistricts() {
                     visible: false
                 },
                 tooltip: {
-                    pointFormat: 'Total: <b>{point.y}</b>'
+                    pointFormat: 'TotalPercentage: <b>{point.y}</b>'
                 },
                 plotOptions: {
                     series: {
@@ -484,8 +484,7 @@ function GetPerformingDistricts() {
                     }
                 },
                 series: [{
-                    name: 'Total',
-                    //color: '#007bff',
+                    name: 'Percentage',
                     data: chartData
                 }]
             });
@@ -495,7 +494,6 @@ function GetPerformingDistricts() {
         }
     });
 }
-
 function GetDistricts_SolarShopsMapped() {
     $.ajax({
         url: document.baseURI + "/Reports/GetSolarShopsMapped/",
@@ -508,7 +506,7 @@ function GetDistricts_SolarShopsMapped() {
             // Prepare chart data
             const chartData = resD.map(item => ({
                 name: item.Name,
-                y: parseFloat(item.Total)
+                y: parseFloat(item.TotalPercentage)
             }));
 
             // Create bar chart
@@ -535,7 +533,7 @@ function GetDistricts_SolarShopsMapped() {
                     visible: false
                 },
                 tooltip: {
-                    pointFormat: 'Total: <b>{point.y}</b>'
+                    pointFormat: 'TotalPercentage: <b>{point.y}</b>'
                 },
                 plotOptions: {
                     series: {
@@ -549,8 +547,7 @@ function GetDistricts_SolarShopsMapped() {
                     }
                 },
                 series: [{
-                    name: 'Total',
-                    //color: '#007bff',
+                    name: 'Percentage',
                     data: chartData
                 }]
             });
@@ -560,10 +557,9 @@ function GetDistricts_SolarShopsMapped() {
         }
     });
 }
-
-function GetPerformingDistricts() {
+function GetDistrictsWith_CLFSMapped() {
     $.ajax({
-        url: document.baseURI + "/Reports/GetPerformingDistricts/",
+        url: document.baseURI + "/Reports/GetDistrictsWith_CLFSMapped/",
         type: "GET",
         dataType: "json",
 
@@ -573,11 +569,11 @@ function GetPerformingDistricts() {
             // Prepare chart data
             const chartData = resD.map(item => ({
                 name: item.Name,
-                y: parseFloat(item.Total)
+                y: parseFloat(item.TotalPercentage)
             }));
 
             // Create bar chart
-            Highcharts.chart('graphPerformingDistricts', {
+            Highcharts.chart('graphCLFSMapped', {
                 chart: {
                     type: 'bar'
                 },
@@ -600,7 +596,7 @@ function GetPerformingDistricts() {
                     visible: false
                 },
                 tooltip: {
-                    pointFormat: 'Total: <b>{point.y}</b>'
+                    pointFormat: 'TotalPercentage: <b>{point.y}</b>'
                 },
                 plotOptions: {
                     series: {
@@ -614,8 +610,7 @@ function GetPerformingDistricts() {
                     }
                 },
                 series: [{
-                    name: 'Total',
-                    //color: '#007bff',
+                    name: 'Percentage',
                     data: chartData
                 }]
             });
@@ -625,4 +620,6 @@ function GetPerformingDistricts() {
         }
     });
 }
+
+
 

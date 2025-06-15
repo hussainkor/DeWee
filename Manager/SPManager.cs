@@ -219,6 +219,11 @@ namespace DeWee.Manager
 			DataTable dt = sp.ExecuteDataSet().Tables[0];
 			return dt;
 		}
-
-	}
+        public static DataTable SP_GetDistrictsWith_CLFSMapped()
+        {
+            StoredProcedure sp = new StoredProcedure("SP_GetDistrictsWith_CLFSMapped");
+            DataTable dt = sp.ExecuteDataSet().Tables[0];
+            return dt;
+        }
+    }
 }
