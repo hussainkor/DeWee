@@ -5,6 +5,8 @@
     leadsCategoriesAcross();
     GetTATReports();
     GetEnterprisesSolarized();
+    GetPerformingDistricts();
+    GetDistricts_SolarShopsMapped();
 });
 function GetCartDate() {
     $.ajax({
@@ -172,6 +174,11 @@ function leadsCategoriesAcross() {
         success: function (resp) {
             var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
 
+            resD.sort(function (a, b) {
+                if (a.BusinessTypeInEng === 'Other') return 1;
+                if (b.BusinessTypeInEng === 'Other') return -1;
+                return 0;
+            });
             var pieData = resD.map(function (item, index) {
                 return {
                     name: item.BusinessTypeInEng,
@@ -250,7 +257,7 @@ function leadsCategoriesAcross() {
 //                    y: item.Total,
 //                    sliced: index === 0,        // First slice separated
 //                    selected: index === 0      // First slice selected
-                    
+
 //                };
 //            });
 
@@ -365,107 +372,253 @@ function GetEnterprisesSolarized() {
         url: document.baseURI + "/Reports/GetEnterprisesSolarized/",
         type: "GET",
         dataType: "json",
-        success: function (resp) {
-            var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
 
-            const chartData = Object.entries(resD[0]).map(([key, value]) => ({
-                name: key.replaceAll('_', ' '),
-                y: value !== null ? parseFloat(value) : null
+        success: function (resp) {
+            var resD = JSON.parse(resp.Data); // Now it's an array of objects with Name and Total
+
+            // Prepare chart data
+            const chartData = resD.map(item => ({
+                name: item.Name,
+                y: parseFloat(item.Total)
             }));
 
-            const charts = [],
-                containers = document.querySelectorAll('#chartenterprisesSolarized td'),
-                datasets = [{
-                    name: 'Top-3 Enterprises Solarized',
-                    data: [3, 6, 1, 2, 6]
+            // Create bar chart
+            Highcharts.chart('chartenterprisesSolarized', {
+                chart: {
+                    type: 'bar'
                 },
-                {
-                    name: 'Gert',
-                    data: [5, 6, 4, 2, 1]
+                title: {
+                    text: 'Top 3 Enterprises Solarized'
                 },
-                {
-                    name: 'Helge',
-                    data: [2, 6, 5, 2, 3]
+                credits: {
+                    enabled: false
                 },
-                {
-                    name: 'Torstein',
-                    data: [5, 2, 7, 4, 2]
-                }
-                ];
-
-            datasets.forEach(function (dataset, i) {
-                charts.push(Highcharts.chart(containers[i], {
-
-                    chart: {
-                        type: 'bar',
-                        marginLeft: i === 0 ? 100 : 10
-                    },
-
+                legend: {
+                    enabled: false
+                },
+                xAxis: {
+                    type: 'category',
                     title: {
-                        text: dataset.name,
-                        align: 'left',
-                        x: i === 0 ? 90 : 0
-                    },
-
-                    credits: {
-                        enabled: false
-                    },
-
-                    xAxis: {
-                        categories: ['Apples', 'Pears', 'Oranges', 'Bananas', 'Carrots'],
-                        labels: {
-                            enabled: i === 0
+                        text: ''
+                    }
+                },
+                yAxis: {
+                    visible: false
+                },
+                tooltip: {
+                    pointFormat: 'Total: <b>{point.y}</b>'
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y}', // Show label on bar
+                            style: {
+                                fontWeight: 'bold'
+                            }
                         }
-                    },
-
-                    yAxis: {
-                        allowDecimals: false,
-                        title: {
-                            text: null
-                        },
-                        min: 0,
-                        max: 10
-                    },
-
-                    legend: {
-                        enabled: false
-                    },
-
-                    series: [dataset]
-
-                }));
+                    }
+                },
+                series: [{
+                    name: 'Total',
+                    //color: '#007bff',
+                    data: chartData
+                }]
             });
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching cost lead data:", error);
+        }
+    });
+}
+function GetPerformingDistricts() {
+    $.ajax({
+        url: document.baseURI + "/Reports/GetPerformingDistricts/",
+        type: "GET",
+        dataType: "json",
 
-            //Highcharts.chart('tatReports', {
-            //    chart: {
-            //        type: 'column'
-            //    },
-            //    title: {
-            //        text: 'TAT Metrics'
-            //    },
-            //    credits: {
-            //        enabled: false
-            //    },
-            //    legend: {
-            //        enabled: false
-            //    },
-            //    xAxis: {
-            //        type: 'category',
-            //        title: {
-            //            text: ''
-            //        }
-            //    },
-            //    yAxis: {
-            //        min: 0,
-            //        title: {
-            //            text: 'TAT (in days)'
-            //        }
-            //    },
-            //    series: [{
-            //        name: 'TAT',
-            //        data: chartData
-            //    }]
-            //});
+        success: function (resp) {
+            var resD = JSON.parse(resp.Data); // Now it's an array of objects with Name and Total
+
+            // Prepare chart data
+            const chartData = resD.map(item => ({
+                name: item.Name,
+                y: parseFloat(item.Total)
+            }));
+
+            // Create bar chart
+            Highcharts.chart('graphPerformingDistricts', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Top 3 Performing Districts'
+                },
+                credits: {
+                    enabled: false
+                },
+                legend: {
+                    enabled: false
+                },
+                xAxis: {
+                    type: 'category',
+                    title: {
+                        text: ''
+                    }
+                },
+                yAxis: {
+                    visible: false
+                },
+                tooltip: {
+                    pointFormat: 'Total: <b>{point.y}</b>'
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y}', // Show label on bar
+                            style: {
+                                fontWeight: 'bold'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Total',
+                    //color: '#007bff',
+                    data: chartData
+                }]
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching cost lead data:", error);
+        }
+    });
+}
+
+function GetDistricts_SolarShopsMapped() {
+    $.ajax({
+        url: document.baseURI + "/Reports/GetSolarShopsMapped/",
+        type: "GET",
+        dataType: "json",
+
+        success: function (resp) {
+            var resD = JSON.parse(resp.Data); // Now it's an array of objects with Name and Total
+
+            // Prepare chart data
+            const chartData = resD.map(item => ({
+                name: item.Name,
+                y: parseFloat(item.Total)
+            }));
+
+            // Create bar chart
+            Highcharts.chart('graphSolarShopsMapped', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Top 3 Performing Districts'
+                },
+                credits: {
+                    enabled: false
+                },
+                legend: {
+                    enabled: false
+                },
+                xAxis: {
+                    type: 'category',
+                    title: {
+                        text: ''
+                    }
+                },
+                yAxis: {
+                    visible: false
+                },
+                tooltip: {
+                    pointFormat: 'Total: <b>{point.y}</b>'
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y}', // Show label on bar
+                            style: {
+                                fontWeight: 'bold'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Total',
+                    //color: '#007bff',
+                    data: chartData
+                }]
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching cost lead data:", error);
+        }
+    });
+}
+
+function GetPerformingDistricts() {
+    $.ajax({
+        url: document.baseURI + "/Reports/GetPerformingDistricts/",
+        type: "GET",
+        dataType: "json",
+
+        success: function (resp) {
+            var resD = JSON.parse(resp.Data); // Now it's an array of objects with Name and Total
+
+            // Prepare chart data
+            const chartData = resD.map(item => ({
+                name: item.Name,
+                y: parseFloat(item.Total)
+            }));
+
+            // Create bar chart
+            Highcharts.chart('graphPerformingDistricts', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Top 3 Performing Districts'
+                },
+                credits: {
+                    enabled: false
+                },
+                legend: {
+                    enabled: false
+                },
+                xAxis: {
+                    type: 'category',
+                    title: {
+                        text: ''
+                    }
+                },
+                yAxis: {
+                    visible: false
+                },
+                tooltip: {
+                    pointFormat: 'Total: <b>{point.y}</b>'
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y}', // Show label on bar
+                            style: {
+                                fontWeight: 'bold'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Total',
+                    //color: '#007bff',
+                    data: chartData
+                }]
+            });
         },
         error: function (xhr, status, error) {
             console.error("Error fetching cost lead data:", error);

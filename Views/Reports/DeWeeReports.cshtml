@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Summary Reports";
+    ViewBag.Title = "Individual Summary Reports";
 }
 
 <div class="page-bread page-titles">
@@ -211,23 +211,31 @@
                             </figure>
                         </div>
                         <div class="form-group col-md-3">
-                            @*<figure class="highcharts-figure">
-                                    <div id="tatReports"></div>
-                                </figure>*@
-                            <table id="chartenterprisesSolarized">
-                                <tr>
-                                    <td class="first"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                            <figure class="highcharts-figure">
+                                <div id="chartenterprisesSolarized"></div>
+                            </figure>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <figure class="highcharts-figure">
+                                <div id="graphPerformingDistricts"></div>
+                            </figure>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <figure class="highcharts-figure">
+                                <div id="graphSolarShopsMapped"></div>
+                            </figure>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <figure class="highcharts-figure">
+                                <div id="chartenterprisesSolarized"></div>
+                            </figure>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @section Scripts {
 

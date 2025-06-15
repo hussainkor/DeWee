@@ -197,5 +197,49 @@ namespace DeWee.Controllers
 				return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
 			}
 		}
+
+		public JsonResult GetPerformingDistricts()
+		{
+			DataTable dt = SPManager.SP_GetPerformingDistricts();
+			try
+			{
+				if (dt.Rows.Count > 0)
+				{
+					//ViewBag.Markers = JsonConvert.SerializeObject(ds);
+					var dsdata = JsonConvert.SerializeObject(dt);
+					return Json(new { IsSuccess = true, Data = dsdata }, JsonRequestBehavior.AllowGet);
+				}
+				else
+				{
+					return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+				}
+			}
+			catch (Exception ex)
+			{
+				return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+			}
+		}
+
+		public JsonResult GetSolarShopsMapped()
+		{
+			DataTable dt = SPManager.SP_GetDistrictsWith_SolarShopsMapped();
+			try
+			{
+				if (dt.Rows.Count > 0)
+				{
+					//ViewBag.Markers = JsonConvert.SerializeObject(ds);
+					var dsdata = JsonConvert.SerializeObject(dt);
+					return Json(new { IsSuccess = true, Data = dsdata }, JsonRequestBehavior.AllowGet);
+				}
+				else
+				{
+					return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+				}
+			}
+			catch (Exception ex)
+			{
+				return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+			}
+		}
 	}
 }
