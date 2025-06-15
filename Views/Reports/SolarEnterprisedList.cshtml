@@ -2,7 +2,7 @@
 @using DeWee.Manager
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Solar Enterprised List";
+    ViewBag.Title = "Solar Enterprises";
 }
 
 <div class="page-bread page-titles">
@@ -44,17 +44,19 @@
         <div class="card">
             <ul class="nav nav-tabs" id="solarTabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="collective-tab" data-toggle="tab" href="#collective" role="tab">Collective Data</a>
+                    <a class="nav-link active" id="individual-tab" data-toggle="tab" href="#individual" role="tab">Individual</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="individual-tab" data-toggle="tab" href="#individual" role="tab">Individual Data</a>
+                    <a class="nav-link" id="collective-tab" data-toggle="tab" href="#collective" role="tab">Collective</a>
                 </li>
+
+
             </ul>
             <div class="tab-content p-2" id="solarTabsContent">
-                <div class="tab-pane fade show active" id="collective" role="tabpanel">
+                <div class="tab-pane fade" id="collective" role="tabpanel">
                     <div id="collectiveTableContainer">Loading...</div>
                 </div>
-                <div class="tab-pane fade" id="individual" role="tabpanel">
+                <div class="tab-pane fade show active" id="individual" role="tabpanel">
                     <div id="individualTableContainer">Loading...</div>
                 </div>
             </div>
@@ -80,6 +82,8 @@
 
     <script>
         $(document).ready(function () {
+            $('#individual-tab').tab('show');
+
 
             BindDistrictList("DistrictId", "", 0, 0);
             $('.select2').select2();
