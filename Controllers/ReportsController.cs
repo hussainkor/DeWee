@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -241,5 +242,74 @@ namespace DeWee.Controllers
 				return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
 			}
 		}
-	}
+
+
+        public ActionResult SolarEnterprisedList()
+        {
+            return View();
+        }
+        public ActionResult GetSolarEnterprisedList(string SId = "", string DId = "", string BId = "")
+        {
+            try
+            {
+                var collectiveDS = SPManager.Usp_GetSolarEIndividualData(SId, DId, BId, "Collective Data");
+                var individualDS = SPManager.Usp_GetSolarEIndividualData(SId, DId, BId, "Individual Data");
+
+                string collectiveHtml = "", individualHtml = "";
+
+                if (collectiveDS != null && collectiveDS.Tables.Count > 0 && collectiveDS.Tables[0].Rows.Count > 0)
+                {
+                    collectiveHtml = ConvertViewToString("_SolarEnterpriseData", collectiveDS.Tables[0]);
+                }
+
+                if (individualDS != null && individualDS.Tables.Count > 0 && individualDS.Tables[0].Rows.Count > 0)
+                {
+                    individualHtml = ConvertViewToString("_SolarEnterpriseData", individualDS.Tables[0]);
+                }
+
+                return Json(new
+                {
+                    IsSuccess = true,
+                    Collective = collectiveHtml,
+                    Individual = individualHtml
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { IsSuccess = false, Data = "Error fetching data" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        //public ActionResult GetSolarEnterprisedList(string SId = "", string DId = "", string BId = "", String FLAG = "")
+        //{
+        //    DataSet tbllist = SPManager.Usp_GetSolarEIndividualData(SId, DId, BId, FLAG);
+        //    try
+        //    {
+        //        if (tbllist != null && tbllist.Tables.Count > 0 && tbllist.Tables[0].Rows.Count > 0)
+        //        {
+        //            var html = ConvertViewToString("_SolarEnterpriseData", tbllist.Tables[0]);
+        //            return Json(new { IsSuccess = true, Data = html }, JsonRequestBehavior.AllowGet);
+        //        }
+        //        else
+        //        {
+        //            return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.RecordNotFound) }, JsonRequestBehavior.AllowGet);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { IsSuccess = false, Data = Enums.GetEnumDescription(Enums.eReturnReg.ExceptionError) }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
+        private string ConvertViewToString(string viewName, object model)
+        {
+            ViewData.Model = model;
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+                return sw.GetStringBuilder().ToString();
+            }
+        }
+    }
 }

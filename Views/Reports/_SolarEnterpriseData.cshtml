@@ -1,0 +1,37 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+<div style="overflow-x: auto; overflow-y: auto; max-height: 500px;">
+    <table class="table table-bordered table-hover display tbl small" id="tbl" width="100%">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                @if (Model.Columns.Count > 0)
+                {
+                    foreach (DataColumn col in Model.Columns)
+                    {
+                        <th>@col.ColumnName</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Rows.Count > 0)
+            {
+                var serial = 1;
+                foreach (DataRow row in Model.Rows)
+                {
+                    <tr>
+                        <td>@serial</td>
+                        @foreach (DataColumn col in Model.Columns)
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }
+                    </tr>
+                    serial++;
+                }
+            }
+           
+        </tbody>
+    </table>
+</div>

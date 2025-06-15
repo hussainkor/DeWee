@@ -244,7 +244,7 @@
             </div>
             <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
-                    <div class="value-box-card">
+                    <div class="value-box-card" onclick="redirectToSolarizedList()">
                         <div>
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="TotalSolarized"></div>
                             <div class="txt" style="font-size: 14px; color: #000;">Enterprises Solarized</div>
@@ -255,6 +255,20 @@
                     </div>
                 </div>
             </div>
+
+            @*<div class="col-xs-12 col-md-2">
+            <div class="card mb-2">
+                <div class="value-box-card">
+                    <div>
+                        <div style="font-weight: bold; font-size: 30px; color: #000;" id="TotalSolarized"></div>
+                        <div class="txt" style="font-size: 14px; color: #000;">Enterprises Solarized</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/dashboard/images/E Solarized.jpg" class="img-fluid" style="width: 55px !important; height: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>*@
             <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
                     <div class="value-box-card">
@@ -565,6 +579,9 @@
          //   });
 
         });
+        function redirectToSolarizedList() {
+        window.location.href = '@Url.Action("SolarEnterprisedList", "Reports")';
+    }
         function Load_Databox() {
             var SId = $('#StateId').val() == '' || $('#StateId').val() == null ? 0 : $('#StateId').val();
             var DId = $('#DistrictId').val() == '' || $('#DistrictId').val() == null ? 0 : $('#DistrictId').val();

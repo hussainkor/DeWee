@@ -45,7 +45,19 @@ namespace DeWee.Manager
 			DataTable dt = sp.ExecuteDataSet().Tables[0];
 			return dt;
 		}
-		public static DataTable Get_Usp_BeneficiaryDetails(string BfyId)
+
+        public static DataSet Usp_GetSolarEIndividualData(string SId = "", string DId = "", string BId = "", string FLAG = "")
+        {
+            StoredProcedure sp = new StoredProcedure("Usp_GetSolarEIndividualData");
+            sp.Command.AddParameter("@SId", SId, DbType.String);
+            sp.Command.AddParameter("@DId", DId, DbType.String);
+            sp.Command.AddParameter("@BId", BId, DbType.String);
+            sp.Command.AddParameter("@FLAG", FLAG, DbType.String);
+            DataSet ds = sp.ExecuteDataSet();
+            return ds;
+        }
+
+        public static DataTable Get_Usp_BeneficiaryDetails(string BfyId)
 		{
 			StoredProcedure sp = new StoredProcedure("Usp_BeneficiaryDetails");
 			sp.Command.AddParameter("@BfyId", BfyId, DbType.String);
