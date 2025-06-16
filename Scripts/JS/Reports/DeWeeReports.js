@@ -37,51 +37,75 @@ function weeklyReferral() {
         type: 'GET',
         dataType: 'json',
         success: function (resp) {
-            var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
+            var resD = JSON.parse(resp.Data); // [{ Total: 10, WeekStart: '2025-05-06', Label: 'May-25' }, ...]
 
-            // Extract x-axis labels and data values
-            var categories = resD.map(item => item.Name);  // ['May-25', 'Jun-25']
-            var data = resD.map(item => item.Total);       // [724, 497]
+            const data = resD.map(item => item.Total);
+            const weekStarts = resD.map(item => item.WeekStart);
+
+            // Build X-axis labels: show month label only when it changes
+            let lastMonth = '';
+            const xLabels = resD.map((item, index) => {
+                if (item.MonthLabel !== lastMonth) {
+                    lastMonth = item.MonthLabel;
+                    return item.MonthLabel;
+                }
+                return ''; // keep empty for mid-weeks
+            });
+
+            var xLabelsTooltip = resD.map(item => item.WeekLabel);
 
             Highcharts.chart('WeeklyReferral', {
                 chart: {
                     type: 'areaspline'
                 },
-                lang: {
-                    locale: 'en-GB'
-                },
                 title: {
                     text: 'Weekly Referral'
                 },
                 xAxis: {
-                    categories: categories,
-                    title: {
-                        text: ''
-                    }
+                    categories: weekStarts,
+                    labels: {
+                        formatter: function () {
+                            return xLabels[this.pos];
+                        },
+                        style: {
+                            fontWeight: 'bold',
+                            color: '#333'
+                        },
+                        rotation: -45
+                    },
+                    tickLength: 0
                 },
                 yAxis: {
                     title: {
-                        text: 'Total Referrals'
+                        text: 'Referrals'
+                    },
+                    labels: {
+                        format: '{value}'
+                    },
+                    min: 0
+                },
+                tooltip: {
+                    formatter: function () {
+                        return `<b>${xLabelsTooltip[this.point.index]}</b><br/><b>Referrals:</b> ${this.y}`;
                     }
                 },
                 credits: {
-                    enabled: false // 👈 This disables the Highcharts.com text
+                    enabled: false
                 },
-
                 plotOptions: {
                     areaspline: {
                         color: '#F26C23',
                         fillColor: {
-                            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
                             stops: [
                                 [0, '#F26C23'],
-                                [1, '#F26C2300']
+                                [1, 'rgba(242,108,35,0)']
                             ]
                         },
-                        threshold: null,
                         marker: {
-                            lineWidth: 1,
-                            lineColor: null,
+                            enabled: true,
+                            lineWidth: 2,
+                            lineColor: '#F26C23',
                             fillColor: 'white'
                         }
                     }
@@ -89,7 +113,7 @@ function weeklyReferral() {
                 series: [{
                     name: 'Referrals',
                     data: data,
-                    showInLegend: false,
+                    showInLegend: false
                 }]
             });
         },
@@ -104,61 +128,84 @@ function weeklyLeads() {
         type: 'GET',
         dataType: 'json',
         success: function (resp) {
-            var resD = JSON.parse(resp.Data); // expecting array of objects like: [{ Total: 724, Name: 'May-25' }, ...]
+            var resD = JSON.parse(resp.Data); // expecting: [{ Total, WeekStart, MonthLabel, WeekLabel }]
 
-            // Extract x-axis labels and data values
-            var categories = resD.map(item => item.Name);  // ['May-25', 'Jun-25']
-            var data = resD.map(item => item.Total);       // [724, 497]
+            const data = resD.map(item => item.Total);
+            const weekStarts = resD.map(item => item.WeekStart);
+
+            // Build X-axis labels: show month label only when it changes
+            let lastMonth = '';
+            const xLabels = resD.map(item => {
+                if (item.MonthLabel !== lastMonth) {
+                    lastMonth = item.MonthLabel;
+                    return item.MonthLabel;
+                }
+                return ''; // skip repetitive labels
+            });
+
+            // Tooltip labels
+            const xLabelsTooltip = resD.map(item => item.WeekLabel);
 
             Highcharts.chart('weeklyLeads', {
-                //chart: {
-                //    type: 'areaspline'
-                //},
-                lang: {
-                    locale: 'en-GB'
+                chart: {
+                    type: 'areaspline'
                 },
                 title: {
                     text: 'Weekly Leads'
                 },
                 xAxis: {
-                    categories: categories,
-                    title: {
-                        text: ''
-                    }
+                    categories: weekStarts,
+                    labels: {
+                        formatter: function () {
+                            return xLabels[this.pos];
+                        },
+                        style: {
+                            fontWeight: 'bold',
+                            color: '#333'
+                        },
+                        rotation: -45
+                    },
+                    tickLength: 0
                 },
                 yAxis: {
                     title: {
-                        text: 'Total Leads'
+                        text: 'Leads'
+                    },
+                    labels: {
+                        format: '{value}'
+                    },
+                    min: 0
+                },
+                tooltip: {
+                    formatter: function () {
+                        return `<b>${xLabelsTooltip[this.point.index]}</b><br/><b>Leads:</b> ${this.y}`;
                     }
                 },
                 credits: {
-                    enabled: false // This hides the "Highcharts.com" credit
+                    enabled: false
                 },
-                legend: {
-                    enabled: false // Hide the legend
+                plotOptions: {
+                    areaspline: {
+                        color: '#32CD32',
+                        fillColor: {
+                            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                            stops: [
+                                [0, '#32CD32'],
+                                [1, 'rgba(50,205,50,0)']
+                            ]
+                        },
+                        marker: {
+                            enabled: true,
+                            lineWidth: 2,
+                            lineColor: '#32CD32',
+                            fillColor: 'white'
+                        }
+                    }
                 },
-                //plotOptions: {
-                //    areaspline: {
-                //        color: '#32CD32',
-                //        fillColor: {
-                //            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-                //            stops: [
-                //                [0, '#32CD32'],
-                //                [1, '#32CD3200']
-                //            ]
-                //        },
-                //        threshold: null,
-                //        marker: {
-                //            lineWidth: 1,
-                //            lineColor: null,
-                //            fillColor: 'white'
-                //        }
-                //    }
-                //},
                 series: [{
                     name: 'Leads',
                     data: data,
-                    showInLegend: false,
+                    showInLegend: false
                 }]
             });
         },
@@ -167,6 +214,7 @@ function weeklyLeads() {
         }
     });
 }
+
 function leadsCategoriesAcross() {
     $.ajax({
         url: document.baseURI + "/Reports/GetLeadsCategoriesAcross/",
@@ -470,7 +518,7 @@ function GetPerformingDistricts() {
                     visible: false
                 },
                 tooltip: {
-                    pointFormat: 'TotalPercentage: <b>{point.y}</b>'
+                    pointFormat: 'Percentage: <b>{point.y}</b>'
                 },
                 plotOptions: {
                     series: {
@@ -515,7 +563,7 @@ function GetDistricts_SolarShopsMapped() {
                     type: 'bar'
                 },
                 title: {
-                    text: 'Top 3 Performing Districts'
+                    text: 'Top 3 Districts with Saloar Shops Mapped'
                 },
                 credits: {
                     enabled: false
@@ -533,7 +581,7 @@ function GetDistricts_SolarShopsMapped() {
                     visible: false
                 },
                 tooltip: {
-                    pointFormat: 'TotalPercentage: <b>{point.y}</b>'
+                    pointFormat: 'Percentage: <b>{point.y}</b>'
                 },
                 plotOptions: {
                     series: {
@@ -578,7 +626,7 @@ function GetDistrictsWith_CLFSMapped() {
                     type: 'bar'
                 },
                 title: {
-                    text: 'Top 3 Performing Districts'
+                    text: 'Top 3 Districts with CLFs Mapped'
                 },
                 credits: {
                     enabled: false
@@ -596,7 +644,7 @@ function GetDistrictsWith_CLFSMapped() {
                     visible: false
                 },
                 tooltip: {
-                    pointFormat: 'TotalPercentage: <b>{point.y}</b>'
+                    pointFormat: 'Percentage: <b>{point.y}</b>'
                 },
                 plotOptions: {
                     series: {
