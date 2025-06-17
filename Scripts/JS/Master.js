@@ -956,7 +956,12 @@ function DataTableSet(ElementId, HeaderName, FileName,DownLoadId) {
         //paging: false,
         "dom": '<"pull-left"f><"pull-right"l>tip',
         pageLength: 100,
-        fixedHeader: true,
+        scrollY: '400px',
+        scrollCollapse: true,
+        fixedHeader: {
+            header: true,
+            headerOffset: 0 // adjust if you have fixed navbars
+        },
         fixedColumns: {
             leftColumns: 1,
             rightColumns: 1
@@ -968,6 +973,9 @@ function DataTableSet(ElementId, HeaderName, FileName,DownLoadId) {
             filename: FileName,
             exportOptions: { modifier: { page: 'all' } }
         }],
+    });
+    table.on('draw', function () {
+        $('.dataTables_scrollHead').css('overflow-x', 'auto');
     });
     $('#dt-search-0').css(
         { 'width': '300px', 'display': 'inline-block' }

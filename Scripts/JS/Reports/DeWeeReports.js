@@ -426,10 +426,27 @@ function GetEnterprisesSolarized() {
             var resD = JSON.parse(resp.Data); // Now it's an array of objects with Name and Total
 
             // Prepare chart data
-            const chartData = resD.map(item => ({
-                name: item.Name,
-                y: parseFloat(item.TotalPercentage)
-            }));
+            const totalItems = resD.length;
+            // Sort by TotalPercentage descending
+            const sorted = resD.sort((a, b) => parseFloat(b.TotalPercentage) - parseFloat(a.TotalPercentage));
+            const baseColor = '0, 170, 255'; // #00aaff
+            const opacities = [1.0, 0.60, 0.30]; // Can extend as needed
+            let chartData = [];
+            let lastValue = null;
+            let currentOpacityIndex = 0;
+            sorted.forEach((item, index) => {
+                const value = parseFloat(item.TotalPercentage);
+                if (lastValue !== null && value !== lastValue) {
+                    currentOpacityIndex++;
+                }
+                const opacity = opacities[Math.min(currentOpacityIndex, opacities.length - 1)];
+                chartData.push({
+                    name: item.Name,
+                    y: value,
+                    color: `rgba(${baseColor}, ${opacity})`
+                });
+                lastValue = value;
+            });
 
             // Create bar chart
             Highcharts.chart('chartenterprisesSolarized', {
@@ -489,10 +506,27 @@ function GetPerformingDistricts() {
             var resD = JSON.parse(resp.Data); // Now it's an array of objects with Name and Total
 
             // Prepare chart data
-            const chartData = resD.map(item => ({
-                name: item.Name,
-                y: parseFloat(item.TotalPercentage)
-            }));
+            const totalItems = resD.length;
+            // Sort by TotalPercentage descending
+            const sorted = resD.sort((a, b) => parseFloat(b.TotalPercentage) - parseFloat(a.TotalPercentage));
+            const baseColor = '0, 170, 255'; // #00aaff
+            const opacities = [1.0, 0.60, 0.30]; // Can extend as needed
+            let chartData = [];
+            let lastValue = null;
+            let currentOpacityIndex = 0;
+            sorted.forEach((item, index) => {
+                const value = parseFloat(item.TotalPercentage);
+                if (lastValue !== null && value !== lastValue) {
+                    currentOpacityIndex++;
+                }
+                const opacity = opacities[Math.min(currentOpacityIndex, opacities.length - 1)];
+                chartData.push({
+                    name: item.Name,
+                    y: value,
+                    color: `rgba(${baseColor}, ${opacity})`
+                });
+                lastValue = value;
+            });
 
             // Create bar chart
             Highcharts.chart('graphPerformingDistricts', {
@@ -552,10 +586,27 @@ function GetDistricts_SolarShopsMapped() {
             var resD = JSON.parse(resp.Data); // Now it's an array of objects with Name and Total
 
             // Prepare chart data
-            const chartData = resD.map(item => ({
-                name: item.Name,
-                y: parseFloat(item.TotalPercentage)
-            }));
+            const totalItems = resD.length;
+            // Sort by TotalPercentage descending
+            const sorted = resD.sort((a, b) => parseFloat(b.TotalPercentage) - parseFloat(a.TotalPercentage));
+            const baseColor = '0, 170, 255'; // #00aaff
+            const opacities = [1.0, 0.60, 0.30]; // Can extend as needed
+            let chartData = [];
+            let lastValue = null;
+            let currentOpacityIndex = 0;
+            sorted.forEach((item, index) => {
+                const value = parseFloat(item.TotalPercentage);
+                if (lastValue !== null && value !== lastValue) {
+                    currentOpacityIndex++;
+                }
+                const opacity = opacities[Math.min(currentOpacityIndex, opacities.length - 1)];
+                chartData.push({
+                    name: item.Name,
+                    y: value,
+                    color: `rgba(${baseColor}, ${opacity})`
+                });
+                lastValue = value;
+            });
 
             // Create bar chart
             Highcharts.chart('graphSolarShopsMapped', {
@@ -615,10 +666,27 @@ function GetDistrictsWith_CLFSMapped() {
             var resD = JSON.parse(resp.Data); // Now it's an array of objects with Name and Total
 
             // Prepare chart data
-            const chartData = resD.map(item => ({
-                name: item.Name,
-                y: parseFloat(item.TotalPercentage)
-            }));
+            const totalItems = resD.length;
+            // Sort by TotalPercentage descending
+            const sorted = resD.sort((a, b) => parseFloat(b.TotalPercentage) - parseFloat(a.TotalPercentage));
+            const baseColor = '0, 170, 255'; // #00aaff
+            const opacities = [1.0, 0.60, 0.30]; // Can extend as needed
+            let chartData = [];
+            let lastValue = null;
+            let currentOpacityIndex = 0;
+            sorted.forEach((item, index) => {
+                const value = parseFloat(item.TotalPercentage);
+                if (lastValue !== null && value !== lastValue) {
+                    currentOpacityIndex++;
+                }
+                const opacity = opacities[Math.min(currentOpacityIndex, opacities.length - 1)];
+                chartData.push({
+                    name: item.Name,
+                    y: value,
+                    color: `rgba(${baseColor}, ${opacity})`
+                });
+                lastValue = value;
+            });
 
             // Create bar chart
             Highcharts.chart('graphCLFSMapped', {
