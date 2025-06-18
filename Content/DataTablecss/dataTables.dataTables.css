@@ -98,7 +98,7 @@ table.dataTable thead > tr > td.dt-orderable-desc,
 table.dataTable thead > tr > td.dt-ordering-asc,
 table.dataTable thead > tr > td.dt-ordering-desc {
   position: relative;
-  padding-right: 30px;
+  padding-right: 10px;
 }
 table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order, table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order,
 table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order,
@@ -111,6 +111,14 @@ table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order {
   bottom: 0;
   width: 12px;
 }
+.dt-column-title {
+    font-size: 12px !important;
+    color: #000 !important
+}
+table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td {
+    color: #000 !important;
+    font-size: 13px
+}
 table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order:after, table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order:before, table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order:after, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:after, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:after,
 table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order:before,
 table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order:after,
@@ -120,10 +128,10 @@ table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:before,
 table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:after,
 table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:before,
 table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:after {
-  left: 0;
-  opacity: 0.125;
-  line-height: 9px;
-  font-size: 0.8em;
+    left: 0;
+    opacity: 0.125;
+    line-height: 9px;
+    font-size: 0.8em;
 }
 table.dataTable thead > tr > th.dt-orderable-asc, table.dataTable thead > tr > th.dt-orderable-desc,
 table.dataTable thead > tr > td.dt-orderable-asc,
