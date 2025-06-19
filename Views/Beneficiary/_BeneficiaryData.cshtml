@@ -5,8 +5,10 @@
 <table class="table table-bordered table-hover display tbl small" id="tbl" width="100%">
     <thead>
         <tr>
-            <th>Solar Enterprise</th>
+            <th>Image</th>
             <th>View</th>
+            <th>Reported Name</th>
+            <th>Reported Date</th>
             <th>State</th>
             <th>District</th>
             <th>Block</th>
@@ -45,8 +47,6 @@
             <th> Are you aware of any govt. schemes / subsidy related to solar energy?</th>
             <th>Do you want a solar installation?</th>
             <th>Do you need financial support?</th>
-            <th>Reported Name</th>
-            <th>Reported Date</th>
             @*<th>Actions</th>*@
         </tr>
     </thead>
@@ -56,51 +56,51 @@
             {
                 foreach (DataRow row in Model.Rows)
                 {
-                    <tr>
-                        <td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /> </td>
-                        <td><button class="modal-btn btn mb-1 btn-rounded btn-info btn-sm" data-id="@row["BeneficiaryId"]"><strong>View</strong></button></td>
-                        <td>@row["StateName"]</td>
-                        <td>@row["DistrictName"]</td>
-                        <td>@row["BlockName"]</td>
-                        <td>@row["GPName"]</td>
-                        <td>@row["Village"]</td>
-                        <td>@row["CLFName"]</td>
-                        <td>@row["VOName"]</td>
-                        <td>@row["NameofSHG"]</td>
-                        <td>@row["YearOfSHG"]</td>
-                        <td>@row["NameofEnterprise"]</td>
-                        <td>@row["BusinessTypeInEng"]</td>
-                        <td>@row["NameofSHGMember"]</td>
-                        <td>@row["NameofEnterpriseOwner"]</td>
-                        <td>@row["EnterpriseOwner_Gender"]</td>
-                        <td>@row["DOB"]</td>
-                        <td>@row["TypeOfRelative"]</td>
-                        <td>@row["NameofGuardian"]</td>
-                        <td>@row["Guardian_Gender"]</td>
-                        @*<td>@row["Guardian_Gender"]</td>*@
-                        <td>@row["PhoneNumber"]</td>
-                        <td>@row["AlternateMobileNo"]</td>
-                        <td>@row["WhatsAppMobileNo"]</td>
-                        <td>@row["SiteAddress1st"]</td>
-                        <td>@row["SiteAddress2nd"]</td>
-                        <td>@row["Pincode"]</td>
-                        <td>@row["BusinessInstallationInEng"]</td>
-                        <td>@row["SpaceAvailableInEng"]</td>
-                        <td>@row["SpaceAvailable_Area"]</td>
-                        <td>@row["NatureSpaceInEng"]</td>
-                        <td>@row["YNGridconnection"]</td>
-                        <td>@row["YNDieselGenerator"]</td>
-                        <td>@row["DGYesAverageDailyHours"]</td>
-                        <td>@row["DGCapacity"]</td>
-                        <td>@row["DGAverageExpense"]</td>
-                        <td>@row["YNMotorAppliances"]</td>
-                        <td>@row["IfYesTypeofMotor"]</td>
-                        <td>@row["YNGovtSchemessubsidy"]</td>
-                        <td>@row["SolarInstallationInEng"]</td>
-                        <td>@row["YNFinancialSupport"]</td>
-                        <td>@row["ReportedBy"]</td>
-                        <td>@row["CreatedOn"]</td>
-                    </tr>
+                <tr>
+                    <td><img src="@row["EnterpriseImgPath"]" width="35" class="mr-3 rounded-circle" /> </td>
+                    <td><button class="modal-btn btn mb-1 btn-rounded btn-info btn-sm" data-id="@row["BeneficiaryId"]"><strong>View</strong></button></td>
+                    <td>@row["ReportedBy"]</td>
+                    <td>@row["CreatedOn"]</td>
+                    <td>@row["StateName"]</td>
+                    <td>@row["DistrictName"]</td>
+                    <td>@row["BlockName"]</td>
+                    <td>@row["GPName"]</td>
+                    <td>@row["Village"]</td>
+                    <td>@row["CLFName"]</td>
+                    <td>@row["VOName"]</td>
+                    <td>@row["NameofSHG"]</td>
+                    <td>@row["YearOfSHG"]</td>
+                    <td>@row["NameofEnterprise"]</td>
+                    <td>@row["BusinessTypeInEng"]</td>
+                    <td>@row["NameofSHGMember"]</td>
+                    <td>@row["NameofEnterpriseOwner"]</td>
+                    <td>@row["EnterpriseOwner_Gender"]</td>
+                    <td>@row["DOB"]</td>
+                    <td>@row["TypeOfRelative"]</td>
+                    <td>@row["NameofGuardian"]</td>
+                    <td>@row["Guardian_Gender"]</td>
+                    @*<td>@row["Guardian_Gender"]</td>*@
+                    <td>@row["PhoneNumber"]</td>
+                    <td>@row["AlternateMobileNo"]</td>
+                    <td>@row["WhatsAppMobileNo"]</td>
+                    <td>@row["SiteAddress1st"]</td>
+                    <td>@row["SiteAddress2nd"]</td>
+                    <td>@row["Pincode"]</td>
+                    <td>@row["BusinessInstallationInEng"]</td>
+                    <td>@row["SpaceAvailableInEng"]</td>
+                    <td>@row["SpaceAvailable_Area"]</td>
+                    <td>@row["NatureSpaceInEng"]</td>
+                    <td>@row["YNGridconnection"]</td>
+                    <td>@row["YNDieselGenerator"]</td>
+                    <td>@row["DGYesAverageDailyHours"]</td>
+                    <td>@row["DGCapacity"]</td>
+                    <td>@row["DGAverageExpense"]</td>
+                    <td>@row["YNMotorAppliances"]</td>
+                    <td>@row["IfYesTypeofMotor"]</td>
+                    <td>@row["YNGovtSchemessubsidy"]</td>
+                    <td>@row["SolarInstallationInEng"]</td>
+                    <td>@row["YNFinancialSupport"]</td>
+                </tr>
                 }
             }
             else
