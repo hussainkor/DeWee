@@ -21685,7 +21685,51 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
     /*border: 1px solid #333333;*/
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
-
+.box-data {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px
+}
+.value-box-card {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    gap: 3px
+}
+.boxes-1, .boxes-2, .boxes-3, .boxes-4, .boxes-5 {
+    display: flex;
+    min-width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin: 10px 10px 0 0
+}
+.boxes-1 {
+    background: #2BBFCE;
+}
+.boxes-2 {
+    background: #AD4481;
+}
+.boxes-3 {
+    background: #61CD5F;
+}
+.boxes-4 {
+    background: #2BBFCE;
+}
+.boxes-5 {    
+    background: #AD4481;
+}
+.handed {
+    cursor: pointer
+}
+.stats {
+    padding: 10px
+}
+.point-icons {
+    width: 45px
+}
 @media screen and (max-width: 768px) {
     .page-bread {
         margin: -25px 0px -10px !important;

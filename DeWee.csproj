@@ -797,6 +797,11 @@
     <Content Include="Content\dashboard\images\favicon.png" />
     <Content Include="Content\dashboard\images\icon.png" />
     <Content Include="Content\dashboard\images\iconIMg.png" />
+    <Content Include="Content\dashboard\images\icons\Capacity-of-Installation.png" />
+    <Content Include="Content\dashboard\images\icons\co2-emission.png" />
+    <Content Include="Content\dashboard\images\icons\Enterprises-Onboarded.png" />
+    <Content Include="Content\dashboard\images\icons\Enterprises-Solarized.png" />
+    <Content Include="Content\dashboard\images\icons\Women-Entrepreneurs.png" />
     <Content Include="Content\dashboard\images\login-bg.jpg" />
     <Content Include="Content\dashboard\images\logo-compact.png" />
     <Content Include="Content\dashboard\images\logo-text.png" />

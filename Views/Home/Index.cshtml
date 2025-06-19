@@ -162,14 +162,14 @@
     }
 
     /*-----------------by Harshit--------------*/
-    .value-box-card {
+    /*.value-box-card {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
+        justify-content: space-between;*/
+        /*align-items: center;*/
+        /*gap: 15px;
         padding: 10px;
-        height: 100px; /* Set a fixed height */
-    }
+        height: 100px;
+    }*/
 
     /*.card {
         width: 100%; 
@@ -180,14 +180,14 @@
     }*/
 
     .value-box-card .txt {
-        font-size: 11px;
-        font-weight: 600;
+        font-size: 12px !important;
+        font-weight: 500;
         /*text-align: center;*/ /* Center text */
     }
-    body {
-        margin: 0;
-        padding: 0;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+        }
 
     .page-border {
         border: 10px solid transparent; /* Adjust thickness as needed */
@@ -228,7 +228,54 @@
 </style>
 <div class="row">
     <div class="col-xs-12 col-md-12">
-        <div class="row form-row">
+        <div class="box-data">
+            <div class="value-box-card">
+                <div class="stats">
+                    <div style="font-weight: bold; font-size: 30px; color: #2BBFCE;" id="TotalParticipant"></div>
+                    <div class="txt" style="font-size: 14px; color: #000;">Enterprises Onboarded</div>
+                </div>
+                <div class="boxes-1">
+                    <img src="~/Content/dashboard/images/icons/Enterprises-Onboarded.png" alt="Enterprises Onboarded" class="point-icons" />
+                </div>
+            </div>
+            <div class="value-box-card handed" onclick="redirectToSolarizedList()">
+                <div class="stats">
+                    <div style="font-weight: bold; font-size: 30px; color: #AD4481;" id="TotalSolarized"></div>
+                    <div class="txt" style="font-size: 14px; color: #000;">Enterprises <br />Solarized</div>
+                </div>
+                <div class="boxes-2">
+                    <img src="~/Content/dashboard/images/icons/Enterprises-Solarized.png" alt="Enterprises Onboarded" class="point-icons" />
+                </div>
+            </div>
+            <div class="value-box-card">
+                <div class="stats">
+                    <div style="font-weight: bold; font-size: 30px; color: #61CD5F;" id="TotalGHGEmissionsMitigated">0</div>
+                    <div class="txt" style="font-size: 14px; color: #000;">GHG Emissions Mitigated(MtCO2e)</div>
+                </div>
+                <div class="boxes-3">
+                    <img src="~/Content/dashboard/images/icons/co2-emission.png" alt="Enterprises Onboarded" class="point-icons" />
+                </div>
+            </div>
+            <div class="value-box-card">
+                <div class="stats">
+                    <div style="font-weight: bold; font-size: 30px; color: #2BBFCE;" id="TotalInstalledCapacity_kW"></div>
+                    <div class="txt" style="font-size: 14px; color: #000;">Capacity of Installation (kW)</div>
+                </div>
+                <div class="boxes-4">
+                    <img src="~/Content/dashboard/images/icons/Capacity-of-Installation.png" alt="Enterprises Onboarded" class="point-icons" />
+                </div>
+            </div>
+            <div class="value-box-card">
+                <div class="stats">
+                    <div style="font-weight: bold; font-size: 30px; color: #AD4481;" id="TotalWomenEmployed"></div>
+                    <div class="txt" style="font-size: 14px; color: #000;">Women Entrepreneurs Reached</div>
+                </div>
+                <div class="boxes-5">
+                    <img src="~/Content/dashboard/images/icons/Women-Entrepreneurs.png" alt="Enterprises Onboarded" class="point-icons" />
+                </div>
+            </div>
+        </div>
+        @*<div class="row form-row">
             <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
                     <div class="value-box-card">
@@ -236,8 +283,8 @@
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="TotalParticipant"></div>
                             <div class="txt" style="font-size: 14px; color: #000;">Enterprises Onboarded</div>
                         </div>
-                        <div>
-                            <img src="~/Content/dashboard/images/E Onboarded.jpg" class="img-fluid" style="width: 55px !important; height:auto;">
+                        <div class="box-1">
+                            <img src="~/Content/dashboard/images/icons/Enterprises-Onboarded.png" alt="Enterprises Onboarded" class="point-icons" />
                         </div>
                     </div>
                 </div>
@@ -249,26 +296,12 @@
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="TotalSolarized"></div>
                             <div class="txt" style="font-size: 14px; color: #000;">Enterprises Solarized</div>
                         </div>
-                        <div>
-                            <img src="~/Content/dashboard/images/E Solarized.jpg" class="img-fluid" style="width: 55px !important; height: auto;">
+                        <div class="box-1">
+                            <img src="~/Content/dashboard/images/icons/Enterprises-Onboarded.png" alt="Enterprises Onboarded" class="point-icons" />
                         </div>
                     </div>
                 </div>
             </div>
-
-            @*<div class="col-xs-12 col-md-2">
-            <div class="card mb-2">
-                <div class="value-box-card">
-                    <div>
-                        <div style="font-weight: bold; font-size: 30px; color: #000;" id="TotalSolarized"></div>
-                        <div class="txt" style="font-size: 14px; color: #000;">Enterprises Solarized</div>
-                    </div>
-                    <div>
-                        <img src="~/Content/dashboard/images/E Solarized.jpg" class="img-fluid" style="width: 55px !important; height: auto;">
-                    </div>
-                </div>
-            </div>
-        </div>*@
             <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
                     <div class="value-box-card">
@@ -276,39 +309,39 @@
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="TotalGHGEmissionsMitigated">0</div>
                             <div class="txt" style="font-size: 14px; color: #000;">GHG Emissions Mitigated(MtCO2e)</div>
                         </div>
-                        <div>
-                            <img src="~/Content/dashboard/images/GHG.jpg" class="img-fluid" style="width: 55px !important; height: auto;">
+                        <div class="box-1">
+                            <img src="~/Content/dashboard/images/icons/Enterprises-Onboarded.png" alt="Enterprises Onboarded" class="point-icons" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
                     <div class="value-box-card">
                         <div>
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="TotalInstalledCapacity_kW"></div>
                             <div class="txt" style="font-size: 14px; color: #000;">Capacity of Installation (kW)</div>
                         </div>
-                        <div>
-                            <img src="~/Content/dashboard/images/Capacity_Of_Installtion.jpg" class="img-fluid" style="width: 55px !important; height: auto;">
+                        <div class="box-1">
+                            <img src="~/Content/dashboard/images/icons/Enterprises-Onboarded.png" alt="Enterprises Onboarded" class="point-icons" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-2">
                 <div class="card mb-2">
                     <div class="value-box-card">
                         <div>
                             <div style="font-weight: bold; font-size: 30px; color: #000;" id="TotalWomenEmployed"></div>
                             <div class="txt" style="font-size: 14px; color: #000;">Women Entrepreneurs Reached</div>
                         </div>
-                        <div>
-                            <img src="~/Content/dashboard/images/Women_Entrepreneurs_Reached.jpg" class="img-fluid" style="width: 55px !important; height: auto;">
+                        <div class="box-1">
+                            <img src="~/Content/dashboard/images/icons/Enterprises-Onboarded.png" alt="Enterprises Onboarded" class="point-icons" />
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
         <div class="card map-card">
             <div class="de-map-box">
                 <div id="myNav" class="overlay-map">
